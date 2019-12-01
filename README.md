@@ -111,6 +111,6 @@ LOGO图片及前端静态资源在根目录：`public/dist/static`
 本程序仅做免费交流使用，任何人用于任何违法国家法律法规的用途均与项目作者无关！
 
 
-  [1]: http://www.shanhufk.com
+  [1]: https://shanhufk.com
   [2]: https://share.weiyun.com/5YsenZt
-  [3]: https://free.shanhufk.com
+  [3]: https://shanhufk.com
