@@ -1,0 +1,22 @@
+language: php
+
+php:
+  - 7
+
+matrix:
+  fast_finish: true
+  allow_failures:
+    - php: hhvm
+
+sudo: false
+
+services:
+  - mysql
+
+before_script:
+  - mysql -e 'create database if not exists laravel_admin_test;'
+  - travis_retry composer self-update
+  - travis_retry composer install --no-interaction
+
+script:
+  - composer test

@@ -1,0 +1,17 @@
+<?php
+
+namespace :namespace\Http\Controllers;
+
+use Encore\Admin\Layout\Content;
+use Illuminate\Routing\Controller;
+
+class :class_nameController extends Controller
+{
+    public function index(Content $content)
+    {
+        return $content
+            ->title('Title')
+            ->description('Description')
+            ->body(view(':base_package::index'));
+    }
+}

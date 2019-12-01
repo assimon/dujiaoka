@@ -1,0 +1,53 @@
+language: php
+php: [ 7.1, 7.2, nightly ]
+sudo: false
+
+env:
+
+matrix:
+  fast_finish: true
+  allow_failures:
+    - php: nightly
+
+install:
+  - travis_retry composer install --no-interaction --prefer-dist --optimize-autoloader
+
+script:
+  - ./vendor/bin/phpunit --no-coverage
+
+jobs:
+  include:
+    - stage: analysis
+      php: 7.1
+      script:
+        - ./vendor/bin/phpunit
+      after_script:
+        - travis_retry wget --no-verbose https://phar.io/releases/phive.phar
+        - travis_retry php phive.phar --no-progress install --trust-gpg-keys E82B2FB314E9906E php-coveralls/php-coveralls && ./tools/php-coveralls --verbose
+        - travis_retry wget --no-verbose https://scrutinizer-ci.com/ocular.phar && php ocular.phar code-coverage:upload --format=php-clover build/logs/clover.xml
+
+    - stage: analysis
+      php: 7.1
+      before_script:
+        - travis_retry wget --no-verbose https://phar.io/releases/phive.phar
+        - travis_retry php phive.phar --no-progress install --trust-gpg-keys 8E730BA25823D8B5 phpstan
+      script:
+        - ./tools/phpstan analyse src --level max --configuration phpstan.neon
+
+    - stage: analysis
+      php: 7.1
+      script:
+        - composer create-project symplify/easy-coding-standard temp/ecs ^3 && temp/ecs/bin/ecs check src tests
+
+cache:
+  directories:
+  - $HOME/.composer
+  - $HOME/.phive
+
+notifications:
+  irc: "irc.freenode.org#phpdocumentor"
+  slack:
+    secure: "fjumM0h+4w3EYM4dpgqvpiCug7m4sSIC5+HATgwga/Nrc6IjlbWvGOv3JPgD3kQUhi18VmZfUYPmCv916SIbMnv8JWcrSaJXnPCgmxidvYkuzQDIw1HDJbVppGnkmwQA/qjIrM3sIEMfnu/arLRJQLI363aStZzGPxwIa4PDKcg="
+  email:
+  - me@mikevanriel.com
+  - ashnazg@php.net

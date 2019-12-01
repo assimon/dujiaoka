@@ -1,0 +1,64 @@
+{
+    "name": "encore/laravel-admin",
+    "description": "laravel admin",
+    "type": "library",
+    "keywords": ["laravel", "admin", "grid", "form"],
+    "homepage": "https://github.com/z-song/laravel-admin",
+    "license": "MIT",
+    "version": "v1.7.8",
+    "authors": [
+        {
+            "name": "zsong",
+            "email": "zosong@126.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.0.0",
+        "symfony/dom-crawler": "~3.1|~4.0",
+        "laravel/framework": "~5.5|~6.0",
+        "doctrine/dbal": "2.*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~6.0|~8.0",
+        "laravel/laravel": "~5.5|~6.0",
+        "symfony/css-selector": "~3.1",
+        "fzaninotto/faker": "~1.4",
+        "intervention/image": "~2.3",
+        "laravel/browser-kit-testing": "^2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Encore\\Admin\\": "src/"
+        },
+        "files": [
+            "src/helpers.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\Models\\": "tests/models",
+            "Tests\\Controllers\\": "tests/controllers"
+        },
+        "classmap": [
+            "tests/TestCase.php"
+        ]
+    },
+    "scripts": {
+        "test": "./vendor/bin/phpunit"
+    },
+    "suggest": {
+        "intervention/image": "Required to handling and manipulation upload images (~2.3).",
+        "spatie/eloquent-sortable": "Required to built orderable gird."
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Encore\\Admin\\AdminServiceProvider"
+            ],
+            "aliases": {
+                "Admin": "Encore\\Admin\\Facades\\Admin"
+            }
+
+        }
+    }
+}

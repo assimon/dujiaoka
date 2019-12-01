@@ -1,0 +1,38 @@
+{
+	"name": "hamcrest/hamcrest-php",
+	"type": "library",
+	"description": "This is the PHP port of Hamcrest Matchers",
+	"keywords": ["test"],
+	"license": "BSD",
+	"authors": [
+	],
+
+	"autoload": {
+		"classmap": ["hamcrest"]
+	},
+	"autoload-dev": {
+		"classmap": ["tests", "generator"]
+	},
+
+	"require": {
+		"php": "^5.3|^7.0"
+	},
+
+	"require-dev": {
+		"satooshi/php-coveralls": "^1.0",
+		"phpunit/php-file-iterator": "1.3.3",
+		"phpunit/phpunit": "~4.0"
+	},
+
+	"replace": {
+		"kodova/hamcrest-php": "*",
+		"davedevelopment/hamcrest-php": "*",
+		"cordoval/hamcrest-php": "*"
+	},
+
+    "extra": {
+        "branch-alias": {
+            "dev-master": "2.0-dev"
+        }
+    }
+}

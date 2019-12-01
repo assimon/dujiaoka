@@ -1,0 +1,59 @@
+<?php
+
+use Illuminate\Database\Seeder;
+
+class DummyClass extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        // base tables
+        ClassMenu::truncate();
+        ClassMenu::insert(
+            ArrayMenu
+        );
+
+        ClassPermission::truncate();
+        ClassPermission::insert(
+            ArrayPermission
+        );
+
+        ClassRole::truncate();
+        ClassRole::insert(
+            ArrayRole
+        );
+
+        // pivot tables
+        DB::table('TableRoleMenu')->truncate();
+        DB::table('TableRoleMenu')->insert(
+            ArrayPivotRoleMenu
+        );
+
+        DB::table('TableRolePermissions')->truncate();
+        DB::table('TableRolePermissions')->insert(
+            ArrayPivotRolePermissions
+        );
+
+        // users tables
+        ClassUsers::truncate();
+        ClassUsers::insert(
+            ArrayUsers
+        );
+
+        DB::table('TableRoleUsers')->truncate();
+        DB::table('TableRoleUsers')->insert(
+            ArrayPivotRoleUsers
+        );
+
+        DB::table('TablePermissionsUsers')->truncate();
+        DB::table('TablePermissionsUsers')->insert(
+            ArrayPivotPermissionsUsers
+        );
+
+        // finish
+    }
+}

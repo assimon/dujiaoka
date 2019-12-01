@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<ruleset name="phpDocumentor">
+ <description>The coding standard for phpDocumentor.</description>
+
+    <file>src</file>
+    <file>tests/unit</file>
+    <exclude-pattern>*/tests/unit/Types/ContextFactoryTest.php</exclude-pattern>
+    <arg value="p"/>
+    <rule ref="PSR2">
+        <include-pattern>*\.php</include-pattern>
+    </rule>
+
+    <rule ref="Doctrine">
+        <exclude name="SlevomatCodingStandard.TypeHints.UselessConstantTypeHint.UselessDocComment" />
+    </rule>
+
+    <rule ref="Squiz.Classes.ValidClassName.NotCamelCaps">
+        <exclude-pattern>*/src/*_.php</exclude-pattern>
+    </rule>
+
+    <rule ref="SlevomatCodingStandard.Classes.SuperfluousAbstractClassNaming.SuperfluousPrefix">
+        <exclude-pattern>*/src/*/Abstract*.php</exclude-pattern>
+    </rule>
+
+    <rule ref="Generic.Formatting.SpaceAfterNot">
+        <properties>
+            <property name="spacing" value="0" />
+        </properties>
+    </rule>
+</ruleset>

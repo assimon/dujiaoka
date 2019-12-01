@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Tokenizer" default="setup">
+    <target name="setup" depends="clean,install-tools,generate-autoloader"/>
+
+    <target name="clean" unless="clean.done" description="Cleanup build artifacts">
+        <delete dir="${basedir}/tools"/>
+        <delete dir="${basedir}/vendor"/>
+        <delete file="${basedir}/src/autoload.php"/>
+
+        <property name="clean.done" value="true"/>
+    </target>
+
+    <target name="prepare" unless="prepare.done" depends="clean" description="Prepare for build">
+        <property name="prepare.done" value="true"/>
+    </target>
+
+    <target name="-tools-installed">
+        <available file="${basedir}/tools" property="tools-installed" type="dir"/>
+    </target>
+
+    <target name="install-tools" unless="tools-installed" depends="-tools-installed" description="Install tools with Phive">
+        <exec executable="phive" taskname="phive">
+            <arg value="install"/>
+            <arg value="--trust-gpg-keys" />
+            <arg value="4AA394086372C20A,2A8299CE842DD38C" />
+        </exec>
+    </target>
+
+    <target name="generate-autoloader" depends="install-tools" description="Generate autoloader using PHPAB">
+        <exec executable="${basedir}/tools/phpab" taskname="phpab">
+            <arg value="--output"/>
+            <arg path="${basedir}/src/autoload.php"/>
+            <arg path="${basedir}/src"/>
+        </exec>
+    </target>
+
+    <target name="test" depends="generate-autoloader" description="Run tests">
+        <exec executable="${basedir}/tools/phpunit" taskname="phpunit"/>
+    </target>
+</project>
+

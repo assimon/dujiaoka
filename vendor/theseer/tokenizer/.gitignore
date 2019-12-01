@@ -1,0 +1,8 @@
+/.idea
+/.php_cs.cache
+/composer.lock
+/src/autoload.php
+/tools
+/vendor
+/build
+/.phpunit.result.cache

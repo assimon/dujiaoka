@@ -1,0 +1,22 @@
+#!/usr/bin/env php
+<?php
+
+$license = file_get_contents(dirname(__DIR__) . '/LICENSE');
+$license = str_replace('The MIT License (MIT)', '', $license);
+$license = str_replace("\n", "\n * ", trim($license));
+
+$autoload = <<<'EOS'
+    Phar::mapPhar('psysh.phar');
+    require 'phar://psysh.phar/.box/check_requirements.php';
+    require 'phar://psysh.phar/vendor/autoload.php';
+EOS;
+
+$content = file_get_contents(dirname(__DIR__) . '/bin/psysh');
+$content = preg_replace('{/\* <<<.*?>>> \*/}sm', $autoload, $content);
+$content = preg_replace('/\\(c\\) .*?with this source code./sm', $license, $content);
+
+$content .= '__HALT_COMPILER();';
+
+@mkdir(dirname(__DIR__) . '/build');
+
+file_put_contents(dirname(__DIR__) . '/build/stub', $content);

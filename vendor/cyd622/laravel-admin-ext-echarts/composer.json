@@ -1,0 +1,34 @@
+{
+    "name": "cyd622/laravel-admin-ext-echarts",
+    "description": "Use Echarts in laravel-admin",
+    "type": "library",
+    "keywords": ["laravel-admin", "extension", "echarts"],
+    "homepage": "https://github.com/cyd622/laravel-admin-ext-echarts",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "cyd622",
+            "email": "luffywang622@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.0.0",
+        "encore/laravel-admin": "~1.6"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~6.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Encore\\Admin\\Widgets\\Echarts\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Encore\\Admin\\Widgets\\Echarts\\EchartsServiceProvider"
+            ]
+
+        }
+    }
+}

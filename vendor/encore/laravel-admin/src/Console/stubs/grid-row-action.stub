@@ -1,0 +1,19 @@
+<?php
+
+namespace DummyNamespace;
+
+use Encore\Admin\Actions\RowAction;
+use Illuminate\Database\Eloquent\Model;
+
+class DummyClass extends RowAction
+{
+    public $name = 'DummyName';
+
+    public function handle(Model $model)
+    {
+        // $model ...
+
+        return $this->response()->success('Success message.')->refresh();
+    }
+DummyInteractor
+}

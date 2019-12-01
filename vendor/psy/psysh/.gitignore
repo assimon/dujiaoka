@@ -1,0 +1,9 @@
+/build/
+/dist/
+/composer.lock
+/manual/
+/psysh
+/__pycache__
+/.php_cs.cache
+/vendor/
+/vendor-bin/*/vendor/

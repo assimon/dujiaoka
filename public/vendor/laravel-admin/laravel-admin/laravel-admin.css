@@ -1,0 +1,85 @@
+input.content {
+    min-height: 0 !important;
+    padding: 6px 12px !important;
+    margin: 0 !important;
+}
+
+input.label:empty {
+    display: inherit !important;
+}
+
+input.label {
+    display: inherit !important;
+    padding: 6px 12px !important;
+    font-size: 14px !important;
+    font-weight: inherit !important;
+    line-height: 1.42857143 !important;
+    color: #555 !important;
+    text-align: inherit !important;
+    white-space: inherit !important;
+    vertical-align: inherit !important;
+    border-radius: inherit !important;
+}
+
+.box-show {
+    border-radius: 0 !important;
+    box-shadow: none !important;
+}
+
+a.editable-empty {
+    color: #3c8dbc;
+    border-bottom: none !important;
+}
+
+.form-group > label.asterisk:before {
+    content: "* ";
+    color: red;
+}
+
+.mailbox-attachments li {
+    width: 300px !important;
+}
+
+.table-has-many .form-group {
+    margin-bottom: 0 !important;
+}
+
+
+.table-has-many label.control-label[for=inputError] {
+    position: absolute;
+    z-index: 100;
+    background-color: #fff;
+    border: 1px solid #dd4b39;
+    border-radius: 5px;
+    text-align: left;
+    top: 34px;
+    padding: 8px;
+    line-height: 1.2;
+}
+
+.table-has-many label.control-label[for=inputError]+br {
+    display: none;
+}
+
+#totop {
+    display: none;
+    position: fixed;
+    bottom: 40px;
+    right: 20px;
+    z-index: 99999;
+    outline: none;
+    background-color: rgb(34, 45, 50);
+    color: rgb(238, 238, 238);
+    cursor: pointer;
+    padding: 10px 15px;
+    border-radius: 4px;
+    opacity: 0.5;
+}
+
+#totop:hover {
+    opacity: 1;
+}
+
+.file-input .glyphicon-folder-open {
+    display: inline;
+}

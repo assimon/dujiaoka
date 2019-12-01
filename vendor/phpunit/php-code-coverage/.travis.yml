@@ -1,0 +1,41 @@
+language: php
+
+php:
+  - 7.0
+  - 7.0snapshot
+  - 7.1
+  - 7.1snapshot
+  - master
+
+matrix:
+  allow_failures:
+    - php: master
+  fast_finish: true
+
+env:
+  matrix:
+    - DRIVER="xdebug" DEPENDENCIES="high"
+    - DRIVER="phpdbg" DEPENDENCIES="high"
+    - DRIVER="xdebug" DEPENDENCIES="low"
+    - DRIVER="phpdbg" DEPENDENCIES="low"
+
+sudo: false
+
+before_install:
+  - composer self-update
+  - composer clear-cache
+
+install:
+  - if [[ "$DEPENDENCIES" = 'high' ]]; then travis_retry composer update --no-interaction --no-ansi --no-progress --no-suggest --optimize-autoloader --prefer-stable; fi
+  - if [[ "$DEPENDENCIES" = 'low' ]]; then travis_retry composer update --no-interaction --no-ansi --no-progress --no-suggest --optimize-autoloader --prefer-stable --prefer-lowest; fi
+
+script:
+  - if [[ "$DRIVER" = 'phpdbg' ]]; then phpdbg -qrr vendor/bin/phpunit --coverage-clover=coverage.xml; fi
+  - if [[ "$DRIVER" = 'xdebug' ]]; then vendor/bin/phpunit --coverage-clover=coverage.xml; fi
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
+
+notifications:
+  email: false
+

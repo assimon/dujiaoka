@@ -1,0 +1,35 @@
+{
+    "name": "james.xue/login-captcha",
+    "description": "laravel-admin 登录验证码",
+    "type": "library",
+    "keywords": ["laravel-admin", "extension", "login-captcha"],
+    "homepage": "https://github.com/xiaoxuan6/login-captcha",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "xiaoxuan6",
+            "email": "1527736751@qq.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.0.0",
+        "encore/laravel-admin": "~1.6",
+        "mews/captcha": "^2.2"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~6.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Encore\\James\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Encore\\James\\JamesServiceProvider"
+            ]
+
+        }
+    }
+}

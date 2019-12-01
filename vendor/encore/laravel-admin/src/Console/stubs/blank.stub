@@ -1,0 +1,11 @@
+<?php
+
+namespace DummyNamespace;
+
+use App\Http\Controllers\Controller;
+use Encore\Admin\Controllers\HasResourceActions;
+
+class DummyClass extends Controller
+{
+    use HasResourceActions;
+}

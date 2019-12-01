@@ -1,0 +1,119 @@
+sudo: false
+
+language: php
+
+matrix:
+  allow_failures:
+    - php: hhvm
+    - php: 7.4snapshot
+    - php: nightly
+  fast_finish: true
+  include:
+    - php: 5.6
+      env:
+        - DEPS=lowest
+    - php: 5.6
+      env:
+        - DEPS=latest
+    - php: 5.6
+      env:
+        - PHPUNIT=minimum
+        - DEPS=latest
+    - php: 7.0
+      env:
+        - DEPS=lowest
+    - php: 7.0
+      env:
+        - DEPS=latest
+    - php: 7.1
+      env:
+        - DEPS=lowest
+    - php: 7.1
+      env:
+        - DEPS=latest
+    - php: 7.2
+      env:
+        - DEPS=lowest
+    - php: 7.2
+      env:
+        - DEPS=latest
+    - php: 7.3
+      env:
+        - DEPS=lowest
+    - php: 7.3
+      env:
+        - DEPS=latest
+    - php: 7.4snapshot
+      env:
+        - DEPS=lowest
+    - php: 7.4snapshot
+      env:
+        - DEPS=latest
+    - php: nightly
+      env:
+        - DEPS=lowest
+    - php: nightly
+      env:
+        - DEPS=latest
+    - php: hhvm
+      env:
+        - DEPS=lowest
+    - php: hhvm
+      env:
+        - DEPS=latest
+
+cache:
+  directories:
+    - .composer/cache
+
+before_install:
+  - alias composer=composer\ -n && composer self-update
+
+install:
+  - if [[ $PHPUNIT == 'minimum' ]]; then sed -i 's/~5.7|/5.4.*|/g' ./composer.json ; fi
+  - if [[ $DEPS == 'latest' ]]; then travis_retry composer update --no-interaction ; fi
+  - if [[ $DEPS == 'lowest' ]]; then travis_retry composer update --prefer-lowest --prefer-stable --no-interaction ; fi
+
+before_script:
+  # Install extensions for PHP 5.x series. 7.x includes them by default.
+  - |
+    if [[ $TRAVIS_PHP_VERSION = 5.* ]]; then
+      cat <<< '
+        extension=mongo.so
+        extension=redis.so
+      ' >> ~/.phpenv/versions/"$(phpenv version-name)"/etc/conf.d/travis.ini
+    fi
+
+script:
+- |
+    if [[ $TRAVIS_PHP_VERSION = 5.* ]]; then
+      ./vendor/bin/phpunit --coverage-text --coverage-clover="build/logs/clover.xml" --testsuite="Mockery Test Suite PHP56";
+    else
+      ./vendor/bin/phpunit --coverage-text --coverage-clover="build/logs/clover.xml" --testsuite="Mockery Test Suite";
+    fi
+
+after_success:
+  - composer require satooshi/php-coveralls
+  - vendor/bin/coveralls -v
+  - wget https://scrutinizer-ci.com/ocular.phar
+  - php ocular.phar code-coverage:upload --format=php-clover "build/logs/clover.xml"
+  - make apidocs
+
+notifications:
+  email:
+    - padraic.brady@gmail.com
+    - dave@atstsolutions.co.uk
+
+  irc: irc.freenode.org#mockery
+deploy:
+  overwrite: true
+  provider: pages
+  file_glob: true
+  file: docs/api/*
+  local_dir: docs/api
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  on:
+    branch: master
+    php: '7.1'
+    condition: $DEPS = latest

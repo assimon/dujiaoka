@@ -1,0 +1,12 @@
+/node_modules
+/public/hot
+/license
+/public/storage
+/.idea
+/.vagrant
+worker.log
+Homestead.json
+Homestead.yaml
+npm-debug.log
+yarn-error.log
+shanhufk-worker.log

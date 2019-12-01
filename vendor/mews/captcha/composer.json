@@ -1,0 +1,56 @@
+{
+	"name": "mews/captcha",
+	"type": "package",
+	"description": "Laravel 5 Captcha Package",
+	"keywords": ["laravel5 Captcha", "laravel5 Security", "Captcha"],
+	"homepage": "https://github.com/mewebstudio/captcha",
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Muharrem ERİN",
+			"email": "me@mewebstudio.com",
+			"homepage": "https://github.com/mewebstudio",
+			"role": "Developer"
+		}
+	],
+	"require": {
+		"php": ">=5.4",
+		"ext-gd": "*",
+		"illuminate/config": "~5.0",
+		"illuminate/filesystem": "~5.0",
+		"illuminate/support": "~5.0",
+		"illuminate/hashing": "~5.0",
+		"intervention/image": "~2.2"
+	},
+	"require-dev": {
+		"phpunit/phpunit": "~4.1",
+        "mockery/mockery": "0.9.*"
+	},
+	"autoload": {
+		"psr-4": {
+			"Mews\\Captcha\\": "src/"
+		},
+		"files": [
+			"src/helpers.php"
+		]
+	},
+	"autoload-dev": {
+		"classmap": [
+			"tests"
+		],
+		"psr-4": {
+			"Mews\\Test\\": "tests/"
+		}
+	},
+	"minimum-stability": "dev",
+	"extra": {
+		"laravel": {
+			"providers": [
+				"Mews\\Captcha\\CaptchaServiceProvider"
+			],
+			"aliases": {
+				"Captcha": "Mews\\Captcha\\Facades\\Captcha"
+			}
+		}
+	}
+}

@@ -1,0 +1,27 @@
+{
+    "name": "symfony/thanks",
+    "description": "Encourages sending ⭐ and 💵 to fellow PHP package maintainers (not limited to Symfony components)!",
+    "type": "composer-plugin",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Nicolas Grekas",
+            "email": "p@tchwork.com"
+        }
+    ],
+    "require": {
+        "php": "^5.5.9|^7.0.0",
+        "composer-plugin-api": "^1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Symfony\\Thanks\\": "src"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.2-dev"
+        },
+        "class": "Symfony\\Thanks\\Thanks"
+    }
+}

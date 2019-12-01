@@ -1,0 +1,33 @@
+<?php
+
+namespace :namespace;
+
+use Illuminate\Support\ServiceProvider;
+
+class :class_nameServiceProvider extends ServiceProvider
+{
+    /**
+     * {@inheritdoc}
+     */
+    public function boot(:class_name $extension)
+    {
+        if (! :class_name::boot()) {
+            return ;
+        }
+
+        if ($views = $extension->views()) {
+            $this->loadViewsFrom($views, ':base_package');
+        }
+
+        if ($this->app->runningInConsole() && $assets = $extension->assets()) {
+            $this->publishes(
+                [$assets => public_path('vendor/:package')],
+                ':base_package'
+            );
+        }
+
+        $this->app->booted(function () {
+            :class_name::routes(__DIR__.'/../routes/web.php');
+        });
+    }
+}

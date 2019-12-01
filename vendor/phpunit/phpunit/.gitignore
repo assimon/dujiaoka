@@ -1,0 +1,17 @@
+/.ant_targets
+/.idea
+/build/documentation
+/build/logfiles
+/build/phar
+/build/phpdox
+/build/*.phar
+/build/*.phar.asc
+/tests/TextUI/*.diff
+/tests/TextUI/*.exp
+/tests/TextUI/*.log
+/tests/TextUI/*.out
+/tests/TextUI/*.php
+/cache.properties
+/composer.lock
+/vendor
+/.php_cs.cache

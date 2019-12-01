@@ -1,0 +1,32 @@
+{
+    "name": "yansongda/supports",
+    "description": "common components",
+    "keywords": ["support", "array", "collection", "config", "http", "guzzle", "throttle"],
+    "support": {
+        "issues": "https://github.com/yansongda/supports/issues",
+        "source": "https://github.com/yansongda/supports"
+    },
+    "authors": [
+        {
+            "name": "yansongda",
+            "email": "me@yansongda.cn"
+        }
+    ],
+    "require": {
+        "php": ">=5.5",
+        "monolog/monolog": "^1.23",
+        "guzzlehttp/guzzle": "^6.2"
+    },
+    "require-dev": {
+        "predis/predis": "^1.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Yansongda\\Supports\\": "src/"
+        }
+    },
+    "suggest": {
+        "predis/predis": "Allows to use throttle feature"
+    },
+    "license": "MIT"
+}

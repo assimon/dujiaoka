@@ -1,0 +1,23 @@
+{
+    "name": "jakub-onderka/php-console-color",
+    "license": "BSD-2-Clause",
+    "authors": [
+        {
+            "name": "Jakub Onderka",
+            "email": "jakub.onderka@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {"JakubOnderka\\PhpConsoleColor\\": "src/"}
+    },
+    "require": {
+        "php": ">=5.4.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~4.3",
+        "jakub-onderka/php-parallel-lint": "1.0",
+        "jakub-onderka/php-var-dump-check": "0.*",
+        "squizlabs/php_codesniffer": "1.*",
+        "jakub-onderka/php-code-style": "1.0"
+    }
+}

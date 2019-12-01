@@ -1,0 +1,24 @@
+filter:
+    paths: [library/*]
+    excluded_paths: [vendor/*, tests/*, examples/*]
+before_commands:
+    - 'composer install --prefer-source'
+tools:
+    external_code_coverage:
+        timeout: 300
+    php_code_sniffer: true
+    php_cpd:
+        enabled: true
+        excluded_dirs: [vendor, tests, examples]
+    php_pdepend:
+        enabled: true
+        excluded_dirs: [vendor, tests, examples]
+    php_loc:
+        enabled: true
+        excluded_dirs: [vendor, tests, examples]
+    php_hhvm: false
+    php_mess_detector: true
+    php_analyzer: true
+changetracking:
+    bug_patterns: ["\bfix(?:es|ed)?\b"]
+    feature_patterns: ["\badd(?:s|ed)?\b", "\bimplement(?:s|ed)?\b"]

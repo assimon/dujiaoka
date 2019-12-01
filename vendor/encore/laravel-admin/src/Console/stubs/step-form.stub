@@ -1,0 +1,42 @@
+<?php
+
+namespace DummyNamespace;
+
+use Encore\Admin\Widgets\StepForm;
+use Illuminate\Http\Request;
+
+class DummyClass extends StepForm
+{
+    /**
+     * The form title.
+     *
+     * @var string
+     */
+    public $title = 'DummyTitle';
+
+    /**
+     * Handle the form request.
+     *
+     * @param Request $request
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function handle(Request $request)
+    {
+        //dump($request->all());
+
+        admin_success('Processed successfully.');
+
+        return $this->next($request->all());
+    }
+
+    /**
+     * Build a form here.
+     */
+    public function form()
+    {
+        $this->text('name')->rules('required');
+        $this->email('email')->rules('email');
+        $this->datetime('created_at');
+    }
+}

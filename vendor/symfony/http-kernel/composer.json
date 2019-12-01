@@ -1,0 +1,74 @@
+{
+    "name": "symfony/http-kernel",
+    "type": "library",
+    "description": "Symfony HttpKernel Component",
+    "keywords": [],
+    "homepage": "https://symfony.com",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Fabien Potencier",
+            "email": "fabien@symfony.com"
+        },
+        {
+            "name": "Symfony Community",
+            "homepage": "https://symfony.com/contributors"
+        }
+    ],
+    "require": {
+        "php": "^5.5.9|>=7.0.8",
+        "symfony/event-dispatcher": "~2.8|~3.0|~4.0",
+        "symfony/http-foundation": "~3.4.12|~4.0.12|^4.1.1",
+        "symfony/debug": "^3.3.3|~4.0",
+        "symfony/polyfill-ctype": "~1.8",
+        "symfony/polyfill-php56": "~1.8",
+        "psr/log": "~1.0"
+    },
+    "require-dev": {
+        "symfony/browser-kit": "~2.8|~3.0|~4.0",
+        "symfony/class-loader": "~2.8|~3.0",
+        "symfony/config": "~2.8|~3.0|~4.0",
+        "symfony/console": "~2.8|~3.0|~4.0",
+        "symfony/css-selector": "~2.8|~3.0|~4.0",
+        "symfony/dependency-injection": "^3.4.10|^4.0.10",
+        "symfony/dom-crawler": "~2.8|~3.0|~4.0",
+        "symfony/expression-language": "~2.8|~3.0|~4.0",
+        "symfony/finder": "~2.8|~3.0|~4.0",
+        "symfony/process": "~2.8|~3.0|~4.0",
+        "symfony/routing": "~3.4|~4.0",
+        "symfony/stopwatch": "~2.8|~3.0|~4.0",
+        "symfony/templating": "~2.8|~3.0|~4.0",
+        "symfony/translation": "~2.8|~3.0|~4.0",
+        "symfony/var-dumper": "~3.3|~4.0",
+        "psr/cache": "~1.0"
+    },
+    "provide": {
+        "psr/log-implementation": "1.0"
+    },
+    "conflict": {
+        "symfony/config": "<2.8",
+        "symfony/dependency-injection": "<3.4.10|<4.0.10,>=4",
+        "symfony/var-dumper": "<3.3",
+        "twig/twig": "<1.34|<2.4,>=2"
+    },
+    "suggest": {
+        "symfony/browser-kit": "",
+        "symfony/config": "",
+        "symfony/console": "",
+        "symfony/dependency-injection": "",
+        "symfony/finder": "",
+        "symfony/var-dumper": ""
+    },
+    "autoload": {
+        "psr-4": { "Symfony\\Component\\HttpKernel\\": "" },
+        "exclude-from-classmap": [
+            "/Tests/"
+        ]
+    },
+    "minimum-stability": "dev",
+    "extra": {
+        "branch-alias": {
+            "dev-master": "3.4-dev"
+        }
+    }
+}

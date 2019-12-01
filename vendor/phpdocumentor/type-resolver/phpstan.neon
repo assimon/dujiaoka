@@ -1,0 +1,7 @@
+parameters:
+  ignoreErrors:
+    -
+      message: '#Parameter \#1 \$types of class phpDocumentor\\Reflection\\Types\\Compound constructor expects array<phpDocumentor\\Reflection\\Type>, array<int, string> given\.#'
+      path: %currentWorkingDirectory%/tests/unit/Types/CompoundTest.php
+    - message: '#Parameter \#2 \$fileContents of method phpDocumentor\\Reflection\\Types\\ContextFactory::createForNamespace\(\) expects string, string|false given\.#'
+      path: %currentWorkingDirectory%/tests/unit/Types/ContextFactoryTest.php

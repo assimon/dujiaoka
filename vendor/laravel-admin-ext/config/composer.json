@@ -1,0 +1,35 @@
+{
+    "name": "laravel-admin-ext/config",
+    "description": "Config extension for laravel-admin",
+    "type": "library",
+    "keywords": ["laravel-admin", "setting"],
+    "homepage": "https://github.com/laravel-admin-extensions/config",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "z-song",
+            "email": "zosong@126.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.0.0",
+        "laravel/framework": "~5.5",
+        "encore/laravel-admin": "~1.6"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~6.0",
+        "laravel/laravel": "~5.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Encore\\Admin\\Config\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Encore\\Admin\\Config\\ConfigServiceProvider"
+            ]
+        }
+    }
+}

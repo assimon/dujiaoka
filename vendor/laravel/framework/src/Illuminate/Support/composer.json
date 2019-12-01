@@ -1,0 +1,48 @@
+{
+    "name": "illuminate/support",
+    "description": "The Illuminate Support package.",
+    "license": "MIT",
+    "homepage": "https://laravel.com",
+    "support": {
+        "issues": "https://github.com/laravel/framework/issues",
+        "source": "https://github.com/laravel/framework"
+    },
+    "authors": [
+        {
+            "name": "Taylor Otwell",
+            "email": "taylor@laravel.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.0",
+        "ext-mbstring": "*",
+        "doctrine/inflector": "~1.1",
+        "illuminate/contracts": "5.5.*",
+        "nesbot/carbon": "^1.26.0"
+    },
+    "replace": {
+        "tightenco/collect": "<5.5.33"
+    },
+    "autoload": {
+        "psr-4": {
+            "Illuminate\\Support\\": ""
+        },
+        "files": [
+            "helpers.php"
+        ]
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "5.5-dev"
+        }
+    },
+    "suggest": {
+        "illuminate/filesystem": "Required to use the composer class (5.5.*).",
+        "symfony/process": "Required to use the composer class (~3.3).",
+        "symfony/var-dumper": "Required to use the dd function (~3.3)."
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev"
+}

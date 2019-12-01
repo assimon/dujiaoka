@@ -1,0 +1,38 @@
+{
+    "name": "fideloper/proxy",
+    "description": "Set trusted proxies for Laravel",
+    "keywords": ["proxy", "trusted proxy", "load balancing"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Chris Fidao",
+            "email": "fideloper@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "illuminate/contracts": "~5.0"
+    },
+    "require-dev": {
+        "illuminate/http": "~5.0",
+        "mockery/mockery": "~0.9.3",
+        "phpunit/phpunit": "^5.7"
+    },
+    "autoload": {
+        "psr-4": {
+            "Fideloper\\Proxy\\": "src/"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "3.3-dev"
+        },
+        "laravel": {
+            "providers": [
+                "Fideloper\\Proxy\\TrustedProxyServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
