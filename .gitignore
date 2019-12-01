@@ -4,6 +4,7 @@
 /public/storage
 /.idea
 /.vagrant
+.DS_Store
 worker.log
 Homestead.json
 Homestead.yaml
