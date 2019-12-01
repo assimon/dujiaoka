@@ -7,20 +7,20 @@
 
 ## 前言.
 
-开发架构: vue + laravel-admin
-laravel内核版本：5.5+
+开发架构: vue + laravel-admin   
+laravel内核版本：5.5+    
 开发初衷：自上代`云尚发卡`维护期过后，由于内核的古老即框架的安全问题被迫放弃。新版`珊瑚发卡`采用全新的`laralvel`框架开发，程序安全性及健壮性更好。能为用户资产提供更好的保障！    
 `珊瑚发卡`专注于搭建用户自己的卡密一站式自动发货体系。  
 
-预览demo: [demo网站][3]
+预览demo: [demo网站][3] 
 
-官方网站：[珊瑚发卡官网][1]
+官方网站：[珊瑚发卡官网][1]    
 
-交流QQ群：568679748 （为防止部分灌水及广告加入，已设置5元入群费用）
+交流QQ群：568679748 （为防止部分灌水及广告加入，已设置5元入群费用）    
 
-视频教程：[https://share.weiyun.com/5YsenZt][2]
+视频教程：[https://share.weiyun.com/5YsenZt][2]  
 
-鸣谢：`Laravel`、`Laravel-admin`等优秀开源项目
+鸣谢：`Laravel`、`Laravel-admin`等优秀开源项目 
 
 ## 一 环境准备篇
 - [x] 一台linux内核的vps或云服务器（不支持windows及虚拟主机）
