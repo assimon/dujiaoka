@@ -94,7 +94,9 @@ root $fe_root_path;
 
 队列重启命令：` sudo -u www php artisan queue:restart`
 
-调试完成后请将根目录.env文件里面`APP_DEBUG=true`改为`APP_DEBUG=false`
+调试完成后请将根目录.env文件里面`APP_DEBUG=true`改为`APP_DEBUG=false`   
+
+LOGO图片及前端静态资源在根目录：`public/dist/static`
 
 
   [1]: http://www.shanhufk.com
