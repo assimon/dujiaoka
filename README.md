@@ -50,7 +50,7 @@ laravel内核版本：5.5+
 
 
 2. 删除部分禁用函数（本发卡基于laravel内核开发，一些函数禁用会导致定时任务无法正常启动！）
-需要删除的函数：putenv，proc_open，symlink
+需要删除的函数：putenv，proc_open，symlink,pcntl_signal,pcntl_alarm
 
 
 ------
