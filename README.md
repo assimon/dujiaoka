@@ -5,7 +5,7 @@
 请仔细阅读安装说明教程，大部分问题都是因为没有仔细阅读安装教程导致系统无法正常运行。无论什么时候当你使用一件产品的时候请先阅读它的”说明书“  
 本教程基于[宝塔服务器管理软件Linux](https://www.bt.cn/)，如果你具有一定的运维经验，可参考本教程搭建自己的运行环境。
 
-![珊瑚发卡](/system-image.png)
+![珊瑚发卡](https://github.com/assimon/shanhufaka/blob/master/system-image.png)
 
 ## 前言.
 
