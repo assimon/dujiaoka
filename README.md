@@ -7,7 +7,7 @@
 
 ![珊瑚发卡](https://github.com/assimon/shanhufaka/blob/master/system-image.png)
 
-## 前言 （文档请参考视频教程食用，因为我太懒了文档写得详细）
+## 前言 （文档请参考视频教程食用，因为我太懒了文档写得不是很详细）
 
 开发架构: vue + laravel-admin   
 laravel内核版本：5.5+    
