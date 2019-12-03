@@ -19,6 +19,8 @@ laravel内核版本：5.5+
 
 官方网站：[珊瑚发卡官网][1]    
 
+如果github下载代码过慢，请加入QQ群在群文件下载！    
+
 交流QQ群：568679748 （为防止部分灌水及广告加入，已设置5元入群费用）    
 
 视频教程：[https://share.weiyun.com/5YsenZt][2]  
@@ -50,7 +52,7 @@ laravel内核版本：5.5+
 
 
 2. 删除部分禁用函数（本发卡基于laravel内核开发，一些函数禁用会导致定时任务无法正常启动！）
-需要删除的函数：putenv，proc_open，symlink，pcntl_signal，pcntl_alarm
+需要删除的函数：putenv，proc_open，symlink，pcntl_signal，pcntl_alarm  
 
 
 ------
