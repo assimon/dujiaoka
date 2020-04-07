@@ -20,7 +20,7 @@ demo地址：[http://dujiaoka.com](http://dujiaoka.com)
 
 ## 界面尝鲜
 
-![首页.png](https://i.loli.net/2020/04/07/LpTHjlq3OKDZvNA.png)    
+![首页.png](https://i.loli.net/2020/04/07/dZwvKfnNGgkHSli.png)   
 ![后台.png](https://i.loli.net/2020/04/07/ZcYLqN4d2fuAI7X.png)    
 
 
