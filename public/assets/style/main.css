@@ -1,0 +1,81 @@
+body {
+    background-color: #F2F2F2;
+}
+
+.cardcon {
+    margin-top: 20px;
+}
+
+.logo {
+    pointer-events: none;
+}
+
+.footer-wrap {
+    text-align: center;
+    color: #909399;
+    font-size: 15px;
+
+}
+.product-info {
+    background-color:#e2e2e2;
+    padding: 10px;
+    margin-bottom: 5px;
+    padding-left: 35px;
+}
+
+.product-price {
+    color: #1E9FFF;
+    font-size: 20px;
+    font-weight: 500;
+}
+.ws-price {
+    color: #01AAED;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.product-price-cost-price {
+    text-decoration: line-through;
+    padding-left: 10px;
+}
+
+
+.buy-prompt{
+    padding: 20px;
+}
+
+.errpanl {
+    margin-top: 20px;
+}
+
+.order-info {
+    height: 75px;
+    border: 1px solid #ccc;
+    overflow-wrap: break-word;
+    padding: 5px;
+    border-radius: 2px 2px 0 0;
+}
+
+.info-box {
+    border-top: 2px solid #fd7f83;
+    padding-top: 20px;
+}
+
+.info-ui {
+    font-size: 15px;
+}
+.info-ui strong {
+    font-size: 16px;
+    color: #666;
+    font-weight: bold;
+}
+
+ul {
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 10px;
+}

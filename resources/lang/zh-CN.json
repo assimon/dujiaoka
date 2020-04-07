@@ -1,0 +1,78 @@
+{
+    "Id": "ID",
+    "Created at": "创建时间",
+    "Updated at": "修改时间",
+    "Ord": "排序",
+    "Icon": "图标代码",
+    "Number": "数量",
+
+
+
+    "Order id": "订单号",
+    "Product id": "所属商品",
+    "Coupon id": "优惠券",
+    "Ord class": "类型",
+    "Product price": "单价",
+    "Ord price": "总价",
+    "Buy amount": "数量",
+    "Ord title": "名称",
+    "Search pwd": "查询密码",
+    "Account": "充值账号",
+    "Ord info": "订单详情",
+    "Pay ord": "第三方支付号",
+    "Pay way": "支付网关",
+    "Buy ip": "购买者ip",
+    "Ord status": "订单状态",
+
+    "Class Name": "分类名称",
+    "C status": "状态",
+
+
+    "Pd name": "名称",
+    "Cost price": "原价",
+    "Actual price": "实际售价",
+    "Pd password": "访问密码",
+    "Wholesale price": "批发价配置",
+    "In stock": "库存",
+    "Sales volume": "销量",
+    "Pd picture": "图片",
+    "Buy prompt": "购买提示",
+    "Pd info": "商品详情",
+    "Pd type": "类型",
+    "Other ipu": "代充输入框配置",
+    "Pd status": "状态",
+    "Pd class": "所属分类",
+
+    "C type": "优惠码类型",
+    "Discount": "优惠金额",
+    "Is status": "使用状态",
+    "Card": "优惠码",
+    "Ret": "剩余次数",
+
+    "Pay name": "支付名称",
+    "Pay check": "支付标识",
+    "Pay method": "支付方式",
+    "Merchant id": "商户id",
+    "Merchant key": "商户key",
+    "Merchant pem": "商户密钥",
+    "Pay handleroute": "支付处理路由",
+    "Pay status": "支付状态",
+
+    "Tpl name": "邮件标题",
+    "Tpl content": "邮件内容",
+    "Tpl token": "邮件标识",
+
+    "Card info": "卡密",
+    "Card status": "卡密状态",
+
+    "Sys title": "网站标题",
+    "Sys text logo": "文字LOGO",
+    "Sys keywords": "网站关键词",
+    "Sys description": "网站描述",
+    "Sys notice": "站点公告",
+    "Sys footer": "页脚自定义代码",
+    "Sys in stock monitor": "库存告警监控",
+    "Sys manage email": "网站管理员邮箱"
+
+
+}
