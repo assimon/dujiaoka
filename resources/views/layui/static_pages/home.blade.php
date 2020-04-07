@@ -29,7 +29,7 @@
                                                    <span class="layui-badge">代充</span>
                                                @endif
                                                    @if($product['wholesale_price'])
-                                                     <span class="layui-badge layui-bg-orange">批发折扣</span>
+                                                     <span class="layui-badge layui-bg-orange">折扣</span>
                                                    @endif
                                            </div>
                                            <div class="">
