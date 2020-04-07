@@ -2,7 +2,7 @@
 
 <p align="center">
 <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/license-MIT-blue" alt="license MIT"></a>
-<a href=""><img src="https://img.shields.io/badge/pod-v1.0__beta-red" alt="version v1.0_bate"></a>
+<a href="https://github.com/assimon/dujiaoka/releases/tag/v1.0_beta"><img src="https://img.shields.io/badge/pod-v1.0__beta-red" alt="version v1.0_bate"></a>
 <a href="https://shang.qq.com/wpa/qunwpa?idkey=37b6b06f7c941dae20dcd5784088905d6461064d7f33478692f0c4215546cee0"><img src="https://img.shields.io/badge/QQ%E7%BE%A4-568679748-green" alt="QQ群：568679748"></a>
 </p>
 
@@ -17,6 +17,13 @@ demo地址：[http://dujiaoka.com](http://dujiaoka.com)
 - 前端ui [layui](https://www.layui.com/).
 
 鸣谢以上开源项目，排名不分先后.
+
+## 界面尝鲜
+
+![首页.png](https://i.loli.net/2020/04/07/LpTHjlq3OKDZvNA.png)    
+![后台.png](https://i.loli.net/2020/04/07/ZcYLqN4d2fuAI7X.png)    
+
+
 
 ## 支付接口已集成
 - [x] 支付宝当面付
