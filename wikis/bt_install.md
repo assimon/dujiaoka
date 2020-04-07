@@ -54,7 +54,7 @@ ok 没毛病！
 安装以下三个扩展：   
 `fileinfo`、`redis`、`opcache(可选安装)`  
 
-![禁用函数列表.png](https://i.loli.net/2020/04/07/eusZzGJxprmTHAW.png)    
+![安装扩展.png](https://i.loli.net/2020/04/07/bytNw5zoXVeh4nA.png)   
 
 
 ## composer安装
