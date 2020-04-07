@@ -41,6 +41,7 @@ class ProductsController extends AdminController
         $grid->column('created_at', __('Created at'));
         $grid->column('updated_at', __('Updated at'));
         $classifys = Classifys::where('c_status', 1)->get(['id', 'name'])->toArray();
+        $dataArr = [];
         foreach ($classifys as $classify) {
             $dataArr[$classify['id']] = $classify['name'];
         }

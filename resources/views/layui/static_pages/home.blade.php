@@ -4,8 +4,12 @@
 @endsection
 @section('content')
     @foreach($classifys as $classify)
+
+
+
+
         <div class="layui-row">
-            <div class="layui-col-md6 layui-col-md-offset3 layui-col-sm12">
+            <div class="layui-col-md8 layui-col-md-offset2 layui-hide-xs">
                 <div class="layui-card cardcon">
                     <div class="layui-card-header">{{ $classify['name'] }}：</div>
                     <div class="layui-card-body">
@@ -13,6 +17,11 @@
                         <table class="layui-table" lay-even lay-skin="nob">
                             <colgroup>
                                 <col width="150">
+                                <col width="50">
+                                <col width="50">
+                                <col width="50">
+                                <col width="80">
+                                <col width="80">
                             </colgroup>
                             <thead>
                             <tr>
@@ -51,6 +60,9 @@
                                     </td>
                                 </tr>
                             @endforeach
+
+
+
                             </tbody>
                         </table>
 
@@ -61,14 +73,4 @@
     @endforeach
 
 @stop
-@section('tpljs')
-    <script>
-        //注意：导航 依赖 element 模块，否则无法进行功能性操作
-        layui.use('element', function () {
-            var element = layui.element;
 
-            //…
-        });
-
-    </script>
-@stop

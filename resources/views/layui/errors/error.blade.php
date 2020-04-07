@@ -3,7 +3,7 @@
 @section('content')
 
         <div class="layui-row">
-            <div class="layui-col-md6 layui-col-md-offset3 layui-col-xs12">
+            <div class="layui-col-md8 layui-col-md-offset2 layui-col-xs12">
                 <div class="layui-card cardcon">
                     <div class="layui-card-header"><span style="color: red">{{ $title }}：</span></div>
                     <div class="layui-card-body">
