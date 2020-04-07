@@ -12,7 +12,7 @@
                     <div class="layui-card-body">
                        <div class="layui-row" >
                            @foreach($classify['products'] as $product)
-                           <div class="layui-col-md3 layui-col-sm4 product-box">
+                           <div class="layui-col-md3 layui-col-xs6 product-box">
                                <a href="{{ url("/buy/{$product['id']}") }}">
                                    <div class="layui-card product-panl">
                                        <div class="layui-card-body product-img">
