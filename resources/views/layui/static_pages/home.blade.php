@@ -5,66 +5,48 @@
 @section('content')
     @foreach($classifys as $classify)
 
-
-
-
         <div class="layui-row">
-            <div class="layui-col-md8 layui-col-md-offset2 layui-hide-xs">
+            <div class="layui-col-md8 layui-col-md-offset2 layui-col-xs12">
                 <div class="layui-card cardcon">
                     <div class="layui-card-header">{{ $classify['name'] }}：</div>
                     <div class="layui-card-body">
+                       <div class="layui-row" >
+                           @foreach($classify['products'] as $product)
+                           <div class="layui-col-md3 layui-col-sm4 product-box">
+                               <a href="{{ url("/buy/{$product['id']}") }}">
+                                   <div class="layui-card product-panl">
+                                       <div class="layui-card-body product-img">
+                                           <img src="{{ $product['pd_picture'] }}" width="100%" height="100%">
+                                       </div>
+                                       <div class="product-box-info">
+                                           <div class="product-title">
+                                               {{ $product['pd_name'] }}
+                                           </div>
+                                           <div class="product-class">
+                                               @if($product['pd_type'] == 1)
+                                                   <span class="layui-badge layui-bg-green">自动发货</span>
+                                               @else
+                                                   <span class="layui-badge">代充</span>
+                                               @endif
+                                                   @if($product['wholesale_price'])
+                                                     <span class="layui-badge layui-bg-orange">批发折扣</span>
+                                                   @endif
+                                           </div>
+                                           <div class="">
+                                               <div class="product-box-price" ><b>￥{{ $product['actual_price'] }}</b></div>
+                                               <div class="product-volume">库存({{ $product['in_stock'] }})</div>
+                                           </div>
+                                       </div>
 
-                        <table class="layui-table" lay-even lay-skin="nob">
-                            <colgroup>
-                                <col width="150">
-                                <col width="50">
-                                <col width="50">
-                                <col width="50">
-                                <col width="80">
-                                <col width="80">
-                            </colgroup>
-                            <thead>
-                            <tr>
-                                <th>商品名称</th>
-                                <th>销量</th>
-                                <th>单价</th>
-                                <th>库存</th>
-                                <th>商品类型</th>
-                                <th style="text-align: center !important;">操作</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-
-                            @foreach($classify['products'] as $product)
-                                <tr>
-                                    <td>{{ $product['pd_name'] }}</td>
-                                    <td>{{ $product['sales_volume'] }}</td>
-                                    <td>{{ $product['actual_price'] }}￥</td>
-                                    <td>{{ $product['in_stock'] }}</td>
-                                    <td>
-                                        @if($product['pd_type'] == 1)
-                                            <button class="layui-btn layui-btn-xs">自动发货</button>
-                                        @else
-                                            <button class="layui-btn layui-btn-xs layui-btn-warm">代充</button>
-                                        @endif
-                                    </td>
-                                    <td align="center">
-                                        @if($product['in_stock'] > 0)
-                                            <a href="{{ url("/buy/{$product['id']}") }}"
-                                               class="layui-btn  layui-btn-sm layui-btn-normal">购买<i
-                                                    class="layui-icon layui-icon-cart"></i></a>
-                                        @else
-                                            <a href="#" class="layui-btn  layui-btn-sm layui-btn-disabled">购买<i
-                                                    class="layui-icon layui-icon-cart"></i></a>
-                                        @endif
-                                    </td>
-                                </tr>
-                            @endforeach
+                                   </div>
+                               </a>
+                           </div>
+                           @endforeach
 
 
 
-                            </tbody>
-                        </table>
+
+                       </div>
 
                     </div>
                 </div>
