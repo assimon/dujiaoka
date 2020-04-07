@@ -81,7 +81,7 @@ ul {
 }
 
 .product-box {
-    padding: 15px;
+    padding: 10px;
 }
 
 .product-panl{
@@ -94,7 +94,7 @@ ul {
 .product-box-price{
     display: inline-block;
     color: #1E9FFF;
-    font-size: 18px;
+    font-size: 15px;
     font-weight: 500;
 }
 
@@ -116,8 +116,9 @@ ul {
 
 .product-volume {
     float: right;
-    font-size: 15px;
+    font-size: 10px;
     color: #666;
     font-weight: 400;
 }
-
+.product-img {
+}
