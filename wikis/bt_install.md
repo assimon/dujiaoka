@@ -11,6 +11,12 @@
 
 什么？ 没有？ 那请点击浏览器右上角的X号!
 
+## 视频教程
+```
+链接：https://pan.baidu.com/s/1bmkO2Pn7qcXzFOYd94JseQ 
+提取码：08xi
+```
+
 ## 宝塔安装
 
 直接自己去看吧: [bt.cn](https://bt.cn).    
