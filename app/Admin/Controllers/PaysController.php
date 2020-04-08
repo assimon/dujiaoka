@@ -60,11 +60,11 @@ class PaysController extends AdminController
 
         $form->text('pay_name', __('Pay name'))->required();
         $form->text('pay_check', __('Pay check'))->required();
-        $form->select('pay_method', __('Pay method'))->options(['scan' => '扫码', 'dump' => '跳转'])->default('dump');
+        $form->select('pay_method', __('Pay method'))->options(['scan' => '扫码', 'dump' => '跳转'])->default('dump')->help('不懂勿改');
         $form->text('merchant_id', __('Merchant id'))->required();
         $form->textarea('merchant_key', __('Merchant key'))->help("没有可以不填");
         $form->textarea('merchant_pem', __('Merchant pem'))->required();
-        $form->text('pay_handleroute', __('Pay handleroute'))->required();
+        $form->text('pay_handleroute', __('Pay handleroute'))->required()->help("不懂勿改");
         $form->radio('pay_status', __('Pay status'))->options([1 => '启用', 2 => '停用'])->default(1);
         $form->footer(function ($footer) {
             // 去掉`查看`checkbox
