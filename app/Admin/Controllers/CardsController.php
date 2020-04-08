@@ -54,6 +54,9 @@ class CardsController extends AdminController
 
 
         });
+        $grid->actions(function ($actions) {
+            $actions->disableView();
+        });
         return $grid;
     }
 
