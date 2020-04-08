@@ -92,14 +92,18 @@ class PayController extends Controller
         if ($orderInfo['pd_type'] == 1) {
             //  卡密商品 查询出待发货的卡密到邮件队列
             $cardList = Cards::where(['product_id' => $orderInfo['product_id'], 'card_status' => 1])->take($orderInfo['buy_amount'])->get();
-            $cardUpdate = [];
-            foreach ($cardList as $value) {
-                $cardUpdate[] = ['id' => $value['id'], 'card_status' => 2];
-                $order['ord_info'] .= $value['card_info'].PHP_EOL;
+            if (empty($cardList) || count($cardList) != $orderInfo['buy_amount']) {
+                $order['ord_info'] = '发卡异常请联系管理员核查!';
+            } else {
+                $cardUpdate = [];
+                foreach ($cardList as $value) {
+                    $cardUpdate[] = $value['id'];
+                    $order['ord_info'] .= $value['card_info'].PHP_EOL;
+                }
+                // 批量更新
+                Cards::whereIn('id', $cardUpdate)->update(['card_status' => 2]);
+                $order['ord_status'] = 3;
             }
-            // 批量更新
-            app(Cards::class)->updateBatch($cardUpdate);
-            $order['ord_status'] = 3;
         } else {
             $order['ord_info'] = $orderInfo['other_ipu'];
             $order['ord_status'] = 1;
