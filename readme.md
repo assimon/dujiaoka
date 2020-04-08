@@ -63,6 +63,12 @@ demo地址：[http://dujiaoka.com](http://dujiaoka.com)
 - [宝塔环境安装](/wikis/bt_install.md)
 - [常见问题锦集](/wikis/problems.md)
 
+## 默认后台
+
+- 后台路径 `/admin`   
+- 默认管理员账号 `admin`
+- 默认管理员密码 `admin`
+
 ## 声明
 
 本项目仅供开发学习使用，任何人用于任何用途均与项目作者无关！
