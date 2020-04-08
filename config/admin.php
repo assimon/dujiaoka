@@ -413,5 +413,5 @@ return [
         ],
     ],
     // 皮肤设置
-    'skin' => 'rainbow-blue',
+    'skin' => env('ADMIN_SKIN', 'rainbow-blue'),
 ];
