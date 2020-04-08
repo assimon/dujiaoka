@@ -59,7 +59,7 @@
                             </div>
                             <div class="layui-col-md4">
                                 <div class="order-info">
-                                    {{ $order['ord_info'] }}
+                                    {!! $order['ord_info'] !!}
                                 </div>
                                 <button type="button"  class="layui-btn layui-btn-normal" data-clipboard-text="{{ $order['ord_info'] }}" style="width: 100%">复制</button>
                             </div>
