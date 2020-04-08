@@ -61,6 +61,7 @@ body {
     overflow-wrap: break-word;
     padding: 5px;
     border-radius: 2px 2px 0 0;
+    overflow:auto;
 }
 
 .info-box {
