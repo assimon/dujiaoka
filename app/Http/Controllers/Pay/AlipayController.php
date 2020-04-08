@@ -48,6 +48,7 @@ class AlipayController extends PayController
                     $result['payname'] = $this->payInfo['pay_name'];
                     $result['actual_price'] = $this->orderInfo['actual_price'];
                     $result['orderid'] = $this->orderInfo['order_id'];
+                    $result['jump_payuri'] = $result['qr_code'];
                     return $this->view('static_pages/qrpay', $result);
                 } catch (\Exception $e) {
                     return $this->error('支付通道异常~ '.$e->getMessage());

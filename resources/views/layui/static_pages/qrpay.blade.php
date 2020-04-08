@@ -12,9 +12,12 @@
                         <p style="color: #1E9FFF;font-size: 20px;font-weight: 500; text-align: center" >支付方式：[{{ $payname }}], 请打开APP扫码支付！有效期3分钟</p>
                     </div>
                     <div style="text-align: center; width: 100%; border: #1E9FFF solid 1px;">
-                    <p style="font-size: 16px; font-weight: 500; margin-top: 10px;">支付金额: {{ $actual_price }}</p>
+                    <p class="product-pay-price">支付金额: {{ $actual_price }}</p>
                     <img  src="data:image/png;base64,{!! base64_encode(QrCode::format('png')->size(200)->generate($qr_code)) !!}">
                     </div>
+                    @if(Agent::isMobile() && $jump_payuri)
+                        <p class="errpanl" style="text-align: center"><a href="{{ $jump_payuri }}" class="layui-btn layui-btn-warm layui-btn-sm">点我跳转</a></p>
+                    @endif
                     <p class="errpanl" style="text-align: center"><a href="{{ url('searchOrderById', ['order_id' => $orderid]) }}" class="layui-btn layui-btn-sm">我已支付</a></p>
 
                 </div>

@@ -28,6 +28,13 @@ body {
     font-size: 20px;
     font-weight: 500;
 }
+.product-pay-price{
+    margin-top: 10px;
+    color: #F40;
+    font-size: 20px;
+    font-weight: 500;
+}
+
 .ws-price {
     color: #01AAED;
     font-size: 14px;
