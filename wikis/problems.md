@@ -37,7 +37,8 @@ MAIL_ENCRYPTION=null
 ```
 如果不能发送邮件，就请尝试更换一下端口：`587` `465` `22`,挨个试试！  
 
-记得改了.env配置要去重启一下`Supervisor`的进程服务，否则不会生效！   
+记得改了`.env邮件配置`要去重启一下`Supervisor`的进程服务，否则不会生效！   
+![重启进程](https://i.loli.net/2020/04/08/jGDBz6L12rHguni.png)  
 
 
 ## 修改后台登录地址
