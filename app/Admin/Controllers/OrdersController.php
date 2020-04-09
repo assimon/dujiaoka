@@ -50,15 +50,15 @@ class OrdersController extends AdminController
             $filter->scope('trashed', '回收站')->onlyTrashed();
             // 去掉默认的id过滤器
             $filter->disableIdFilter();
-            $filter->equal('oid', '订单id');
-            $filter->equal('rcg_account', '充值账号');
-            $pdlisy = Products::where('pd_type', 1)->get(['id', 'pd_name'])->toArray();
+            $filter->equal('order_id', '订单id');
+            $filter->equal('account', '充值账号');
+            $pdlisy = Products::get(['id', 'pd_name'])->toArray();
             $commod = [];
             foreach ($pdlisy as $val)
             {
                 $commod[$val['id']] = $val['pd_name'];
             }
-            $filter->equal('pd_id', '所属商品')->select($commod);
+            $filter->equal('product_id', '所属商品')->select($commod);
             // 在这里添加字段过滤器
             $filter->equal('ord_status', '订单状态')->select([1 => '待处理', 2 => '已处理', 3 => '已完成', 4 => '处理失败']);
             $filter->equal('ord_class', '订单类型')->select([1 => '卡密', 2 => '代充']);
