@@ -19,6 +19,7 @@
         "laravel-admin-ext/config": "^1.1",
         "laravel/framework": "^6.0",
         "laravel/tinker": "^1.0",
+        "paypal/rest-api-sdk-php": "^1.14",
         "simplesoftwareio/simple-qrcode": "^2.0",
         "xhat/payjs-laravel": "^1.5",
         "yansongda/pay": "^2.9"

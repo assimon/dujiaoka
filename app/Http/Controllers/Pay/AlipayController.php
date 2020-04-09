@@ -38,7 +38,7 @@ class AlipayController extends PayController
         $order = [
             'out_trade_no' => $this->orderInfo['order_id'],
             'total_amount' => (float)$this->orderInfo['actual_price'],
-            'subject' => '在线支付 - '. $this->orderInfo['account']
+            'subject' => '在线支付 - '. $this->orderInfo['product_name']
         ];
         switch ($this->payInfo['pay_check']){
             case 'zfbf2f':

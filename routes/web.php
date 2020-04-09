@@ -42,4 +42,7 @@ Route::group(['prefix'=>'pay','namespace' => 'Pay'],function(){
     // 易支付
     Route::get('yipay/{payway}/{oid}','YipayController@gateway');
     Route::get('yipay/notify_url','YipayController@notifyUrl');
+    // paypal
+    Route::get('paypal/{payway}/{oid}','PaypalPayController@gateway');
+    Route::get('paypal/notify_url','PaypalPayController@notifyUrl');
 });
