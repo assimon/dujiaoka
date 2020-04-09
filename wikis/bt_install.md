@@ -12,6 +12,7 @@
 什么？ 没有？ 那请点击浏览器右上角的X号!
 
 ## 视频教程
+`小白可直接跳过composer环节` 
 ```
 链接：https://pan.baidu.com/s/1bmkO2Pn7qcXzFOYd94JseQ 
 提取码：08xi
@@ -63,34 +64,13 @@ ok 没毛病！
 ![安装扩展.png](https://i.loli.net/2020/04/07/bytNw5zoXVeh4nA.png)   
 
 
-## composer安装
-composer简单来说就是php的包管理器，你不需要弄懂他的概念。  
-你只需要知道项目里目前没有依赖的包，只有一个架子，这个composer就是来自动安装它的包的软件！   
-
-### 一、登录服务器终端
-
-centos: 
-``` 
-sudo -u www yum install composer
-``` 
-ubuntu: 
-```
-sudo -u www apt-get install composer
-```
-
-### 二、将composer镜像切为阿里云镜像
-默认的镜像源在国外，拉取包实在太慢了，我们直接切为阿里云的镜像快一点！ 
-终端命令：
-```
-sudo -u www composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/
-```
-
 ## 新建一个网站
 
 ### 一、在宝塔里新建一个网站用于运行本项目
 ![新建一个网站.png](https://i.loli.net/2020/04/07/IUmzMecBGwyDEj3.png)    
 
 ### 二、上传我们的项目代码
+请选择xxx_build.tar.gz压缩包  
 独角数卡发行版本下载地址：[独角数卡各发行版本](https://github.com/assimon/dujiaoka/releases)    
 
 ### 三、设置项目伪静态和运行目录
@@ -117,14 +97,7 @@ DB_PASSWORD=数据库密码
 其他一些`项目的名称`，`发信服务`也可以一并修改！  
 不认识的、不知道干什么的配置不要瞎改！！    
 
-### 三、执行composer安装依赖
-进入服务器终端，`cd 到你的项目根目录`，执行以下命令安装composer依赖:   
-```
-sudo -u www composer install
-```
-等待安装命令执行完成！ 
-
-### 四、导入sql文件
+### 三、导入sql文件
 
 进入服务器终端，`cd 到你的项目根目录`，执行以下命令导入sql:
 ```
