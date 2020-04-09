@@ -64,7 +64,7 @@ class PaypalPayController extends PayController
             return $this->error('支付通道异常~ '.$e->getData());
         }
         $approvalUrl = $payment->getApprovalLink();
-        redirect($approvalUrl);
+        return redirect($approvalUrl);
     }
 
 

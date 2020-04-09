@@ -30,7 +30,7 @@ class WepayController extends PayController
         $order = [
             'out_trade_no' => $this->orderInfo['order_id'],
             'total_fee' => (float)$this->orderInfo['actual_price'] * 100,
-            'body' => '在线支付 - '. $this->orderInfo['account']
+            'body' => '在线支付 - '. $this->orderInfo['product_name']
         ];
         switch ($this->payInfo['pay_check']){
             case 'wescan':

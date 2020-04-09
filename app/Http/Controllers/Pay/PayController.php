@@ -109,7 +109,6 @@ class PayController extends Controller
             $order['ord_status'] = 1;
         }
         Orders::create($order);
-
         // 将订单信息载入待发送邮件队列
         $order['created_at'] = date('Y-m-d H:i:s');
         $order['product_name'] = $orderInfo['product_name'];
@@ -128,7 +127,6 @@ class PayController extends Controller
         }
         $mailtipsInfo = replace_mail_tpl($mailtpl, $order);
         if (!empty($to)) SendMails::dispatch($to, $mailtipsInfo['tpl_content'], $mailtipsInfo['tpl_name']);
-        Log::info(json_encode($mailtipsInfo));
         // 商品销量+
         Products::where('id', $order['product_id'])->increment('sales_volume', $order['buy_amount']);
         Redis::hdel('PENDING_ORDERS_LIST', $out_trade_no);

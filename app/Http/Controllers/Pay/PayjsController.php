@@ -17,7 +17,7 @@ class PayjsController extends PayController
         }
         // 构造订单基础信息
         $data = [
-            'body' => '在线支付 - '. $this->orderInfo['account'],                                // 订单标题
+            'body' => '在线支付 - '. $this->orderInfo['product_name'],                                // 订单标题
             'total_fee' => (float)$this->orderInfo['actual_price'] * 100,                                   // 订单金额
             'out_trade_no' => $this->orderInfo['order_id'],                           // 订单号
             'notify_url' => site_url().$this->payInfo['pay_handleroute'].'/notify_url',
