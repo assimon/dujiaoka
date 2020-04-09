@@ -60,7 +60,9 @@
 
             };
             var timer = window.setInterval(function(){$.ajax(getting)},5000);
-
+            @if(Agent::isMobile() && $jump_payuri)
+                window.open('{{ $jump_payuri }}','_blank');
+            @endif
         })
 
     </script>

@@ -78,15 +78,6 @@ class PaypalPayController extends PayController
 
     }
 
-    public function get_JsonData(){
-        $json = file_get_contents('php://input');
-        if ($json) {
-            $json = str_replace("'", '', $json);
-            $json = json_decode($json,true);
-        }
-        return $json;
-    }
-
 
 
 }
