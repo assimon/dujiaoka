@@ -44,5 +44,5 @@ Route::group(['prefix'=>'pay','namespace' => 'Pay'],function(){
     Route::get('yipay/notify_url','YipayController@notifyUrl');
     // paypal
     Route::get('paypal/{payway}/{oid}','PaypalPayController@gateway');
-    Route::get('paypal/notify_url','PaypalPayController@notifyUrl');
+    Route::post('paypal/notify_url','PaypalPayController@notifyUrl');
 });
