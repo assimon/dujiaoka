@@ -53,7 +53,7 @@ class PaypalPayController extends PayController
         $description = $this->orderInfo['product_name'];
 
         $payer = (new Payer())->setPaymentMethod('paypal');
-        $item = (new Item())->setName($product)->setCurrency($currency)->setQuantity($this->orderInfo['buy_amount'])->setPrice($price);
+        $item = (new Item())->setName($product)->setCurrency($currency)->setQuantity(1)->setPrice($price);
 
         $itemList = (new ItemList())->setItems([$item]);
 
