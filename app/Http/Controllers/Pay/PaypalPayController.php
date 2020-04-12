@@ -127,6 +127,7 @@ class PaypalPayController extends PayController
     public function notifyUrl(Request $request)
     {
         $data = $request->post();
+        Log::info($data);
         $oid = $data['resource']['transactions'][0]['invoice_number'];
         $paymentId = $data['resource']['id'];
         $payerId =$data['resource']['payer']['payer_info']['payer_id'];
