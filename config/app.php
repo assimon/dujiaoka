@@ -233,6 +233,7 @@ return [
 
     ],
 
-    'shtemplate' => env('SH_TEMPLATE', 'layui')
+    'shtemplate' => env('SH_TEMPLATE', 'layui'),
+    'paypal_sandebox' => env('PAYPAL_SANDBOX', true),
 
 ];

@@ -42,6 +42,12 @@ class PaypalPayController extends PayController
                 $clientSecret
             )
         );
+        // 正式环境还是沙箱
+        if (!config('paypal_sandebox')) {
+            $paypal->setConfig(
+                ['mode' => 'live']
+            );
+        }
         $product = $this->orderInfo['product_name'];
         try {
             $price = number_format($this->getUsdCurrency($this->orderInfo['actual_price']), 2);
@@ -93,6 +99,12 @@ class PaypalPayController extends PayController
                 $payInfo['merchant_pem']
             )
         );
+        // 正式环境还是沙箱
+        if (!config('paypal_sandebox')) {
+            $paypal->setConfig(
+                ['mode' => 'live']
+            );
+        }
         $payment = Payment::get($paymentId, $paypal);
         $execute = new PaymentExecution();
         $execute->setPayerId($payerId);
@@ -129,6 +141,12 @@ class PaypalPayController extends PayController
                 $payInfo['merchant_pem']
             )
         );
+        // 正式环境还是沙箱
+        if (!config('paypal_sandebox')) {
+            $paypal->setConfig(
+                ['mode' => 'live']
+            );
+        }
         $payment = Payment::get($paymentId, $paypal);
         $execute = new PaymentExecution();
         $execute->setPayerId($payerId);
