@@ -43,7 +43,7 @@ class PaypalPayController extends PayController
             )
         );
         // 正式环境还是沙箱
-        if (!config('paypal_sandebox')) {
+        if (!config('app.paypal_sandebox')) {
             $paypal->setConfig(
                 ['mode' => 'live']
             );
@@ -100,7 +100,7 @@ class PaypalPayController extends PayController
             )
         );
         // 正式环境还是沙箱
-        if (!config('paypal_sandebox')) {
+        if (!config('app.paypal_sandebox')) {
             $paypal->setConfig(
                 ['mode' => 'live']
             );
@@ -142,7 +142,7 @@ class PaypalPayController extends PayController
             )
         );
         // 正式环境还是沙箱
-        if (!config('paypal_sandebox')) {
+        if (!config('app.paypal_sandebox')) {
             $paypal->setConfig(
                 ['mode' => 'live']
             );
