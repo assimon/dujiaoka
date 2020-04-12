@@ -4,6 +4,7 @@ namespace App\Exceptions;
 
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use PayPal\Exception\PayPalConnectionException;
 
 class Handler extends ExceptionHandler
 {
@@ -46,6 +47,10 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+        if ($exception instanceof PayPalConnectionException) {
+            $tpl = config('app.shtemplate') . '/errors/error';
+            return response()->view($tpl, ['title' => '(╥╯^╰╥)出错啦~', 'content' => 'paypal回调参数异常', 'url' => ""]);
+        }
         return parent::render($request, $exception);
     }
 }
