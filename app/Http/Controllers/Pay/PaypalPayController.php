@@ -74,9 +74,7 @@ class PaypalPayController extends PayController
     public function notifyUrl(Request $request)
     {
         $data = $request->post();
-        $content = file_get_contents("php://input");
-        Log::info(json_encode($data));
-        Log::info(json_encode($content));
+        Log::info($data);
 
     }
 
