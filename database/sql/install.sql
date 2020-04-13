@@ -409,6 +409,8 @@ INSERT INTO `pays` VALUES (11, 'Payjs微信扫码', 'payjswescan', 'dump', '商�
 INSERT INTO `pays` VALUES (14, '易支付-支付宝', 'alipay', 'dump', '商户号', '', '密钥', '/pay/yipay', 2, '2020-01-10 15:22:56', '2020-01-11 06:33:07');
 INSERT INTO `pays` VALUES (15, '易支付-微信', 'wxpay', 'dump', '商户号', NULL, '密钥', '/pay/yipay', 1, NULL, NULL);
 INSERT INTO `pays` VALUES (16, '易支付-QQ钱包', 'qqpay', 'dump', '商户号', NULL, '密钥', '/pay/yipay', 1, NULL, NULL);
+INSERT INTO `pays` VALUES (17, 'Paypal', 'paypal', 'dump', '商户号', '', '密钥', '/pay/paypal', 1, NULL, NULL);
+
 COMMIT;
 
 -- ----------------------------
