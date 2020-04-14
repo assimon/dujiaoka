@@ -12,7 +12,7 @@
 什么？ 没有？ 那请点击浏览器右上角的X号!
 
 ## 视频教程(强烈建议食用)
-`小白可直接跳过composer环节` 
+`搭配观看` 
 ```
 链接：https://pan.baidu.com/s/1ivPgtkVWK2CFaPvuZnp15g 
 提取码：9h9e
@@ -29,24 +29,9 @@
 ![必装软件](https://i.loli.net/2020/04/07/hfMmUcFVWqB5JQo.png)  
 最好是编译安装哦，性能更好。
 
-## PHP环境确认
-### 一、 先确认一下服务器终端里面的`php-cli`环境是否能跟宝塔对应上
-```
-php -v
-```
-返回如下：
-```
-   PHP 7.2.23 (cli) (built: Oct 19 2019 16:12:06) ( NTS )
-   Copyright (c) 1997-2018 The PHP Group
-   Zend Engine v3.2.0, Copyright (c) 1998-2018 Zend Technologies
-```
-ok 没毛病！
+## PHP环境确认 
 
-那么问题来了，如果对应不上咋办呢？   
-这种情况一般是服务器内置php环境与宝塔不一致导致的。 
-[点我看看解决方案](problems.md#PHP终端环境对应不上).   
-
-### 二、 接下来我们按照步骤删除一下php的禁用函数    
+### 一、 接下来我们按照步骤删除一下php的禁用函数    
 （ps:宝塔默认会禁用一些php的函数，导致artisan命令无法正确运行）
 
 点击【软件商店】->【PHP设置】->【禁用函数列表】 
@@ -55,7 +40,7 @@ ok 没毛病！
 
 ![禁用函数列表.png](https://i.loli.net/2020/04/07/eusZzGJxprmTHAW.png)    
 
-### 三、 我们再装一下必要的两个扩展    
+### 二、 我们再装一下必要的两个扩展    
 
 点击【软件商店】->【PHP设置】->【安装扩展】   
 安装以下三个扩展：   
@@ -101,9 +86,9 @@ DB_PASSWORD=数据库密码
 
 进入服务器终端，`cd 到你的项目根目录`，执行以下命令导入sql:
 ```
-php artisan dujiao install
+/www/server/php/72/bin/php artisan dujiao install
 ```
-
+(我这里是php7.2，目录就是php72,根据自己实际来)   
 执行完成以后你就可以访问一下你的域名，看网站是否能跟正常访问！
 
 ## 配置Supervisor
