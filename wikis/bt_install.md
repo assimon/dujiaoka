@@ -11,11 +11,11 @@
 
 什么？ 没有？ 那请点击浏览器右上角的X号!
 
-## 视频教程
+## 视频教程(强烈建议食用)
 `小白可直接跳过composer环节` 
 ```
-链接：https://pan.baidu.com/s/1bmkO2Pn7qcXzFOYd94JseQ 
-提取码：08xi
+链接：https://pan.baidu.com/s/1ivPgtkVWK2CFaPvuZnp15g 
+提取码：9h9e
 ```
 
 ## 宝塔安装
