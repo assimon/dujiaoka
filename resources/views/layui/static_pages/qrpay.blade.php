@@ -16,7 +16,8 @@
                     <img  src="data:image/png;base64,{!! base64_encode(QrCode::format('png')->size(200)->generate($qr_code)) !!}">
                     </div>
                     @if(Agent::isMobile() && $jump_payuri)
-                        <p class="errpanl" style="text-align: center"><a href="{{ $jump_payuri }}" class="layui-btn layui-btn-warm layui-btn-sm">点我打开app支付</a></p>
+                        <iframe id="btnpay" style="display:none"></iframe>
+                        <p class="errpanl" style="text-align: center"><a href="#" onclick="document.getElementById('btnpay').src = '{{ $jump_payuri }}'" class="layui-btn layui-btn-warm layui-btn-sm">点我打开app支付</a></p>
                     @endif
                     <p class="errpanl" style="text-align: center"><a href="{{ url('searchOrderById', ['order_id' => $orderid]) }}" class="layui-btn layui-btn-sm">我已支付</a></p>
 
