@@ -1624,16 +1624,16 @@
         },
         {
             "name": "laravel-admin-ext/cropper",
-            "version": "1.0.1",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-admin-extensions/cropper.git",
-                "reference": "1a284b5071b81cddd40297a559c3e9c808b7c834"
+                "reference": "2e07ca0cc2850912b9aa53cee8152ab11fbf5be8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-admin-extensions/cropper/zipball/1a284b5071b81cddd40297a559c3e9c808b7c834",
-                "reference": "1a284b5071b81cddd40297a559c3e9c808b7c834",
+                "url": "https://api.github.com/repos/laravel-admin-extensions/cropper/zipball/2e07ca0cc2850912b9aa53cee8152ab11fbf5be8",
+                "reference": "2e07ca0cc2850912b9aa53cee8152ab11fbf5be8",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -1680,7 +1680,7 @@
                 "image",
                 "laravel-admin"
             ],
-            "time": "2018-10-08T01:24:01+00:00"
+            "time": "2020-04-14T12:53:38+00:00"
         },
         {
             "name": "laravel/framework",
