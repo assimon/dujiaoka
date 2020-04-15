@@ -16,7 +16,7 @@
                                <a href="{{ url("/buy/{$product['id']}") }}">
                                    <div class="layui-card product-panl">
                                        <div class="layui-card-body product-img">
-                                           <img src="{{$product['pd_picture'] }}" width="100%" height="100%">
+                                           <img src="{{ \Illuminate\Support\Facades\Storage::disk('admin')->url($product['pd_picture']) }}" width="100%" height="100%">
                                        </div>
                                        <div class="product-box-info">
                                            <div class="product-title">
