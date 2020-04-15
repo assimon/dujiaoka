@@ -20,15 +20,7 @@ class Products extends Model
         return $this->belongsTo(Classifys::class, 'pd_class');
     }
 
-    /**
-     * 商品图片访问器
-     * @param $value
-     * @return string
-     */
-    public function getPdPictureAttribute($value)
-    {
-        return Storage::disk('admin')->url($value);
-    }
+
 
 
 
