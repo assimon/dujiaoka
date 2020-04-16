@@ -9,7 +9,7 @@
 
                 <div class="layui-card-body">
                     <div class="product-info">
-                        <p style="color: #1E9FFF;font-size: 20px;font-weight: 500; text-align: center" >注意：3分钟内未完成支付订单将作废！</p>
+                        <p style="color: #1E9FFF;font-size: 20px;font-weight: 500; text-align: center" >注意：{{ config('app.order_expire_date') }}分钟内未完成支付订单将作废！</p>
                     </div>
                     <table class="layui-table" lay-skin="" >
                         <colgroup>

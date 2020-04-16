@@ -9,7 +9,7 @@
 
                 <div class="layui-card-body">
                     <div class="product-info">
-                        <p style="color: #1E9FFF;font-size: 20px;font-weight: 500; text-align: center" >支付方式：[{{ $payname }}], 请打开APP扫码支付！有效期3分钟</p>
+                        <p style="color: #1E9FFF;font-size: 20px;font-weight: 500; text-align: center" >支付方式：[{{ $payname }}], 请打开APP扫码支付！有效期{{ config('app.order_expire_date') }}分钟</p>
                     </div>
                     <div style="text-align: center; width: 100%; border: #1E9FFF solid 1px;">
                     <p class="product-pay-price">支付金额: {{ $actual_price }}</p>
