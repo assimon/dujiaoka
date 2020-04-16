@@ -136,7 +136,10 @@
             <div class="layui-card cardcon">
                 <div class="layui-card-header">商品介绍</div>
                 <div class="layui-card-body">
-                    {!! $pd_info !!}
+                    <div class="product-content">
+                        {!! $pd_info !!}
+                    </div>
+
                 </div>
             </div>
         </div>

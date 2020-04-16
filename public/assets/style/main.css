@@ -128,5 +128,7 @@ ul {
     color: #666;
     font-weight: 500;
 }
-.product-img {
+.product-content img {
+    max-width: 100%;
+    height: auto;
 }
