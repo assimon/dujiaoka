@@ -44,7 +44,7 @@ class YipayController extends PayController
         $sign = md5($sign . $this->payInfo['merchant_pem']);//密码追加进入开始MD5签名
         $parameter['sign'] = $sign;
         //待请求参数数组
-        $sHtml = "<form id='alipaysubmit' name='alipaysubmit' action='".self::PAY_URI."' method='post'>";
+        $sHtml = "<form id='alipaysubmit' name='alipaysubmit' action='".self::PAY_URI."' method='get'>";
 
         foreach($parameter as $key => $val) {
             $sHtml.= "<input type='hidden' name='".$key."' value='".$val."'/>";
@@ -55,6 +55,7 @@ class YipayController extends PayController
         $sHtml = $sHtml."<script>document.forms['alipaysubmit'].submit();</script>";
         return $sHtml;
     }
+
     public function notifyUrl(Request $request)
     {
         $data = $request->all();
