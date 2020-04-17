@@ -407,9 +407,9 @@ INSERT INTO `pays` VALUES (7, 'Paysapi微信', 'pswx', 'dump', '商户号', '', 
 INSERT INTO `pays` VALUES (8, '微信扫码', 'wescan', 'scan', '商户号', '', '密钥', '/pay/wepay', 1, '2019-07-12 07:50:20', '2019-07-12 08:08:26');
 INSERT INTO `pays` VALUES (11, 'Payjs微信扫码', 'payjswescan', 'dump', '商户号', '', '密钥', '/pay/payjs', 1, '2019-07-25 07:28:42', '2019-08-20 12:17:58');
 INSERT INTO `pays` VALUES (14, '易支付-支付宝', 'alipay', 'dump', '商户号', '', '密钥', '/pay/yipay', 2, '2020-01-10 15:22:56', '2020-01-11 06:33:07');
-INSERT INTO `pays` VALUES (15, '易支付-微信', 'wxpay', 'dump', '商户号', NULL, '密钥', '/pay/yipay', 1, NULL, NULL);
-INSERT INTO `pays` VALUES (16, '易支付-QQ钱包', 'qqpay', 'dump', '商户号', NULL, '密钥', '/pay/yipay', 1, NULL, NULL);
-INSERT INTO `pays` VALUES (17, 'Paypal', 'paypal', 'dump', '商户号', '', '密钥', '/pay/paypal', 1, NULL, NULL);
+INSERT INTO `pays` VALUES (15, '易支付-微信', 'wxpay', 'dump', '商户号', NULL, '密钥', '/pay/yipay', 1, '2020-01-10 15:22:56', '2020-01-11 06:33:07');
+INSERT INTO `pays` VALUES (16, '易支付-QQ钱包', 'qqpay', 'dump', '商户号', NULL, '密钥', '/pay/yipay', 1, '2020-01-10 15:22:56', '2020-01-11 06:33:07');
+INSERT INTO `pays` VALUES (17, 'Paypal', 'paypal', 'dump', '商户号', '', '密钥', '/pay/paypal', 1, '2020-01-10 15:22:56', '2020-01-11 06:33:07');
 
 COMMIT;
 
