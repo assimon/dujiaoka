@@ -18,8 +18,6 @@
                     @if(Agent::isMobile() && $jump_payuri)
                         <p class="errpanl" style="text-align: center"><a href="{{ $jump_payuri }}" class="layui-btn layui-btn-warm layui-btn-sm">点我打开app支付</a></p>
                     @endif
-                    <p class="errpanl" style="text-align: center"><a href="{{ url('searchOrderById', ['order_id' => $orderid]) }}" class="layui-btn layui-btn-sm">我已支付</a></p>
-
                 </div>
 
 

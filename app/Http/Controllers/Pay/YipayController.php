@@ -62,7 +62,7 @@ class YipayController extends PayController
         if (!$cacheord) {
             return 'fail';
         }
-        $payInfo = Pays::where('id', $cacheord['pay_way'])->first();
+        $payInfo = Pays::where('id', $cacheord['pay_way'])->first()->toArray();
         ksort($data); //重新排序$data数组
         reset($data); //内部指针指向数组中的第一个元素
         $sign = '';
