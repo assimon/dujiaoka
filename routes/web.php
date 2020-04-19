@@ -46,4 +46,7 @@ Route::group(['prefix'=>'pay','namespace' => 'Pay'],function(){
     Route::get('paypal/{payway}/{oid}','PaypalPayController@gateway');
     Route::get('paypal/return_url','PaypalPayController@returnUrl');
     Route::post('paypal/notify_url','PaypalPayController@notifyUrl');
+    // Mugglepay
+    Route::get('mugglepay/{payway}/{oid}','MugglepayController@gateway');
+    Route::post('mugglepay/notify_url','MugglepayController@notifyUrl');
 });
