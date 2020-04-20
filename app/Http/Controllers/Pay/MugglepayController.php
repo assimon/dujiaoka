@@ -22,7 +22,7 @@ class MugglepayController extends PayController
                     $arr['merchant_order_id'] = $this->orderInfo['order_id'];
                     $arr['title'] =  $this->orderInfo['product_name'];
                     $arr['description'] =  $this->orderInfo['product_name'];
-                    $arr['token'] = md5($this->orderInfo['order_id']. 'CNY');
+                    $arr['token'] = md5($this->orderInfo['order_id']. 'CNY'.$this->payInfo['merchant_id']);
                     $arr['callback_url']=site_url() . $this->payInfo['pay_handleroute'] . '/notify_url';
                     $arr['cancel_url']=site_url();
                     $arr['success_url']=site_url()  . 'searchOrderById/'.$this->orderInfo['order_id'];
@@ -48,7 +48,7 @@ class MugglepayController extends PayController
             return 'fail';
         }
         $payInfo = Pays::where('id', $cacheord['pay_way'])->first();
-        if (!$data['token'] || $data['token'] != md5($data['merchant_order_id']. 'CNY')) {
+        if (!$data['token'] || $data['token'] != md5($data['merchant_order_id']. 'CNY'.$payInfo['merchant_id'])) {
             //不合法的数据
             return 'fail';
             //返回失败 继续补单
