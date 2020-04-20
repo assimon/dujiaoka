@@ -47,7 +47,7 @@ MAIL_ENCRYPTION=null
 ## 易支付配置
 市面上98%易支付都是彩虹的程序，独角数卡已经集成通用支付方式，但是由于请求支付地址不一样   
 需要大家手动去改一下你使用的易支付的支付请求地址：   
-网站根目录下`app\Http\Pay\YipayController.php`第`11`行代码    
+网站根目录下`app\Http\Controllers\Pay\YipayController.php`第`11`行代码    
 
 
 ## 后台主题配置
