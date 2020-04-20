@@ -5,7 +5,7 @@
             <div class="layui-card cardcon">
                 <div class="layui-card-body">
                     <div class="footer-wrap">
-                        <div style="text-align: center">{{ config('webset.footer') }}</div>
+                        <div style="text-align: center">{!! config('webset.footer') !!} </div>
                         <p>Powered by <a href="https://github.com/assimon/dujiaoka" target="_blank">@独角数卡.DJK</a></p>
                     </div>
 

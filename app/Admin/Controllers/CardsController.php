@@ -30,7 +30,7 @@ class CardsController extends AdminController
         $grid = new Grid(new Cards());
         $grid->model()->orderBy('created_at', 'desc');
         // 加载所有卡密商品
-        $commodity = Products::where('pd_type', 1)->get(['id', 'pd_name'])->toArray();
+        $commodity = Products::where('pd_type', 1)->get(['id', 'pd_name']);
         $commodClass = [];
         foreach ($commodity as $val)
         {
@@ -76,7 +76,7 @@ class CardsController extends AdminController
     {
         $form = new Form(new Cards());
         // 加载所有卡密商品
-        $commodity = Products::where('pd_type', 1)->get(['id', 'pd_name'])->toArray();
+        $commodity = Products::where('pd_type', 1)->get(['id', 'pd_name']);
         $commodClass = [];
         foreach ($commodity as $val)
         {

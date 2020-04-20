@@ -40,7 +40,7 @@ class ProductsController extends AdminController
         $grid->column('pd_status', __('Pd status'))->editable('select', [1 => '上架', 2 => '下架']);
         $grid->column('created_at', __('Created at'));
         $grid->column('updated_at', __('Updated at'));
-        $classifys = Classifys::where('c_status', 1)->get(['id', 'name'])->toArray();
+        $classifys = Classifys::where('c_status', 1)->get(['id', 'name']);
         $dataArr = [];
         foreach ($classifys as $classify) {
             $dataArr[$classify['id']] = $classify['name'];
@@ -72,7 +72,8 @@ class ProductsController extends AdminController
     {
         $form = new Form(new Products());
         $form->text('pd_name', __('Pd name'))->required();
-        $classifys = Classifys::where('c_status', 1)->get(['id', 'name'])->toArray();
+        $classifys = Classifys::where('c_status', 1)->get(['id', 'name']);
+        $dataArr = [];
         foreach ($classifys as $classify) {
             $dataArr[$classify['id']] = $classify['name'];
         }
