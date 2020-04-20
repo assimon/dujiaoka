@@ -84,31 +84,15 @@ class HomeController extends Controller
     public function postOrder(Request $request)
     {
         $data = $request->all();
-        if ($data['order_number'] <= 0) {
-            return $this->error('购买数量不能为0');
-        }
-        if(!is_numeric($data['order_number']) || strpos($data['order_number'],".") !== false){
-            return $this->error('请填正确购买数量');
-        }
-        if (empty($data['search_pwd'])) {
-            return $this->error('查询密码不能为空');
-        }
+        if ($data['order_number'] <= 0) return $this->error('购买数量不能为0');
+        if(!is_numeric($data['order_number']) || strpos($data['order_number'],".") !== false) return $this->error('请填正确购买数量');
+        if (empty($data['search_pwd'])) return $this->error('查询密码不能为空');
+        if (!captcha_check($data['verify_img'])) return $this->error('验证码错误');
         $product = Products::find($data['pid']);
-        if (empty($product)) {
-            return $this->error('商品不存在或已下架');
-        }
-
-        if ($product['in_stock'] == 0 || $data['order_number'] > $product['in_stock']){
-            return $this->error('库存不足');
-        }
-        if (!isset($data['payway'])) {
-            return $this->error('支付方式不能为空');
-        }
-        if ($product['pd_type'] == 1) {
-            if (!filter_var($data['account'],FILTER_VALIDATE_EMAIL) || empty($data['account'])) {
-                return $this->error('请输入正确邮箱格式');
-            }
-        }
+        if (empty($product)) return $this->error('商品不存在或已下架');
+        if ($product['in_stock'] == 0 || $data['order_number'] > $product['in_stock']) return $this->error('库存不足');
+        if (!isset($data['payway'])) return $this->error('支付方式不能为空');
+        if (!filter_var($data['account'],FILTER_VALIDATE_EMAIL) || empty($data['account'])) return $this->error('请输入正确邮箱格式');
         // 订单缓存
         $cacheOrder = [
             'product_id' => $data['pid'], // 商品id
@@ -119,7 +103,7 @@ class HomeController extends Controller
             'order_id' => Str::random(16), // 订单号
             'pd_type' => $product['pd_type'],
             'actual_price' => $product['actual_price'],
-            'buy_amount' => $data['order_number'], // 订单个数
+            'buy_amount' => intval($data['order_number']), // 订单个数
             'account' => $data['account'], // 充值账号
             'search_pwd' => $data['search_pwd'],
             'buy_ip' => $request->getClientIp(),

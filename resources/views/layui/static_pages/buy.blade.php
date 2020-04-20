@@ -98,6 +98,22 @@
                                                 <input type="password" name="search_pwd" value=""  required lay-verify="required" placeholder="为防止撞库攻击，请设置一个查询订单的密码" autocomplete="off" class="layui-input">
                                             </div>
                                         </div>
+
+                                        <div class="layui-form-item">
+                                            <label class="layui-form-label">验证码</label>
+                                            <div class="layui-input-inline">
+                                                <input type="text" name="verify_img" value=""  required lay-verify="required" placeholder="验证码" autocomplete="off" class="layui-input">
+                                            </div>
+                                            <div class="buy-captcha">
+                                                <img class="captcha-img"  src="{{ captcha_src('buy') }}" onclick="refresh()">
+                                            </div>
+                                            <script>
+                                                function refresh(){
+                                                    $('img[class="captcha-img"]').attr('src','{{ captcha_src('buy') }}'+Math.random());
+                                                }
+                                            </script>
+                                        </div>
+
                                         <div class="layui-form-item">
                                             <label class="layui-form-label">优惠码</label>
                                             <div class="layui-input-block">

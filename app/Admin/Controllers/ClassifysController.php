@@ -28,9 +28,9 @@ class ClassifysController extends AdminController
         $grid->model()->orderBy('ord', 'desc');
         $grid->column('id', __('Id'));
         $grid->column('name', __('Class Name'));
-        $grid->column('icon', __('Icon'))->display(function ($icon){
+        /*$grid->column('icon', __('Icon'))->display(function ($icon){
             return '<i class="fa '.$icon.'"></i>';
-        });
+        });*/
         $grid->column('ord', __('Ord'));
         $grid->column('c_status', __('C status'))->editable('select', [1=> '启用', 2=> '禁用']);
         $grid->column('created_at', __('Created at'));
@@ -51,7 +51,7 @@ class ClassifysController extends AdminController
         $form = new Form(new Classifys());
 
         $form->text('name', __('Class Name'))->rules('required',['不能为空']);
-        $form->text('icon', __('Icon'));
+        // $form->text('icon', __('Icon'));
         $form->number('ord', __('Ord'))->default(1);
         $form->radio('c_status', __('C status'))
             ->options([1=> '启用', 2=> '禁用'])
