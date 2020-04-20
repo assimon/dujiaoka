@@ -410,7 +410,7 @@ INSERT INTO `pays` VALUES (14, '易支付-支付宝', 'alipay', 'dump', '商户�
 INSERT INTO `pays` VALUES (15, '易支付-微信', 'wxpay', 'dump', '商户号', NULL, '密钥', '/pay/yipay', 1, '2020-01-10 15:22:56', '2020-01-11 06:33:07');
 INSERT INTO `pays` VALUES (16, '易支付-QQ钱包', 'qqpay', 'dump', '商户号', NULL, '密钥', '/pay/yipay', 1, '2020-01-10 15:22:56', '2020-01-11 06:33:07');
 INSERT INTO `pays` VALUES (17, 'Paypal', 'paypal', 'dump', '商户号', '', '密钥', '/pay/paypal', 1, '2020-01-10 15:22:56', '2020-01-11 06:33:07');
-
+INSERT INTO `pays` VALUES (27, '数字货币', 'coin', 'dump', 'mugglepay密钥', NULL, '不需要', '/pay/mugglepay', 1, '2020-04-19 01:50:14', '2020-04-19 02:28:55');
 COMMIT;
 
 -- ----------------------------
