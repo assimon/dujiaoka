@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redis;
 class MugglepayController extends PayController
 {
+
     public function gateway($payway, $oid)
     {
         $check = $this->checkOrder($payway, $oid);
@@ -14,7 +15,7 @@ class MugglepayController extends PayController
         }
         //构造要请求的参数数组，无需改动
         switch ($this->payInfo['pay_check']) {
-            case 'coin':
+            case 'mgcoin':
             default:
                 try {
                     $arr['price_amount'] =  $this->orderInfo['actual_price'];
@@ -23,23 +24,23 @@ class MugglepayController extends PayController
                     $arr['title'] =  $this->orderInfo['product_name'];
                     $arr['description'] =  $this->orderInfo['product_name'];
                     $arr['token'] = md5($this->orderInfo['order_id']. 'CNY'.$this->payInfo['merchant_id']);
-                    $arr['callback_url']=site_url() . $this->payInfo['pay_handleroute'] . '/notify_url';
-                    $arr['cancel_url']=site_url();
-                    $arr['success_url']=site_url()  . 'searchOrderById/'.$this->orderInfo['order_id'];
-                    $accesstoken=$this->payInfo['merchant_id'];
+                    $arr['callback_url'] = site_url() . $this->payInfo['pay_handleroute'] . '/notify_url';
+                    $arr['cancel_url'] = site_url();
+                    $arr['success_url'] = site_url()  . 'searchOrderById/'.$this->orderInfo['order_id'];
+                    $accesstoken = $this->payInfo['merchant_id'];
                     $curl = curl_init();
                     curl_setopt_array($curl, array(CURLOPT_URL => "https://api.mugglepay.com/v1/orders", CURLOPT_RETURNTRANSFER => true, CURLOPT_ENCODING => "", CURLOPT_MAXREDIRS => 10, CURLOPT_TIMEOUT => 0, CURLOPT_FOLLOWLOCATION => true, CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1, CURLOPT_CUSTOMREQUEST => "POST", CURLOPT_POSTFIELDS => http_build_query($arr), CURLOPT_HTTPHEADER => array("token:$accesstoken", "Content-Type: application/x-www-form-urlencoded")));
                     $response = curl_exec($curl);
                     curl_close($curl);
                     $payment_url = json_decode($response, true)['payment_url'];
-                     return redirect()->away($payment_url);
+                    return redirect()->away($payment_url);
                 } catch (\Exception $e) {
                     return $this->error('支付通道异常~ ' . $e->getMessage());
                 }
                 break;
         }
-       
     }
+
     public function notifyUrl(Request $request)
     {
         $data = json_decode(file_get_contents('php://input'),true);
@@ -59,4 +60,5 @@ class MugglepayController extends PayController
             return "{\"status\": 200}";
         }
     }
+
 }
