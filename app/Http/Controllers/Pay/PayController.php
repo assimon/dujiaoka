@@ -121,7 +121,11 @@ class PayController extends Controller
             // 发送邮箱给用户
             $mailtpl = Emailtpls::where('tpl_token', 'card_send_user_email')->first()->toArray();
             $to = $orderInfo['account'];
-        } else {
+        }elseif ($orderInfo['pd_type'] == 2) {
+            // 发送邮箱给用户
+            $mailtpl = Emailtpls::where('tpl_token', 'wait_send_user_email')->first()->toArray();
+            $to = $orderInfo['account'];
+        }else {
             $mailtpl = Emailtpls::where('tpl_token', 'manual_send_manage_mail')->first()->toArray();
             $to = config('webset.manage_email');
         }
