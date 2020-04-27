@@ -21,7 +21,7 @@ class YipayController extends PayController
             'pid' =>  (int)$this->payInfo['merchant_id'],
             'type' => $this->payInfo['pay_check'],
             'out_trade_no' => $this->orderInfo['order_id'],
-            'return_url' => site_url().'searchOrderById?order_id='.$this->orderInfo['order_id'],
+            'return_url' => site_url(). $this->payInfo['pay_handleroute'] . '/return_url?order_id='.$this->orderInfo['order_id'],
             'notify_url' => site_url().$this->payInfo['pay_handleroute'].'/notify_url',
             'name'   => '在线支付-' . $this->orderInfo['order_id'],
             'money'  => (float)$this->orderInfo['actual_price'],
