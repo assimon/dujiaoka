@@ -121,10 +121,16 @@ class PayController extends Controller
             // 发送邮箱给用户
             $mailtpl = Emailtpls::where('tpl_token', 'card_send_user_email')->first()->toArray();
             $to = $orderInfo['account'];
-        } else {
-            $mailtpl = Emailtpls::where('tpl_token', 'manual_send_manage_mail')->first()->toArray();
-            $to = config('webset.manage_email');
-        }
+        }elseif ($orderInfo['pd_type'] == 2) {
+            // 发送邮箱给用户
+            $mailtpl = Emailtpls::where('tpl_token', 'wait_send_user_email')->first()->toArray();
+            $to = $orderInfo['account'];
+            //发邮件给管理员
+            $mailtpl1 = Emailtpls::where('tpl_token', 'manual_send_manage_mail')->first()->toArray();
+            $to1 = config('webset.manage_email');
+            $mailtipsInfo1 = replace_mail_tpl($mailtpl1, $order);
+            if (!empty($to1)) SendMails::dispatch($to1, $mailtipsInfo1['tpl_content'], $mailtipsInfo1['tpl_name']);
+         }
         $mailtipsInfo = replace_mail_tpl($mailtpl, $order);
         if (!empty($to)) SendMails::dispatch($to, $mailtipsInfo['tpl_content'], $mailtipsInfo['tpl_name']);
         // 商品销量+

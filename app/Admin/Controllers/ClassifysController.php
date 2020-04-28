@@ -57,6 +57,7 @@ class ClassifysController extends AdminController
             ->options([1=> '启用', 2=> '禁用'])
             ->rules('required',['请选择状态'])
             ->default(1);
+        $form->text('passwd', '分类密码');
         $form->footer(function ($footer) {
             // 去掉`查看`checkbox
             $footer->disableViewCheck();

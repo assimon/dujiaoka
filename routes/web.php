@@ -15,7 +15,10 @@ Route::get('/', 'HomeController@index');
 
 Route::get('buy/{product}', 'HomeController@buy');
 Route::get('bill/{orderid}', 'HomeController@bill');
+Route::post('productlist', 'HomeController@productlist');
+Route::post('proudctinfo', 'HomeController@proudctinfo');
 Route::post('postOrder', 'HomeController@postOrder');
+Route::get('payways', 'HomeController@payways');
 Route::get('getOrderStatus/{orderid}', 'OrdersController@getOrderStatus');
 Route::get('searchOrder', 'OrdersController@searchOrder');
 Route::match(['get', 'post'], 'searchOrderById/{oid?}', 'OrdersController@searchOrderById');
@@ -42,6 +45,7 @@ Route::group(['prefix'=>'pay','namespace' => 'Pay'],function(){
     // 易支付
     Route::get('yipay/{payway}/{oid}','YipayController@gateway');
     Route::get('yipay/notify_url','YipayController@notifyUrl');
+    Route::get('yipay/return_url','YipayController@returnUrl');
     // paypal
     Route::get('paypal/{payway}/{oid}','PaypalPayController@gateway');
     Route::get('paypal/return_url','PaypalPayController@returnUrl');

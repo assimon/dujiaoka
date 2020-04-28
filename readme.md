@@ -6,6 +6,14 @@
 <a href="https://shang.qq.com/wpa/qunwpa?idkey=37b6b06f7c941dae20dcd5784088905d6461064d7f33478692f0c4215546cee0"><img src="https://img.shields.io/badge/QQ%E7%BE%A4-568679748-green" alt="QQ群：568679748"></a>
 </p>
 
+## 修改说明
+- [x] 增加choice模板,该模板具有以下特色功能：
+  - 首页弹窗
+  - 分类密码
+  - 商品密码
+- [x] 增加代充订单用户邮件提醒
+- [x] 易支付增加同步回调
+
 ## 独角数卡
 
 开源式站长自动化售货解决方案、高效、稳定、快速！
