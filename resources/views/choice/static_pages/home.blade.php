@@ -223,7 +223,7 @@
                             }
                             html += '<option value='+list[i].id+' data-type="'+type+'">'+list[i].name+'</option>';
                         }
-                        $('#tid').html("<option value=\"0\">请选择分类</option>" + html);
+                        $('#tid').html("<option value=''>请选择分类</option>" + html);
                         form.render('select');
 
                     }else{
