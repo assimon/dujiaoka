@@ -1,6 +1,6 @@
 <?php
 /**
- * Apicontroller.php
+ * ApiController.php
  * Author iLay1678
  * Created on 2020/4/29 18:38
  */
@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Str;
 
-class Apicontroller extends Controller
+class ApiController extends Controller
 {
     /**
      * 商品列表
