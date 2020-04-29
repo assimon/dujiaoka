@@ -12,19 +12,21 @@
 */
 
 Route::get('/', 'HomeController@index');
-
 Route::get('buy/{product}', 'HomeController@buy');
 Route::get('bill/{orderid}', 'HomeController@bill');
-Route::post('productlist', 'HomeController@productlist');
-Route::post('proudctinfo', 'HomeController@proudctinfo');
 Route::post('postOrder', 'HomeController@postOrder');
-Route::get('payways', 'HomeController@payways');
 Route::get('getOrderStatus/{orderid}', 'OrdersController@getOrderStatus');
 Route::get('searchOrder', 'OrdersController@searchOrder');
 Route::match(['get', 'post'], 'searchOrderById/{oid?}', 'OrdersController@searchOrderById');
 Route::post('searchOrderByAccount', 'OrdersController@searchOrderByAccount');
 Route::get('searchOrderByBrowser', 'OrdersController@searchOrderByBrowser');
 
+//api相关
+Route::group(['prefix'=>'api'],function(){
+    Route::post('productlist', 'ApiController@productlist');
+    Route::post('proudctinfo', 'ApiController@proudctinfo');
+    Route::get('payways', 'ApiController@payways');
+});
 // 支付相关
 Route::group(['prefix'=>'pay','namespace' => 'Pay'],function(){
     // 支付宝

@@ -58,15 +58,15 @@
 													  	@foreach($classifys as $classify)
 														<option value='{{ $classify['id'] }}'@if($classify['passwd']!='') data-type='1'@else data-type='0'@endif>{{ $classify['name'] }}</option>
     													@endforeach
-												</select> 
+												</select>
                                             </div>
                                         </div>
                                         <div class="layui-form-item">
                                             <label class="layui-form-label">商品</label>
                                             <div class="layui-input-block">
                                             	<select  name="pid" id="productlist" lay-filter="productlist" required lay-verify='required'>
-													
-												</select> 
+
+												</select>
                                             </div>
                                         </div>
                                         <div class="layui-form-item">
@@ -76,12 +76,12 @@
                                             </div>
                                         </div>
                                         <div class="other-item">
-                                                    
-												</div>
-                                        
-                                            
 
-                                        
+												</div>
+
+
+
+
                                         <div class="layui-form-item">
                                             <label class="layui-form-label">查询密码</label>
                                             <div class="layui-input-block">
@@ -89,7 +89,7 @@
                                             </div>
                                         </div>
 
-                                      
+
 
                                         <div class="layui-form-item">
                                             <label class="layui-form-label">优惠码</label>
@@ -97,16 +97,16 @@
                                                 <input type="text" name="coupon_code"   placeholder="您有优惠码吗？" value="" autocomplete="off" class="layui-input">
                                             </div>
                                         </div>
-												
+
                                         <div class="layui-form-item">
                                             <label class="layui-form-label">支付方式</label>
                                             <div class="layui-input-block">
                                             	<select lay-verify="payway" id="paywaylist" name="payway" required lay-verify='required'>
-													
-												</select> 
+
+												</select>
                                             </div>
                                         </div>
-                                        
+
                                         <div class="layui-form-item">
                                             <label class="layui-form-label">数量</label>
                                             <div class="layui-input-inline">
@@ -130,7 +130,7 @@
                                                 }
                                             </script>
                                         </div>
-                                       
+
                                         <div class="layui-form-item">
                                             <div class="layui-input-block">
                                                 <button class="layui-btn" id='buy' lay-submit lay-filter="postOrder">立即下单</button>
@@ -163,7 +163,7 @@
                 <div class="layui-card-header">商品介绍</div>
                 <div class="layui-card-body">
                     <div class="product-content">
-                        
+
                     </div>
 
                 </div>
@@ -185,7 +185,7 @@
 	var form = layui.form;
 	var device = layui.device();
 	$.ajax({
-				url: '{{ url("/payways") }}',
+				url: '{{ url("/api/payways") }}',
 				type: 'GET',
 				beforeSend: function () {
 				},
@@ -198,15 +198,15 @@
 						}
 						$('#paywaylist').html("<option value=''>请选择支付方式</option>" + html);
 							form.render('select');
-							
+
 				}else{
 					layer.msg(res.msg,{icon:2,time:5000});
 				}},
 				error:function(){
 					layer.msg('获取支付方式失败',{icon:2,time:5000});
 				}
-				
-				
+
+
 	})
 form.on('select(tid)', function(data){
 		if (data.value == 0) return;
@@ -225,11 +225,11 @@ form.on('select(tid)', function(data){
 				,moveType: 1 //拖拽模式，0或者1
 				,content: html
 				,yes: function(layero){
-					var grouppassword = $("#grouppassword").val(); 
+					var grouppassword = $("#grouppassword").val();
 					if(grouppassword.length>0){
 						//远程请求验证
 						$.ajax({
-							url: '{{ url("/productlist") }}',
+							url: '{{ url("/api/productlist") }}',
 							type: 'POST',
 							dataType: 'json',
 							data: {'tid': data.value,'password':grouppassword,'_token':$("input[name='_token']").val()},
@@ -269,7 +269,7 @@ form.on('select(tid)', function(data){
 					}else{
 						layer.msg("请输入密码",{icon:2,time:5000});
 					}
-				}	
+				}
 				,btn2: function(index, layero){
 					$(data.elem).find("option").eq(0).val("0");
 					$(data.elem).find("option").eq(0).attr("selected",true);
@@ -278,7 +278,7 @@ form.on('select(tid)', function(data){
 					form.render('select');
 					$(data.elem).find("option").eq(0).attr("selected",false);
 				}
-				,cancel: function(){ 
+				,cancel: function(){
 					$(data.elem).find("option").eq(0).val("0");
 					$(data.elem).find("option").eq(0).attr("selected",true);
 					$('#productlist').html("");
@@ -290,7 +290,7 @@ form.on('select(tid)', function(data){
 		}else{
 			//远程请求验证
 			$.ajax({
-				url: '{{ url("/productlist") }}',
+				url: '{{ url("/api/productlist") }}',
 				type: 'POST',
 				dataType: 'json',
 				data: {'tid': data.value,'_token':$("input[name='_token']").val()},
@@ -319,7 +319,7 @@ form.on('select(tid)', function(data){
 						$("#wholesale").hide();
 						$("#pd_img").hide();
 						$('.product-content').html('');
-						$("#addons").remove();	
+						$("#addons").remove();
 						form.render('select');
 					} else {
 						layer.msg(res.msg,{icon:2,time:5000});
@@ -352,11 +352,11 @@ form.on('select(tid)', function(data){
 				,moveType: 1 //拖拽模式，0或者1
 				,content: html
 				,yes: function(layero){
-					var productpassword = $("#productpassword").val(); 
+					var productpassword = $("#productpassword").val();
 					if(productpassword.length>0){
 						//远程请求验证
 						$.ajax({
-							url: '{{ url("/proudctinfo") }}',
+							url: '{{ url("/api/proudctinfo") }}',
 							type: 'POST',
 							dataType: 'json',
 							data: {'pid': data.value,'password':productpassword,'_token':$("input[name='_token']").val()},
@@ -404,7 +404,7 @@ form.on('select(tid)', function(data){
                                             <label class="layui-form-label">`+list[i]['desc']+`</label>
                                             <div class="layui-input-block">
                                             <input type="text" name="`+list[i]['field']+`" `;
-                                            
+
                                 if(list[i]['rule']===true){
                                 	addons+=`required="" lay-verify="required"`;
                                 }
@@ -423,7 +423,7 @@ form.on('select(tid)', function(data){
 							$('#wholesale_price').html(wholesale_price);
 							$('#wholesale').show();
 						}
-						
+
 						form.render();
 									layer.closeAll();
 								} else {
@@ -431,11 +431,11 @@ form.on('select(tid)', function(data){
 								}
 							}
 						});
-						
+
 					}else{
 						layer.msg("请输入密码",{icon:2,time:5000});
 					}
-				}	
+				}
 				,btn2: function(index, layero){
 					$(data.elem).find("option").eq(0).val("0");
 					$(data.elem).find("option").eq(0).attr("selected",true);
@@ -447,7 +447,7 @@ form.on('select(tid)', function(data){
 					form.render('select');
 					$(data.elem).find("option").eq(0).attr("selected",false);
 				}
-				,cancel: function(){ 
+				,cancel: function(){
 					$(data.elem).find("option").eq(0).val("0");
 					$(data.elem).find("option").eq(0).attr("selected",true);
 					$('#price').val('');
@@ -461,7 +461,7 @@ form.on('select(tid)', function(data){
 			});
 		}else{
 			$.ajax({
-				url: '{{ url("/proudctinfo") }}',
+				url: '{{ url("/api/proudctinfo") }}',
 				type: 'POST',
 				dataType: 'json',
 				data: {'pid': data.value,'_token':$("input[name='_token']").val()},
@@ -509,7 +509,7 @@ form.on('select(tid)', function(data){
                                             <label class="layui-form-label">`+list[i]['desc']+`</label>
                                             <div class="layui-input-block">
                                             <input type="text" name="`+list[i]['field']+`" `;
-                                            
+
                                 if(list[i]['rule']===true){
                                 	addons+=`required="" lay-verify="required"`;
                                 }
@@ -529,7 +529,7 @@ form.on('select(tid)', function(data){
 							$('#wholesale_price').html(wholesale_price);
 							$('#wholesale').show();
 						}
-						
+
 						form.render();
 					} else {
 						layer.msg(res.msg,{icon:2,time:5000});
@@ -553,7 +553,7 @@ form.on('select(tid)', function(data){
                     if (value > instock) return '购买数量大于库存'
                 }
             })
-    var layerad = $("#layerad").html(); 
+    var layerad = $("#layerad").html();
 	if(typeof(layerad)!="undefined"){
 		if(layerad.length>0){
 			layer.open({
@@ -571,7 +571,7 @@ form.on('select(tid)', function(data){
 		}
 	}
             form.on('submit(postOrder)', function(data){
-            
+
                 if (data.field.tid == '') {
                     layer.msg('请选择商品分类', {
                         icon: 5
@@ -591,7 +591,7 @@ form.on('select(tid)', function(data){
                     return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
                 }
             });
-			
+
 		})
-</script> 
+</script>
     @stop

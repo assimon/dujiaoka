@@ -10,7 +10,8 @@ use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Layout\Content;
 use Encore\Admin\Show;
-
+use App\Admin\Actions\Copycards;
+use App\Admin\Actions\Copy;
 class CardsController extends AdminController
 {
     /**
@@ -42,6 +43,12 @@ class CardsController extends AdminController
         $grid->column('card_status', __('Card status'))->editable('select', [1 => '未售出', 2 => '已售出']);
         $grid->column('created_at', __('Created at'));
         $grid->column('updated_at', __('Updated at'));
+        $grid->batchActions(function ($batch) {
+            $batch->add(new Copycards());
+        });
+        $grid->batchActions(function ($batch) {
+            $batch->add(new Copycards());
+        });
         $grid->filter(function($filter) use ($commodClass){
 
             // 去掉默认的id过滤器
@@ -54,8 +61,13 @@ class CardsController extends AdminController
 
 
         });
+
         $grid->actions(function ($actions) {
+            $actions->add(new Copy);
             $actions->disableView();
+        });
+        $grid->tools(function (Grid\Tools $tools) {
+            $tools->append(new ReportPost());
         });
         return $grid;
     }
