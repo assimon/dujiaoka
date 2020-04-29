@@ -6,6 +6,7 @@
  */
 
 namespace App\Http\Controllers;
+
 use App\Jobs\ReleaseOrder;
 use App\Models\Classifys;
 use App\Models\Coupons;
@@ -22,40 +23,65 @@ use Illuminate\Support\Str;
 class ApiController extends Controller
 {
     /**
+     * 分类列表
+     */
+    public function typelist(){
+        header('Content-type: application/json');
+        $list = Classifys::where('c_status', 1)->get()->toArray();
+        foreach ($list as $key => $value) {
+            $typelist[$key] = [
+                'id' => $value['id'],
+                'name' => $value['name'],
+                'password' => ''
+            ];
+            if ($value['passwd'] != '') {
+                $typelist[$key]['password'] = 'hidden';
+            }
+        }
+        $arr = [
+            'code' => 1,
+            'data' => ['typelist' => $typelist],
+            'msg' => 'success',
+
+        ];
+        die(json_encode($arr));;
+    }
+    /**
      * 商品列表
      * @param Request $request
      */
     public function productlist(Request $request)
-    {	header('Content-type: application/json');
+    {
+        header('Content-type: application/json');
         $data = $request->all();
-        $tid=$data['tid'];
-        $passwd=Classifys::where('id', $tid)->get()[0]['passwd'];
-        if($passwd) {
-            if(isset($data['password'])) {
-                if($passwd!=$data['password']) {
-                    die('{"code":"1002","msg":"密码错误"}');
+        $tid = $data['tid'];
+        $passwd = Classifys::where('id', $tid)->get()[0]['passwd'];
+        if ($passwd) {
+            if (isset($data['password'])) {
+                if ($passwd != $data['password']) {
+                    die('{"code":"201","msg":"分类密码错误"}');
                 }
             } else {
-                die('{"code":"1002","msg":"密码错误"}');
+                die('{"code":"202","msg":"分类密码不能为空"}');
             }
         }
-        $products= Classifys::with(['products' => function($query) {
+        $products = Classifys::with(['products' => function ($query) {
             $query->where('pd_status', 1)->orderBy('ord', 'desc');
         }
         ])->where('id', $tid)->orderBy('ord', 'desc')->get()->toArray()[0]['products'];
-        foreach ($products as $key=>$value) {
+        foreach ($products as $key => $value) {
             $productlist[$key] = [
-                'id'=>$value['id'],
-                'name'=>$value['pd_name'],
-                'password'=>''
+                'id' => $value['id'],
+                'name' => $value['pd_name'],
+                'password' => ''
             ];
-            if($value['passwd']!=''){
-                $productlist[$key]['password']='hidden';
+            if ($value['passwd'] != '') {
+                $productlist[$key]['password'] = 'hidden';
             }
         }
-        $arr=[
+        $arr = [
             'code' => 1,
-            'data' => ['products'=>$productlist],
+            'data' => ['products' => $productlist],
             'msg' => 'success',
 
         ];
@@ -70,28 +96,28 @@ class ApiController extends Controller
     {
         header('Content-type: application/json');
         $data = $request->all();
-        $pid=$data['pid'];
-        $pid=Products::where('id', $pid)->get()[0];
-        $passwd=$pid['passwd'];
-        if($passwd) {
-            if(isset($data['password'])) {
-                if($passwd!=$data['password']) {
-                    die('{"code":"1002","msg":"密码错误"}');
+        $pid = $data['pid'];
+        $pid = Products::where('id', $pid)->get()[0];
+        $passwd = $pid['passwd'];
+        if ($passwd) {
+            if (isset($data['password'])) {
+                if ($passwd != $data['password']) {
+                    die('{"code":"301","msg":"商品密码错误"}');
                 }
             } else {
-                die('{"code":"1002","msg":"密码错误"}');
+                die('{"code":"302","msg":"商品密码不能为空"}');
             }
         }
         $product = $pid->toArray();
         if ($product['pd_status'] != 1) {
-            return $this->error('   商品信息不存在！');
+            die('{"code":"303","msg":"商品不存在"}');
         }
         // 格式化批发配置以及输入框配置
         if ($product['wholesale_price']) {
             $dityArr = explode(PHP_EOL, $product['wholesale_price']);
             $dityList = [];
             foreach ($dityArr as $key => $v) {
-                if($v != ""){
+                if ($v != "") {
                     $dityInfo = explode('=', delete_html($v));
                     $dityList[$key]['number'] = $dityInfo[0];
                     $dityList[$key]['price'] = $dityInfo[1];
@@ -107,7 +133,7 @@ class ApiController extends Controller
             $inputArr = explode(PHP_EOL, $product['other_ipu']);
             $inputList = [];
             foreach ($inputArr as $key => $v) {
-                if($v != ""){
+                if ($v != "") {
                     $inputInfo = explode('=', delete_html($v));
                     $inputList[$key]['field'] = $inputInfo[0];
                     $inputList[$key]['desc'] = $inputInfo[1];
@@ -126,11 +152,11 @@ class ApiController extends Controller
         unset($product['pd_status']);
         unset($product['ord']);
         unset($product['sales_volume']);
-        $product['pd_picture']=\Illuminate\Support\Facades\Storage::disk('admin')->url($product['pd_picture']);
-        $productinfo=[
-            'code'=>1,
-            'data'=>$product,
-            'msg'=>'success'
+        $product['pd_picture'] = \Illuminate\Support\Facades\Storage::disk('admin')->url($product['pd_picture']);
+        $productinfo = [
+            'code' => 1,
+            'data' => $product,
+            'msg' => 'success'
         ];
         die(json_encode($productinfo));
         //return $this->view('static_pages/buy', $product);
@@ -140,18 +166,19 @@ class ApiController extends Controller
      * 支付方式
      */
     public function payways()
-    {	header('Content-type: application/json');
+    {
+        header('Content-type: application/json');
         $pays = Pays::where('pay_status', 1)->get()->toArray();
-        foreach ($pays as $key=>$value) {
-            $payways[]=[
-                'name'=>$value['pay_name'],
-                'value'=>$value['id']
+        foreach ($pays as $key => $value) {
+            $payways[] = [
+                'name' => $value['pay_name'],
+                'value' => $value['id']
 
             ];
         }
-        $arr=[
+        $arr = [
             'code' => 1,
-            'data' => ['payways'=>$payways],
+            'data' => ['payways' => $payways],
             'msg' => 'success',
 
         ];

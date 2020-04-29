@@ -23,6 +23,7 @@ Route::get('searchOrderByBrowser', 'OrdersController@searchOrderByBrowser');
 
 //api相关
 Route::group(['prefix'=>'api'],function(){
+    Route::get('typelist', 'ApiController@typelist');
     Route::post('productlist', 'ApiController@productlist');
     Route::post('proudctinfo', 'ApiController@proudctinfo');
     Route::get('payways', 'ApiController@payways');

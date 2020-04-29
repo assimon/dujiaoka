@@ -55,9 +55,7 @@
                                             <div class="layui-input-block">
                                             	<select name="tid" id="tid"  lay-filter="tid" required lay-verify='required'>
 													<option value=''>请选择分类</option>
-													  	@foreach($classifys as $classify)
-														<option value='{{ $classify['id'] }}'@if($classify['passwd']!='') data-type='1'@else data-type='0'@endif>{{ $classify['name'] }}</option>
-    													@endforeach
+
 												</select>
                                             </div>
                                         </div>
@@ -207,7 +205,36 @@
 				}
 
 
-	})
+	});
+            $.ajax({
+                url: '{{ url("/api/typelist") }}',
+                type: 'GET',
+                beforeSend: function () {
+                },
+                success: function (res) {
+                    if (res.code == '1') {
+                        var html = "";
+                        var list = res.data.typelist;
+                        for (var i = 0, j = list.length; i < j; i++) {
+                            var mypassword = list[i].password;
+                            var type = 0;
+                            if(mypassword.length>0){
+                                type = 1;
+                            }
+                            html += '<option value='+list[i].id+' data-type="'+type+'">'+list[i].name+'</option>';
+                        }
+                        $('#tid').html("<option value=\"0\">请选择分类</option>" + html);
+                        form.render('select');
+
+                    }else{
+                        layer.msg(res.msg,{icon:2,time:5000});
+                    }},
+                error:function(){
+                    layer.msg('获取商品失败',{icon:2,time:5000});
+                }
+
+
+            })
 form.on('select(tid)', function(data){
 		if (data.value == 0) return;
 		var ispassword = $(data.elem).find('option:selected').data('type');
