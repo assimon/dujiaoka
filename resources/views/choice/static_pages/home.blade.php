@@ -274,7 +274,7 @@ form.on('select(tid)', function(data){
 										}
 										html += '<option value='+list[i].id+' data-type="'+type+'">'+list[i].name+'</option>';
 									}
-									$('#productlist').html("<option value=\"0\">请选择商品</option>" + html);
+									$('#productlist').html("<option value=''>请选择商品</option>" + html);
 									$('.product-price').hide();
 									$('.product-price-cost-price').hide();
 									$('#pd_name').html('商品选购');
