@@ -18,11 +18,11 @@ class Copycards extends BatchAction
             $model->replicate()->save();
         }
         }
-        return $this->response()->success('复制成功'.$number.'次')->refresh();
+        return $this->response()->success('成功复制'.count($collection)*$number.'条卡密')->refresh();
     }
     public function form()
     {
-        $this->text('num', '复制次数')->rules('required');
+        $this->text('num', '复制次数')->rules('required|numeric');
     }
 
     public function html()

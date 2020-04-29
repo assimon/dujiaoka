@@ -20,6 +20,6 @@ class Copy extends RowAction
     }
     public function form()
     {
-        $this->text('num', '复制条数')->rules('required');
+        $this->text('num', '复制条数')->rules('required|numeric');
     }
 }
