@@ -46,9 +46,7 @@ class CardsController extends AdminController
         $grid->batchActions(function ($batch) {
             $batch->add(new Copycards());
         });
-        $grid->batchActions(function ($batch) {
-            $batch->add(new Copycards());
-        });
+
         $grid->filter(function($filter) use ($commodClass){
 
             // 去掉默认的id过滤器
@@ -65,9 +63,6 @@ class CardsController extends AdminController
         $grid->actions(function ($actions) {
             $actions->add(new Copy);
             $actions->disableView();
-        });
-        $grid->tools(function (Grid\Tools $tools) {
-            $tools->append(new ReportPost());
         });
         return $grid;
     }
