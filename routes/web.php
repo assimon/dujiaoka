@@ -27,6 +27,10 @@ Route::group(['prefix'=>'api'],function(){
     Route::post('productlist', 'ApiController@productlist');
     Route::post('proudctinfo', 'ApiController@proudctinfo');
     Route::get('payways', 'ApiController@payways');
+    Route::match(['get', 'post'], 'searchOrderById/{oid?}', 'ApiController@searchOrderById');
+    Route::post('searchOrderByAccount', 'ApiController@searchOrderByAccount');
+    Route::get('searchOrderByBrowser', 'ApiController@searchOrderByBrowser');
+    Route::post('postOrder', 'ApiController@postOrder');
 });
 // 支付相关
 Route::group(['prefix'=>'pay','namespace' => 'Pay'],function(){
