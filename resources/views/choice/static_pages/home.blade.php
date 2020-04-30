@@ -23,7 +23,7 @@
                 <div class="layui-col-md7  layui-col-xs12" >
                     <div class="layui-card cardcon">
                         <div class="layui-card-header">
-                            <span style="font-size: 16px;" id='pd_name'>商品介绍</span>
+                            <span style="font-size: 16px;" id='pd_name'>商品选购</span>
                             <span class="layui-badge layui-bg-green" id='pd_auto' style='display:none'>自动发货</span>
                             <span class="layui-badge layui-bg-orange" id='pd_recharge' style='display:none'>代充</span>
                             <span class="layui-badge layui-bg-blue" id='pd_instock' style='display:none'>库存</span>
@@ -271,7 +271,7 @@
                                             $('#productlist').html("<option value=''>请选择商品</option>" + html);
                                             $('.product-price').hide();
                                             $('.product-price-cost-price').hide();
-                                            $('#pd_name').html('商品介绍');
+                                            $('#pd_name').html('商品选购');
                                             $('#pd_instock').hide();
                                             $("#pd_recharge").hide();
                                             $("#pd_auto").hide();
@@ -279,7 +279,6 @@
                                             $("#wholesale").hide();
                                             $("#pd_img").hide();
                                             $('.product-content').html('');
-                                            $("#addons").remove();
                                             form.render('select');
                                             layer.closeAll();
                                         } else {
@@ -291,19 +290,35 @@
                                 layer.msg("请输入密码",{icon:2,time:5000});
                             }
                         }
-                        ,btn2: function(index, layero){
-                            $(data.elem).find("option").eq(0).val("0");
-                            $(data.elem).find("option").eq(0).attr("selected",true);
+                        ,btn2: function(index, layero){ 
+							$(data.elem).find("option").eq(0).attr("selected",true);
                             $('#productlist').html("");
-                            $("#addons").remove();
+							$('.product-price').hide();
+							$('.product-price-cost-price').hide();
+							$('#pd_name').html('商品选购');
+							$('#pd_instock').hide();
+							$("#pd_recharge").hide();
+							$("#pd_auto").hide();
+							$("#product-price").hide();
+							$("#wholesale").hide();
+							$("#pd_img").hide();
+							$('.product-content').html('');
                             form.render('select');
-                            $(data.elem).find("option").eq(0).attr("selected",false);
+							$(data.elem).find("option").eq(0).attr("selected",false);
                         }
                         ,cancel: function(){
-                            $(data.elem).find("option").eq(0).val("0");
                             $(data.elem).find("option").eq(0).attr("selected",true);
                             $('#productlist').html("");
-                            $("#addons").remove();
+							$('.product-price').hide();
+							$('.product-price-cost-price').hide();
+							$('#pd_name').html('商品选购');
+							$('#pd_instock').hide();
+							$("#pd_recharge").hide();
+							$("#pd_auto").hide();
+							$("#product-price").hide();
+							$("#wholesale").hide();
+							$("#pd_img").hide();
+							$('.product-content').html('');
                             form.render('select');
                             $(data.elem).find("option").eq(0).attr("selected",false);
                         }
@@ -332,24 +347,19 @@
                                 $('#productlist').html("<option value=''>请选择商品</option>" + html);
                                 $('.product-price').hide();
                                 $('.product-price-cost-price').hide();
-                                $('#pd_name').html('商品介绍');
+                                $('#pd_name').html('商品选购');
                                 $('#pd_instock').hide();
                                 $("#pd_recharge").hide();
                                 $("#pd_auto").hide();
                                 $("#product-price").hide();
                                 $("#wholesale").hide();
                                 $("#pd_img").hide();
-                                $('.product-content').html('');
-                                $("#addons").remove();
+                                $('.product-content').html('');                              
                                 form.render('select');
                             } else {
-                                layer.msg(res.msg,{icon:2,time:5000});
-                                $(data.elem).find("option").eq(0).val("0");
+                                layer.msg(res.msg,{icon:2,time:5000});                                
                                 $(data.elem).find("option").eq(0).attr("selected",true);
-                                $('#productlist').html("");
-                                $("#addons").remove();
-                                form.render('select');
-                                $(data.elem).find("option").eq(0).attr("selected",false);
+                                $('#productlist').html("");                               
                             }
                         },
 
@@ -398,8 +408,7 @@
                                             $("#product-price").show();
                                             $("#pd_img").attr('src',product.pd_picture);
                                             $("#pd_img").show();
-                                            $('.product-content').html(product.pd_info);
-                                            $("#addons").remove();
+                                            $('.product-content').html(product.pd_info);                                            
                                             if(product.pd_type==2){
                                                 $("#pd_recharge").show()
                                                 $("#pd_auto").hide()
@@ -458,26 +467,36 @@
                             }
                         }
                         ,btn2: function(index, layero){
-                            $(data.elem).find("option").eq(0).val("0");
                             $(data.elem).find("option").eq(0).attr("selected",true);
-                            $('#price').val('');
-                            $('#qty').val('');
-                            $('#prodcut_description').html('');
-                            $("#addons").remove();
+                            $('.product-price').hide();
+                            $('.product-price-cost-price').hide();
+                            $('#pd_name').html('商品选购');
+                            $('#pd_instock').hide();
+                            $("#pd_recharge").hide();
+                            $("#pd_auto").hide();
+                            $("#product-price").hide();
+                            $("#wholesale").hide();
+                            $("#pd_img").hide();
+                            $('.product-content').html('');
                             $('#number').val('1');
                             form.render('select');
-                            $(data.elem).find("option").eq(0).attr("selected",false);
+							$(data.elem).find("option").eq(0).attr("selected",false);
                         }
                         ,cancel: function(){
-                            $(data.elem).find("option").eq(0).val("0");
                             $(data.elem).find("option").eq(0).attr("selected",true);
-                            $('#price').val('');
-                            $('#qty').val('');
-                            $('#prodcut_description').html('');
-                            $("#addons").remove();
+                            $('.product-price').hide();
+                            $('.product-price-cost-price').hide();
+                            $('#pd_name').html('商品选购');
+                            $('#pd_instock').hide();
+                            $("#pd_recharge").hide();
+                            $("#pd_auto").hide();
+                            $("#product-price").hide();
+                            $("#wholesale").hide();
+                            $("#pd_img").hide();
+                            $('.product-content').html('');
                             $('#number').val('1');
                             form.render('select');
-                            $(data.elem).find("option").eq(0).attr("selected",false);
+							$(data.elem).find("option").eq(0).attr("selected",false);
                         }
                     });
                 }else{
@@ -503,8 +522,7 @@
                                 $("#product-price").show();
                                 $("#pd_img").attr('src',product.pd_picture);
                                 $("#pd_img").show();
-                                $('.product-content').html(product.pd_info);
-                                $("#addons").remove();
+                                $('.product-content').html(product.pd_info);                                
                                 if(product.pd_type==2){
                                     $("#pd_recharge").show()
                                     $("#pd_auto").hide()
@@ -557,10 +575,8 @@
                                 $(data.elem).find("option").eq(0).val("0");
                                 $(data.elem).find("option").eq(0).attr("selected",true);
                                 $('#price').val('');
-                                $('#qty').val('');
                                 $('#number').val('1');
-                                $('#prodcut_description').html('');
-                                $("#addons").remove();
+                                $('#prodcut_description').html('');                                
                                 form.render('select');
                                 $(data.elem).find("option").eq(0).attr("selected",false);
                             }
