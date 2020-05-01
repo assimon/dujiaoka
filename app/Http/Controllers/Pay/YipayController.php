@@ -96,11 +96,11 @@ class YipayController extends PayController
         	$payInfo = Pays::where('id', $cacheord['pay_way'])->first()->toArray();
     		$data=json_decode(file_get_contents(self::PAY_URI."api.php?act=order&pid=".$payInfo['merchant_id']."&key=".$payInfo['merchant_pem']."&out_trade_no=".$oid),true);
     	try{
-    	if($data['status']=1&&$data['trade_no']){
+    	if($data['status']==1&&$data['trade_no']){
     		$this->successOrder($oid, $data['trade_no'], $data['money']);
                 return redirect(site_url().'searchOrderById?order_id='.$oid);
     	}
-    		
+
     	}catch(\Exception $e) {
            return $this->error('易支付异常：' . $e->getMessage());
         }
