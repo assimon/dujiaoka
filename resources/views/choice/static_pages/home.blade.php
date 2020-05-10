@@ -45,7 +45,7 @@
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">商品分类</label>
                                     <div class="layui-input-block">
-                                        <select name="tid" id="tid"  lay-filter="tid" required lay-verify='required'>
+                                        <select name="tid" id="tid"  lay-filter="tid" required lay-verify='required' lay-search>
                                             <option value=''>请选择分类</option>
 
                                         </select>
@@ -54,7 +54,7 @@
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">商品</label>
                                     <div class="layui-input-block">
-                                        <select  name="pid" id="productlist" lay-filter="productlist" required lay-verify='required'>
+                                        <select  name="pid" id="productlist" lay-filter="productlist" required lay-verify='required' lay-search>
 
                                         </select>
                                     </div>
@@ -290,7 +290,7 @@
                                 layer.msg("请输入密码",{icon:2,time:5000});
                             }
                         }
-                        ,btn2: function(index, layero){ 
+                        ,btn2: function(index, layero){
 							$(data.elem).find("option").eq(0).attr("selected",true);
                             $('#productlist').html("");
 							$('.product-price').hide();
@@ -354,12 +354,12 @@
                                 $("#product-price").hide();
                                 $("#wholesale").hide();
                                 $("#pd_img").hide();
-                                $('.product-content').html('');                              
+                                $('.product-content').html('');
                                 form.render('select');
                             } else {
-                                layer.msg(res.msg,{icon:2,time:5000});                                
+                                layer.msg(res.msg,{icon:2,time:5000});
                                 $(data.elem).find("option").eq(0).attr("selected",true);
-                                $('#productlist').html("");                               
+                                $('#productlist').html("");
                             }
                         },
 
@@ -408,7 +408,7 @@
                                             $("#product-price").show();
                                             $("#pd_img").attr('src',product.pd_picture);
                                             $("#pd_img").show();
-                                            $('.product-content').html(product.pd_info);                                            
+                                            $('.product-content').html(product.pd_info);
                                             if(product.pd_type==2){
                                                 $("#pd_recharge").show()
                                                 $("#pd_auto").hide()
@@ -522,7 +522,7 @@
                                 $("#product-price").show();
                                 $("#pd_img").attr('src',product.pd_picture);
                                 $("#pd_img").show();
-                                $('.product-content').html(product.pd_info);                                
+                                $('.product-content').html(product.pd_info);
                                 if(product.pd_type==2){
                                     $("#pd_recharge").show()
                                     $("#pd_auto").hide()
@@ -576,7 +576,7 @@
                                 $(data.elem).find("option").eq(0).attr("selected",true);
                                 $('#price').val('');
                                 $('#number').val('1');
-                                $('#prodcut_description').html('');                                
+                                $('#prodcut_description').html('');
                                 form.render('select');
                                 $(data.elem).find("option").eq(0).attr("selected",false);
                             }
