@@ -28,7 +28,7 @@ class ApiController extends Controller
     public function typelist()
     {
         header('Content-type: application/json');
-        $list = Classifys::where('c_status', 1)->get()->toArray();
+        $list = Classifys::where('c_status', 1)->orderBy('ord','desc')->get()->toArray();
         foreach ($list as $key => $value) {
             $typelist[$key] = [
                 'id' => $value['id'],
@@ -57,7 +57,7 @@ class ApiController extends Controller
         header('Content-type: application/json');
         $data = $request->all();
         $tid = $data['tid'];
-        $passwd = Classifys::where('id', $tid)->get()[0]['passwd'];
+        $passwd = Classifys::where('id', $tid)->orderBy('ord','desc')->get()[0]['passwd'];
         if ($passwd) {
             if (isset($data['password'])) {
                 if ($passwd != $data['password']) {
@@ -517,4 +517,3 @@ class ApiController extends Controller
         die(json_encode($arr));
     }
 }
-
