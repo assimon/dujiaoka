@@ -48,14 +48,13 @@ class Orders extends Model
     public static function wholesalePrice($cacheOrder = [], $product = [], $data = [])
     {
         $wholesaleAll = explode(PHP_EOL, $product['wholesale_price']);
+        $actual_price = $cacheOrder['actual_price'] * $data['order_number'];
         foreach ($wholesaleAll as $wholesale) {
             $wholesaleInfo = explode('=', delete_html($wholesale));
             $wnum = $wholesaleInfo[0];
             $wmoney = $wholesaleInfo[1];
             if ($data['order_number'] >= $wnum) {
                 $actual_price = $wmoney * $data['order_number'];
-            } else {
-                $actual_price = $cacheOrder['actual_price'] * $data['order_number'];
             }
         }
         return $actual_price;
