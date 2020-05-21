@@ -19,7 +19,7 @@ demo地址：[http://dujiaoka.com](http://dujiaoka.com)
 核心贡献者：
 - [iLay1678](https://github.com/iLay1678)
 
-鸣谢以上开源项目，排名不分先后.
+鸣谢以上开源项目及贡献者，排名不分先后.
 
 ## 界面尝鲜
 
