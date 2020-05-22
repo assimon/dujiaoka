@@ -45,7 +45,7 @@ class ProductsController extends AdminController
         foreach ($classifys as $classify) {
             $dataArr[$classify['id']] = $classify['name'];
         }
-        $grid->filter(function($filter) use ($dataArr){
+        $grid->filter(function ($filter) use ($dataArr) {
             // 去掉默认的id过滤器
             $filter->disableIdFilter();
             $filter->equal('id', __('Id'));
@@ -60,7 +60,6 @@ class ProductsController extends AdminController
         });
         return $grid;
     }
-
 
 
     /**
@@ -78,23 +77,23 @@ class ProductsController extends AdminController
             $dataArr[$classify['id']] = $classify['name'];
         }
         $form->select('pd_class', __('Pd class'))->options($dataArr)->required();
-        $form->currency('cost_price', __('Cost price'))->rules('required|numeric', ['required' => '不能为空','numeric' => '请正确填写金额，整数或小数']);
-        $form->currency('actual_price', __('Actual price'))->rules('required|numeric', ['required' => '不能为空','numeric' => '请正确填写金额,整数或小数']);
-        $form->cropper('pd_picture', __('Pd picture'))->cRatio(500,500)->uniqueName()->required()->help('建议与其他商品图片尺寸一致，保持风格，以免图片流错乱');
+        $form->currency('cost_price', __('Cost price'))->rules('required|numeric', ['required' => '不能为空', 'numeric' => '请正确填写金额，整数或小数']);
+        $form->currency('actual_price', __('Actual price'))->rules('required|numeric', ['required' => '不能为空', 'numeric' => '请正确填写金额,整数或小数']);
+        $form->cropper('pd_picture', __('Pd picture'))->cRatio(500, 500)->uniqueName()->help('建议与其他商品图片尺寸一致，保持风格，以免图片流错乱');
         $form->textarea('wholesale_price', __('Wholesale price'))->help('例如5=3 代表5件或以上每件3元，一行一个');
         $form->number('in_stock', __('In stock'))->help('(卡密商品请不要填写库存，服务器自行识别)')->default(0);
         $form->number('sales_volume', __('Sales volume'))->default(0);
         $form->number('ord', __('Ord'))->default(1);
         $form->UEditor('buy_prompt', __('Buy prompt'));
         $form->UEditor('pd_info', __('Pd info'));
-        $form->radio('pd_type', __('Pd type'))->options([1=> '自动发卡', 2=> '代充'])
-            ->rules('required',['请选择类型'])
+        $form->radio('pd_type', __('Pd type'))->options([1 => '自动发卡', 2 => '代充'])
+            ->rules('required', ['请选择类型'])
             ->default(1);
 
         $form->textarea('other_ipu', __('Other ipu'))->help('(仅针对代充商品有效，一行一个) 例如：qqpwd=QQ密码=true 代表多一个qqpwd输入框，需要输入的内容是QQ密码，true为必填 false为可空');
         $form->radio('pd_status', __('Pd status'))
-            ->options([1=> '上架', 2=> '下架'])
-            ->rules('required',['请选择状态'])
+            ->options([1 => '上架', 2 => '下架'])
+            ->rules('required', ['请选择状态'])
             ->default(1);
         $form->text('passwd', '商品密码');
         $form->footer(function ($footer) {
@@ -106,6 +105,14 @@ class ProductsController extends AdminController
             $tools->disableView();
         });
 
+        //保存前回调
+        $form->saving(function (Form $form) {
+            //如果没用图片，则将图片设置为默认图片
+            if ($form->model()->pd_picture == null) {
+                $form->pd_picture = 'images/noimg.png';
+            }
+
+        });
         return $form;
     }
 }

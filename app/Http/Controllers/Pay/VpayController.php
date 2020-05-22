@@ -29,7 +29,7 @@ class VpayController extends PayController
             "payId" => date('YmdHis') . rand(1, 65535),//平台ID号
             "price" => (float)$this->orderInfo['actual_price'],//原价
             'param' => $this->orderInfo['order_id'],
-            'returnUrl' => site_url(). $this->payInfo['pay_handleroute'] . '/return_url?order_id='.$this->orderInfo['order_id'],
+            'returnUrl' => site_url() . $this->payInfo['pay_handleroute'] . '/return_url?order_id=' . $this->orderInfo['order_id'],
             'notifyUrl' => site_url() . $this->payInfo['pay_handleroute'] . '/notify_url',
             "isHtml" => 1,
         );
@@ -77,9 +77,11 @@ class VpayController extends PayController
         }
 
     }
-    public function returnUrl(Request $request){
+
+    public function returnUrl(Request $request)
+    {
         $oid = $request->get('order_id');
         sleep(1);
-        return redirect(site_url().'searchOrderById?order_id='.$oid);
+        return redirect(site_url() . 'searchOrderById?order_id=' . $oid);
     }
 }

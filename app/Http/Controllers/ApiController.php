@@ -28,7 +28,7 @@ class ApiController extends Controller
     public function typelist()
     {
         header('Content-type: application/json');
-        $list = Classifys::where('c_status', 1)->orderBy('ord','desc')->get()->toArray();
+        $list = Classifys::where('c_status', 1)->orderBy('ord', 'desc')->get()->toArray();
         foreach ($list as $key => $value) {
             $typelist[$key] = [
                 'id' => $value['id'],
@@ -57,16 +57,16 @@ class ApiController extends Controller
         header('Content-type: application/json');
         $data = $request->all();
         $tid = $data['tid'];
-        $passwd = Classifys::where('id', $tid)->orderBy('ord','desc')->get()[0]['passwd'];
+        $passwd = Classifys::where('id', $tid)->orderBy('ord', 'desc')->get()[0]['passwd'];
         if ($passwd) {
             if (isset($data['password'])) {
                 if ($passwd != $data['password']) {
-                    $msg="分类密码错误";
-                    return ['code'=>-1,'msg'=>$msg];
+                    $msg = "分类密码错误";
+                    return ['code' => -1, 'msg' => $msg];
                 }
             } else {
-                $msg="分类密码不能为空";
-                return ['code'=>-1,'msg'=>$msg];
+                $msg = "分类密码不能为空";
+                return ['code' => -1, 'msg' => $msg];
             }
         }
         $products = Classifys::with(['products' => function ($query) {
@@ -106,18 +106,18 @@ class ApiController extends Controller
         if ($passwd) {
             if (isset($data['password'])) {
                 if ($passwd != $data['password']) {
-                    $msg="商品密码错误";
-                    return ['code'=>-1,'msg'=>$msg];
+                    $msg = "商品密码错误";
+                    return ['code' => -1, 'msg' => $msg];
                 }
             } else {
-                $msg="商品密码不能为空";
-                return ['code'=>-1,'msg'=>$msg];
+                $msg = "商品密码不能为空";
+                return ['code' => -1, 'msg' => $msg];
             }
         }
         $product = $pid->toArray();
         if ($product['pd_status'] != 1) {
-            $msg="商品不存在";
-            return ['code'=>-1,'msg'=>$msg];
+            $msg = "商品不存在";
+            return ['code' => -1, 'msg' => $msg];
         }
         // 格式化批发配置以及输入框配置
         if ($product['wholesale_price']) {
@@ -202,13 +202,13 @@ class ApiController extends Controller
         header('Content-type: application/json');
         $orderId = \request()->input('order_id') ? \request()->input('order_id') : $oid;
         if ($orderId == '') {
-            $msg="订单号码不能为空";
-            return ['code'=>-1,'msg'=>$msg];
+            $msg = "订单号码不能为空";
+            return ['code' => -1, 'msg' => $msg];
         }
         $orders = Orders::where('order_id', $orderId)->get()->toArray();
         if (!$orders) {
-            $msg="未找到相关订单";
-            return ['code'=>-1,'msg'=>$msg];
+            $msg = "未找到相关订单";
+            return ['code' => -1, 'msg' => $msg];
         }
         foreach ($orders as $order) {
 
@@ -271,18 +271,18 @@ class ApiController extends Controller
     {
         header('Content-type: application/json');
         $data = $request->only(['account', 'search_pwd']);
-        if (empty($data['account']) || empty($data['search_pwd'])){
-            $msg="必填项不能为空";
-            return ['code'=>-1,'msg'=>$msg];
+        if (empty($data['account']) || empty($data['search_pwd'])) {
+            $msg = "必填项不能为空";
+            return ['code' => -1, 'msg' => $msg];
         }
         $orders = Orders::where(['account' => $data['account'], 'search_pwd' => $data['search_pwd']])
             ->orderBy('created_at', 'desc')
             ->take(5)
             ->get()
             ->toArray();
-        if (empty($orders)){
-            $msg="未找到相关订单";
-            return ['code'=>-1,'msg'=>$msg];
+        if (empty($orders)) {
+            $msg = "未找到相关订单";
+            return ['code' => -1, 'msg' => $msg];
         }
         foreach ($orders as $order) {
 
@@ -345,9 +345,9 @@ class ApiController extends Controller
     {
         header('Content-type: application/json');
         $cookies = Cookie::get('orders');
-        if (empty($cookies)){
-            $msg="未找到相关订单";
-            return ['code'=>-1,'msg'=>$msg];
+        if (empty($cookies)) {
+            $msg = "未找到相关订单";
+            return ['code' => -1, 'msg' => $msg];
         }
         $orderIds = json_decode($cookies, true);
         $orders = Orders::whereIn('order_id', $orderIds)
@@ -355,9 +355,9 @@ class ApiController extends Controller
             ->take(5)
             ->get()
             ->toArray();
-        if (empty($orders)){
-            $msg="未找到相关订单";
-            return ['code'=>-1,'msg'=>$msg];
+        if (empty($orders)) {
+            $msg = "未找到相关订单";
+            return ['code' => -1, 'msg' => $msg];
         }
         foreach ($orders as $order) {
 
@@ -413,6 +413,7 @@ class ApiController extends Controller
         return $arr;
 
     }
+
     /**
      * 提交订单
      * @param Request $request
@@ -422,45 +423,45 @@ class ApiController extends Controller
     {
         header('Content-type: application/json');
         $data = $request->all();
-        if(empty($data['order_number'])){
-            $data['order_number']=0;
+        if (empty($data['order_number'])) {
+            $data['order_number'] = 0;
         }
-        if ($data['order_number'] <= 0){
-            $msg="购买数量不能为0";
-            return ['code'=>-1,'msg'=>$msg];
+        if ($data['order_number'] <= 0) {
+            $msg = "购买数量不能为0";
+            return ['code' => -1, 'msg' => $msg];
         }
-        if(!is_numeric($data['order_number']) || strpos($data['order_number'],".") !== false){
-            $msg="请填正确购买数量";
-            return ['code'=>-1,'msg'=>$msg];
+        if (!is_numeric($data['order_number']) || strpos($data['order_number'], ".") !== false) {
+            $msg = "请填正确购买数量";
+            return ['code' => -1, 'msg' => $msg];
         }
-        if (empty($data['search_pwd'])){
-            $msg="查询密码不能为空";
-            return ['code'=>-1,'msg'=>$msg];
+        if (empty($data['search_pwd'])) {
+            $msg = "查询密码不能为空";
+            return ['code' => -1, 'msg' => $msg];
         }
-        if (empty($data['verify_img'])){
-            $msg="验证码不能为空";
-            return ['code'=>-1,'msg'=>$msg];
+        if (empty($data['verify_img'])) {
+            $msg = "验证码不能为空";
+            return ['code' => -1, 'msg' => $msg];
         }
-        if (!captcha_check($data['verify_img'])){
-            $msg="验证码错误";
-            return ['code'=>-1,'msg'=>$msg];
+        if (!captcha_check($data['verify_img'])) {
+            $msg = "验证码错误";
+            return ['code' => -1, 'msg' => $msg];
         }
         $product = Products::find($data['pid']);
-        if (empty($product)){
-            $msg="商品不存在或已下架";
-            return ['code'=>-1,'msg'=>$msg];
+        if (empty($product)) {
+            $msg = "商品不存在或已下架";
+            return ['code' => -1, 'msg' => $msg];
         }
-        if ($product['in_stock'] == 0 || $data['order_number'] > $product['in_stock']){
-            $msg="库存不足";
-            return ['code'=>-1,'msg'=>$msg];
+        if ($product['in_stock'] == 0 || $data['order_number'] > $product['in_stock']) {
+            $msg = "库存不足";
+            return ['code' => -1, 'msg' => $msg];
         }
-        if (!isset($data['payway'])){
-            $msg="支付方式不能为空";
-            return ['code'=>-1,'msg'=>$msg];
+        if (!isset($data['payway'])) {
+            $msg = "支付方式不能为空";
+            return ['code' => -1, 'msg' => $msg];
         }
-        if (!filter_var($data['account'],FILTER_VALIDATE_EMAIL) || empty($data['account'])){
-            $msg="请输入正确邮箱格式";
-            return ['code'=>-1,'msg'=>$msg];
+        if (!filter_var($data['account'], FILTER_VALIDATE_EMAIL) || empty($data['account'])) {
+            $msg = "请输入正确邮箱格式";
+            return ['code' => -1, 'msg' => $msg];
         }
         // 订单缓存
         $cacheOrder = [
@@ -490,22 +491,22 @@ class ApiController extends Controller
         if (!empty($data['coupon_code'])) {
             // 先查出有没有优惠券
             $coupon = Coupons::where('card', '=', $data['coupon_code'])->where('product_id', '=', $data['pid'])->first();
-            if (empty($coupon)){
-                $msg="优惠券码不存在！请检查";
-                return ['code'=>-1,'msg'=>$msg];
+            if (empty($coupon)) {
+                $msg = "优惠券码不存在！请检查";
+                return ['code' => -1, 'msg' => $msg];
             }
             // 判断类型  如果是一次性的话  先判断使用没有
             if ($coupon['c_type'] == 1 && $coupon['is_status'] == 2) {
-                $msg="该优惠券已被使用，请勿重复使用";
-                return ['code'=>-1,'msg'=>$msg];
+                $msg = "该优惠券已被使用，请勿重复使用";
+                return ['code' => -1, 'msg' => $msg];
             }
             if ($coupon['c_type'] == 2 && $coupon['ret'] <= 0) {
-                $msg="该优惠券已无剩余次数,请更换";
-                return ['code'=>-1,'msg'=>$msg];
+                $msg = "该优惠券已无剩余次数,请更换";
+                return ['code' => -1, 'msg' => $msg];
             }
             if ($cacheOrder['actual_price'] <= $coupon['discount']) {
-                $msg="优惠券金额已经大于或等于实际支付金额，无法使用该优惠券";
-                return ['code'=>-1,'msg'=>$msg];
+                $msg = "优惠券金额已经大于或等于实际支付金额，无法使用该优惠券";
+                return ['code' => -1, 'msg' => $msg];
             }
             $cacheOrder['coupon_type'] = $coupon['c_type'];
             $cacheOrder['coupon_id'] = $coupon['id'];
@@ -521,11 +522,11 @@ class ApiController extends Controller
                 foreach ($otherIpuAll as $value) {
                     $otherIpu = explode('=', delete_html($value));
                     if ($otherIpu[2] == 'req' && empty($data[$otherIpu[0]])) {
-                        $msg=$otherIpu[1].'不能为空，请仔细填写';
-                        return ['code'=>-1,'msg'=>$msg];
+                        $msg = $otherIpu[1] . '不能为空，请仔细填写';
+                        return ['code' => -1, 'msg' => $msg];
 
                     }
-                    $cacheOrder['other_ipu'] .= $otherIpu[1].':'.$data[$otherIpu[0]].PHP_EOL;
+                    $cacheOrder['other_ipu'] .= $otherIpu[1] . ':' . $data[$otherIpu[0]] . PHP_EOL;
                 }
             }
         }
@@ -538,7 +539,7 @@ class ApiController extends Controller
         if ($data['coupon_code']) {
             // 将优惠券设置为已经使用 且次数-1
             $inCoupon = Coupons::where('card', '=', $data['coupon_code'])->update(['is_status' => 2]);
-            $inCouponNum =  Coupons::where('card', '=', $data['coupon_code'])->decrement('ret', 1);
+            $inCouponNum = Coupons::where('card', '=', $data['coupon_code'])->decrement('ret', 1);
         } else {
             $inCoupon = true;
             $inCouponNum = true;
@@ -546,8 +547,8 @@ class ApiController extends Controller
         if (!$deStock || !$inCoupon || !$inCouponNum) {
             Redis::hdel('PENDING_ORDERS_LIST', $cacheOrder['order_id']);
             DB::rollBack();
-            $msg="订单提交失败，过会再试吧~";
-            return ['code'=>-1,'msg'=>$msg];
+            $msg = "订单提交失败，过会再试吧~";
+            return ['code' => -1, 'msg' => $msg];
         }
         DB::commit();
         // 设置订单cookie
@@ -560,8 +561,8 @@ class ApiController extends Controller
             Cookie::queue('orders', json_encode($cookies));
         }
         // 将过期释放的订单载入队列 x分钟后释放
-        ReleaseOrder::dispatch($cacheOrder['order_id'],  $data['order_number'], $data['pid'])->delay(Carbon::now()->addMinutes(config('app.order_expire_date')));
-        $bill['actual_price']=$cacheOrder['actual_price'];
+        ReleaseOrder::dispatch($cacheOrder['order_id'], $data['order_number'], $data['pid'])->delay(Carbon::now()->addMinutes(config('app.order_expire_date')));
+        $bill['actual_price'] = $cacheOrder['actual_price'];
         $bill['pay_way'] = \App\Models\Pays::find($cacheOrder['pay_way'])->pay_name;
         $bill['pay_url'] = url(\App\Models\Pays::find($cacheOrder['pay_way'])->pay_handleroute, ['payway' => $cacheOrder['pay_way'], 'oid' => $cacheOrder['order_id']]);
         $arr = [

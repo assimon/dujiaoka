@@ -10,6 +10,7 @@ use Encore\Admin\Grid;
 use Encore\Admin\Show;
 use App\Jobs\SendMails;
 use App\Models\Emailtpls;
+
 class OrdersController extends AdminController
 {
     /**
@@ -17,7 +18,7 @@ class OrdersController extends AdminController
      *
      * @var string
      */
-     
+
     protected $title = '订单';
 
     /**
@@ -39,7 +40,7 @@ class OrdersController extends AdminController
         $grid->column('ord_price', __('Ord price'))->label('success');
         $grid->column('account', __('Account'))->copyable();
         $grid->column('pay.pay_name', __('Pay way'));
-        $grid->column('ord_status', __('Ord status'))->editable('select', [1 => '待处理', 2 => '已处理', 3 => '处理成功', 4 => '处理失败']);
+        $grid->column('ord_status', __('Ord status'))->editable('select', [1 => '待处理', 2 => '已处理', 3 => '已完成', 4 => '处理失败']);
         $grid->column('created_at', __('Created at'));
         $grid->column('updated_at', __('Updated at'));
         $grid->disableCreateButton();
@@ -47,7 +48,7 @@ class OrdersController extends AdminController
             $actions->disableView();
         });
         $grid->disableCreateButton();
-        $grid->filter(function($filter) {
+        $grid->filter(function ($filter) {
             // 范围过滤器，调用模型的`onlyTrashed`方法，查询出被软删除的数据。
             $filter->scope('trashed', '回收站')->onlyTrashed();
             // 去掉默认的id过滤器
@@ -56,8 +57,7 @@ class OrdersController extends AdminController
             $filter->equal('account', '充值账号');
             $pdlisy = Products::get(['id', 'pd_name'])->toArray();
             $commod = [];
-            foreach ($pdlisy as $val)
-            {
+            foreach ($pdlisy as $val) {
                 $commod[$val['id']] = $val['pd_name'];
             }
             $filter->equal('product_id', '所属商品')->select($commod);
@@ -103,30 +103,30 @@ class OrdersController extends AdminController
             // 去掉`查看`按钮
             $tools->disableView();
         });
-        
-        //保存前回调
+
+        //保存后回调
         $form->saved(function (Form $form) {
-        	//订单处理完成，发送通知邮件
-			if($form->model()->ord_status==3){
-				$order['ord_title'] = $form->model()->ord_title;
-				$order['order_id'] = $form->model()->order_id;
-				$order['buy_amount'] = $form->model()->buy_amount;
-				$order['ord_price'] = $form->model()->ord_price;
-		    	$order['created_at'] = $form->model()->updated_at;
-		        $order['product_name'] = $form->model()->product['pd_name'];
-		        $order['webname'] = config('webset.text_logo');
-		        $order['weburl'] = getenv('APP_URL');
-		        // 这里格式化一下把换行改成<br/>方便邮件
-		        $order['ord_info'] = str_replace(PHP_EOL, '<br/>', $form->model()->ord_info);
-	
-		        $mailtpl = Emailtpls::where('tpl_token', 'finish_send_user_email')->first()->toArray();
-		        $to = $form->model()->account;
-		        $mailtipsInfo = replace_mail_tpl($mailtpl, $order);
-		        if (!empty($to)) SendMails::dispatch($to, $mailtipsInfo['tpl_content'], $mailtipsInfo['tpl_name']);
-	    	}
-    	
-		});
-		
+            //订单处理完成，发送通知邮件
+            if ($form->model()->ord_status == 3) {
+                $order['ord_title'] = $form->model()->ord_title;
+                $order['order_id'] = $form->model()->order_id;
+                $order['buy_amount'] = $form->model()->buy_amount;
+                $order['ord_price'] = $form->model()->ord_price;
+                $order['created_at'] = $form->model()->updated_at;
+                $order['product_name'] = $form->model()->product['pd_name'];
+                $order['webname'] = config('webset.text_logo');
+                $order['weburl'] = getenv('APP_URL');
+                // 这里格式化一下把换行改成<br/>方便邮件
+                $order['ord_info'] = str_replace(PHP_EOL, '<br/>', $form->model()->ord_info);
+
+                $mailtpl = Emailtpls::where('tpl_token', 'finish_send_user_email')->first()->toArray();
+                $to = $form->model()->account;
+                $mailtipsInfo = replace_mail_tpl($mailtpl, $order);
+                if (!empty($to)) SendMails::dispatch($to, $mailtipsInfo['tpl_content'], $mailtipsInfo['tpl_name']);
+            }
+
+        });
+
         return $form;
     }
 }
