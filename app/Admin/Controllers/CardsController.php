@@ -109,7 +109,6 @@ class CardsController extends AdminController
                 Products::where('id', $this->product_id)->decrement('in_stock', 1);
                 Products::where('id', $product_id)->increment('in_stock', 1);
             }
-
         });
         return $form;
     }
