@@ -20,7 +20,7 @@
     <div class="layui-row">
         <div class="layui-col-md8 layui-col-md-offset2 layui-col-sm12">
             <div class="layui-row layui-col-space20">
-                <div class="layui-col-md7  layui-col-xs12" >
+                <div class="layui-col-md7  layui-col-xs12">
                     <div class="layui-card cardcon">
                         <div class="layui-card-header">
                             <span style="font-size: 16px;" id='pd_name'>商品选购</span>
@@ -38,14 +38,16 @@
                                 {{ csrf_field() }}
 
                                 <div class="product-info" id='wholesale' style='display:none'>
-                                    <span style="color:#F40;font-size: 18px;font-weight: 400"><i class="layui-icon layui-icon-praise"></i>批发优惠：</span>
+                                    <span style="color:#F40;font-size: 18px;font-weight: 400"><i
+                                            class="layui-icon layui-icon-praise"></i>批发优惠：</span>
                                     <div id='wholesale_price'></div>
                                 </div>
 
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">商品分类</label>
                                     <div class="layui-input-block">
-                                        <select name="tid" id="tid"  lay-filter="tid" required lay-verify='required' lay-search>
+                                        <select name="tid" id="tid" lay-filter="tid" required lay-verify='required'
+                                                lay-search>
                                             <option value=''>请选择分类</option>
 
                                         </select>
@@ -54,7 +56,8 @@
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">商品</label>
                                     <div class="layui-input-block">
-                                        <select  name="pid" id="productlist" lay-filter="productlist" required lay-verify='required' lay-search>
+                                        <select name="pid" id="productlist" lay-filter="productlist" required
+                                                lay-verify='required' lay-search>
 
                                         </select>
                                     </div>
@@ -62,7 +65,8 @@
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">邮箱</label>
                                     <div class="layui-input-block">
-                                        <input type="email" name="account" value=""  required lay-verify="required|email" placeholder="接收卡密或通知" autocomplete="off" class="layui-input">
+                                        <input type="email" name="account" value="" required lay-verify="required|email"
+                                               placeholder="接收卡密或通知" autocomplete="off" class="layui-input">
                                     </div>
                                 </div>
                                 <div class="other-item">
@@ -70,28 +74,29 @@
                                 </div>
 
 
-
-
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">查询密码</label>
                                     <div class="layui-input-block">
-                                        <input type="password" name="search_pwd" value=""  required lay-verify="required" placeholder="为防止撞库攻击，请设置一个查询订单的密码" autocomplete="off" class="layui-input">
+                                        <input type="password" name="search_pwd" value="" required lay-verify="required"
+                                               placeholder="为防止撞库攻击，请设置一个查询订单的密码" autocomplete="off"
+                                               class="layui-input">
                                     </div>
                                 </div>
-
 
 
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">优惠码</label>
                                     <div class="layui-input-block">
-                                        <input type="text" name="coupon_code"   placeholder="您有优惠码吗？" value="" autocomplete="off" class="layui-input">
+                                        <input type="text" name="coupon_code" placeholder="您有优惠码吗？" value=""
+                                               autocomplete="off" class="layui-input">
                                     </div>
                                 </div>
 
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">支付方式</label>
                                     <div class="layui-input-block">
-                                        <select lay-verify="payway" id="paywaylist" name="payway" required lay-verify='required'>
+                                        <select lay-verify="payway" id="paywaylist" name="payway" required
+                                                lay-verify='required'>
 
                                         </select>
                                     </div>
@@ -100,7 +105,9 @@
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">数量</label>
                                     <div class="layui-input-inline">
-                                        <input type="number" name="order_number" required  lay-verify="required|order_number" placeholder="" value="1" autocomplete="off" class="layui-input">
+                                        <input type="number" name="order_number" required
+                                               lay-verify="required|order_number" placeholder="" value="1"
+                                               autocomplete="off" class="layui-input">
                                     </div>
 
                                 </div>
@@ -108,22 +115,25 @@
                                     <label class="layui-form-label">验证码</label>
                                     <div>
                                         <div style="float:left;width:20%;">
-                                            <input type="text" name="verify_img" value=""  required lay-verify="required" placeholder="验证码" autocomplete="off" class="layui-input">
+                                            <input type="text" name="verify_img" value="" required lay-verify="required"
+                                                   placeholder="验证码" autocomplete="off" class="layui-input">
                                         </div>
                                         <div class="buy-captcha layui-word-aux">
-                                            <img class="captcha-img" height="36"  src="{{ captcha_src('buy') }}" onclick="refresh()">
+                                            <img class="captcha-img" height="36" src="{{ captcha_src('buy') }}"
+                                                 onclick="refresh()">
                                         </div>
                                     </div>
                                     <script>
-                                        function refresh(){
-                                            $('img[class="captcha-img"]').attr('src','{{ captcha_src('buy') }}'+Math.random());
+                                        function refresh() {
+                                            $('img[class="captcha-img"]').attr('src', '{{ captcha_src('buy') }}' + Math.random());
                                         }
                                     </script>
                                 </div>
 
                                 <div class="layui-form-item">
                                     <div class="layui-input-block">
-                                        <button class="layui-btn" id='buy' lay-submit lay-filter="postOrder">立即下单</button>
+                                        <button class="layui-btn" id='buy' lay-submit lay-filter="postOrder">立即下单
+                                        </button>
                                         <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                                     </div>
                                 </div>
@@ -131,9 +141,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="layui-col-md5  layui-col-xs12" >
+                <div class="layui-col-md5  layui-col-xs12">
                     <div class="layui-card cardcon layui-hide-xs" id="notice">
-                        <div class="layui-card-header">店铺公告：<i class="layui-icon layui-hide-xs" id="qrcode">&#xe678;</i></div>
+                        <div class="layui-card-header">店铺公告：<i class="layui-icon layui-hide-xs" id="qrcode">&#xe678;</i>
+                        </div>
                         <div class="layui-card-body">
                             {!! config('webset.notice') !!}
                         </div>
@@ -160,7 +171,7 @@
     <script>
         var instock = 0
         //一般直接写在一个js文件中
-        layui.use(['jquery', 'form','layer','laytpl','element'], function() {
+        layui.use(['jquery', 'form', 'layer', 'laytpl', 'element'], function () {
             var $ = layui.jquery;
             var layer = layui.layer;
             var laytpl = layui.laytpl;
@@ -168,7 +179,7 @@
             var form = layui.form;
             var device = layui.device();
 
-            $('#qrcode').on('click', function(){
+            $('#qrcode').on('click', function () {
                 layer.tips(`<img src="data:image/png;base64,{!! base64_encode(QrCode::format('png')->margin(0)->size(200)->generate(Request::url())) !!}" width="100%" height="100%">`, '#qrcode', {
                     tips: [3, '#ffffff'],
                     closeBtn: 1,
@@ -186,16 +197,17 @@
                         var html = "";
                         var list = res.data.payways;
                         for (var i = 0, j = list.length; i < j; i++) {
-                            html += '<option value='+list[i].value+'>'+list[i].name+'</option>';
+                            html += '<option value=' + list[i].value + '>' + list[i].name + '</option>';
                         }
                         $('#paywaylist').html("<option value=''>请选择支付方式</option>" + html);
                         form.render('select');
 
-                    }else{
-                        layer.msg(res.msg,{icon:2,time:5000});
-                    }},
-                error:function(){
-                    layer.msg('获取支付方式失败',{icon:2,time:5000});
+                    } else {
+                        layer.msg(res.msg, {icon: 2, time: 5000});
+                    }
+                },
+                error: function () {
+                    layer.msg('获取支付方式失败', {icon: 2, time: 5000});
                 }
 
 
@@ -212,48 +224,53 @@
                         for (var i = 0, j = list.length; i < j; i++) {
                             var mypassword = list[i].password;
                             var type = 0;
-                            if(mypassword.length>0){
+                            if (mypassword.length > 0) {
                                 type = 1;
                             }
-                            html += '<option value='+list[i].id+' data-type="'+type+'">'+list[i].name+'</option>';
+                            html += '<option value=' + list[i].id + ' data-type="' + type + '">' + list[i].name + '</option>';
                         }
                         $('#tid').html("<option value=''>请选择分类</option>" + html);
                         form.render('select');
 
-                    }else{
-                        layer.msg(res.msg,{icon:2,time:5000});
-                    }},
-                error:function(){
-                    layer.msg('获取商品失败',{icon:2,time:5000});
+                    } else {
+                        layer.msg(res.msg, {icon: 2, time: 5000});
+                    }
+                },
+                error: function () {
+                    layer.msg('获取商品失败', {icon: 2, time: 5000});
                 }
 
 
             })
-            form.on('select(tid)', function(data){
+            form.on('select(tid)', function (data) {
                 if (data.value == 0) return;
                 var ispassword = $(data.elem).find('option:selected').data('type');
-                if(ispassword>0){
+                if (ispassword > 0) {
                     var html = '<div style="padding: 50px; line-height: 22px; background-color: #393D49; color: #fff; font-weight: 300;"><div class="layui-input-inline"><input type="password" id="grouppassword" name="grouppassword" lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input"> </div></div>';
                     layer.open({
                         type: 1
-                        ,title: false //不显示标题栏
-                        ,closeBtn: true
-                        ,area: '300px;'
-                        ,shade: 0.8
-                        ,id: 'group_password' //设定一个id，防止重复弹出
-                        ,btn: ['提交','放弃']
-                        ,btnAlign: 'c'
-                        ,moveType: 1 //拖拽模式，0或者1
-                        ,content: html
-                        ,yes: function(layero){
+                        , title: false //不显示标题栏
+                        , closeBtn: true
+                        , area: '300px;'
+                        , shade: 0.8
+                        , id: 'group_password' //设定一个id，防止重复弹出
+                        , btn: ['提交', '放弃']
+                        , btnAlign: 'c'
+                        , moveType: 1 //拖拽模式，0或者1
+                        , content: html
+                        , yes: function (layero) {
                             var grouppassword = $("#grouppassword").val();
-                            if(grouppassword.length>0){
+                            if (grouppassword.length > 0) {
                                 //远程请求验证
                                 $.ajax({
                                     url: '{{ url("/api/productlist") }}',
                                     type: 'POST',
                                     dataType: 'json',
-                                    data: {'tid': data.value,'password':grouppassword,'_token':$("input[name='_token']").val()},
+                                    data: {
+                                        'tid': data.value,
+                                        'password': grouppassword,
+                                        '_token': $("input[name='_token']").val()
+                                    },
                                     beforeSend: function () {
                                     },
                                     success: function (res) {
@@ -263,10 +280,10 @@
                                             for (var i = 0, j = list.length; i < j; i++) {
                                                 var mypassword = list[i].password;
                                                 var type = 0;
-                                                if(mypassword.length>0){
+                                                if (mypassword.length > 0) {
                                                     type = 1;
                                                 }
-                                                html += '<option value='+list[i].id+' data-type="'+type+'">'+list[i].name+'</option>';
+                                                html += '<option value=' + list[i].id + ' data-type="' + type + '">' + list[i].name + '</option>';
                                             }
                                             $('#productlist').html("<option value=''>请选择商品</option>" + html);
                                             $('.product-price').hide();
@@ -282,54 +299,54 @@
                                             form.render('select');
                                             layer.closeAll();
                                         } else {
-                                            layer.msg(res.msg,{icon:2,time:5000});
+                                            layer.msg(res.msg, {icon: 2, time: 5000});
                                         }
                                     },
                                 });
-                            }else{
-                                layer.msg("请输入密码",{icon:2,time:5000});
+                            } else {
+                                layer.msg("请输入密码", {icon: 2, time: 5000});
                             }
                         }
-                        ,btn2: function(index, layero){
-							$(data.elem).find("option").eq(0).attr("selected",true);
+                        , btn2: function (index, layero) {
+                            $(data.elem).find("option").eq(0).attr("selected", true);
                             $('#productlist').html("");
-							$('.product-price').hide();
-							$('.product-price-cost-price').hide();
-							$('#pd_name').html('商品选购');
-							$('#pd_instock').hide();
-							$("#pd_recharge").hide();
-							$("#pd_auto").hide();
-							$("#product-price").hide();
-							$("#wholesale").hide();
-							$("#pd_img").hide();
-							$('.product-content').html('');
+                            $('.product-price').hide();
+                            $('.product-price-cost-price').hide();
+                            $('#pd_name').html('商品选购');
+                            $('#pd_instock').hide();
+                            $("#pd_recharge").hide();
+                            $("#pd_auto").hide();
+                            $("#product-price").hide();
+                            $("#wholesale").hide();
+                            $("#pd_img").hide();
+                            $('.product-content').html('');
                             form.render('select');
-							$(data.elem).find("option").eq(0).attr("selected",false);
+                            $(data.elem).find("option").eq(0).attr("selected", false);
                         }
-                        ,cancel: function(){
-                            $(data.elem).find("option").eq(0).attr("selected",true);
+                        , cancel: function () {
+                            $(data.elem).find("option").eq(0).attr("selected", true);
                             $('#productlist').html("");
-							$('.product-price').hide();
-							$('.product-price-cost-price').hide();
-							$('#pd_name').html('商品选购');
-							$('#pd_instock').hide();
-							$("#pd_recharge").hide();
-							$("#pd_auto").hide();
-							$("#product-price").hide();
-							$("#wholesale").hide();
-							$("#pd_img").hide();
-							$('.product-content').html('');
+                            $('.product-price').hide();
+                            $('.product-price-cost-price').hide();
+                            $('#pd_name').html('商品选购');
+                            $('#pd_instock').hide();
+                            $("#pd_recharge").hide();
+                            $("#pd_auto").hide();
+                            $("#product-price").hide();
+                            $("#wholesale").hide();
+                            $("#pd_img").hide();
+                            $('.product-content').html('');
                             form.render('select');
-                            $(data.elem).find("option").eq(0).attr("selected",false);
+                            $(data.elem).find("option").eq(0).attr("selected", false);
                         }
                     });
-                }else{
+                } else {
                     //远程请求验证
                     $.ajax({
                         url: '{{ url("/api/productlist") }}',
                         type: 'POST',
                         dataType: 'json',
-                        data: {'tid': data.value,'_token':$("input[name='_token']").val()},
+                        data: {'tid': data.value, '_token': $("input[name='_token']").val()},
                         beforeSend: function () {
                         },
                         success: function (res) {
@@ -339,10 +356,10 @@
                                 for (var i = 0, j = list.length; i < j; i++) {
                                     var mypassword = list[i].password;
                                     var type = 0;
-                                    if(mypassword.length>0){
+                                    if (mypassword.length > 0) {
                                         type = 1;
                                     }
-                                    html += '<option value='+list[i].id+' data-type="'+type+'">'+list[i].name+'</option>';
+                                    html += '<option value=' + list[i].id + ' data-type="' + type + '">' + list[i].name + '</option>';
                                 }
                                 $('#productlist').html("<option value=''>请选择商品</option>" + html);
                                 $('.product-price').hide();
@@ -357,8 +374,8 @@
                                 $('.product-content').html('');
                                 form.render('select');
                             } else {
-                                layer.msg(res.msg,{icon:2,time:5000});
-                                $(data.elem).find("option").eq(0).attr("selected",true);
+                                layer.msg(res.msg, {icon: 2, time: 5000});
+                                $(data.elem).find("option").eq(0).attr("selected", true);
                                 $('#productlist').html("");
                             }
                         },
@@ -366,89 +383,94 @@
                     });
                 }
             });
-            form.on('select(productlist)', function(data){
+            form.on('select(productlist)', function (data) {
                 if (data.value == 0) return;
                 var ispassword = $(data.elem).find('option:selected').data('type');
-                if(ispassword>0){
+                if (ispassword > 0) {
                     var html = '<div style="padding: 50px; line-height: 22px; background-color: #393D49; color: #fff; font-weight: 300;"><div class="layui-input-inline"><input type="password" id="productpassword" name="productpassword" lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input"> </div></div>';
                     layer.open({
                         type: 1
-                        ,title: false //不显示标题栏
-                        ,closeBtn: true
-                        ,area: '300px;'
-                        ,shade: 0.8
-                        ,id: 'product_password' //设定一个id，防止重复弹出
-                        ,btn: ['提交','放弃']
-                        ,btnAlign: 'c'
-                        ,moveType: 1 //拖拽模式，0或者1
-                        ,content: html
-                        ,yes: function(layero){
+                        , title: false //不显示标题栏
+                        , closeBtn: true
+                        , area: '300px;'
+                        , shade: 0.8
+                        , id: 'product_password' //设定一个id，防止重复弹出
+                        , btn: ['提交', '放弃']
+                        , btnAlign: 'c'
+                        , moveType: 1 //拖拽模式，0或者1
+                        , content: html
+                        , yes: function (layero) {
                             var productpassword = $("#productpassword").val();
-                            if(productpassword.length>0){
+                            if (productpassword.length > 0) {
                                 //远程请求验证
                                 $.ajax({
                                     url: '{{ url("/api/proudctinfo") }}',
                                     type: 'POST',
                                     dataType: 'json',
-                                    data: {'pid': data.value,'password':productpassword,'_token':$("input[name='_token']").val()},
+                                    data: {
+                                        'pid': data.value,
+                                        'password': productpassword,
+                                        '_token': $("input[name='_token']").val()
+                                    },
                                     beforeSend: function () {
                                     },
                                     success: function (res) {
                                         if (res.code == '1') {
                                             var product = res.data;
-                                            var html =""
+                                            var html = ""
                                             $('.product-price').html(product.actual_price);
                                             $('.product-price-cost-price').html(product.cost_price);
                                             $('.product-price').show(product.actual_price);
                                             $('.product-price-cost-price').show(product.cost_price);
-                                            instock=product.in_stock
+                                            instock = product.in_stock
                                             $('#pd_name').html(product.pd_name);
-                                            $('#pd_instock').html('库存'+instock);
+                                            $('#pd_instock').html('库存' + instock);
                                             $("#pd_instock").show();
                                             $("#product-price").show();
-                                            $("#pd_img").attr('src',product.pd_picture);
+                                            $("#pd_img").attr('src', product.pd_picture);
                                             $("#pd_img").show();
                                             $('.product-content').html(product.pd_info);
-                                            if(product.pd_type==2){
+                                            if (product.pd_type == 2) {
                                                 $("#pd_recharge").show()
                                                 $("#pd_auto").hide()
                                             }
-                                            if(product.pd_type==1){
+                                            if (product.pd_type == 1) {
                                                 $("#pd_auto").show()
                                                 $("#pd_recharge").hide()
                                             }
-                                            if(product.buy_prompt!==null){
+                                            if (product.buy_prompt !== null) {
                                                 layer.open({
                                                     type: 1,
                                                     shade: false,
                                                     skin: 'layui-layer-lan', //加上边框
                                                     area: ['60%', '50%'], //宽高
                                                     title: '购买提示',
-                                                    content: '<div class="buy-prompt">'+product.buy_prompt+'<div>'
-                                                });}
+                                                    content: '<div class="buy-prompt">' + product.buy_prompt + '<div>'
+                                                });
+                                            }
                                             var list = product.other_ipu;
-                                            if(list!==null){
+                                            if (list !== null) {
                                                 var addons = '<div id="addons">';
                                                 for (var i = 0, j = list.length; i < j; i++) {
                                                     addons += `<div class="layui-form-item">
-                                            <label class="layui-form-label">`+list[i]['desc']+`</label>
+                                            <label class="layui-form-label">` + list[i]['desc'] + `</label>
                                             <div class="layui-input-block">
-                                            <input type="text" name="`+list[i]['field']+`" `;
+                                            <input type="text" name="` + list[i]['field'] + `" `;
 
-                                                    if(list[i]['rule']===true){
-                                                        addons+=`required="" lay-verify="required"`;
+                                                    if (list[i]['rule'] === true) {
+                                                        addons += `required="" lay-verify="required"`;
                                                     }
-                                                    addons +=` placeholder="`+list[i]['desc']+`" value="" autocomplete="off" class="layui-input">
+                                                    addons += ` placeholder="` + list[i]['desc'] + `" value="" autocomplete="off" class="layui-input">
                                                         </div>
                                                     </div>`;
                                                 }
                                                 $('.other-item').html(addons);
                                             }
                                             var wholesale = product.wholesale_price;
-                                            if(wholesale!==null){
+                                            if (wholesale !== null) {
                                                 var wholesale_price = '';
-                                                for (var i = 0, j =wholesale.length; i < j; i++) {
-                                                    wholesale_price += `<p class="ws-price">购买数量`+wholesale[i].number+`个或以上,每个： <span class="layui-badge layui-bg-orange">`+wholesale[i].price+`￥</span></p>`
+                                                for (var i = 0, j = wholesale.length; i < j; i++) {
+                                                    wholesale_price += `<p class="ws-price">购买数量` + wholesale[i].number + `个或以上,每个： <span class="layui-badge layui-bg-orange">` + wholesale[i].price + `￥</span></p>`
                                                 }
                                                 $('#wholesale_price').html(wholesale_price);
                                                 $('#wholesale').show();
@@ -457,17 +479,17 @@
                                             form.render();
                                             layer.closeAll();
                                         } else {
-                                            layer.msg(res.msg,{icon:2,time:5000});
+                                            layer.msg(res.msg, {icon: 2, time: 5000});
                                         }
                                     }
                                 });
 
-                            }else{
-                                layer.msg("请输入密码",{icon:2,time:5000});
+                            } else {
+                                layer.msg("请输入密码", {icon: 2, time: 5000});
                             }
                         }
-                        ,btn2: function(index, layero){
-                            $(data.elem).find("option").eq(0).attr("selected",true);
+                        , btn2: function (index, layero) {
+                            $(data.elem).find("option").eq(0).attr("selected", true);
                             $('.product-price').hide();
                             $('.product-price-cost-price').hide();
                             $('#pd_name').html('商品选购');
@@ -480,10 +502,10 @@
                             $('.product-content').html('');
                             $('#number').val('1');
                             form.render('select');
-							$(data.elem).find("option").eq(0).attr("selected",false);
+                            $(data.elem).find("option").eq(0).attr("selected", false);
                         }
-                        ,cancel: function(){
-                            $(data.elem).find("option").eq(0).attr("selected",true);
+                        , cancel: function () {
+                            $(data.elem).find("option").eq(0).attr("selected", true);
                             $('.product-price').hide();
                             $('.product-price-cost-price').hide();
                             $('#pd_name').html('商品选购');
@@ -496,74 +518,75 @@
                             $('.product-content').html('');
                             $('#number').val('1');
                             form.render('select');
-							$(data.elem).find("option").eq(0).attr("selected",false);
+                            $(data.elem).find("option").eq(0).attr("selected", false);
                         }
                     });
-                }else{
+                } else {
                     $.ajax({
                         url: '{{ url("/api/proudctinfo") }}',
                         type: 'POST',
                         dataType: 'json',
-                        data: {'pid': data.value,'_token':$("input[name='_token']").val()},
+                        data: {'pid': data.value, '_token': $("input[name='_token']").val()},
                         beforeSend: function () {
                         },
                         success: function (res) {
                             if (res.code == '1') {
                                 var product = res.data;
-                                var html =""
+                                var html = ""
                                 $('.product-price').html(product.actual_price);
                                 $('.product-price-cost-price').html(product.cost_price);
                                 $('.product-price').show(product.actual_price);
                                 $('.product-price-cost-price').show(product.cost_price);
-                                instock=product.in_stock
+                                instock = product.in_stock
                                 $('#pd_name').html(product.pd_name);
-                                $('#pd_instock').html('库存'+instock);
+                                $('#pd_instock').html('库存' + instock);
                                 $("#pd_instock").show();
                                 $("#product-price").show();
-                                $("#pd_img").attr('src',product.pd_picture);
+                                $("#pd_img").attr('src', product.pd_picture);
                                 $("#pd_img").show();
                                 $('.product-content').html(product.pd_info);
-                                if(product.pd_type==2){
+                                if (product.pd_type == 2) {
                                     $("#pd_recharge").show()
                                     $("#pd_auto").hide()
                                 }
-                                if(product.pd_type==1){
+                                if (product.pd_type == 1) {
                                     $("#pd_auto").show()
                                     $("#pd_recharge").hide()
                                 }
-                                if(product.buy_prompt!==null){
+                                if (product.buy_prompt !== null) {
                                     layer.open({
                                         type: 1,
                                         shade: false,
                                         skin: 'layui-layer-lan', //加上边框
                                         area: ['60%', '50%'], //宽高
                                         title: '购买提示',
-                                        content: '<div class="buy-prompt">'+product.buy_prompt+'<div>'
-                                    });}
+                                        content: '<div class="buy-prompt">' + product.buy_prompt + '<div>'
+                                    });
+                                }
                                 var list = product.other_ipu;
-                                if(list!==null){
+                                if (list !== null) {
                                     var addons = '<div id="addons">';
                                     for (var i = 0, j = list.length; i < j; i++) {
                                         addons += `<div class="layui-form-item">
-                                            <label class="layui-form-label">`+list[i]['desc']+`</label>
+                                            <label class="layui-form-label">` + list[i]['desc'] + `</label>
                                             <div class="layui-input-block">
-                                            <input type="text" name="`+list[i]['field']+`" `;
+                                            <input type="text" name="` + list[i]['field'] + `" `;
 
-                                        if(list[i]['rule']===true){
-                                            addons+=`required="" lay-verify="required"`;
+                                        if (list[i]['rule'] === true) {
+                                            addons += `required="" lay-verify="required"`;
                                         }
-                                        addons +=` placeholder="`+list[i]['desc']+`" value="" autocomplete="off" class="layui-input">
+                                        addons += ` placeholder="` + list[i]['desc'] + `" value="" autocomplete="off" class="layui-input">
                                                         </div>
                                                     </div>`;
                                     }
                                     $('.other-item').html(addons);
                                 }
                                 var wholesale = product.wholesale_price;
-                                if(wholesale!==null){
+                                if (wholesale !== null) {
                                     var wholesale_price = '';
-                                    for (var i = 0, j =wholesale.length; i < j; i++) {
+                                    for (var i = 0, j = wholesale.length; i < j; i++) {
                                         console.log(wholesale[i])
-                                        wholesale_price += `<p class="ws-price">购买数量`+wholesale[i].number+`个或以上,每个： <span class="layui-badge layui-bg-orange">`+wholesale[i].price+`￥</span></p>`
+                                        wholesale_price += `<p class="ws-price">购买数量` + wholesale[i].number + `个或以上,每个： <span class="layui-badge layui-bg-orange">` + wholesale[i].price + `￥</span></p>`
                                     }
                                     $('#wholesale_price').html(wholesale_price);
                                     $('#wholesale').show();
@@ -571,14 +594,14 @@
 
                                 form.render();
                             } else {
-                                layer.msg(res.msg,{icon:2,time:5000});
+                                layer.msg(res.msg, {icon: 2, time: 5000});
                                 $(data.elem).find("option").eq(0).val("0");
-                                $(data.elem).find("option").eq(0).attr("selected",true);
+                                $(data.elem).find("option").eq(0).attr("selected", true);
                                 $('#price').val('');
                                 $('#number').val('1');
                                 $('#prodcut_description').html('');
                                 form.render('select');
-                                $(data.elem).find("option").eq(0).attr("selected",false);
+                                $(data.elem).find("option").eq(0).attr("selected", false);
                             }
                         }
                     });
@@ -591,23 +614,32 @@
                 }
             })
             var layerad = $("#layerad").html();
-            if(typeof(layerad)!="undefined"){
-                if(layerad.length>0){
+            if (typeof (layerad) != "undefined") {
+                if (layerad.length > 0) {
                     layer.open({
                         type: 1
-                        ,title: false
-                        ,closeBtn: false
-                        ,area: '300px;'
-                        ,shade: 0.8
-                        ,id: 'AD'
-                        ,btn: [ '关闭']
-                        ,btnAlign: 'c'
-                        ,moveType: 1 //拖拽模式，0或者1
-                        ,content: '<div style="padding: 50px; line-height: 22px; background-color: #393D49; color: #fff; font-weight: 300;">'+layerad+'</div>'
+                        ,
+                        title: false
+                        ,
+                        closeBtn: false
+                        ,
+                        area: '300px;'
+                        ,
+                        shade: 0.8
+                        ,
+                        id: 'AD'
+                        ,
+                        btn: ['关闭']
+                        ,
+                        btnAlign: 'c'
+                        ,
+                        moveType: 1 //拖拽模式，0或者1
+                        ,
+                        content: '<div style="padding: 50px; line-height: 22px; background-color: #393D49; color: #fff; font-weight: 300;">' + layerad + '</div>'
                     });
                 }
             }
-            form.on('submit(postOrder)', function(data){
+            form.on('submit(postOrder)', function (data) {
 
                 if (data.field.tid == '') {
                     layer.msg('请选择商品分类', {
