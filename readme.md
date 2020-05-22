@@ -24,9 +24,12 @@ demo地址：[http://dujiaoka.com](http://dujiaoka.com)
 
 - 框架来自：[laravel/framework](https://github.com/laravel/laravel).
 - 后台管理系统：[laravel-admin](https://laravel-admin.org/).
-- 前端ui [layui](https://www.layui.com/).
+- 前端ui [layui](https://www.layui.com/).     
 
-鸣谢以上开源项目，排名不分先后.
+核心贡献者：
+- [iLay1678](https://github.com/iLay1678)
+
+鸣谢以上开源项目及贡献者，排名不分先后.
 
 ## 界面尝鲜
 
