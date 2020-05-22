@@ -55,7 +55,6 @@ class Orders extends Model
             $wmoney = $wholesaleInfo[1];
             if ($data['order_number'] >= $wnum) {
                 $actual_price = $wmoney * $data['order_number'];
-
             }
         }
         return $actual_price;
