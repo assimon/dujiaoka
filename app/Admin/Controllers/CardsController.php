@@ -12,6 +12,7 @@ use Encore\Admin\Layout\Content;
 use Encore\Admin\Show;
 use App\Admin\Actions\Copycards;
 use App\Admin\Actions\Copy;
+
 class CardsController extends AdminController
 {
     /**
@@ -33,8 +34,7 @@ class CardsController extends AdminController
         // 加载所有卡密商品
         $commodity = Products::where('pd_type', 1)->get(['id', 'pd_name']);
         $commodClass = [];
-        foreach ($commodity as $val)
-        {
+        foreach ($commodity as $val) {
             $commodClass[$val['id']] = $val['pd_name'];
         }
         $grid->column('id', __('Id'));
@@ -44,7 +44,7 @@ class CardsController extends AdminController
         $grid->column('created_at', __('Created at'));
         $grid->column('updated_at', __('Updated at'));
 
-        $grid->filter(function($filter) use ($commodClass){
+        $grid->filter(function ($filter) use ($commodClass) {
 
             // 去掉默认的id过滤器
             $filter->disableIdFilter();
@@ -73,7 +73,6 @@ class CardsController extends AdminController
     }
 
 
-
     /**
      * Make a form builder.
      *
@@ -85,11 +84,10 @@ class CardsController extends AdminController
         // 加载所有卡密商品
         $commodity = Products::where('pd_type', 1)->get(['id', 'pd_name']);
         $commodClass = [];
-        foreach ($commodity as $val)
-        {
+        foreach ($commodity as $val) {
             $commodClass[$val['id']] = $val['pd_name'];
         }
-        $form->select('product_id', __('Product id'))->options($commodClass)->rules('required',['请选择商品']);
+        $form->select('product_id', __('Product id'))->options($commodClass)->rules('required', ['请选择商品']);
         $form->textarea('card_info', __('Card info'));
         $form->radio('card_status', __('Card status'))->options([1 => '待出售', 2 => '已售出'])->default(1);
         $form->footer(function ($footer) {
@@ -99,6 +97,19 @@ class CardsController extends AdminController
         $form->tools(function (Form\Tools $tools) {
             // 去掉`查看`按钮
             $tools->disableView();
+        });
+
+
+        $form->saving(function (Form $form) {
+            $this->product_id = $form->model()->product_id;
+        });
+        $form->saved(function (Form $form) {
+            $product_id = $form->model()->product_id;
+            if ($this->product_id != $product_id && $form->model()->card_status != 2) {
+                Products::where('id', $this->product_id)->decrement('in_stock', 1);
+                Products::where('id', $product_id)->increment('in_stock', 1);
+            }
+
         });
         return $form;
     }
