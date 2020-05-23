@@ -24,9 +24,26 @@
 
 <script>
     //注意：导航 依赖 element 模块，否则无法进行功能性操作
-    layui.use('element', function () {
+    layui.use(['element','layer','jquery', ], function () {
         var element = layui.element;
-
+        var layer = layui.layer;
+        var layerad = $("#layerad").html();
+        if(typeof(layerad)!="undefined"){
+            if(layerad.length>0){
+                layer.open({
+                    type: 1
+                    ,title: false
+                    ,closeBtn: false
+                    ,area: '300px;'
+                    ,shade: 0.8
+                    ,id: 'AD'
+                    ,btn: [ '关闭']
+                    ,btnAlign: 'c'
+                    ,moveType: 1 //拖拽模式，0或者1
+                    ,content: '<div style="padding: 50px; line-height: 22px; background-color: #393D49; color: #fff; font-weight: 300;">'+layerad+'</div>'
+                });
+            }
+        }
         //…
     });
 

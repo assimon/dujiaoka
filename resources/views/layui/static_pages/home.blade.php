@@ -53,6 +53,6 @@
             </div>
         </div>
     @endforeach
-
+    <div id="layerad" style="display: none;">{!! config('webset.layerad') !!}</div>
 @stop
 

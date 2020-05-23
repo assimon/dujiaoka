@@ -40,7 +40,7 @@ class Setting extends Form
         $this->text('keywords', __('Sys keywords'))->rules('required');
         $this->textarea('description', __('Sys description'))->rules('required');
         $this->email('manage_email', __('Sys manage email'))->rules('required')->help("用于接收待处理订单提示");
-        $this->textarea('layerad','首页弹窗');
+        $this->UEditor('layerad','首页弹窗');
         $this->UEditor('notice', __('Sys notice'));
         $this->textarea('footer', __('Sys footer'))->help('可以填写一些统计代码或者icp备案信息');
         //$this->radio('instock', __('Sys in stock monitor'))->options([1 => '开启', 2 => '关闭'])->default(1);
