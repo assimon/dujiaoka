@@ -26,12 +26,13 @@
 
     "Class Name": "分类名称",
     "C status": "状态",
+    "C password": "分类密码",
 
 
     "Pd name": "名称",
     "Cost price": "原价",
     "Actual price": "实际售价",
-    "Pd password": "访问密码",
+    "Pd password": "商品密码",
     "Wholesale price": "批发价配置",
     "In stock": "库存",
     "Sales volume": "销量",
@@ -69,10 +70,18 @@
     "Sys text logo": "文字LOGO",
     "Sys keywords": "网站关键词",
     "Sys description": "网站描述",
+    "Sys pop notice": "首页弹窗",
     "Sys notice": "站点公告",
     "Sys footer": "页脚自定义代码",
     "Sys in stock monitor": "库存告警监控",
-    "Sys manage email": "网站管理员邮箱"
+    "Sys manage email": "网站管理员邮箱",
+
+    "Page title": "标题",
+    "Page content": "内容",
+    "Page tag": "标识",
+    "Page status": "状态",
+    "Page link": "链接"
+
 
 
 }

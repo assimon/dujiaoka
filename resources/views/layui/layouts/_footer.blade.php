@@ -32,18 +32,19 @@
             if(layerad.length>0){
                 layer.open({
                     type: 1
-                    ,title: false
+                    ,title: "温馨提示"
                     ,closeBtn: false
                     ,area: '300px;'
                     ,shade: 0.8
                     ,id: 'AD'
-                    ,btn: [ '关闭']
+                    ,btn: [ '已阅']
                     ,btnAlign: 'c'
                     ,moveType: 1 //拖拽模式，0或者1
-                    ,content: '<div style="padding: 50px; line-height: 22px; background-color: #393D49; color: #fff; font-weight: 300;">'+layerad+'</div>'
+                    ,content: '<div style="padding: 50px; line-height: 22px; background-color: #fff; color: #fff; font-weight: 300;">'+layerad+'</div>'
                 });
             }
         }
+    })
         //…
     });
 
