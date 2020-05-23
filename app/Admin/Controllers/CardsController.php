@@ -105,9 +105,9 @@ class CardsController extends AdminController
         });
         $form->saved(function (Form $form) {
             $product_id = $form->model()->product_id;
-            $this->instock=Cards::where('product_id',$this->product_id)->where('card_status',1)->count();
+            $this->instock = Cards::where('product_id', $this->product_id)->where('card_status', 1)->count();
             Products::where('id', $this->product_id)->update(['in_stock' => $this->instock]);
-            $instock=Cards::where('product_id',$product_id)->where('card_status',1)->count();
+            $instock = Cards::where('product_id', $product_id)->where('card_status', 1)->count();
             Products::where('id', $product_id)->update(['in_stock' => $instock]);
         });
         return $form;
