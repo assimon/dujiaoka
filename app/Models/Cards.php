@@ -23,7 +23,9 @@ class Cards extends Model
             }
         });
         static::created(function ($model){
-            Products::where('id', $model->product_id)->increment('in_stock', 1);
+            if ($model->card_status != 2) {
+                Products::where('id', $model->product_id)->increment('in_stock', 1);
+            }
         });
     }
 }
