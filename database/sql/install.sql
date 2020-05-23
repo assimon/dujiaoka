@@ -32,10 +32,7 @@ CREATE TABLE `admin_config`  (
   UNIQUE INDEX `admin_config_name_unique`(`name`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Compact;
 
--- ----------------------------
--- Records of admin_config
--- ----------------------------
-INSERT INTO `admin_config` VALUES (1, 'test', '111111', NULL, '2020-04-20 12:09:34', '2020-04-20 12:09:34');
+
 
 -- ----------------------------
 -- Table structure for admin_menu
@@ -80,7 +77,7 @@ INSERT INTO `admin_menu` VALUES (20, 16, 23, '核心配置', 'fa-toggle-on', 'co
 INSERT INTO `admin_menu` VALUES (21, 0, 13, '卡密管理', 'fa-credit-card-alt', NULL, NULL, '2020-04-03 23:44:19', '2020-04-03 23:45:22');
 INSERT INTO `admin_menu` VALUES (22, 21, 14, '卡密列表', 'fa-credit-card', '/cards', NULL, '2020-04-03 23:45:40', '2020-04-03 23:46:14');
 INSERT INTO `admin_menu` VALUES (23, 21, 15, '导入卡密', 'fa-arrow-circle-right', '/importcards', NULL, '2020-04-03 23:59:18', '2020-04-03 23:59:32');
-
+INSERT INTO `admin_menu` VALUES (24, 0, 19, '页面管理', 'fa-pencil', '/pages', NULL, '2020-05-23 21:18:43', '2020-05-23 21:18:59');
 -- ----------------------------
 -- Table structure for admin_operation_log
 -- ----------------------------
@@ -228,7 +225,7 @@ CREATE TABLE `admin_users`  (
 -- ----------------------------
 -- Records of admin_users
 -- ----------------------------
-INSERT INTO `admin_users` VALUES (1, 'admin', '$2y$10$swv6qf815qjm2MHU.B5XreP/xyp3l.joob6Osw5VMIhKlNPsQVVZ6', 'Administrator', NULL, 'd78UGJM4AZQ03LIaqhpLQzZR2ZlG6taW5gi5p6ifUJBSOpztky29aOjPGcyQ', '2020-04-03 15:33:22', '2020-04-03 15:33:22');
+INSERT INTO `admin_users` VALUES (1, 'admin', '$2y$10$EVen1Tc6I925ejmZq58P7eg/K8wzCi0kMyM.WaGF0a5FyrQqnx8Z6', 'Administrator', NULL, 'd78UGJM4AZQ03LIaqhpLQzZR2ZlG6taW5gi5p6ifUJBSOpztky29aOjPGcyQ', '2020-04-03 15:33:22', '2020-04-03 15:33:22');
 
 -- ----------------------------
 -- Table structure for cards
@@ -362,6 +359,26 @@ CREATE TABLE `orders`  (
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `orderid`(`order_id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 73 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Table structure for pages
+-- ----------------------------
+DROP TABLE IF EXISTS `pages`;
+CREATE TABLE `pages`  (
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '标题',
+  `content` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL COMMENT '内容',
+  `status` int(1) NOT NULL COMMENT '状态1自动发卡 2代充	',
+  `tag` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '标识',
+  `created_at` timestamp(0) NULL DEFAULT NULL,
+  `updated_at` timestamp(0) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of pages
+-- ----------------------------
+INSERT INTO `pages` VALUES (1, '关于', '<p>关于</p>', 1, 'about', '2020-05-23 21:21:28', '2020-05-23 21:21:28');
 
 -- ----------------------------
 -- Table structure for pays

@@ -18,6 +18,7 @@ Route::group([
     $router->resource('emailtpls', EmailtplsController::class);
     $router->resource('cards', CardsController::class);
     $router->get('setting', 'SettingController@setting');
+    $router->resource('pages', PagesController::class);
     $router->get('createcoupons', 'CouponsController@createCoupons');
     $router->get('importcards', 'CardsController@importCards');
 });

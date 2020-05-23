@@ -8,6 +8,7 @@ use App\Models\Coupons;
 use App\Models\Orders;
 use App\Models\Pays;
 use App\Models\Products;
+use App\Models\Pages;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
@@ -23,7 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $products = Classifys::with(['products' => function($query) {
+        $products = Classifys::with(['products' => function ($query) {
             $query->where('pd_status', 1)->orderBy('ord', 'desc');
         }])->where('c_status', 1)->orderBy('ord', 'desc')->get()->toArray();
         return $this->view('static_pages/home', ['classifys' => $products]);
@@ -44,7 +45,7 @@ class HomeController extends Controller
             $dityArr = explode(PHP_EOL, $product['wholesale_price']);
             $dityList = [];
             foreach ($dityArr as $key => $v) {
-                if($v != ""){
+                if ($v != "") {
                     $dityInfo = explode('=', delete_html($v));
                     $dityList[$key]['number'] = $dityInfo[0];
                     $dityList[$key]['price'] = $dityInfo[1];
@@ -60,7 +61,7 @@ class HomeController extends Controller
             $inputArr = explode(PHP_EOL, $product['other_ipu']);
             $inputList = [];
             foreach ($inputArr as $key => $v) {
-                if($v != ""){
+                if ($v != "") {
                     $inputInfo = explode('=', delete_html($v));
                     $inputList[$key]['field'] = $inputInfo[0];
                     $inputList[$key]['desc'] = $inputInfo[1];
@@ -85,14 +86,14 @@ class HomeController extends Controller
     {
         $data = $request->all();
         if ($data['order_number'] <= 0) return $this->error('购买数量不能为0');
-        if(!is_numeric($data['order_number']) || strpos($data['order_number'],".") !== false) return $this->error('请填正确购买数量');
+        if (!is_numeric($data['order_number']) || strpos($data['order_number'], ".") !== false) return $this->error('请填正确购买数量');
         if (empty($data['search_pwd'])) return $this->error('查询密码不能为空');
         if (!captcha_check($data['verify_img'])) return $this->error('验证码错误');
         $product = Products::find($data['pid']);
         if (empty($product)) return $this->error('商品不存在或已下架');
         if ($product['in_stock'] == 0 || $data['order_number'] > $product['in_stock']) return $this->error('库存不足');
         if (!isset($data['payway'])) return $this->error('支付方式不能为空');
-        if (!filter_var($data['account'],FILTER_VALIDATE_EMAIL) || empty($data['account'])) return $this->error('请输入正确邮箱格式');
+        if (!filter_var($data['account'], FILTER_VALIDATE_EMAIL) || empty($data['account'])) return $this->error('请输入正确邮箱格式');
         // 订单缓存
         $cacheOrder = [
             'product_id' => $data['pid'], // 商品id
@@ -146,9 +147,9 @@ class HomeController extends Controller
                 foreach ($otherIpuAll as $value) {
                     $otherIpu = explode('=', delete_html($value));
                     if ($otherIpu[2] == 'req' && empty($data[$otherIpu[0]])) {
-                        return $this->error($otherIpu[1].'不能为空，请仔细填写');
+                        return $this->error($otherIpu[1] . '不能为空，请仔细填写');
                     }
-                    $cacheOrder['other_ipu'] .= $otherIpu[1].':'.$data[$otherIpu[0]].PHP_EOL;
+                    $cacheOrder['other_ipu'] .= $otherIpu[1] . ':' . $data[$otherIpu[0]] . PHP_EOL;
                 }
             }
         }
@@ -161,7 +162,7 @@ class HomeController extends Controller
         if ($data['coupon_code']) {
             // 将优惠券设置为已经使用 且次数-1
             $inCoupon = Coupons::where('card', '=', $data['coupon_code'])->update(['is_status' => 2]);
-            $inCouponNum =  Coupons::where('card', '=', $data['coupon_code'])->decrement('ret', 1);
+            $inCouponNum = Coupons::where('card', '=', $data['coupon_code'])->decrement('ret', 1);
         } else {
             $inCoupon = true;
             $inCouponNum = true;
@@ -182,7 +183,7 @@ class HomeController extends Controller
             Cookie::queue('orders', json_encode($cookies));
         }
         // 将过期释放的订单载入队列 x分钟后释放
-        ReleaseOrder::dispatch($cacheOrder['order_id'],  $data['order_number'], $data['pid'])->delay(Carbon::now()->addMinutes(config('app.order_expire_date')));
+        ReleaseOrder::dispatch($cacheOrder['order_id'], $data['order_number'], $data['pid'])->delay(Carbon::now()->addMinutes(config('app.order_expire_date')));
         return redirect(url('/bill', ['orderid' => $cacheOrder['order_id']]));
     }
 
@@ -198,5 +199,23 @@ class HomeController extends Controller
         return $this->view('static_pages/bill', $orderInfo);
     }
 
+    /**
+     * 页面
+     */
+    public function pages(Pages $pages, $tag)
+    {
+
+        $page = Pages::where('tag', $tag)->get()->toArray();
+        if (!$page) {
+            return $this->error('页面不存在！');
+        } else {
+            $page = $page[0];
+        }
+        if ($page['status'] != 1) {
+            return $this->error('页面不存在！');
+        } else {
+            return $this->view('static_pages/page', $page);
+        }
+    }
 
 }
