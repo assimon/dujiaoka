@@ -22,6 +22,7 @@
                 <li class="layui-nav-item logo"><p style="font-size: 16px; font-weight: 500" href="javascript:;" >{{ config('webset.text_logo') }} | </p></li>
                 <li class="layui-nav-item @if(\Illuminate\Support\Facades\Request::path() == '/') layui-this @endif" ><a href="/">购卡首页</a></li>
                 <li class="layui-nav-item @if(\Illuminate\Support\Facades\Request::path() == 'searchOrder') layui-this @endif"><a href="{{ url('searchOrder') }}"><i class="layui-icon layui-icon-search"></i>订单查询</a></li>
+                <li class="layui-nav-item @if(\Illuminate\Support\Facades\Request::path() == 'pages') layui-this @endif" ><a href="{{ url('pages') }}">文章中心</a></li>
             </ul>
         </div>
     </div>

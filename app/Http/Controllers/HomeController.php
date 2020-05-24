@@ -200,9 +200,19 @@ class HomeController extends Controller
     }
 
     /**
-     * 页面
+     * 文章列表
      */
-    public function pages(Pages $pages, $tag)
+    public function pages(Pages $pages)
+    {
+
+        $pages = Pages::where('status', 1)->get()->toArray();
+        return $this->view('static_pages/pages', ['pages' => $pages]);
+    }
+
+    /**
+     * 文章详情
+     */
+    public function page(Pages $pages, $tag)
     {
 
         $page = Pages::where('tag', $tag)->get()->toArray();

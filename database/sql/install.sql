@@ -77,7 +77,7 @@ INSERT INTO `admin_menu` VALUES (20, 16, 23, '核心配置', 'fa-toggle-on', 'co
 INSERT INTO `admin_menu` VALUES (21, 0, 13, '卡密管理', 'fa-credit-card-alt', NULL, NULL, '2020-04-03 23:44:19', '2020-04-03 23:45:22');
 INSERT INTO `admin_menu` VALUES (22, 21, 14, '卡密列表', 'fa-credit-card', '/cards', NULL, '2020-04-03 23:45:40', '2020-04-03 23:46:14');
 INSERT INTO `admin_menu` VALUES (23, 21, 15, '导入卡密', 'fa-arrow-circle-right', '/importcards', NULL, '2020-04-03 23:59:18', '2020-04-03 23:59:32');
-INSERT INTO `admin_menu` VALUES (24, 0, 19, '页面管理', 'fa-pencil', '/pages', NULL, '2020-05-23 21:18:43', '2020-05-23 21:18:59');
+INSERT INTO `admin_menu` VALUES (24, 0, 19, '文章管理', 'fa-pencil', '/pages', NULL, '2020-05-23 21:18:43', '2020-05-23 21:18:59');
 -- ----------------------------
 -- Table structure for admin_operation_log
 -- ----------------------------

@@ -14,7 +14,8 @@
 Route::get('/', 'HomeController@index');
 Route::get('buy/{product}', 'HomeController@buy');
 Route::get('bill/{orderid}', 'HomeController@bill');
-Route::get('pages/{tag}.html', 'HomeController@pages');
+Route::get('pages', 'HomeController@pages');
+Route::get('pages/{tag}.html', 'HomeController@page');
 Route::post('postOrder', 'HomeController@postOrder');
 Route::get('getOrderStatus/{orderid}', 'OrdersController@getOrderStatus');
 Route::get('searchOrder', 'OrdersController@searchOrder');
