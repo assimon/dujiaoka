@@ -95,7 +95,7 @@ class ProductsController extends AdminController
             ->options([1 => '上架', 2 => '下架'])
             ->rules('required', ['请选择状态'])
             ->default(1);
-        $form->text('passwd', __('Pd password0'));
+        $form->text('passwd', __('Pd password'));
         $form->footer(function ($footer) {
             // 去掉`查看`checkbox
             $footer->disableViewCheck();
