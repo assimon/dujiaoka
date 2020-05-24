@@ -32,7 +32,7 @@
             if(layerad.length>0){
                 layer.open({
                     type: 1
-                    ,title: "温馨提示"
+                    ,title: ['温馨提示', 'text-align:center;padding: 0 ;']
                     ,closeBtn: false
                     ,area: '300px;'
                     ,shade: 0.8
@@ -40,7 +40,7 @@
                     ,btn: [ '朕知道了']
                     ,btnAlign: 'c'
                     ,moveType: 1 //拖拽模式，0或者1
-                    ,content: '<div style="padding: 10px; line-height: 22px;font-weight: 300;">'+layerad+'</div>'
+                    ,content: '<div style="margin-top:15px;">'+layerad+'</div>'
                 });
             }
         }
