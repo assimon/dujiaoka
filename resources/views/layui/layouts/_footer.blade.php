@@ -45,7 +45,22 @@
             }
         }
     })
-
+    $("#Search").on("input",function(e){
+        var str=$("#products").html();
+        //文本输入框
+        var txt=$("#Search").val();
+        //不为空
+        if($.trim(txt)!="")
+        {
+            //显示搜索内容相关的div
+            $(".product").hide().filter(":contains('"+txt+"')").show();
+        }
+        else
+        {
+            $(".product").show();
+        }
+        //console.log(e.delegateTarget.value);
+    });
 
 </script>
 

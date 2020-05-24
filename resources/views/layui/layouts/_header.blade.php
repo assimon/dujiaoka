@@ -23,6 +23,7 @@
                 <li class="layui-nav-item @if(\Illuminate\Support\Facades\Request::path() == '/') layui-this @endif" ><a href="/">购卡首页</a></li>
                 <li class="layui-nav-item @if(\Illuminate\Support\Facades\Request::path() == 'searchOrder') layui-this @endif"><a href="{{ url('searchOrder') }}"><i class="layui-icon layui-icon-search"></i>订单查询</a></li>
                 <li class="layui-nav-item @if(\Illuminate\Support\Facades\Request::path() == 'pages') layui-this @endif" ><a href="{{ url('pages') }}">文章中心</a></li>
+                <li class="layui-form" style="position: relative;display: inline-block;*display: inline;*zoom: 1;vertical-align: middle;line-height: 60px;"><input id="Search" type="text" placeholder="搜索商品或分类" value="" class="layui-input" autocomplete="off" ></li>
             </ul>
         </div>
     </div>
