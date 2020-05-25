@@ -88,7 +88,9 @@ class HomeController extends Controller
         if ($data['order_number'] <= 0) return $this->error('购买数量不能为0');
         if (!is_numeric($data['order_number']) || strpos($data['order_number'], ".") !== false) return $this->error('请填正确购买数量');
         if (empty($data['search_pwd'])) return $this->error('查询密码不能为空');
-        if (!captcha_check($data['verify_img'])) return $this->error('验证码错误');
+        if(config('app.shcaptcha')){
+            if (!captcha_check($data['verify_img'])) return $this->error('验证码错误');
+        }
         $product = Products::find($data['pid']);
         if (empty($product)) return $this->error('商品不存在或已下架');
         if ($product['in_stock'] == 0 || $data['order_number'] > $product['in_stock']) return $this->error('库存不足');

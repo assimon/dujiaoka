@@ -438,13 +438,15 @@ class ApiController extends Controller
             $msg = "查询密码不能为空";
             return ['code' => -1, 'msg' => $msg];
         }
-        if (empty($data['verify_img'])) {
-            $msg = "验证码不能为空";
-            return ['code' => -1, 'msg' => $msg];
-        }
-        if (!captcha_check($data['verify_img'])) {
-            $msg = "验证码错误";
-            return ['code' => -1, 'msg' => $msg];
+        if (config('app.shcaptcha')) {
+            if (empty($data['verify_img'])) {
+                $msg = "验证码不能为空";
+                return ['code' => -1, 'msg' => $msg];
+            }
+            if (!captcha_check($data['verify_img'])) {
+                $msg = "验证码错误";
+                return ['code' => -1, 'msg' => $msg];
+            }
         }
         $product = Products::find($data['pid']);
         if (empty($product)) {

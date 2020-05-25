@@ -111,25 +111,27 @@
                                     </div>
 
                                 </div>
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label">验证码</label>
-                                    <div>
-                                        <div style="float:left;width:20%;">
-                                            <input type="text" name="verify_img" value="" required lay-verify="required"
-                                                   placeholder="验证码" autocomplete="off" class="layui-input">
+                                @if(config('app.shcaptcha'))
+                                    <div class="layui-form-item">
+                                        <label class="layui-form-label">验证码</label>
+                                        <div>
+                                            <div style="float:left;width:20%;">
+                                                <input type="text" name="verify_img" value="" required
+                                                       lay-verify="required"
+                                                       placeholder="验证码" autocomplete="off" class="layui-input">
+                                            </div>
+                                            <div class="buy-captcha layui-word-aux">
+                                                <img class="captcha-img" height="36" src="{{ captcha_src('buy') }}"
+                                                     onclick="refresh()">
+                                            </div>
                                         </div>
-                                        <div class="buy-captcha layui-word-aux">
-                                            <img class="captcha-img" height="36" src="{{ captcha_src('buy') }}"
-                                                 onclick="refresh()">
-                                        </div>
+                                        <script>
+                                            function refresh() {
+                                                $('img[class="captcha-img"]').attr('src', '{{ captcha_src('buy') }}' + Math.random());
+                                            }
+                                        </script>
                                     </div>
-                                    <script>
-                                        function refresh() {
-                                            $('img[class="captcha-img"]').attr('src', '{{ captcha_src('buy') }}' + Math.random());
-                                        }
-                                    </script>
-                                </div>
-
+                                @endif
                                 <div class="layui-form-item">
                                     <div class="layui-input-block">
                                         <button class="layui-btn" id='buy' lay-submit lay-filter="postOrder">立即下单
