@@ -46,7 +46,6 @@
         }
     })
     $("#Search").on("input",function(e){
-        var str=$("#products").html();
         //文本输入框
         var txt=$("#Search").val();
         //不为空

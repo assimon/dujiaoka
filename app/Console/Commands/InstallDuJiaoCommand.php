@@ -4,7 +4,6 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Redis;
 
 class InstallDuJiaoCommand extends Command
 {
@@ -44,6 +43,9 @@ class InstallDuJiaoCommand extends Command
             case 'install' :
                 $this->installDujiao();
                 break;
+            case 'update' :
+                $this->updateDujiao();
+                break;
         }
     }
 
@@ -57,6 +59,18 @@ class InstallDuJiaoCommand extends Command
         $this->info("正在导入数据库...");
         DB::unprepared(file_get_contents($sqlPath));
         $this->info("导入成功...");
+    }
+
+    /**
+     * 更新数据结构.
+     */
+    public function updateDujiao()
+    {
+        $this->info("=====独角数卡修改版更新开始=====");
+        $sqlPath = database_path() . '/sql/update.sql';
+        $this->info("正在更新数据库...");
+        DB::unprepared(file_get_contents($sqlPath));
+        $this->info("更新成功...");
     }
 
 

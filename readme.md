@@ -5,6 +5,8 @@
 <a href="https://github.com/assimon/dujiaoka/releases/tag/v1.5"><img src="https://img.shields.io/badge/pod-v1.5-red" alt="version v1.5"></a>
 <a href="https://shang.qq.com/wpa/qunwpa?idkey=37b6b06f7c941dae20dcd5784088905d6461064d7f33478692f0c4215546cee0"><img src="https://img.shields.io/badge/QQ%E7%BE%A4-568679748-green" alt="QQ群：568679748"></a>
 </p>
+## 从原版更换为修改版
+将本项目所有文件直接覆盖原有文件，在网站根目录下执行`php artisan dujiao update` 即可无缝切换到修改版
 
 ## 修改说明
 - [x] 增加choice模板,该模板具有以下特色功能：
