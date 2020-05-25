@@ -53,13 +53,14 @@
         if($.trim(txt)!="")
         {
             //显示搜索内容相关的div
+            $(".category").hide().filter(":contains('"+txt+"')").show();
             $(".product").hide().filter(":contains('"+txt+"')").show();
         }
         else
         {
+            $(".category").show();
             $(".product").show();
         }
-        //console.log(e.delegateTarget.value);
     });
 
 </script>
