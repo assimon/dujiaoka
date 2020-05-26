@@ -16,7 +16,7 @@ ALTER TABLE `classifys` ADD COLUMN `passwd` varchar(32) CHARACTER SET utf8mb4 CO
 ALTER TABLE `products` ADD COLUMN `passwd` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL AFTER `pd_info`;
 ALTER TABLE `webset` ADD COLUMN `layerad` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL AFTER `notice`;
 
-CREATE TABLE `faka`.`pages`  (
+CREATE TABLE `pages`  (
   `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '标题',
   `content` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL COMMENT '内容',
