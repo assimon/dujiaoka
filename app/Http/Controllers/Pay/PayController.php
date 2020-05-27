@@ -116,6 +116,19 @@ class PayController extends Controller
         $order['weburl'] = getenv('APP_URL');
         // 这里格式化一下把换行改成<br/>方便邮件
         $order['ord_info'] = str_replace(PHP_EOL, '<br/>', $order['ord_info']);
+        //库存预警
+        $pd=Products::where('id',$orderInfo['product_id'])->get()->first();
+        if($pd['stock_alert'] != 0 && $pd['in_stock'] < $pd['stock_alert']){
+            $product['webname'] = config('webset.text_logo');
+            $product['weburl'] = getenv('APP_URL');
+            $product['product_name']=$orderInfo['product_name'];
+            $product['stock_alert']=$pd['stock_alert'];
+            $product['in_stock']=$pd['in_stock'];
+            $mailtpl = Emailtpls::where('tpl_token', 'manual_send_stock_alert_mail')->first()->toArray();
+            $to = config('webset.manage_email');
+            $mailtipsInfo = replace_mail_tpl($mailtpl, $product);
+            if (!empty($to)) SendMails::dispatch($to, $mailtipsInfo['tpl_content'], $mailtipsInfo['tpl_name']);
+        }
         // 判断订单类型
         if ($orderInfo['pd_type'] == 1) {
             // 发送邮箱给用户

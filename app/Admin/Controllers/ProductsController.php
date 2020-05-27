@@ -82,6 +82,7 @@ class ProductsController extends AdminController
         $form->cropper('pd_picture', __('Pd picture'))->cRatio(500, 500)->uniqueName()->help('建议与其他商品图片尺寸一致，保持风格，以免图片流错乱');
         $form->textarea('wholesale_price', __('Wholesale price'))->help('例如5=3 代表5件或以上每件3元，一行一个');
         $form->number('in_stock', __('In stock'))->help('(卡密商品请不要填写库存，服务器自行识别)')->default(0);
+        $form->number('stock_alert', __('Stock alert'))->help('(库存预警，例如填5表示库存不足5时发送通知邮件给管理员,0为不预警)')->default(0);
         $form->number('sales_volume', __('Sales volume'))->default(0);
         $form->number('ord', __('Ord'))->default(1);
         $form->UEditor('buy_prompt', __('Buy prompt'));
