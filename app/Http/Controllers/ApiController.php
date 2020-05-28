@@ -453,6 +453,10 @@ class ApiController extends Controller
             $msg = "商品不存在或已下架";
             return ['code' => -1, 'msg' => $msg];
         }
+        if ($product['pd_status'] != 1){
+        $msg="商品不存在或已下架";
+        return ['code'=>-1,'msg'=>$msg];
+    }
         if ($product['in_stock'] == 0 || $data['order_number'] > $product['in_stock']) {
             $msg = "库存不足";
             return ['code' => -1, 'msg' => $msg];

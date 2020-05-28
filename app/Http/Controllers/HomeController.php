@@ -93,6 +93,7 @@ class HomeController extends Controller
         }
         $product = Products::find($data['pid']);
         if (empty($product)) return $this->error('商品不存在或已下架');
+        if ($product['pd_status'] != 1 ) return $this->error('商品不存在或已下架');
         if ($product['in_stock'] == 0 || $data['order_number'] > $product['in_stock']) return $this->error('库存不足');
         if (!isset($data['payway'])) return $this->error('支付方式不能为空');
         if (!filter_var($data['account'], FILTER_VALIDATE_EMAIL) || empty($data['account'])) return $this->error('请输入正确邮箱格式');
