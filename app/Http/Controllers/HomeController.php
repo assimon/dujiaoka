@@ -115,9 +115,9 @@ class HomeController extends Controller
         ];
         // 如果存在批发价
         if (!empty($product['wholesale_price'])) {
-            $cacheOrder['actual_price'] = number_format(Orders::wholesalePrice($cacheOrder, $product, $data), 2);
+            $cacheOrder['actual_price'] = number_format(Orders::wholesalePrice($cacheOrder, $product, $data), 2 , '.' , '');
         } else {
-            $cacheOrder['actual_price'] = number_format(($cacheOrder['actual_price'] * $data['order_number']), 2);
+            $cacheOrder['actual_price'] = number_format(($cacheOrder['actual_price'] * $data['order_number']), 2 , '.' , '');
         }
         /**
          * 这里是优惠券
@@ -139,8 +139,8 @@ class HomeController extends Controller
             $cacheOrder['coupon_type'] = $coupon['c_type'];
             $cacheOrder['coupon_id'] = $coupon['id'];
             $cacheOrder['coupon_code'] = $data['coupon_code'];
-            $cacheOrder['discount'] = number_format($coupon['discount'], 2);
-            $cacheOrder['actual_price'] = number_format(($cacheOrder['actual_price'] - $coupon['discount']), 2);
+            $cacheOrder['discount'] = number_format($coupon['discount'], 2 , '.' , '');
+            $cacheOrder['actual_price'] = number_format(($cacheOrder['actual_price'] - $coupon['discount']), 2 , '.' , '');
         }
 
         if ($product['pd_type'] == 2) {
