@@ -93,6 +93,9 @@ class CardsController extends AdminController
             // 去掉`查看`按钮
             $tools->disableView();
         });
+        $form->saving(function (Form $form) {
+            $this->product_id = $form->model()->product_id;
+        });
         $form->saved(function (Form $form) {
             $product_id = $form->model()->product_id;
             $this->instock = Cards::where(['product_id' => $this->product_id, 'card_status' =>1])->count();
