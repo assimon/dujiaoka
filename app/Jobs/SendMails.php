@@ -8,6 +8,7 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Mail;
+use Yansongda\Pay\Log;
 
 class SendMails implements ShouldQueue
 {
@@ -53,6 +54,7 @@ class SendMails implements ShouldQueue
      */
     public function handle()
     {
+        Log::info(config('mail.host'));
         $to = $this->to;
         $mailContent = $this->mailContent;
         $mailTitle = $this->mailTitle;
