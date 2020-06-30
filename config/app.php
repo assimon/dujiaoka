@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'url' => url()->previous(),
+    'url' => env('APP_URL', null),
 
     'asset_url' => env('ASSET_URL', null),
 
