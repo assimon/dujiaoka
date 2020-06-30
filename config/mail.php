@@ -16,7 +16,7 @@ return [
     |
     */
 
-    'driver' => config('webset.email_driver') ?? env('MAIL_DRIVER', 'smtp'),
+    'driver' => env('MAIL_DRIVER', 'smtp'),
 
     /*
     |--------------------------------------------------------------------------
@@ -29,7 +29,7 @@ return [
     |
     */
 
-    'host' => config('webset.mail_host') ?? env('MAIL_HOST', 'smtp.mailgun.org'),
+    'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
 
     /*
     |--------------------------------------------------------------------------
@@ -42,7 +42,7 @@ return [
     |
     */
 
-    'port' => config('webset.mail_port') ?? env('MAIL_PORT', 587),
+    'port' => env('MAIL_PORT', 587),
 
     /*
     |--------------------------------------------------------------------------
@@ -71,7 +71,7 @@ return [
     |
     */
 
-    'encryption' => config('webset.mail_encryption') ?? env('MAIL_ENCRYPTION', 'tls'),
+    'encryption' => env('MAIL_ENCRYPTION', 'tls'),
 
     /*
     |--------------------------------------------------------------------------
@@ -84,9 +84,9 @@ return [
     |
     */
 
-    'username' => config('webset.mail_username') ?? env('MAIL_USERNAME'),
+    'username' => env('MAIL_USERNAME'),
 
-    'password' => config('webset.mail_password') ?? env('MAIL_PASSWORD'),
+    'password' => env('MAIL_PASSWORD'),
 
     /*
     |--------------------------------------------------------------------------
