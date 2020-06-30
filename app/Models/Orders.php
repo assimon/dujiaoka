@@ -47,14 +47,14 @@ class Orders extends Model
 
         static::saved(function ($model) {
             // 当代充商品状态，将会对顾客进行订单内容推送
-            $order = $model->toArray();
-            $mailInfo = [
+            $order = [
                 'created_at' => date('Y-m-d H:i'),
-                'product_name' => $model->ord_title,
+                'ord_title' => $model->ord_title,
                 'webname' => config('webset.text_logo'),
-                'weburl' => env('APP_URL')
+                'weburl' => env('APP_URL'),
+                'order_id' => $model->order_id,
+                'ord_price' => $model->ord_price
             ];
-            $order = array_merge($order, $mailInfo);
             $to = $model->account;
             if ($model->ord_class == 2) {
                 switch ($model->ord_status) {
