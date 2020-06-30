@@ -56,21 +56,22 @@ class Orders extends Model
             ];
             $order = array_merge($order, $mailInfo);
             $to = $model->account;
-            switch ($model->ord_status) {
-                case 1:
-                    $mailtpl = Emailtpls::where('tpl_token', 'pending_order')->first()->toArray();
-                    self::sendMailToOrderStatus($mailtpl, $order, $to);
-                    break;
-                case 3:
-                    $mailtpl = Emailtpls::where('tpl_token', 'completed_order')->first()->toArray();
-                    self::sendMailToOrderStatus($mailtpl, $order, $to);
-                    break;
-                case 4:
-                    $mailtpl = Emailtpls::where('tpl_token', 'failed_order')->first()->toArray();
-                    self::sendMailToOrderStatus($mailtpl, $order, $to);
-                    break;
+            if ($model->ord_class == 2) {
+                switch ($model->ord_status) {
+                    case 1:
+                        $mailtpl = Emailtpls::where('tpl_token', 'pending_order')->first()->toArray();
+                        self::sendMailToOrderStatus($mailtpl, $order, $to);
+                        break;
+                    case 3:
+                        $mailtpl = Emailtpls::where('tpl_token', 'completed_order')->first()->toArray();
+                        self::sendMailToOrderStatus($mailtpl, $order, $to);
+                        break;
+                    case 4:
+                        $mailtpl = Emailtpls::where('tpl_token', 'failed_order')->first()->toArray();
+                        self::sendMailToOrderStatus($mailtpl, $order, $to);
+                        break;
+                }
             }
-
         });
     }
 
