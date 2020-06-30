@@ -38,7 +38,7 @@ class HomeController extends Controller
      */
     public function buy(Products $product)
     {
-        if ($product['pd_status'] != 1) throw new AppException(__('prompt.please_select_mode_of_payment'));
+        if ($product['pd_status'] != 1) throw new AppException(__('prompt.product_off_the_shelf'));
         // 格式化批发配置以及输入框配置
         $product['wholesale_price'] = $product['wholesale_price'] ? ProductsService::formatWholesalePrice($product['wholesale_price']) : null;
         // 如果存在其他配置输入框且为代充
@@ -61,7 +61,7 @@ class HomeController extends Controller
         if (empty($data['search_pwd'])) throw new AppException(__('prompt.search_password_not_null'));
         if (!captcha_check($data['verify_img'])) throw new AppException(__('prompt.verify_code_error'));
         $product = Products::find($data['pid']);
-        if (empty($product) || $product['pd_status'] != 1) throw new AppException(__('prompt.please_select_mode_of_payment'));
+        if (empty($product) || $product['pd_status'] != 1) throw new AppException(__('prompt.product_off_the_shelf'));
         if ($product['in_stock'] == 0 || $data['order_number'] > $product['in_stock']) throw new AppException(__('prompt.inventory_shortage'));
         if (!isset($data['payway'])) throw new AppException(__('prompt.please_select_mode_of_payment'));
         if (!filter_var($data['account'],FILTER_VALIDATE_EMAIL) || empty($data['account'])) throw new AppException(__('prompt.check_email_format'));
