@@ -67,6 +67,7 @@ demo地址：[http://dujiaoka.com](http://dujiaoka.com)
 - [Linux环境安装](/wikis/linux_install.md)   
 - [宝塔环境安装](/wikis/bt_install.md)
 - [常见问题锦集](/wikis/problems.md)
+- [系统升级](/wikis/update.md)
 
 ## 默认后台
 
