@@ -13,7 +13,7 @@ class InstallDuJiaoCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'dujiao {action}';
+    protected $signature = 'dujiao {action} {version?}';
 
     /**
      * The console command description.
@@ -40,9 +40,13 @@ class InstallDuJiaoCommand extends Command
     public function handle()
     {
         $action = $this->argument('action');
+        $version = $this->argument('version');
         switch ($action) {
             case 'install' :
                 $this->installDujiao();
+                break;
+            case 'update' :
+                $this->updateDujiao($version);
                 break;
         }
     }
@@ -57,6 +61,19 @@ class InstallDuJiaoCommand extends Command
         $this->info("正在导入数据库...");
         DB::unprepared(file_get_contents($sqlPath));
         $this->info("导入成功...");
+    }
+
+    /**
+     * 更新版本sql.
+     * @param string $version
+     */
+    public function updateDujiao(string $version)
+    {
+        $filename = "update.{$version}.sql";
+        $sqlPath = database_path() . '/sql/' . $filename;
+        if (!file_exists($sqlPath)) return $this->error('更新文件不存在！');
+        DB::unprepared(file_get_contents($sqlPath));
+        $this->info("更新成功...");
     }
 
 
