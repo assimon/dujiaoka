@@ -25,7 +25,7 @@
                                     <div class="layui-form-item">
                                         <label class="layui-form-label">{{ __('system.order_number') }}</label>
                                         <div class="layui-input-block">
-                                            <input type="text" name="order_id" required  lay-verify="required" placeholder="{{ __('system.set_order_number') }}" autocomplete="off" class="layui-input">
+                                            <input type="text" name="order_id" required  lay-verify="required" placeholder="{{ __('prompt.set_order_number') }}" autocomplete="off" class="layui-input">
                                         </div>
                                     </div>
                                     <div class="layui-form-item">
