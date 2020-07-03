@@ -2,7 +2,7 @@
 
 <p align="center">
 <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/license-MIT-blue" alt="license MIT"></a>
-<a href="https://github.com/assimon/dujiaoka/releases/tag/v1.5"><img src="https://img.shields.io/badge/pod-v1.5-red" alt="version v1.5"></a>
+<a href="https://github.com/assimon/dujiaoka/releases/tag/v1.6"><img src="https://img.shields.io/badge/pod-v1.6-red" alt="version v1.6"></a>
 <a href="https://shang.qq.com/wpa/qunwpa?idkey=37b6b06f7c941dae20dcd5784088905d6461064d7f33478692f0c4215546cee0"><img src="https://img.shields.io/badge/QQ%E7%BE%A4-568679748-green" alt="QQ群：568679748"></a>
 </p>
 
@@ -43,7 +43,7 @@ demo地址：[http://dujiaoka.com](http://dujiaoka.com)
 
 ## 基本环境要求
 
-- (PHP + PHPCLI) version >= 7.0
+- (PHP + PHPCLI) version >= 7.2
 - Nginx version >= 1.16
 - MYSQL version >= 5.6
 - Redis (高性能缓存服务)
