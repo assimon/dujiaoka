@@ -98,7 +98,7 @@
                                                 <input type="password" name="search_pwd" value=""  required lay-verify="required" placeholder="{{ __('prompt.set_search_password') }}" autocomplete="off" class="layui-input">
                                             </div>
                                         </div>
-
+                                        @if(config('webset.verify_code') == 1)
                                         <div class="layui-form-item">
                                             <label class="layui-form-label">{{ __('system.verify_code') }}</label>
                                             <div class="layui-input-inline">
@@ -113,7 +113,7 @@
                                                 }
                                             </script>
                                         </div>
-
+                                        @endif
                                         <div class="layui-form-item">
                                             <label class="layui-form-label">{{ __('system.promo_code') }}</label>
                                             <div class="layui-input-block">

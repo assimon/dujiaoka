@@ -59,7 +59,7 @@ class HomeController extends Controller
         if (intval($data['order_number']) <= 0)
         if(!is_numeric($data['order_number']) || strpos($data['order_number'],".") !== false) throw new AppException(__('prompt.buy_order_number'));
         if (empty($data['search_pwd'])) throw new AppException(__('prompt.search_password_not_null'));
-        if (!captcha_check($data['verify_img'])) throw new AppException(__('prompt.verify_code_error'));
+        if (config('webset.verify_code') == 1 && !captcha_check($data['verify_img'])) throw new AppException(__('prompt.verify_code_error'));
         $product = Products::find($data['pid']);
         if (empty($product) || $product['pd_status'] != 1) throw new AppException(__('prompt.product_off_the_shelf'));
         if ($product['in_stock'] == 0 || $data['order_number'] > $product['in_stock']) throw new AppException(__('prompt.inventory_shortage'));

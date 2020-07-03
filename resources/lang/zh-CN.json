@@ -80,7 +80,8 @@
     "Mail username" : "发件账号",
     "Mail password" : "发件密码",
     "Mail encryption" : "加密协议",
-    "Sys Langs" : "前台语言"
+    "Sys Langs" : "前台语言",
+    "Verify Code": "下单验证码"
 
 
 
