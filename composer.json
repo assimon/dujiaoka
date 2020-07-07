@@ -17,7 +17,6 @@
         "james.xue/login-captcha": "^2.0",
         "jenssegers/agent": "^2.6",
         "laravel-admin-ext/config": "^1.1",
-        "laravel-admin-ext/cropper": "^1.0",
         "laravel/framework": "^6.0",
         "laravel/tinker": "^1.0",
         "overtrue/laravel-lang": "~3.0",

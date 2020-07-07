@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6b9d771de346217bbf61e48cc6a8b4d8",
+    "content-hash": "9e07453514ce8eee4bf13f41d9d7b5ab",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -1670,66 +1670,6 @@
                 "setting"
             ],
             "time": "2019-12-11T02:31:22+00:00"
-        },
-        {
-            "name": "laravel-admin-ext/cropper",
-            "version": "1.0.5",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/laravel-admin-extensions/cropper.git",
-                "reference": "fddfccb85050a2684f57fb103c65920ee09642be"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/laravel-admin-extensions/cropper/zipball/fddfccb85050a2684f57fb103c65920ee09642be",
-                "reference": "fddfccb85050a2684f57fb103c65920ee09642be",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
-            },
-            "require": {
-                "encore/laravel-admin": "~1.6",
-                "php": ">=7.0.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~6.0"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Encore\\Cropper\\CropperServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Encore\\Cropper\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "EVA09",
-                    "email": "940173803@qq.com"
-                }
-            ],
-            "description": "Integrate Cropper into laravel-admin",
-            "homepage": "https://github.com/laravel-admin-extensions/cropper",
-            "keywords": [
-                "cropper",
-                "extension",
-                "image",
-                "laravel-admin"
-            ],
-            "time": "2020-04-27T08:57:28+00:00"
         },
         {
             "name": "laravel/framework",
