@@ -402,9 +402,9 @@ CREATE TABLE `pays` (
 BEGIN;
 INSERT INTO `pays` VALUES (1, '支付宝当面付', 'zfbf2f', 'scan', '商户号', '', '密钥', '/pay/alipay', 1, '2019-03-11 05:04:52', '2019-12-19 13:01:34');
 INSERT INTO `pays` VALUES (2, '支付宝pc', 'aliweb', 'dump', '商户号', '', '密钥', '/pay/alipay', 1, '2019-07-08 13:25:27', '2019-07-12 09:47:53');
-INSERT INTO `pays` VALUES (3, '码支付QQ[未开放]', 'mqq', 'dump', '商户号', '', '密钥', '/pay/mapay', 1, '2019-07-11 09:05:27', '2019-07-11 12:13:11');
-INSERT INTO `pays` VALUES (4, '码支付支付宝[未开放]', 'mzfb', 'dump', '商户号', '', '密钥', '/pay/mapay', 1, '2019-07-11 09:06:02', '2019-07-11 12:12:58');
-INSERT INTO `pays` VALUES (5, '码支付微信[未开放]', 'mwx', 'dump', '商户号', '', '密钥', '/pay/mapay', 1, '2019-07-11 09:06:23', '2019-07-11 12:13:05');
+INSERT INTO `pays` VALUES (3, '码支付QQ', 'mqq', 'dump', '商户号', '', '密钥', '/pay/mapay', 1, '2019-07-11 09:05:27', '2019-07-11 12:13:11');
+INSERT INTO `pays` VALUES (4, '码支付支付宝', 'mzfb', 'dump', '商户号', '', '密钥', '/pay/mapay', 1, '2019-07-11 09:06:02', '2019-07-11 12:12:58');
+INSERT INTO `pays` VALUES (5, '码支付微信', 'mwx', 'dump', '商户号', '', '密钥', '/pay/mapay', 1, '2019-07-11 09:06:23', '2019-07-11 12:13:05');
 INSERT INTO `pays` VALUES (6, 'Paysapi支付宝', 'pszfb', 'dump', '商户号', '', '密钥', '/pay/paysapi', 1, '2019-07-11 09:31:12', '2019-07-11 09:31:12');
 INSERT INTO `pays` VALUES (7, 'Paysapi微信', 'pswx', 'dump', '商户号', '', '密钥', '/pay/paysapi', 1, '2019-07-11 09:31:43', '2019-07-11 09:31:43');
 INSERT INTO `pays` VALUES (8, '微信扫码', 'wescan', 'scan', '商户号', '', '密钥', '/pay/wepay', 1, '2019-07-12 07:50:20', '2019-07-12 08:08:26');
