@@ -83,7 +83,7 @@ demo地址：[http://dujiaoka.com](http://dujiaoka.com)
 - 默认管理员账号 `admin`
 - 默认管理员密码 `admin`
 
-## 声明
+## 免责声明
 
 本项目仅供开发学习使用，任何人用于任何用途均与项目作者无关！
 
