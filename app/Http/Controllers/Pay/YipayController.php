@@ -15,7 +15,7 @@ class YipayController extends PayController
         $this->checkOrder($payway, $oid);
         //组装支付参数
         $parameter = [
-            'pid' =>  (int)$this->payInfo['merchant_id'],
+            'pid' =>  $this->payInfo['merchant_id'],
             'type' => $this->payInfo['pay_check'],
             'out_trade_no' => $this->orderInfo['order_id'],
             'return_url' => site_url().'searchOrderById?order_id='.$this->orderInfo['order_id'],
