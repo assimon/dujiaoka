@@ -77,7 +77,7 @@ class HomeController extends Controller
             'actual_price' => $product['actual_price'],
             'buy_amount' => intval($data['order_number']), // 订单个数
             'account' => $data['account'], // 充值账号
-            'search_pwd' => $data['search_pwd'],
+            'search_pwd' => $data['search_pwd'] ?? 'dujiaoka',
             'buy_ip' => $request->getClientIp(),
             'other_ipu' => ''
         ];
