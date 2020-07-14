@@ -80,7 +80,7 @@ class ProductsController extends AdminController
         $form->select('pd_class', __('Pd class'))->options($dataArr)->required();
         $form->currency('cost_price', __('Cost price'))->rules('required|numeric', ['required' => '不能为空','numeric' => '请正确填写金额，整数或小数']);
         $form->currency('actual_price', __('Actual price'))->rules('required|numeric', ['required' => '不能为空','numeric' => '请正确填写金额,整数或小数']);
-        $form->image('pd_picture', __('Pd picture'))->uniqueName()->help('建议与其他商品图片尺寸一致，保持风格，以免图片流错乱')->required();
+        $form->image('pd_picture', __('Pd picture'))->uniqueName()->help('可以为空。');
         $form->textarea('wholesale_price', __('Wholesale price'))->help('例如5=3 代表5件或以上每件3元，一行一个');
         $form->number('in_stock', __('In stock'))->help('(卡密商品请不要填写库存，服务器自行识别)')->default(0);
         $form->number('sales_volume', __('Sales volume'))->default(0);

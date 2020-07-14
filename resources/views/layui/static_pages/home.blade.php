@@ -10,44 +10,63 @@
                 <div class="layui-card cardcon">
                     <div class="layui-card-header">{{ $classify['name'] }}：</div>
                     <div class="layui-card-body">
-                       <div class="layui-row" >
-                           @foreach($classify['products'] as $product)
-                           <div class="layui-col-md3 layui-col-xs6 product-box">
-                               <a href="{{ url("/buy/{$product['id']}") }}">
-                                   <div class="layui-card product-panl">
-                                       <div class="layui-card-body product-img">
-                                           <img src="{{ \Illuminate\Support\Facades\Storage::disk('admin')->url($product['pd_picture']) }}" width="100%" height="100%">
-                                       </div>
-                                       <div class="product-box-info">
-                                           <div class="product-title">
-                                               {{ $product['pd_name'] }}
-                                           </div>
-                                           <div class="product-class">
-                                               @if($product['pd_type'] == 1)
-                                                   <span class="layui-badge layui-bg-green">{{ __('system.automatic_delivery') }}</span>
-                                               @else
-                                                   <span class="layui-badge">{{ __('system.charge') }}</span>
-                                               @endif
-                                                   @if($product['wholesale_price'])
-                                                     <span class="layui-badge layui-bg-orange">{{ __('system.discount') }}</span>
-                                                   @endif
-                                           </div>
-                                           <div class="">
-                                               <div class="product-box-price" ><b>￥{{ $product['actual_price'] }}</b></div>
-                                               <div class="product-volume">{{ __('system.in_stock') }}({{ $product['in_stock'] }})</div>
-                                           </div>
-                                       </div>
+                        <div class="layui-row" >
+                            <table class="layui-table" lay-even lay-skin="nob">
+                                <colgroup>
+                                    <col width="300">
+                                    <col width="100">
+                                    <col>
+                                    <col>
+                                    <col>
+                                    <col>
+                                    <col>
+                                </colgroup>
+                                <thead>
+                                <tr>
+                                    <th>{{ __('system.product_name') }}</th>
+                                    <th>{{ __('system.product_class') }}</th>
+                                    <th>{{ __('system.price') }}</th>
+                                    <th>{{ __('system.in_stock') }}</th>
+                                    <th>{{ __('system.wholesale_discount') }}</th>
+                                    <th>{{ __('system.place_an_order') }}</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($classify['products'] as $product)
+                                    <tr>
+                                        <td>{{ $product['pd_name'] }}</td>
+                                        <td>
+                                            @if($product['pd_type'] == 1)
+                                                <span style="color: #5FB878">{{ __('system.automatic_delivery') }}</span>
+                                            @else
+                                                <span style="color: #FF5722">{{ __('system.charge') }}</span>
+                                            @endif
+                                        </td>
+                                        <td><b class="product-box-price">￥{{ $product['actual_price'] }}</b></td>
+                                        <td>{{ $product['in_stock'] }}</td>
+                                        <td>@if($product['wholesale_price'])
+                                                <span class="layui-badge layui-bg-orange">{{ __('system.discount') }}</span>
+                                            @else
+                                                <span class="layui-badge">{{ __('system.not') }}</span>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            @if($product['in_stock'] > 0)
+                                            <a href="{{ url("/buy/{$product['id']}") }}" class="layui-btn layui-btn-radius layui-btn-primary layui-btn-sm">
+                                                {{ __('system.buy') }}<i class="layui-icon layui-icon-cart-simple"></i>
+                                            </a>
+                                            @else
+                                                <a href="#" class="layui-btn layui-btn-radius layui-btn-disabled layui-btn-sm">
+                                                    {{ __('system.buy') }}<i class="layui-icon layui-icon-cart-simple"></i>
+                                                </a>
+                                            @endif
+                                        </td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
 
-                                   </div>
-                               </a>
-                           </div>
-                           @endforeach
-
-
-
-
-                       </div>
-
+                        </div>
                     </div>
                 </div>
             </div>

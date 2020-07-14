@@ -6,6 +6,8 @@ return [
     'order_search' => '订单查询',
     'announcement' => '公告',
     'email' => '邮箱',
+    'not' => '无',
+    'buy' => '购买',
 
     'place_an_order' => '下单',
     'mobile_phone_purchase' => '手机扫码下单',
@@ -31,7 +33,7 @@ return [
 
     'automatic_delivery' => '自动发货',
     'charge' => '代充',
-    'discount' => '折扣',
+    'discount' => '折',
 
     'in_stock' => '库存',
     'price' => '价格',
@@ -44,6 +46,7 @@ return [
     'reset_order' => '重置',
 
     'product_desciption' => '商品介绍',
+    'product_class' => '类型',
 
     'number_of_orders' => '下单数量',
     'order_time' => '下单时间',
