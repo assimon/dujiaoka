@@ -56,6 +56,8 @@ class HomeController extends Controller
     public function postOrder(Request $request)
     {
         $data = $request->all();
+        $data['search_pwd'] = $data['search_pwd'] ?? '';
+        $data['coupon_code'] = $data['coupon_code'] ?? '';
         if (intval($data['order_number']) <= 0)
         if(!is_numeric($data['order_number']) || strpos($data['order_number'],".") !== false) throw new AppException(__('prompt.buy_order_number'));
         if (config('webset.isopen_searchpwd') == 1 && empty($data['search_pwd'])) throw new AppException(__('prompt.search_password_not_null'));
@@ -77,7 +79,7 @@ class HomeController extends Controller
             'actual_price' => $product['actual_price'],
             'buy_amount' => intval($data['order_number']), // 订单个数
             'account' => $data['account'], // 充值账号
-            'search_pwd' => $data['search_pwd'] ?? 'dujiaoka',
+            'search_pwd' => $data['search_pwd'],
             'buy_ip' => $request->getClientIp(),
             'other_ipu' => ''
         ];
