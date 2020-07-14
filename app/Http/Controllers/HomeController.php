@@ -56,7 +56,6 @@ class HomeController extends Controller
     public function postOrder(Request $request)
     {
         $data = $request->all();
-        $data['coupon_code'] = $data['coupon_code'] ?? '';
         if (intval($data['order_number']) <= 0)
         if(!is_numeric($data['order_number']) || strpos($data['order_number'],".") !== false) throw new AppException(__('prompt.buy_order_number'));
         if (config('webset.isopen_searchpwd') == 1 && empty($data['search_pwd'])) throw new AppException(__('prompt.search_password_not_null'));
@@ -95,7 +94,7 @@ class HomeController extends Controller
         /**
          * 这里是优惠券
          */
-        if (!empty($data['coupon_code'])) {
+        if (!isset($data['coupon_code'])) {
             // 先查出有没有优惠券
             $coupon = Coupons::where('card', '=', $data['coupon_code'])->where('product_id', '=', $data['pid'])->first();
             if (empty($coupon)) throw new AppException(__('prompt.coupon_does_not_exist'));
