@@ -94,7 +94,7 @@ class HomeController extends Controller
         /**
          * 这里是优惠券
          */
-        if (!isset($data['coupon_code'])) {
+        if (isset($data['coupon_code'])) {
             // 先查出有没有优惠券
             $coupon = Coupons::where('card', '=', $data['coupon_code'])->where('product_id', '=', $data['pid'])->first();
             if (empty($coupon)) throw new AppException(__('prompt.coupon_does_not_exist'));
@@ -133,7 +133,7 @@ class HomeController extends Controller
         DB::beginTransaction();
         // 减去数据库库存
         $deStock = Products::where(['id' => $data['pid'], 'in_stock' => $product['in_stock']])->decrement('in_stock', $data['order_number']);
-        if ($data['coupon_code']) {
+        if (isset($data['coupon_code'])) {
             // 将优惠券设置为已经使用 且次数-1
             $inCoupon = Coupons::where('card', '=', $data['coupon_code'])->update(['is_status' => 2]);
             $inCouponNum =  Coupons::where(['card' => $data['coupon_code'], 'ret' => $coupon['ret']])->decrement('ret', 1);
