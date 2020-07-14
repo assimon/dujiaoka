@@ -81,7 +81,9 @@
     "Mail password" : "发件密码",
     "Mail encryption" : "加密协议",
     "Sys Langs" : "前台语言",
-    "Verify Code": "下单验证码"
+    "Verify Code": "下单验证码",
+    "Is open coupon": "优惠券入口",
+    "Is open searchpwd": "查询密码"
 
 
 

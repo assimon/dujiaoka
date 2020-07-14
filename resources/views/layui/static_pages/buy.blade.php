@@ -92,12 +92,14 @@
                                                 @endforeach
                                             </div>
                                         </div>
+                                        @if(config('webset.isopen_searchpwd') == 1)
                                         <div class="layui-form-item">
                                             <label class="layui-form-label">{{ __('system.search_password') }}</label>
                                             <div class="layui-input-block">
                                                 <input type="password" name="search_pwd" value=""  required lay-verify="required" placeholder="{{ __('prompt.set_search_password') }}" autocomplete="off" class="layui-input">
                                             </div>
                                         </div>
+                                        @endif
                                         @if(config('webset.verify_code') == 1)
                                         <div class="layui-form-item">
                                             <label class="layui-form-label">{{ __('system.verify_code') }}</label>
@@ -114,13 +116,14 @@
                                             </script>
                                         </div>
                                         @endif
+                                        @if(config('webset.isopen_coupon') == 1)
                                         <div class="layui-form-item">
                                             <label class="layui-form-label">{{ __('system.promo_code') }}</label>
                                             <div class="layui-input-block">
                                                 <input type="text" name="coupon_code"   placeholder="{{ __('prompt.have_promo_code') }}" value="" autocomplete="off" class="layui-input">
                                             </div>
                                         </div>
-
+                                        @endif
                                         <div class="layui-form-item">
                                             <div class="layui-input-block">
                                                 <button class="layui-btn" lay-submit lay-filter="postOrder">{{ __('system.order_now') }}</button>
