@@ -11,7 +11,7 @@
  Target Server Version : 50729
  File Encoding         : 65001
 
- Date: 03/07/2020 10:44:01
+ Date: 14/07/2020 16:28:21
 */
 
 SET NAMES utf8mb4;
@@ -394,7 +394,7 @@ CREATE TABLE `pays` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `uq_payck` (`pay_check`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of pays
@@ -410,8 +410,10 @@ INSERT INTO `pays` VALUES (7, 'Paysapi微信', 'pswx', 'dump', '商户号', '', 
 INSERT INTO `pays` VALUES (8, '微信扫码', 'wescan', 'scan', '商户号', '', '密钥', '/pay/wepay', 1, '2019-07-12 07:50:20', '2019-07-12 08:08:26');
 INSERT INTO `pays` VALUES (11, 'Payjs微信扫码', 'payjswescan', 'dump', '商户号', '', '密钥', '/pay/payjs', 1, '2019-07-25 07:28:42', '2019-08-20 12:17:58');
 INSERT INTO `pays` VALUES (14, '易支付-支付宝', 'alipay', 'dump', '商户号', '', '密钥', '/pay/yipay', 2, '2020-01-10 15:22:56', '2020-01-11 06:33:07');
-INSERT INTO `pays` VALUES (15, '易支付-微信', 'wxpay', 'dump', '商户号', NULL, '密钥', '/pay/yipay', 1, NULL, NULL);
-INSERT INTO `pays` VALUES (16, '易支付-QQ钱包', 'qqpay', 'dump', '商户号', NULL, '密钥', '/pay/yipay', 1, NULL, NULL);
+INSERT INTO `pays` VALUES (15, '易支付-微信', 'wxpay', 'dump', '商户号', NULL, '密钥', '/pay/yipay', 1, '2020-07-14 16:27:06', NULL);
+INSERT INTO `pays` VALUES (16, '易支付-QQ钱包', 'qqpay', 'dump', '商户号', NULL, '密钥', '/pay/yipay', 1, '2020-07-14 16:27:03', NULL);
+INSERT INTO `pays` VALUES (17, 'paypal', 'paypal', 'dump', '商户号', NULL, '密钥', '/pay/paypal', 1, '2020-07-14 16:25:20', NULL);
+INSERT INTO `pays` VALUES (18, 'Mugglepay数字货币', 'mgcoin', 'dump', '商户号', NULL, '密钥', '/pay/mugglepay', 1, '2020-07-14 16:27:00', NULL);
 COMMIT;
 
 -- ----------------------------
@@ -456,6 +458,8 @@ CREATE TABLE `webset` (
   `manage_email` varchar(50) DEFAULT NULL,
   `langs` varchar(50) DEFAULT NULL,
   `verify_code` int(1) DEFAULT NULL,
+  `isopen_coupon` int(1) NOT NULL DEFAULT '1',
+  `isopen_searchpwd` int(1) NOT NULL DEFAULT '1',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -465,7 +469,7 @@ CREATE TABLE `webset` (
 -- Records of webset
 -- ----------------------------
 BEGIN;
-INSERT INTO `webset` VALUES (1, '独角数卡 - 一站式自动售货方案', '独角数卡', '独角数卡', '独角数卡', '独角数卡', NULL, 1, 'admin@admin.com', 'zh-CN', 1, NULL, '2020-04-05 22:48:12');
+INSERT INTO `webset` VALUES (1, '独角数卡 - 一站式自动售货方案', '独角数卡', '独角数卡', '独角数卡', '独角数卡', NULL, 1, 'admin@admin.com', 'zh-CN', 1, 1, 1, NULL, '2020-04-05 22:48:12');
 COMMIT;
 
 SET FOREIGN_KEY_CHECKS = 1;
