@@ -55,6 +55,7 @@ class OrdersController extends Controller
     public function searchOrderByAccount(Request $request)
     {
         $data = $request->only(['account', 'search_pwd']);
+        $data['search_pwd'] = $data['search_pwd'] ?? '';
         if (empty($data['account']) || (config('webset.isopen_searchpwd') == 1 && empty($data['search_pwd']))) throw new AppException(__('prompt.required_fields_cannot_be_empty'));
         $orders = Orders::where(['account' => $data['account'], 'search_pwd' => $data['search_pwd']])
             ->orderBy('created_at', 'desc')
