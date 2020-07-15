@@ -6,6 +6,7 @@ namespace App\Services;
 
 use App\Exceptions\AppException;
 use App\Models\Coupons;
+use Illuminate\Support\Facades\Cookie;
 
 class OrderService
 {
@@ -57,6 +58,23 @@ class OrderService
             'actual_price' => number_format(($cacheOrder['actual_price'] - $coupon['discount']), 2, '.', '')
         ];
         return array_merge($cacheOrder, $couponProcess);
+    }
+
+    /**
+     * 设置订单cookie.
+     * @param string $orderId 订单号.
+     */
+    public function queueCookie(string $orderId) : void
+    {
+        // 设置订单cookie
+        $cookies = Cookie::get('orders');
+        if (empty($cookies)) {
+            Cookie::queue('orders', json_encode([$orderId]));
+        } else {
+            $cookies = json_decode($cookies, true);
+            array_push($cookies, $orderId);
+            Cookie::queue('orders', json_encode($cookies));
+        }
     }
 
 }

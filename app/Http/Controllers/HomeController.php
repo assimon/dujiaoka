@@ -132,14 +132,7 @@ class HomeController extends Controller
         }
         DB::commit();
         // 设置订单cookie
-        $cookies = Cookie::get('orders');
-        if (empty($cookies)) {
-            Cookie::queue('orders', json_encode([$cacheOrder['order_id']]));
-        } else {
-            $cookies = json_decode($cookies, true);
-            array_push($cookies, $cacheOrder['order_id']);
-            Cookie::queue('orders', json_encode($cookies));
-        }
+        OrderService::queueCookie($cacheOrder['order_id']);
         // 将过期释放的订单载入队列 x分钟后释放
         ReleaseOrder::dispatch($cacheOrder['order_id'],  $data['order_number'], $data['pid'])->delay(Carbon::now()->addMinutes(config('app.order_expire_date')));
         return redirect(url('/bill', ['orderid' => $cacheOrder['order_id']]));
