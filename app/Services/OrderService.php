@@ -49,14 +49,14 @@ class OrderService
         if ($cacheOrder['actual_price'] <= $coupon['discount']) {
             throw new AppException(__('prompt.coupon_price_error'));
         }
-        $cacheOrder = [
+        $couponProcess = [
             'coupon_type' => $coupon['c_type'],
             'coupon_id' => $coupon['id'],
             'coupon_code' => $coupon['card'],
             'discount' =>  number_format($coupon['discount'], 2, '.', ''),
             'actual_price' => number_format(($cacheOrder['actual_price'] - $coupon['discount']), 2, '.', '')
         ];
-        return $cacheOrder;
+        return array_merge($cacheOrder, $couponProcess);
     }
 
 }
