@@ -97,7 +97,7 @@ class HomeController extends Controller
             // 先查出有没有优惠券
             $coupon = Coupons::where(['card' => $data['coupon_code'], 'product_id' => $data['pid']])->first();
             if (empty($coupon)) throw new AppException(__('prompt.coupon_does_not_exist'));
-            OrderService::processCoupon($coupon, $data['pid'], $cacheOrder);
+            $cacheOrder = OrderService::processCoupon($coupon, $data['pid'], $cacheOrder);
         }
         if ($product['pd_type'] == 2) {
             // 如果有其他输入框 判断其他输入框内容  然后载入信息

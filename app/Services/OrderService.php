@@ -34,9 +34,10 @@ class OrderService
      * @param Coupons $coupon 优惠码.
      * @param int $pid 商品id.
      * @param array $cacheOrder 订单缓存数组.
+     * @return  array $cacheOrder 处理好的订单.
      * @throws AppException
      */
-    public function processCoupon(Coupons $coupon, int $pid, array &$cacheOrder) : void
+    public function processCoupon(Coupons $coupon, int $pid, array $cacheOrder) : array
     {
         // 判断类型  如果是一次性的话  先判断使用没有
         if ($coupon['c_type'] == 1 && $coupon['is_status'] == 2) {
@@ -55,6 +56,7 @@ class OrderService
             'discount' =>  number_format($coupon['discount'], 2, '.', ''),
             'actual_price' => number_format(($cacheOrder['actual_price'] - $coupon['discount']), 2, '.', '')
         ];
+        return $cacheOrder;
     }
 
 }
