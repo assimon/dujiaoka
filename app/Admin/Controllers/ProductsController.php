@@ -90,7 +90,7 @@ class ProductsController extends AdminController
         $form->radio('pd_type', __('Pd type'))->options([1=> '自动发卡', 2=> '代充'])
             ->rules('required',['请选择类型'])
             ->default(1);
-
+        $this->radio('isopen_coupon', __('Is open coupon'))->options([1 => '开启', 2 => '关闭'])->default(1);
         $form->textarea('other_ipu', __('Other ipu'))->help('(仅针对代充商品有效，一行一个) 例如：qqpwd=QQ密码=true 代表多一个qqpwd输入框，需要输入的内容是QQ密码，true为必填 false为可空');
         $form->radio('pd_status', __('Pd status'))
             ->options([1=> '上架', 2=> '下架'])

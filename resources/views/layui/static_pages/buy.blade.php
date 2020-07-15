@@ -116,7 +116,7 @@
                                             </script>
                                         </div>
                                         @endif
-                                        @if(config('webset.isopen_coupon') == 1)
+                                        @if($isopen_coupon == 1)
                                         <div class="layui-form-item">
                                             <label class="layui-form-label">{{ __('system.promo_code') }}</label>
                                             <div class="layui-input-block">
