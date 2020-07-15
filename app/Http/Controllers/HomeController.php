@@ -56,8 +56,7 @@ class HomeController extends Controller
     public function postOrder(Request $request)
     {
         $data = $request->all();
-        if (intval($data['order_number']) <= 0)
-        if(!is_numeric($data['order_number']) || strpos($data['order_number'],".") !== false) throw new AppException(__('prompt.buy_order_number'));
+        if(intval($data['order_number']) <= 0 || !is_numeric($data['order_number']) || strpos($data['order_number'],".") !== false) throw new AppException(__('prompt.buy_order_number'));
         if (config('webset.isopen_searchpwd') == 1 && empty($data['search_pwd'])) throw new AppException(__('prompt.search_password_not_null'));
         if (config('webset.verify_code') == 1 && !captcha_check($data['verify_img'])) throw new AppException(__('prompt.verify_code_error'));
         $product = Products::find($data['pid']);
@@ -92,29 +91,14 @@ class HomeController extends Controller
             $cacheOrder['actual_price'] = number_format(($cacheOrder['actual_price'] * $cacheOrder['buy_amount']), 2, '.', '');
         }
         /**
-         * 这里是优惠券
+         * 这里是优惠券处理逻辑.
          */
         if (isset($data['coupon_code']) && $product['isopen_coupon'] == 1) {
             // 先查出有没有优惠券
-            $coupon = Coupons::where('card', '=', $data['coupon_code'])->where('product_id', '=', $data['pid'])->first();
+            $coupon = Coupons::where(['card' => $data['coupon_code'], 'product_id' => $data['pid']])->first();
             if (empty($coupon)) throw new AppException(__('prompt.coupon_does_not_exist'));
-            // 判断类型  如果是一次性的话  先判断使用没有
-            if ($coupon['c_type'] == 1 && $coupon['is_status'] == 2) {
-                throw new AppException(__('prompt.coupon_already_used'));
-            }
-            if ($coupon['c_type'] == 2 && $coupon['ret'] <= 0) {
-                throw new AppException(__('prompt.coupon_no_more'));
-            }
-            if ($cacheOrder['actual_price'] <= $coupon['discount']) {
-                throw new AppException(__('prompt.coupon_price_error'));
-            }
-            $cacheOrder['coupon_type'] = $coupon['c_type'];
-            $cacheOrder['coupon_id'] = $coupon['id'];
-            $cacheOrder['coupon_code'] = $data['coupon_code'];
-            $cacheOrder['discount'] = number_format($coupon['discount'], 2, '.', '');
-            $cacheOrder['actual_price'] = number_format(($cacheOrder['actual_price'] - $coupon['discount']), 2, '.', '');
+            OrderService::processCoupon($coupon, $data['pid'], $cacheOrder);
         }
-
         if ($product['pd_type'] == 2) {
             // 如果有其他输入框 判断其他输入框内容  然后载入信息
             if (!empty($product['other_ipu'])) {
@@ -172,9 +156,6 @@ class HomeController extends Controller
         $orderInfo = json_decode($orderCache, true);
         return $this->view('static_pages/bill', $orderInfo);
     }
-
-
-
 
 
 }
