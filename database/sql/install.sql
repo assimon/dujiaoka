@@ -11,7 +11,7 @@
  Target Server Version : 50729
  File Encoding         : 65001
 
- Date: 14/07/2020 16:28:21
+ Date: 15/07/2020 15:28:58
 */
 
 SET NAMES utf8mb4;
@@ -436,6 +436,7 @@ CREATE TABLE `products` (
   `other_ipu` text,
   `pd_status` int(1) NOT NULL DEFAULT '1',
   `pd_class` int(10) NOT NULL,
+  `isopen_coupon` int(1) NOT NULL DEFAULT '1',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL,
@@ -458,7 +459,6 @@ CREATE TABLE `webset` (
   `manage_email` varchar(50) DEFAULT NULL,
   `langs` varchar(50) DEFAULT NULL,
   `verify_code` int(1) DEFAULT NULL,
-  `isopen_coupon` int(1) NOT NULL DEFAULT '1',
   `isopen_searchpwd` int(1) NOT NULL DEFAULT '1',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
@@ -469,7 +469,7 @@ CREATE TABLE `webset` (
 -- Records of webset
 -- ----------------------------
 BEGIN;
-INSERT INTO `webset` VALUES (1, '独角数卡 - 一站式自动售货方案', '独角数卡', '独角数卡', '独角数卡', '独角数卡', NULL, 1, 'admin@admin.com', 'zh-CN', 1, 1, 1, NULL, '2020-04-05 22:48:12');
+INSERT INTO `webset` VALUES (1, '独角数卡 - 一站式自动售货方案', '独角数卡', '独角数卡', '独角数卡', '独角数卡', NULL, 1, 'admin@admin.com', 'zh-CN', 1, 1, NULL, '2020-04-05 22:48:12');
 COMMIT;
 
 SET FOREIGN_KEY_CHECKS = 1;
