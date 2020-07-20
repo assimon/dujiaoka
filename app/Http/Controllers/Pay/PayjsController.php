@@ -28,7 +28,11 @@ class PayjsController extends PayController
                     if ($payres['return_code'] != 1) {
                         throw new AppException($payres['return_msg']);
                     }
-                    return redirect($payres['qrcode']);
+                    $result['payname'] = $this->payInfo['pay_name'];
+                    $result['actual_price'] = $this->orderInfo['actual_price'];
+                    $result['orderid'] = $this->orderInfo['order_id'];
+                    $result['qr_code'] = $payres['code_url'];
+                    return $this->view('static_pages/qrpay', $result);
                 } catch (\Exception $e) {
                     throw new AppException(__('prompt.abnormal_payment_channel') . $e->getMessage());
                 }
