@@ -116,6 +116,20 @@
                                             </script>
                                         </div>
                                         @endif
+										@if(config('app.shgeetest'))
+                                        <div class="layui-form-item" style="position: relative;">
+                                            <label for="L_vercode" class="layui-form-label">{{ __('system.behavior_verification') }}</label>
+                                            <div class="layui-input-inline">
+                                                <input type="text" style="cursor:pointer" readonly=""
+                                                       class="layui-input" id="GeetestCaptcha"
+                                                       placeholder="{{ __('system.click_to_behavior_verification') }}">
+                                            </div>
+                                        </div>
+                                        <div class="layui-hide">{!! Geetest::render('popup') !!}</div>
+                                        <script>$('#GeetestCaptcha').click(function () {
+                                                $('.geetest_radar_btn').click();
+                                            })</script>
+                                        @endif
                                         @if($isopen_coupon == 1)
                                         <div class="layui-form-item">
                                             <label class="layui-form-label">{{ __('system.promo_code') }}</label>
