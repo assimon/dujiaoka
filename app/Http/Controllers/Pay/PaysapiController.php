@@ -82,7 +82,7 @@ class PaysapiController extends PayController
             return 'fail';
         }
         $payInfo = Pays::where('id', $cacheord['pay_way'])->first();
-        $temps = md5($data['orderid'] . $data['orderuid'] . $data['paysapi_id'] . $data['price'] . $data['realprice'] . $payInfo['merchant_key']);
+        $temps = md5($data['orderid'] . $data['orderuid'] . $data['paysapi_id'] . $data['price'] . $data['realprice'] . $payInfo['merchant_pem']);
         if ($temps != $data['key']){
             return 'fail';
         }else{
