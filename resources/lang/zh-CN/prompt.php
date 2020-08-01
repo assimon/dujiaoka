@@ -43,6 +43,7 @@ return [
     'no_related_order_found_for_cache' => '未找到相关订单缓存！',
 
     'abnormal_payment_channel' => '支付通道异常~',
+	'behavior_verification_fail' => '行为验证失败'
 
 
 ];
