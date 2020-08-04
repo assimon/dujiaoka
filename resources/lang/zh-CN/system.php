@@ -75,6 +75,10 @@ return [
 
     'query_tips' => '最多只能查询近5笔订单',
 
-    'search_now' => '立即查询'
+    'search_now' => '立即查询',
+
+    // 极验.
+    'client_fail_alert' => '请正确完成行为验证',
+    'server_fail_alert' => '行为验证失败',
 
 ];

@@ -6,6 +6,7 @@
 - [修改后台登录地址](#修改后台登录地址)
 - [易支付配置](#易支付配置)
 - [后台主题配置](#后台主题配置)
+- [开启极验行为验证](#开启极验行为验证)
 
 
 
@@ -33,9 +34,10 @@ MAIL_USERNAME=
 MAIL_PASSWORD=
 MAIL_FROM_ADDRESS=server@emails.dujiaoka.com
 MAIL_FROM_NAME=独角发卡
-MAIL_ENCRYPTION=null
+MAIL_ENCRYPTION=tls
 ```
-如果不能发送邮件，就请尝试更换一下端口：`587` `465` `22`,挨个试试！  
+如果不能发送邮件，就请尝试更换一下端口：`587` `465` `22`,挨个试试！      
+MAIL_ENCRYPTION设置为ssl或者tls
 
 记得改了`.env邮件配置`要去重启一下`Supervisor`的进程服务，否则不会生效！   
 ![重启进程](https://i.loli.net/2020/04/08/jGDBz6L12rHguni.png)  
@@ -51,4 +53,13 @@ MAIL_ENCRYPTION=null
 
 
 ## 后台主题配置
-编辑项目根目录下`.env`里面的 `ADMIN_SKIN`即可
+编辑项目根目录下`.env`里面的 `ADMIN_SKIN`即可    
+
+
+## 开启极验行为验证
+打开`.env`编辑，新增或编辑以下配置：   
+```
+SH_GEETEST=true // true为开启极验，false为关闭.
+GEETEST_ID=xxxxxxxxx // 极验配置id.
+GEETEST_KEY=xxxxxxxxx // 极验配置key
+```

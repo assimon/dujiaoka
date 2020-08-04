@@ -49,7 +49,7 @@ return [
 	|--------------------------------------------------------------------------
 	|
 	| Here you can config your geetest url for ajax validation.
-	| 
+	|
 	| Options: http or https
 	|
 	*/
@@ -61,7 +61,7 @@ return [
 	|--------------------------------------------------------------------------
 	|
 	| Here you can config your geetest url for ajax validation.
-	| 
+	|
 	| Options: float, popup, custom, bind
 	|
 	*/
@@ -75,7 +75,7 @@ return [
 	| Here you can config the alert text when it failed in client.
 	|
 	*/
-	'client_fail_alert' => '请正确完成行为验证',
+	'client_fail_alert' => __('system.client_fail_alert'),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -85,7 +85,7 @@ return [
 	| Here you can config the alert text when it failed in server (two factor validation).
 	|
 	*/
-	'server_fail_alert' => '行为验证失败',
+	'server_fail_alert' => __('system.server_fail_alert'),
 
 
 ];
