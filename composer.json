@@ -13,7 +13,7 @@
         "cyd622/laravel-admin-ext-echarts": "^1.0",
         "encore/laravel-admin": "^1.7",
         "fideloper/proxy": "^4.0",
-        "germey/geetest": "^3.0",
+        "germey/geetest": "^3.1",
         "hanson/rainbow": "dev-master",
         "james.xue/login-captcha": "^2.0",
         "jenssegers/agent": "^2.6",
