@@ -415,7 +415,7 @@ INSERT INTO `pays` VALUES (16, '易支付-QQ钱包', 'qqpay', 'dump', '商户号
 INSERT INTO `pays` VALUES (17, 'paypal', 'paypal', 'dump', '商户号', NULL, '密钥', '/pay/paypal', 1, '2020-07-14 16:25:20', NULL);
 INSERT INTO `pays` VALUES (18, 'Mugglepay数字货币', 'mgcoin', 'dump', '商户号', NULL, '密钥', '/pay/mugglepay', 1, '2020-07-14 16:27:00', NULL);
 INSERT INTO `pays` VALUES (19, 'V免签支付宝', 'vzfb', 'dump', 'v免签通讯密钥', NULL, 'V免签地址 例如 https://vpay.qq.com/    结尾必须有/', 'pay/vpay', 1, '2020-05-01 13:15:56', '2020-05-01 13:18:29');
-INSERT INTO `pays` VALUES (0, 'V免签微信', 'vwx', 'dump', 'V免签通讯密钥', NULL, 'V免签地址 例如 https://vpay.qq.com/    结尾必须有/', 'pay/vpay', 1, '2020-05-01 13:17:28', '2020-05-01 13:18:38');
+INSERT INTO `pays` VALUES (20, 'V免签微信', 'vwx', 'dump', 'V免签通讯密钥', NULL, 'V免签地址 例如 https://vpay.qq.com/    结尾必须有/', 'pay/vpay', 1, '2020-05-01 13:17:28', '2020-05-01 13:18:38');
 -- ----------------------------
 COMMIT;
 
