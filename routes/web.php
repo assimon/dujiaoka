@@ -52,4 +52,8 @@ Route::group(['prefix'=>'pay','namespace' => 'Pay'],function(){
     // Mugglepay
     Route::get('mugglepay/{payway}/{oid}','MugglepayController@gateway');
     Route::post('mugglepay/notify_url','MugglepayController@notifyUrl');
+    // V免签
+    Route::get('vpay/{payway}/{oid}','VpayController@gateway');
+    Route::get('vpay/notify_url','VpayController@notifyUrl');
+    Route::get('vpay/return_url','VpayController@returnUrl');
 });
