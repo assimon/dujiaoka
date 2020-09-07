@@ -3,15 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Exceptions\AppException;
+use App\Interfaces\Order;
 use App\Jobs\ReleaseOrder;
 use App\Models\Classifys;
 use App\Models\Coupons;
 use App\Models\Pays;
 use App\Models\Products;
+use App\Rules\Searchpwd;
+use App\Rules\VerifyImg;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redis;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 use Facades\App\Services\ProductsService;
 use Facades\App\Services\OrderService;
@@ -54,11 +58,25 @@ class HomeController extends Controller
      */
     public function postOrder(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'account' => ['required', 'email'],
+            'payway' => ['required', 'integer'],
+            'search_pwd' => [new Searchpwd],
+            'order_number' => ['required', 'integer'],
+            'verify_img' => [new VerifyImg],
+        ], [
+            'order_number.required' =>  __('prompt.buy_order_number'),
+            'order_number.integer' =>  __('prompt.buy_order_number'),
+            'payway.required' =>  __('prompt.please_select_mode_of_payment'),
+            'payway.integer' =>  __('prompt.please_select_mode_of_payment'),
+            'account.required' =>  __('prompt.check_email_format'),
+            'account.email' =>  __('prompt.check_email_format'),
+        ]);
+        if ($validator->fails()) {
+            throw new AppException($validator->errors()->first());
+        }
         $data = $request->all();
-        if(intval($data['order_number']) <= 0 || !is_numeric($data['order_number']) || strpos($data['order_number'],".") !== false) throw new AppException(__('prompt.buy_order_number'));
-        if (config('webset.isopen_searchpwd') == 1 && empty($data['search_pwd'])) throw new AppException(__('prompt.search_password_not_null'));
-        if (config('webset.verify_code') == 1 && !captcha_check($data['verify_img'])) throw new AppException(__('prompt.verify_code_error'));
-		if (config('app.shgeetest')) {
+        if (config('app.shgeetest')) {
             if (!$this->validate($request, [
                 'geetest_challenge' => 'geetest',
             ], [
@@ -70,8 +88,6 @@ class HomeController extends Controller
         $product = Products::find($data['pid']);
         if (empty($product) || $product['pd_status'] != 1) throw new AppException(__('prompt.product_off_the_shelf'));
         if ($product['in_stock'] == 0 || $data['order_number'] > $product['in_stock']) throw new AppException(__('prompt.inventory_shortage'));
-        if (!isset($data['payway'])) throw new AppException(__('prompt.please_select_mode_of_payment'));
-        if (!filter_var($data['account'],FILTER_VALIDATE_EMAIL) || empty($data['account'])) throw new AppException(__('prompt.check_email_format'));
         // 订单缓存
         $cacheOrder = [
             'product_id' => $data['pid'], // 商品id
@@ -88,16 +104,9 @@ class HomeController extends Controller
             'buy_ip' => $request->getClientIp(),
             'other_ipu' => ''
         ];
-        // 如果存在批发价
-        if (!empty($product['wholesale_price'])) {
-            $cacheOrder['actual_price'] = OrderService::getWholesalePrice(
-                ProductsService::formatWholesalePrice($product['wholesale_price']),
-                $cacheOrder['actual_price'],
-                $cacheOrder['buy_amount']
-            );
-        } else {
-            $cacheOrder['actual_price'] = number_format(($cacheOrder['actual_price'] * $cacheOrder['buy_amount']), 2, '.', '');
-        }
+        $order = new Order($cacheOrder, $product->toArray());
+        // 计算总价
+        $order->calculateThePrice();
         /**
          * 这里是优惠券处理逻辑.
          */
@@ -105,45 +114,18 @@ class HomeController extends Controller
             // 先查出有没有优惠券
             $coupon = Coupons::where(['card' => $data['coupon_code'], 'product_id' => $data['pid']])->first();
             if (empty($coupon)) throw new AppException(__('prompt.coupon_does_not_exist'));
-            $cacheOrder = OrderService::processCoupon($coupon, $data['pid'], $cacheOrder);
+            $order->setCoupon($coupon);
         }
-        if ($product['pd_type'] == 2) {
+        /**
+         * 如果是代充，配置输入框
+         */
+        if ($product['pd_type'] == 2 && !empty($product['other_ipu'])) {
             // 如果有其他输入框 判断其他输入框内容  然后载入信息
-            if (!empty($product['other_ipu'])) {
-                $otherIpuAll =  ProductsService::formatChargeInput($product['other_ipu']);
-                foreach ($otherIpuAll as $value) {
-                    if ($value['rule'] && empty($data[$value['field']])) {
-                        throw new AppException("{$value['desc']}" . __('prompt.charge_not_null'));
-                    }
-                    $cacheOrder['other_ipu'] .= $value['desc'].':'.$data[$value['field']].PHP_EOL;
-                }
-            }
+            $order->formatChargeInput($data);
         }
         // 将订单信息载入缓存，等待支付
-        Redis::hset('PENDING_ORDERS_LIST', $cacheOrder['order_id'], json_encode($cacheOrder));
-        // 开始事务
-        DB::beginTransaction();
-        // 减去数据库库存
-        $deStock = Products::where(['id' => $data['pid'], 'in_stock' => $product['in_stock']])->decrement('in_stock', $data['order_number']);
-        if (isset($data['coupon_code']) && $product['isopen_coupon'] == 1) {
-            // 将优惠券设置为已经使用 且次数-1
-            $inCoupon = Coupons::where('card', '=', $data['coupon_code'])->update(['is_status' => 2]);
-            $inCouponNum =  Coupons::where(['card' => $data['coupon_code'], 'ret' => $coupon['ret']])->decrement('ret', 1);
-        } else {
-            $inCoupon = true;
-            $inCouponNum = true;
-        }
-        if (!$deStock || !$inCoupon || !$inCouponNum) {
-            Redis::hdel('PENDING_ORDERS_LIST', $cacheOrder['order_id']);
-            DB::rollBack();
-            throw new AppException(__('prompt.order_post_error'));
-        }
-        DB::commit();
-        // 设置订单cookie
-        OrderService::queueCookie($cacheOrder['order_id']);
-        // 将过期释放的订单载入队列 x分钟后释放
-        ReleaseOrder::dispatch($cacheOrder['order_id'],  $data['order_number'], $data['pid'])->delay(Carbon::now()->addMinutes(config('app.order_expire_date')));
-        return redirect(url('/bill', ['orderid' => $cacheOrder['order_id']]));
+        $orderId = $order->cacheOrder();
+        return redirect(url('/bill', ['orderid' => $orderId]));
     }
 
     /**
