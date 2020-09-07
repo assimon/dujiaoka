@@ -43,6 +43,8 @@ class Setting extends Form
         $this->text('langs', __('Sys Langs'))->help('默认为中文zh-CN,不会翻译语言包不要改');
         $this->radio('verify_code', __('Verify Code'))->options([1 => '开启', 2 => '关闭'])->default(1);
         $this->radio('isopen_searchpwd', __('Is open searchpwd'))->options([1 => '开启', 2 => '关闭'])->default(1);
+        $this->radio('isopen_serverj', __('Is open serverj'))->options([1 => '开启', 2 => '关闭'])->default(1);
+        $this->text('serverj_token', __('Serverj token'));
         $this->UEditor('notice', __('Sys notice'));
         $this->textarea('footer', __('Sys footer'))->help('可以填写一些统计代码或者icp备案信息');
 

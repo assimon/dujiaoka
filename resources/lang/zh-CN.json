@@ -83,7 +83,9 @@
     "Sys Langs" : "前台语言",
     "Verify Code": "下单验证码",
     "Is open coupon": "优惠券入口",
-    "Is open searchpwd": "查询密码"
+    "Is open searchpwd": "查询密码",
+    "Is open serverj": "Server酱推送",
+    "Serverj token": "Server酱通信token"
 
 
 
