@@ -1,4 +1,33 @@
+/*
+1.7.2版本更新sql
+ */
+ALTER TABLE `webset` ADD `isopen_serverj` INT(1) NOT NULL DEFAULT '1' AFTER `isopen_searchpwd`, ADD `serverj_token` VARCHAR(50) NULL DEFAULT '' AFTER `isopen_serverj`;
+
+
+/*
+1.7.1版本更新sql
+ */
 -- ----------------------------
+-- 删除系统配置字段.
+-- ----------------------------
+ALTER TABLE `webset` DROP `isopen_coupon`;
+-- ----------------------------
+-- 增加商品表字段.
+-- ----------------------------
+ALTER TABLE `products` ADD `isopen_coupon` INT(1) NOT NULL DEFAULT '1' AFTER `pd_class`;
+
+/*
+1.7.0版本更新sql
+ */
+-- ----------------------------
+-- 查询密码开关和优惠码开关
+-- ----------------------------
+ALTER TABLE `webset` ADD `isopen_coupon` INT(1) NOT NULL DEFAULT '1' AFTER `verify_code`, ADD `isopen_searchpwd` INT(1) NOT NULL DEFAULT '1' AFTER `isopen_coupon`;
+
+/*
+1.6版本更新sql
+ */
+ -- ----------------------------
 -- 更新系统设置表sql
 -- ----------------------------
 ALTER TABLE `webset` ADD `langs` VARCHAR(50) NULL DEFAULT 'zh-CN' AFTER `manage_email`, ADD `verify_code` INT(1) NULL DEFAULT '1' AFTER `langs`;

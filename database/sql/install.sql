@@ -11,7 +11,7 @@
  Target Server Version : 50729
  File Encoding         : 65001
 
- Date: 15/07/2020 15:28:58
+ Date: 08/09/2020 10:26:37
 */
 
 SET NAMES utf8mb4;
@@ -394,7 +394,7 @@ CREATE TABLE `pays` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `uq_payck` (`pay_check`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of pays
@@ -416,7 +416,6 @@ INSERT INTO `pays` VALUES (17, 'paypal', 'paypal', 'dump', '商户号', NULL, '�
 INSERT INTO `pays` VALUES (18, 'Mugglepay数字货币', 'mgcoin', 'dump', '商户号', NULL, '密钥', '/pay/mugglepay', 1, '2020-07-14 16:27:00', NULL);
 INSERT INTO `pays` VALUES (19, 'V免签支付宝', 'vzfb', 'dump', 'v免签通讯密钥', NULL, 'V免签地址 例如 https://vpay.qq.com/    结尾必须有/', 'pay/vpay', 1, '2020-05-01 13:15:56', '2020-05-01 13:18:29');
 INSERT INTO `pays` VALUES (20, 'V免签微信', 'vwx', 'dump', 'V免签通讯密钥', NULL, 'V免签地址 例如 https://vpay.qq.com/    结尾必须有/', 'pay/vpay', 1, '2020-05-01 13:17:28', '2020-05-01 13:18:38');
--- ----------------------------
 COMMIT;
 
 -- ----------------------------
@@ -463,6 +462,8 @@ CREATE TABLE `webset` (
   `langs` varchar(50) DEFAULT NULL,
   `verify_code` int(1) DEFAULT NULL,
   `isopen_searchpwd` int(1) NOT NULL DEFAULT '1',
+  `isopen_serverj` int(1) DEFAULT NULL,
+  `serverj_token` varchar(100) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -472,7 +473,7 @@ CREATE TABLE `webset` (
 -- Records of webset
 -- ----------------------------
 BEGIN;
-INSERT INTO `webset` VALUES (1, '独角数卡 - 一站式自动售货方案', '独角数卡', '独角数卡', '独角数卡', '独角数卡', NULL, 1, 'admin@admin.com', 'zh-CN', 1, 1, NULL, '2020-04-05 22:48:12');
+INSERT INTO `webset` VALUES (1, '独角数卡 - 一站式自动售货方案', '独角数卡', '独角数卡', '独角数卡', '独角数卡', NULL, 1, 'admin@admin.com', 'zh-CN', 1, 1, NULL, NULL, NULL, '2020-04-05 22:48:12');
 COMMIT;
 
 SET FOREIGN_KEY_CHECKS = 1;
