@@ -3,6 +3,8 @@
 return [
 
     //luna模板
+    'home_choice_cate'=>'选择分类',
+    'home_choice_goods'=>'选择商品',
     'order_search_m' => '查单',
     'goods_num' => '商品数量',
     'goods_disc_1' => '满',

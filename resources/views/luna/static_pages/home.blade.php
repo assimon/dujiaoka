@@ -26,7 +26,7 @@
                                 d="M445.44 890.88h-276.48l-40.96-40.96V619.52l40.96-40.96h174.08v81.92h-133.12V808.96h194.56V215.04h-194.56v172.032h133.12v81.92h-174.08l-40.96-40.96V174.08l40.96-40.96h276.48l40.96 40.96v675.84z"
                                 fill="#3C8CE7" p-id="1273" data-spm-anchor-id="a313x.7781069.0.i3" class=""></path>
                         </svg>
-                        <span>选择分类</span>
+                        <span>{{ __('luna.home_choice_cate') }}</span>
                     </div>
                     <div class="cate"></div>
                     <div class="goods">
@@ -40,7 +40,7 @@
                                     d="M305.152 620.544h61.44v61.44h-61.44zM481.28 620.544h61.44v61.44h-61.44zM657.408 620.544h61.44v61.44h-61.44z"
                                     fill="#00EAFF" p-id="1947" data-spm-anchor-id="a313x.7781069.0.i14" class=""></path>
                             </svg>
-                            <span>选择商品</span>
+                            <span>{{ __('luna.home_choice_goods') }}</span>
                         </p>
                         <div class="goods-list"></div>
                     </div>
