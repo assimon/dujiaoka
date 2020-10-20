@@ -1,4 +1,11 @@
 /*
+网站图片logo
+*/
+ALTER TABLE `webset` ADD COLUMN `img_logo` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL AFTER `title`;
+UPDATE `webset` SET `img_logo` = 'uploads/images/default.jpg' WHERE `id` = 1;
+
+
+/*
 1.7.2版本更新sql
  */
 ALTER TABLE `webset` ADD `isopen_serverj` INT(1) NOT NULL DEFAULT '1' AFTER `isopen_searchpwd`, ADD `serverj_token` VARCHAR(50) NULL DEFAULT '' AFTER `isopen_serverj`;

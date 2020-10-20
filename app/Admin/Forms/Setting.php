@@ -25,7 +25,11 @@ class Setting extends Form
     public function handle(Request $request)
     {
         $data = $request->all();
-        $webset = Webset::where('id', 1)->update($data);
+        if (isset($request->img_logo) && $request->img_logo->isValid()) {
+            $path = $request->img_logo->store('images','admin');
+            $data['img_logo'] = 'uploads/' . $path;
+        }
+        Webset::where('id', 1)->update($data);
         admin_success('成功', '保存网站设置成功');
         return redirect(config('admin.route.prefix') . '/setting');
     }
@@ -36,6 +40,7 @@ class Setting extends Form
     public function form()
     {
         $this->text('title', __('Sys title'))->rules('required');
+        $this->image('img_logo', __('Sys img logo'))->help('网站logo');
         $this->text('text_logo', __('Sys text logo'))->rules('required');
         $this->text('keywords', __('Sys keywords'))->rules('required');
         $this->textarea('description', __('Sys description'))->rules('required');
@@ -58,6 +63,7 @@ class Setting extends Form
     public function data()
     {
         $webset = Webset::where('id', 1)->first();
+        $webset->img_logo = url($webset->img_logo);
         return $webset->toArray();
     }
 
