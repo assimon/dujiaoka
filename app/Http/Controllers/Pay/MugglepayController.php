@@ -54,7 +54,7 @@ class MugglepayController extends PayController
         } else {
             //合法的数据
             //业务处理
-            $this->successOrder($data['merchant_order_id'], $data['order_id'], $data['pay_amount']);
+            $this->orderService->successOrder($data['merchant_order_id'], $data['order_id'], $data['pay_amount']);
             return "{\"status\": 200}";
         }
     }

@@ -1,7 +1,7 @@
 /*
 1.7.2版本更新sql
  */
-ALTER TABLE `webset` ADD `isopen_serverj` INT(1) NOT NULL DEFAULT '1' AFTER `isopen_searchpwd`, ADD `serverj_token` VARCHAR(50) NULL DEFAULT '' AFTER `isopen_serverj`;
+ALTER TABLE `webset` ADD `isopen_serverj` INT(1) NOT NULL DEFAULT '1' AFTER `isopen_searchpwd`, ADD `serverj_token` VARCHAR(100) NULL DEFAULT '' AFTER `isopen_serverj`;
 
 
 /*

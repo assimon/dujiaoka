@@ -12,3 +12,6 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
+.htaccess
+nginx.htaccess
+/error

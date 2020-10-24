@@ -70,7 +70,7 @@ class VpayController extends PayController
             return 'fail';  //返回失败 继续补单
         } else { //合法的数据
             //业务处理
-            $this->successOrder($param, $payId, $price);
+            $this->orderService->successOrder($param, $payId, $price);
             return 'success';
         }
 

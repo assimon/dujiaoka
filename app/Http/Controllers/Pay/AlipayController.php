@@ -76,7 +76,7 @@ class AlipayController extends PayController
             return 'error';
         }
 
-        $payInfo = Pays::where('id', $cacheord['pay_way'])->first()->toArray();
+        $payInfo = Pays::query()->where('id', $cacheord['pay_way'])->first();
         $config = [
             'app_id' => $payInfo['merchant_id'],
             'ali_public_key' => $payInfo['merchant_key'],
@@ -87,7 +87,7 @@ class AlipayController extends PayController
             // 验证签名
             $result = $pay->verify();
             if ($result->trade_status == 'TRADE_SUCCESS' || $result->trade_status == 'TRADE_FINISHED') {
-                $this->successOrder($result->out_trade_no, $result->trade_no, $result->total_amount);
+                $this->orderService->successOrder($result->out_trade_no, $result->trade_no, $result->total_amount);
             }
             return 'success';
         } catch (\Exception $exception) {

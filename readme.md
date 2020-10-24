@@ -53,8 +53,9 @@ demo地址：[http://dujiaoka.com](http://dujiaoka.com)
 - [x] [Paysapi(支付宝/微信)](https://www.paysapi.com/).
 - [x] [码支付(QQ/支付宝/微信)](https://codepay.fateqq.com/)
 - [x] 微信企业扫码支付 
-- [x] Paypal支付(默认美元) 
+- [x] Paypal支付(默认美元)    
 - [x] 麻瓜宝数字货币支付     
+- [x] V免签支付     
 - [x] 全网易支付支持(针对彩虹版) 
  
 
