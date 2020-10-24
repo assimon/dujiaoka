@@ -76,7 +76,7 @@
            class="goods-box" style="<<# if(d.in_stock <= 0){ >>cursor:not-allowed;<<# }; >>">
             <div class="goods-name"><< d.pd_name >></div>
             <div class="goods-price">
-                <span>￥</span> << d.actual_price >>
+                ￥<< d.actual_price >>
                 <<# layui.each(d.wholesale_price_arr, function(index, item){ >>
                 <div>{{ __('luna.goods_disc_1') }}<< item[0] >>{{ __('luna.goods_disc_2') }}<< item[1]
                     >>{{ __('luna.goods_disc_3') }}</div>
