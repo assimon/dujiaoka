@@ -199,8 +199,8 @@ class OrderController extends Controller
         ) {
             throw new AppException(__('prompt.required_fields_cannot_be_empty'));
         }
-
-        $orders = $this->orderService->searchOrderByAccount($data['account'], $data['search_pwd']);
+        $searchPwd = isset($data['search_pwd']) ? $$data['search_pwd'] : false;
+        $orders = $this->orderService->searchOrderByAccount($data['account'], $searchPwd);
         if (empty($orders)) throw new AppException(__('prompt.no_related_order_found'));
         return $this->view('static_pages/orderinfo', ['orders' => $orders]);
     }
