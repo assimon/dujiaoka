@@ -272,9 +272,7 @@
     <script src="https://static.geetest.com/static/tools/gt.js"></script>
     <script>
         var buyPrompt = '{!! $buy_prompt !!}';
-        if (buyPrompt) {
-            window.tipsMsg("{{ __('prompt.purchase_tips') }}", buyPrompt);
-        }
+        if (buyPrompt) window.tipsMsg("{{ __('prompt.purchase_tips') }}", buyPrompt);
         gtWidth = window.clientWidth <= 767 ? '100%' : '312px';
         layui.use(['form'], function () {
             var form = layui.form;
@@ -284,7 +282,7 @@
                     if (value > stock) return "{{ __('prompt.inventory_shortage') }}"
                 }
             })
-
+            @if(config('app.shgeetest'))
             var geeTest = (function (url) {
                 var handlerEmbed = function (captchaObj) {
                     form.on('submit(postOrder)', function (data) {
@@ -294,12 +292,6 @@
                                 icon: 5
                             });
                             return false;
-                        }
-                        if (data.field.payway == null) {
-                            layer.msg("{{ __('prompt.please_select_mode_of_payment') }}", {
-                                icon: 5
-                            })
-                            return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
                         }
                         return true;
                     });
@@ -329,8 +321,16 @@
                     }
                 });
             })('/geetest');
-
-
+            @endif
+            form.on('submit(postOrder)', function (data) {
+                if (data.field.payway == null) {
+                    layer.msg("{{ __('prompt.please_select_mode_of_payment') }}", {
+                        icon: 5
+                    })
+                    return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
+                }
+                return true;
+            });
         });
     </script>
 @endsection
