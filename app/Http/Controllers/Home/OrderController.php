@@ -8,6 +8,7 @@ use App\Rules\Searchpwd;
 use App\Rules\VerifyImg;
 use App\Services\CouponService;
 use App\Services\OrderService;
+use App\Services\PaysService;
 use App\Services\ProductService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
@@ -184,7 +185,7 @@ class OrderController extends Controller
         $orderId =  \request()->input('order_id') ? \request()->input('order_id') : $oid;
         $order = $this->orderService->orderById($orderId);
         if (empty($orderId) || empty($order)) throw new AppException(__('prompt.order_does_not_exist'));
-        return $this->view('static_pages/orderinfo', ['orders' => $order]);
+        return $this->view('static_pages/orderinfo', ['orders' => [$order], 'pay' => $payInfo]);
     }
 
     /**
