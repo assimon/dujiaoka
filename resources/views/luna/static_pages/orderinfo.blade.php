@@ -97,7 +97,7 @@
                                 </div>
                                 <div class="layui-col-md4">
                                     <textarea disabled spellcheck="false"
-                                              class="order-info">{{ str_replace(PHP_EOL, '<br/>', $order['ord_info']) }}</textarea>
+                                              class="order-info">{!! $order['ord_info'] !!}</textarea>
                                     <div class="btn" style="width: 100%">
                                         <button class="clipboard-but"
                                                 style="width: 100%;margin-top: initial;margin-bottom: 10px"
