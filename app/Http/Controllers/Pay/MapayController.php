@@ -61,10 +61,9 @@ class MapayController extends PayController
             return 'fail';  //返回失败 继续补单
         } else { //合法的数据
             //业务处理
-            $this->successOrder($data['pay_id'], $data['pay_no'], $data['money']);
+            $this->orderService->successOrder($data['pay_id'], $data['pay_no'], $data['money']);
             return 'success';
         }
-
     }
 
 

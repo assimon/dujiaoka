@@ -76,7 +76,7 @@
            class="goods-box" style="<<# if(d.in_stock <= 0){ >>cursor:not-allowed;<<# }; >>">
             <div class="goods-name"><< d.pd_name >></div>
             <div class="goods-price">
-                <span>￥</span> << d.actual_price >>
+                ￥<< d.actual_price >>
                 <<# layui.each(d.wholesale_price_arr, function(index, item){ >>
                 <div>{{ __('luna.goods_disc_1') }}<< item[0] >>{{ __('luna.goods_disc_2') }}<< item[1]
                     >>{{ __('luna.goods_disc_3') }}</div>
@@ -84,14 +84,14 @@
             </div>
             <div class="goods-num">
                 <div><p style="width: << d.proportion >>%;"></p></div>
-                <span>{{ __('luna.goods_surplus') }}<< d.in_stock - d.sales_volume >>{{ __('luna.goods_unit') }}</span>
+                <span>{{ __('luna.goods_surplus') }}<< d.in_stock>>{{ __('luna.goods_unit') }}</span>
             </div>
         </a>
     </script>
 
     <script>
         let title    = "{{ __('system.announcement') }}",
-            tipsCon  = "{!! config('webset.notice') !!}",
+            tipsCon  = '{!! config('webset.notice') !!}',
             goodsMsg = {!! json_encode($classifys) !!};
     </script>
 @endsection

@@ -88,7 +88,7 @@ class PaysapiController extends PayController
         }else{
             //校验key成功，是自己人。执行自己的业务逻辑：加余额，订单付款成功，装备购买成功等等。
             //业务处理
-            $this->successOrder($data['orderid'], $data['paysapi_id'], $data['price']);
+            $this->orderService->successOrder($data['orderid'], $data['paysapi_id'], $data['price']);
             return 'success';
         }
     }

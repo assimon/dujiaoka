@@ -271,7 +271,10 @@
     <script src="https://cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
     <script src="https://static.geetest.com/static/tools/gt.js"></script>
     <script>
-        window.tipsMsg("{{ __('prompt.purchase_tips') }}", "{!! $buy_prompt !!}");
+        var buyPrompt = '{!! $buy_prompt !!}';
+        if (buyPrompt) {
+            window.tipsMsg("{{ __('prompt.purchase_tips') }}", buyPrompt);
+        }
         gtWidth = window.clientWidth <= 767 ? '100%' : '312px';
         layui.use(['form'], function () {
             var form = layui.form;

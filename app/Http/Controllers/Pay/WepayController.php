@@ -72,7 +72,7 @@ class WepayController extends PayController
             // 验证签名
             $result = $pay->verify();
             $total_fee = $result->total_fee / 100;
-            $this->successOrder($result->out_trade_no, $result->transaction_id, $total_fee);
+            $this->orderService->successOrder($result->out_trade_no, $result->transaction_id, $total_fee);
             return 'success';
         } catch (\Exception $exception) {
             return 'fail';

@@ -78,7 +78,7 @@ class YipayController extends PayController
             return 'fail';  //返回失败 继续补单
         } else { //合法的数据
             //业务处理
-            $this->successOrder($data['out_trade_no'], $data['trade_no'], $data['money']);
+            $this->orderService->successOrder($data['out_trade_no'], $data['trade_no'], $data['money']);
             return 'success';
         }
     }

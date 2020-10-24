@@ -29,6 +29,7 @@ class Setting extends Form
             $path = $request->img_logo->store('images','admin');
             $data['img_logo'] = 'uploads/' . $path;
         }
+        unset($data['s']);
         Webset::where('id', 1)->update($data);
         admin_success('成功', '保存网站设置成功');
         return redirect(config('admin.route.prefix') . '/setting');

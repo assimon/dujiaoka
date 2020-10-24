@@ -14,12 +14,7 @@
 升级数据库命令：
 
 ```
-php artisan dujiao update (版本号)
-```
-
-例如从1.5升级到1.6命令参考已下： 
-```
-php artisan dujiao update 1.6
+php artisan dujiao update
 ```
 
 

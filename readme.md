@@ -2,7 +2,7 @@
 
 <p align="center">
 <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/license-MIT-blue" alt="license MIT"></a>
-<a href="https://github.com/assimon/dujiaoka/releases/tag/v1.6"><img src="https://img.shields.io/badge/pod-v1.7.1-red" alt="version v1.7.1"></a>
+<a href="https://github.com/assimon/dujiaoka/releases/tag/v1.8.0"><img src="https://img.shields.io/badge/pod-v1.8.0-red" alt="version v1.8.0"></a>
 <a href="https://shang.qq.com/wpa/qunwpa?idkey=37b6b06f7c941dae20dcd5784088905d6461064d7f33478692f0c4215546cee0"><img src="https://img.shields.io/badge/QQ%E7%BE%A4-568679748-green" alt="QQ群：568679748"></a>
 </p>
 
@@ -18,6 +18,9 @@ demo地址：[http://dujiaoka.com](http://dujiaoka.com)
 
 核心贡献者：
 - [iLay1678](https://github.com/iLay1678)
+
+模板贡献者：
+- [Julyssn](https://github.com/Julyssn) 模板`luna`作者
 
 鸣谢以上开源项目及贡献者，排名不分先后.    
 
@@ -39,11 +42,13 @@ demo地址：[http://dujiaoka.com](http://dujiaoka.com)
    
 
 ## 界面尝鲜
-
+【layui模板】
 ![首页.png](https://i.loli.net/2020/08/04/lZOBGXtsHxIUi6W.png)   
 ![后台.png](https://i.loli.net/2020/04/07/ZcYLqN4d2fuAI7X.png)    
 
-
+【luna模板】
+![首页.png](https://i.loli.net/2020/10/24/ElKwJFsQy4a9fZi.png)
+![订单页.png](https://i.loli.net/2020/10/24/jG5Mw137HrzOlFA.png)
 
 ## 支付接口已集成
 - [x] 支付宝当面付
@@ -53,8 +58,9 @@ demo地址：[http://dujiaoka.com](http://dujiaoka.com)
 - [x] [Paysapi(支付宝/微信)](https://www.paysapi.com/).
 - [x] [码支付(QQ/支付宝/微信)](https://codepay.fateqq.com/)
 - [x] 微信企业扫码支付 
-- [x] Paypal支付(默认美元) 
+- [x] Paypal支付(默认美元)    
 - [x] 麻瓜宝数字货币支付     
+- [x] V免签支付     
 - [x] 全网易支付支持(针对彩虹版) 
  
 
@@ -84,6 +90,7 @@ demo地址：[http://dujiaoka.com](http://dujiaoka.com)
 - [Linux环境安装](/wikis/linux_install.md)   
 - [宝塔环境安装](/wikis/bt_install.md)
 - [常见问题锦集](/wikis/problems.md)
+- [模板更换](/wikis/problems.md#更换模板)
 - [系统升级](/wikis/update.md)
 
 ## 默认后台
@@ -97,7 +104,7 @@ demo地址：[http://dujiaoka.com](http://dujiaoka.com)
 本项目仅供开发学习使用，任何人用于任何用途均与项目作者无关！  
 
 ## 恰饭时间到
-- [稳定建站免备案vps点我直达](https://www.kvmla.com/aff.php?aff=2761)    
+- [稳定建站免备案vps点我直达](https://www.kvmla.pro/aff.php?aff=2761)    
 <p align="center"  width="400">
 <a href="https://www.kvmla.com/aff.php?aff=2761"><img src="https://i.loli.net/2020/07/10/FZRSU1NemgM6zXJ.png" alt="kvmla.com"></a>
 </p>
