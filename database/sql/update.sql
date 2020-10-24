@@ -1,6 +1,9 @@
 /*
-网站图片logo
-*/
+1.8版本更新sql
+ */
+-- ----------------------------
+-- 图片logo.
+-- ----------------------------
 ALTER TABLE `webset` ADD COLUMN `img_logo` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL AFTER `title`;
 UPDATE `webset` SET `img_logo` = 'uploads/images/default.jpg' WHERE `id` = 1;
 

@@ -453,6 +453,7 @@ CREATE TABLE `webset` (
   `id` int(1) NOT NULL,
   `title` varchar(200) DEFAULT NULL,
   `text_logo` varchar(50) DEFAULT NULL,
+  `img_logo` varchar(200) DEFAULT NULL,
   `keywords` varchar(200) DEFAULT NULL,
   `description` varchar(200) DEFAULT NULL,
   `notice` text,

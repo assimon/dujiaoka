@@ -84,7 +84,7 @@
             </div>
             <div class="goods-num">
                 <div><p style="width: << d.proportion >>%;"></p></div>
-                <span>{{ __('luna.goods_surplus') }}<< d.in_stock - d.sales_volume >>{{ __('luna.goods_unit') }}</span>
+                <span>{{ __('luna.goods_surplus') }}<< d.in_stock>>{{ __('luna.goods_unit') }}</span>
             </div>
         </a>
     </script>
