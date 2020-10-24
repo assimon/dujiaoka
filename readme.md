@@ -19,6 +19,9 @@ demo地址：[http://dujiaoka.com](http://dujiaoka.com)
 核心贡献者：
 - [iLay1678](https://github.com/iLay1678)
 
+模板贡献者：
+- [Julyssn](https://github.com/Julyssn) 模板`luna`作者
+
 鸣谢以上开源项目及贡献者，排名不分先后.    
 
 ## 系统优势 
@@ -39,11 +42,13 @@ demo地址：[http://dujiaoka.com](http://dujiaoka.com)
    
 
 ## 界面尝鲜
-
+【layui模板】
 ![首页.png](https://i.loli.net/2020/08/04/lZOBGXtsHxIUi6W.png)   
 ![后台.png](https://i.loli.net/2020/04/07/ZcYLqN4d2fuAI7X.png)    
 
-
+【luna模板】
+![首页.png](https://i.loli.net/2020/10/24/ElKwJFsQy4a9fZi.png)
+![订单页.png](https://i.loli.net/2020/10/24/jG5Mw137HrzOlFA.png)
 
 ## 支付接口已集成
 - [x] 支付宝当面付
@@ -85,6 +90,7 @@ demo地址：[http://dujiaoka.com](http://dujiaoka.com)
 - [Linux环境安装](/wikis/linux_install.md)   
 - [宝塔环境安装](/wikis/bt_install.md)
 - [常见问题锦集](/wikis/problems.md)
+- [模板更换](/wikis/problems.md#更换模板)
 - [系统升级](/wikis/update.md)
 
 ## 默认后台

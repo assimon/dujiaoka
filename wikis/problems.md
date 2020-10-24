@@ -7,7 +7,8 @@
 - [易支付配置](#易支付配置)
 - [后台主题配置](#后台主题配置)
 - [开启极验行为验证](#开启极验行为验证)
-
+- [HTTPS-ERROR](#HTTPS-ERROR)
+- [更换模板](#更换模板)
 
 
 ## PHP终端环境对应不上
@@ -62,4 +63,19 @@ MAIL_ENCRYPTION设置为ssl或者tls
 SH_GEETEST=true // true为开启极验，false为关闭.
 GEETEST_ID=xxxxxxxxx // 极验配置id.
 GEETEST_KEY=xxxxxxxxx // 极验配置key
+```
+
+## HTTPS-ERROR
+强制开启https访问后，后台会报错  
+`
+The GET method is not supported for this route. Supported methods: POST
+`   
+解决方法是将.env文件配置里面得`ADMIN_HTTPS`设置为`ADMIN_HTTPS=true`
+
+## 更换模板
+修改`.env`配置里面得`SH_TEMPLATE`参数即可修改模板。
+目前独角数卡提供以下模板：   
+```
+layui   官方模板
+luna    由github @Julyssn用户贡献
 ```
