@@ -104,7 +104,7 @@ demo地址：[http://dujiaoka.com](http://dujiaoka.com)
 本项目仅供开发学习使用，任何人用于任何用途均与项目作者无关！  
 
 ## 恰饭时间到
-- [稳定建站免备案vps点我直达](https://www.kvmla.com/aff.php?aff=2761)    
+- [稳定建站免备案vps点我直达](https://www.kvmla.pro/aff.php?aff=2761)    
 <p align="center"  width="400">
 <a href="https://www.kvmla.com/aff.php?aff=2761"><img src="https://i.loli.net/2020/07/10/FZRSU1NemgM6zXJ.png" alt="kvmla.com"></a>
 </p>
