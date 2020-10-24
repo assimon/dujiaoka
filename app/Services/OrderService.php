@@ -88,10 +88,10 @@ class OrderService
 
     /**
      * 获取订单详情.
-     * @param int $orderId
+     * @param string $orderId
      * @return \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Model|object|null
      */
-    public function orderById(int $orderId)
+    public function orderById(string $orderId)
     {
         return Orders::query()->where('order_id', $orderId)->first();
     }
