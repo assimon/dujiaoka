@@ -91,7 +91,7 @@
 
     <script>
         let title    = "{{ __('system.announcement') }}",
-            tipsCon  = "{!! config('webset.notice') !!}",
+            tipsCon  = '{!! config('webset.notice') !!}',
             goodsMsg = {!! json_encode($classifys) !!};
     </script>
 @endsection
