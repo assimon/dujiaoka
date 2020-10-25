@@ -504,6 +504,10 @@ input[type="number"] {
     margin-left: 20px;
     margin-right: 10px;
     margin-top: 10px;
+    width: calc(100% - 30px);
+    height: 0;
+    position: relative;
+    padding-bottom: calc(100% - 40px);
 }
 
 .main-box .goods-msg {
@@ -518,6 +522,9 @@ input[type="number"] {
     border-radius: 5px;
     margin-top: 5px;
     /*padding: 5px;*/
+    height: 100%;
+    position: absolute;
+    object-fit: cover;
 }
 
 .main-box .goods-msg .goods-name {
@@ -606,6 +613,7 @@ input[type="number"] {
     color: #999;
     width: 72px;
     display: inline-block;
+    vertical-align: middle;
 }
 
 .price {

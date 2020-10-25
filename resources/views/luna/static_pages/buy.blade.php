@@ -27,9 +27,10 @@
                     </div>
                     <div class="layui-col-md4 layui-col-sm12">
                         <div class="goods-img">
-                            <img
-                                src="{{ \Illuminate\Support\Facades\Storage::disk('admin')->url($pd_picture ?: 'images/default.jpg') }}"
-                                alt="">
+                            <img class="viewer-pictures"
+                                 src="{{ \Illuminate\Support\Facades\Storage::disk('admin')->url($pd_picture ?: 'images/default.jpg') }}"
+                                 data-original="{{ \Illuminate\Support\Facades\Storage::disk('admin')->url($pd_picture ?: 'images/default.jpg') }}"
+                                 alt="">
                         </div>
                     </div>
                     <form class="layui-form layui-form-pane" action="{{ url('postOrder') }}" method="post">
@@ -270,6 +271,8 @@
 @section('js')
     <script src="https://cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
     <script src="https://static.geetest.com/static/tools/gt.js"></script>
+    <link rel="stylesheet" href="/assets/luna/js/viewerjs/viewer.min.css">
+    <script src="/assets/luna/js/viewerjs/viewer.min.js"></script>
     <script>
         var buyPrompt = '{!! $buy_prompt !!}';
         if (buyPrompt) window.tipsMsg("{{ __('prompt.purchase_tips') }}", buyPrompt);
@@ -331,6 +334,13 @@
                 }
                 return true;
             });
+            new Viewer(document.querySelector('.viewer-pictures'), {
+                url: 'data-original',
+                toolbar: false,
+                navbar: false,
+                title: false,
+            });
         });
+
     </script>
 @endsection
