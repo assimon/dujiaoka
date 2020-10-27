@@ -325,7 +325,7 @@ class OrderService
     {
         $otherIpuAll =  $this->productService->formatChargeInput($this->product['other_ipu']);
         foreach ($otherIpuAll as $value) {
-            if ($value['rule'] && empty($data[$value['field']])) {
+            if ($value['rule'] && empty($requestData[$value['field']])) {
                 throw new AppException("{$value['desc']}" . __('prompt.charge_not_null'));
             }
             $this->orderInfo['other_ipu'] .= $value['desc'].':'.$requestData[$value['field']].PHP_EOL;
