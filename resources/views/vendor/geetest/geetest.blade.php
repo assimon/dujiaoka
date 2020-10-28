@@ -51,4 +51,10 @@
     .hide {
         display: none;
     }
+    @if(config('app.shtemplate') == 'hyper')
+    .geetest_holder.geetest_wind {
+        width: 100%!important;
+        min-width: 100%!important;
+    }
+    @endif
 </style>
