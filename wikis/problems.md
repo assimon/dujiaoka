@@ -50,7 +50,15 @@ MAIL_ENCRYPTION设置为ssl或者tls
 ## 易支付配置
 市面上98%易支付都是彩虹的程序，独角数卡已经集成通用支付方式，但是由于请求支付地址不一样   
 需要大家手动去改一下你使用的易支付的支付请求地址：   
-网站根目录下`app\Http\Controllers\Pay\YipayController.php`第`11`行代码    
+网站根目录下`app\Http\Controllers\Pay\YipayController.php`第`11`行代码   
+这里注意啊！！！很多人直接填写得易支付得url。其实一般都需要在url后面加`/submit.php`       
+例如完整url就是`http://xxx.com/submit.php`       
+具体可以参考每家易支付得支付文档【发起支付请求那个地方】     
+下面是例子代码：    
+```
+ // 这里自己配置请求网关
+    const PAY_URI = 'http://xxx.com/submit.php';
+```
 
 
 ## 后台主题配置
