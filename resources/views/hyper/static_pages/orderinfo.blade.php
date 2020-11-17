@@ -78,12 +78,26 @@
         <div class="col-md-6">
             <div class="card card-body">
                 <h5 class="card-title">{{ __('hyper.orderinfo_carmi') }}</h5>
-                {!! str_replace(PHP_EOL, '<br/>', $order['ord_info']) !!}
+                <div class="kami-info">
+                    {!! str_replace(PHP_EOL, '<br/>', $order['ord_info']) !!}
+                </div>
+                <button class="btn btn-info kami-btn" data-clipboard-text="{{ $order['ord_info'] }}">{{ __('hyper.orderinfo_copy_carmi') }}</button>
             </div>
         </div>
     </div>
 </div>
 @endforeach
-
 @stop
 
+@section('tpljs')
+<script src="/assets/hyper/js/clipboard.min.js"></script>
+<script>
+    var clipboard = new ClipboardJS('.kami-btn');
+    clipboard.on('success', function(e){
+        $.NotificationApp.send("{{ __('hyper.orderinfo_tips') }}","{{ __('hyper.orderinfo_copy_success') }}","bottom-right","rgba(0,0,0,0.2)","info");
+    });
+    clipboard.on('error', function(e){
+        $.NotificationApp.send("{{ __('hyper.orderinfo_tips') }}","{{ __('hyper.orderinfo_copy_error') }}","bottom-right","rgba(0,0,0,0.2)","error");
+    });
+</script>
+@stop

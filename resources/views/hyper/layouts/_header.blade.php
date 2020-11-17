@@ -74,6 +74,14 @@
                 margin-left: 10px;
                 vertical-align: middle;
             }
+            .kami-info{
+                height: 170px;
+                overflow-wrap: break-word;
+                overflow: auto;
+                border: 1px solid #ccc;
+                margin-bottom: 2px;
+                font-size: 14px;
+            }
         </style>
     </head>
 

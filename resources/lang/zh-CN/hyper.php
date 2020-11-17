@@ -78,6 +78,10 @@ return [
     'orderinfo_order_failed'       => '已失败',
     'orderinfo_payment_method'     => '支付方式',
     'orderinfo_carmi'              => '卡密',
+    'orderinfo_copy_carmi'         => '复制卡密',
+    'orderinfo_tips'               => '提示',
+    'orderinfo_copy_success'       => '复制成功',
+    'orderinfo_copy_error'         => '复制失败',
 
     # qrpay.blade.php
 
