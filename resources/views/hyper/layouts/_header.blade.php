@@ -65,14 +65,14 @@
                 .scrollbar::-webkit-scrollbar {
                     display: none; /* Chrome Safari */
                 }
-                .info {
-                    font-size: 16px;
-                    font-weight: 700;
-                    color: #fff;
-                    display: inline-block;
-                    margin-left: 10px;
-                    vertical-align: middle;
-                }
+            }
+            .info {
+                font-size: 16px;
+                font-weight: 700;
+                color: #fff;
+                display: inline-block;
+                margin-left: 10px;
+                vertical-align: middle;
             }
         </style>
     </head>
@@ -80,20 +80,18 @@
     <body class="loading" data-layout="topnav">
         <!-- Begin page -->
         <div class="wrapper">
-
             <!-- ============================================================== -->
             <!-- Start Page Content here -->
             <!-- ============================================================== -->
-
             <div class="content-page">
                 <div class="content">
                     <!-- Topbar Start -->
                     <div class="navbar-custom topnav-navbar topnav-navbar-dark">
                         <div class="container">
                             <!-- LOGO -->
-                            <a href="/" class="topnav-logo">
-                                    <img src="/uploads/images/default.jpg height="48">
-                                    <div class="info">{{ config('webset.text_logo') }}</div>
+                            <a href="/" class="topnav-logo" style="float: none;">
+                                <img src="/uploads/images/default.jpg height="48">
+                                <div class="info">{{ config('webset.text_logo') }}</div>
                             </a>
                             <ul class="list-unstyled topbar-right-menu float-right mb-0">
                                 <li class="notification-list">
