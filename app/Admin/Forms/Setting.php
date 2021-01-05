@@ -45,8 +45,9 @@ class Setting extends Form
         $this->text('text_logo', __('Sys text logo'))->rules('required');
         $this->text('keywords', __('Sys keywords'))->rules('required');
         $this->textarea('description', __('Sys description'))->rules('required');
+        $this->select('tpl_sign', __('Sys templates'))->options(config('dujiao.templates'))->rules('required');
         $this->email('manage_email', __('Sys manage email'))->rules('required')->help("用于接收待处理订单提示");
-        $this->text('langs', __('Sys Langs'))->help('默认为中文zh-CN,不会翻译语言包不要改');
+        $this->select('langs', __('Sys Langs'))->options(config('dujiao.language'))->rules('required')->help('默认为简体中文zh-CN,不会翻译语言包不要改');
         $this->radio('verify_code', __('Verify Code'))->options([1 => '开启', 2 => '关闭'])->default(1);
         $this->radio('isopen_searchpwd', __('Is open searchpwd'))->options([1 => '开启', 2 => '关闭'])->default(1);
         $this->radio('isopen_serverj', __('Is open serverj'))->options([1 => '开启', 2 => '关闭'])->default(1);
@@ -63,7 +64,7 @@ class Setting extends Form
      */
     public function data()
     {
-        $webset = Webset::where('id', 1)->first();
+        $webset = Webset::query()->where('id', 1)->first();
         $webset->img_logo = url($webset->img_logo);
         return $webset->toArray();
     }

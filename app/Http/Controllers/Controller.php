@@ -19,7 +19,7 @@ class Controller extends BaseController
      */
     protected function view($tpl = "", $data = [])
     {
-        $tpl = config('app.shtemplate') . '/' .$tpl;
+        $tpl = config('webset.tpl_sign') . '/' .$tpl;
         return view($tpl, $data);
     }
 
@@ -31,7 +31,7 @@ class Controller extends BaseController
      */
     protected function error($content = "content", $url = "")
     {
-        $tpl = config('app.shtemplate') . '/errors/error';
+        $tpl = config('webset.tpl_sign') . '/errors/error';
         return view($tpl, ['title' => __('prompt.error_title'), 'content' => $content, 'url' => $url]);
     }
 

@@ -11,7 +11,7 @@
         "php": "^7.2",
         "codingyu/ueditor": "^3.0",
         "cyd622/laravel-admin-ext-echarts": "^1.0",
-        "encore/laravel-admin": "^1.7",
+        "encore/laravel-admin": "^1.8",
         "fideloper/proxy": "^4.0",
         "germey/geetest": "^3.1",
         "hanson/rainbow": "dev-master",

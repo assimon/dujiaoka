@@ -1,4 +1,9 @@
 /*
+1.8.2更新sql
+ */
+ALTER TABLE `webset` ADD COLUMN `tpl_sign` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT 'layui' AFTER `text_logo`;
+
+/*
 1.8版本更新sql
  */
 -- ----------------------------

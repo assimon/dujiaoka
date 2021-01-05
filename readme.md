@@ -21,6 +21,7 @@ demo地址：[http://dujiaoka.com](http://dujiaoka.com)
 
 模板贡献者：
 - [Julyssn](https://github.com/Julyssn) 模板`luna`作者
+- [bimoe](https://github.com/bimoe) 模板`hyper`作者
 
 鸣谢以上开源项目及贡献者，排名不分先后.    
 

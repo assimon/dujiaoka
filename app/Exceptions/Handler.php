@@ -48,11 +48,11 @@ class Handler extends ExceptionHandler
     public function render($request, Exception $exception)
     {
         if ($exception instanceof AppException) {
-            $tpl = config('app.shtemplate') . '/errors/error';
+            $tpl = config('webset.tpl_sign') . '/errors/error';
             return response()->view($tpl, ['title' => '(╥╯^╰╥)出错啦~', 'content' => $exception->getMessage(), 'url' => ""]);
         }
         if ($exception instanceof PayPalConnectionException) {
-            $tpl = config('app.shtemplate') . '/errors/error';
+            $tpl = config('webset.tpl_sign') . '/errors/error';
             return response()->view($tpl, ['title' => '(╥╯^╰╥)出错啦~', 'content' => 'paypal回调参数异常', 'url' => ""]);
         }
         return parent::render($request, $exception);

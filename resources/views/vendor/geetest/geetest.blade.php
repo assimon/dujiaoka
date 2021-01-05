@@ -14,7 +14,7 @@
                         })
                     e.preventDefault();
                 }
-                
+
             });
             captchaObj.appendTo("#{{ $captchaid }}");
             captchaObj.onReady(function() {
@@ -51,7 +51,7 @@
     .hide {
         display: none;
     }
-    @if(config('app.shtemplate') == 'hyper')
+    @if(config('webset.tpl_sign') == 'hyper')
     .geetest_holder.geetest_wind {
         width: 100%!important;
         min-width: 100%!important;

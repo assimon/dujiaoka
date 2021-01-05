@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c65376862624c479157d893bf26bfc54",
+    "content-hash": "f5460665a50e043fe31c93233cc29928",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -856,16 +856,16 @@
         },
         {
             "name": "encore/laravel-admin",
-            "version": "v1.7.14",
+            "version": "v1.8.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/z-song/laravel-admin.git",
-                "reference": "163fc093aae2ff27d749633cddbd954833c9144d"
+                "reference": "6ddd381a9f4928b6c2175dea297e6a8b385d8d28"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/z-song/laravel-admin/zipball/163fc093aae2ff27d749633cddbd954833c9144d",
-                "reference": "163fc093aae2ff27d749633cddbd954833c9144d",
+                "url": "https://api.github.com/repos/z-song/laravel-admin/zipball/6ddd381a9f4928b6c2175dea297e6a8b385d8d28",
+                "reference": "6ddd381a9f4928b6c2175dea297e6a8b385d8d28",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -884,7 +884,8 @@
                 "fzaninotto/faker": "~1.4",
                 "intervention/image": "~2.3",
                 "laravel/browser-kit-testing": "^6.0",
-                "laravel/laravel": ">=5.5"
+                "laravel/laravel": ">=5.5",
+                "spatie/phpunit-watcher": "^1.22.0"
             },
             "suggest": {
                 "intervention/image": "Required to handling and manipulation upload images (~2.3).",
@@ -927,7 +928,7 @@
                 "grid",
                 "laravel"
             ],
-            "time": "2020-03-16T06:57:52+00:00"
+            "time": "2020-11-15T02:55:51+00:00"
         },
         {
             "name": "fideloper/proxy",
@@ -6339,6 +6340,7 @@
             "keywords": [
                 "tokenizer"
             ],
+            "abandoned": true,
             "time": "2019-09-17T06:23:10+00:00"
         },
         {
@@ -7228,5 +7230,6 @@
     "platform": {
         "php": "^7.2"
     },
-    "platform-dev": []
+    "platform-dev": [],
+    "plugin-api-version": "1.1.0"
 }

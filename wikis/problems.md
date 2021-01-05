@@ -81,9 +81,10 @@ The GET method is not supported for this route. Supported methods: POST
 解决方法是将.env文件配置里面得`ADMIN_HTTPS`设置为`ADMIN_HTTPS=true`
 
 ## 更换模板
-修改`.env`配置里面得`SH_TEMPLATE`参数即可修改模板。
+后台-系统设置-模板。
 目前独角数卡提供以下模板：   
 ```
 layui   官方模板
 luna    由github @Julyssn用户贡献
+hyper   有github @bimoe用户贡献
 ```
