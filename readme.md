@@ -96,6 +96,8 @@ demo地址：[http://dujiaoka.com](http://dujiaoka.com)
 - [常见问题锦集](/wikis/problems.md)
 - [模板更换](/wikis/problems.md#更换模板)
 - [系统升级](/wikis/update.md)
+- [各支付对应后台配置](/wikis/problems.md#各支付对应配置)
+
 
 ## 默认后台
 

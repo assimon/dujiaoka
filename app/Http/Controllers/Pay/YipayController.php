@@ -7,8 +7,6 @@ use Illuminate\Support\Facades\Redis;
 
 class YipayController extends PayController
 {
-    // 这里自己配置请求网关
-    const PAY_URI = '这里填写易支付的支付请求地址';
 
     public function gateway($payway, $oid)
     {
@@ -41,7 +39,7 @@ class YipayController extends PayController
         $sign = md5($sign . $this->payInfo['merchant_pem']);//密码追加进入开始MD5签名
         $parameter['sign'] = $sign;
         //待请求参数数组
-        $sHtml = "<form id='alipaysubmit' name='alipaysubmit' action='".self::PAY_URI."' method='get'>";
+        $sHtml = "<form id='alipaysubmit' name='alipaysubmit' action='" . $this->payInfo['merchant_key'] . "' method='get'>";
 
         foreach($parameter as $key => $val) {
             $sHtml.= "<input type='hidden' name='".$key."' value='".$val."'/>";
