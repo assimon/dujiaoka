@@ -465,7 +465,7 @@ CREATE TABLE `webset` (
   `isopen_searchpwd` int(1) NOT NULL DEFAULT '1',
   `isopen_serverj` int(1) DEFAULT NULL,
   `serverj_token` varchar(100) DEFAULT NULL,
-  `tpl_sign` varchar(200) NOT NULL DEFAULT 'layui' COMMENT '模板唯一标识',
+  `tpl_sign` varchar(200) NOT NULL DEFAULT 'layui',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
