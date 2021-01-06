@@ -1,6 +1,6 @@
 <?php
 
-Route::group(['middleware' => ['switch.language'], 'namespace' => 'Home'], function () {
+Route::group(['middleware' => ['switch.language', 'wechat.qq'], 'namespace' => 'Home'], function () {
     Route::get('/', 'HomeController@index');
     Route::get('buy/{product}', 'HomeController@buy');
     Route::get('bill/{orderid}', 'OrderController@bill');

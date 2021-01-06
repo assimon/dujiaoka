@@ -15,7 +15,7 @@ class SwitchLanguage
      */
     public function handle($request, Closure $next)
     {
-        $langs = config('webset.langs') ?? 'zh-CN';//这里配置语言种类
+        $langs = config('webset.langs') ?? 'zh-CN'; // 这里配置语言种类
         app()->setLocale($langs);
         return $next($request);
     }
