@@ -50,7 +50,7 @@
 
 <p><br/><br/></p>
 <div class="app-download-tip">
-    <span class="guidance-desc">'{{ $nowUri }}</span>
+    <span class="guidance-desc">{{ $nowUri }}</span>
 </div>
 <p><br/></p>
 <div class="app-download-tip">

@@ -98,7 +98,7 @@
                         <div class="container">
                             <!-- LOGO -->
                             <a href="/" class="topnav-logo" style="float: none;">
-                                <img src="/uploads/images/default.jpg height="48">
+                                <img src="{{ url(config('webset.img_logo')) }}" height="48">
                                 <div class="info">{{ config('webset.text_logo') }}</div>
                             </a>
                             <ul class="list-unstyled topbar-right-menu float-right mb-0">
