@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ app()->getLocale() }}">
 @include('luna.layouts._header')
 @yield('content')
 @include('luna.layouts._script')

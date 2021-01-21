@@ -28,7 +28,7 @@
                     <div class="layui-card-body">
                         <div class="product-info">
                             <p style="color: #3C8CE7 ;font-size: 18px;font-weight: 700; text-align: center;margin: 20px 0">
-                                {{ __('system.note') }}：{{ config('app.order_expire_date') }} {{ __('system.prompt_to_cancel_order') }}！
+                                {{ __('system.note') }}{{ config('app.order_expire_date') }} {{ __('system.prompt_to_cancel_order') }}
                             </p>
                         </div>
                         <table class="layui-table" lay-skin="nob">
@@ -38,46 +38,46 @@
                             </colgroup>
                             <tbody>
                             <tr>
-                                <td style="text-align: right">{{ __('system.order_number') }}：</td>
+                                <td style="text-align: right">{{ __('system.order_number') }}:</td>
                                 <td>{{ $order_id }}</td>
                             </tr>
                             <tr>
-                                <td style="text-align: right">{{ __('system.product_name') }}：</td>
+                                <td style="text-align: right">{{ __('system.product_name') }}:</td>
                                 <td>
                                     <span class="small-tips tips-green noML">{{ $pd_name }}</span>
                                 </td>
                             </tr>
                             <tr>
-                                <td style="text-align: right">{{ __('system.commodity_price') }}：</td>
+                                <td style="text-align: right">{{ __('system.commodity_price') }}:</td>
                                 <td>
                                 <span class="small-tips tips-green noML">
-                                    ￥{{ $product_price }}
+                                    ¥{{ $product_price }}
                                 </span>
                                 </td>
                             </tr>
                             <tr>
-                                <td style="text-align: right">{{ __('system.purchase_quantity') }}：</td>
+                                <td style="text-align: right">{{ __('system.purchase_quantity') }}:</td>
                                 <td><span class="small-tips tips-green noML">x {{ $buy_amount }}</span></td>
                             </tr>
                             @if(isset($coupon_code))
                                 <tr>
-                                    <td style="text-align: right">{{ __('system.promo_code') }}：</td>
+                                    <td style="text-align: right">{{ __('system.promo_code') }}:</td>
                                     <td><span class="small-tips tips-green noML">{{ $coupon_code }}</span></td>
                                 </tr>
                                 <tr>
-                                    <td style="text-align: right">{{ __('system.discounted_price') }}：</td>
+                                    <td style="text-align: right">{{ __('system.discounted_price') }}:</td>
                                     <td><span class="small-tips tips-green noML">{{ $discount }}</span></td>
                                 </tr>
                             @endif
                             <tr>
-                                <td style="text-align: right">{{ __('system.actual_payment') }}：</td>
+                                <td style="text-align: right">{{ __('system.actual_payment') }}:</td>
                                 <td>
-                                    <span class="small-tips tips-green noML">￥{{ $actual_price }}</span>
+                                    <span class="small-tips tips-green noML">¥{{ $actual_price }}</span>
                                 </td>
 
                             </tr>
                             <tr>
-                                <td style="text-align: right">{{ __('system.email') }}：</td>
+                                <td style="text-align: right">{{ __('system.email') }}:</td>
                                 <td>{{ $account }}</td>
                             </tr>
                             @if($other_ipu)
@@ -87,7 +87,7 @@
                                 </tr>
                             @endif
                             <tr>
-                                <td style="text-align: right">{{ __('system.payment_method') }}：</td>
+                                <td style="text-align: right">{{ __('system.payment_method') }}:</td>
                                 <td>{{ \App\Models\Pays::find($pay_way)->pay_name }}</td>
                             </tr>
                             </tbody>

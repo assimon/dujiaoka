@@ -85,7 +85,7 @@
                             {{-- 库存 --}}
                             <td>{{ $product['in_stock'] }}</td>
                             {{-- 价格 --}}
-                            <td>￥<b>{{ $product['actual_price'] }}</b></td>
+                            <td>¥<b>{{ $product['actual_price'] }}</b></td>
                             <td class="text-center">
                                 @if($product['in_stock'] > 0)
                                     {{-- 购买 --}}
@@ -143,7 +143,7 @@
                         <div class="float-right">{{ __('hyper.home_in_stock') }}({{ $product['in_stock'] }})</div>
                         <p class="card-text">
                             {{-- 价格 --}}
-                        	<span>￥<b>{{ $product['actual_price'] }}</b><span>
+                            <span>¥<b>{{ $product['actual_price'] }}</b><span>
                         </p>
                     </div>
                 </div>

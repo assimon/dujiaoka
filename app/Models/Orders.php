@@ -24,7 +24,7 @@ class Orders extends Model
     }
 
     /**
-     * 关联优惠券.
+     * 关联优惠码.
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function coupon()

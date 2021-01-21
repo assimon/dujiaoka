@@ -18,16 +18,16 @@
             <div class="card card-body">
                 <div class="mx-auto">
                     {{-- 订单名称 --}}
-                    <div class="mb-1"><label>{{ __('hyper.orderinfo_order_title') }}：</label><span>{{ $order['ord_title'] }}</span></div>
+                    <div class="mb-1"><label>{{ __('hyper.orderinfo_order_title') }}:</label> <span>{{ $order['ord_title'] }}</span></div>
                     {{-- 下单数量 --}}
-                    <div class="mb-1"><label>{{ __('hyper.orderinfo_number_of_orders') }}：</label><span>{{ $order['buy_amount'] }}</span></div>
+                    <div class="mb-1"><label>{{ __('hyper.orderinfo_number_of_orders') }}:</label> <span>{{ $order['buy_amount'] }}</span></div>
                     {{-- 下单时间 --}}
-                    <div class="mb-1"><label>{{ __('hyper.orderinfo_order_time') }}：</label><span>{{ $order['created_at'] }}</span></div>
+                    <div class="mb-1"><label>{{ __('hyper.orderinfo_order_time') }}:</label> <span>{{ $order['created_at'] }}</span></div>
                     {{-- 付款邮箱 --}}
-                    <div class="mb-1"><label>{{ __('hyper.orderinfo_email') }}：</label><span>{{ $order['account'] }}</span></div>
+                    <div class="mb-1"><label>{{ __('hyper.orderinfo_email') }}:</label> <span>{{ $order['account'] }}</span></div>
                     <div class="mb-1">
                         {{-- 订单类型 --}}
-                        <label>{{ __('hyper.orderinfo_order_class') }}：</label>
+                        <label>{{ __('hyper.orderinfo_order_class') }}: </label>
                         <span>
                             @if($order['ord_class'] == 1)
                                 {{-- 自动发货 --}}
@@ -40,12 +40,12 @@
                     </div>
                     <div class="mb-1">
                         {{-- 订单总价 --}}
-                        <label>{{ __('hyper.orderinfo_total_order_price') }}：</label>
+                        <label>{{ __('hyper.orderinfo_total_order_price') }}: </label>
                         <span>{{ $order['ord_price'] }}</span>
                     </div>
                     <div class="mb-1">
                         {{-- 订单状态 --}}
-                        <label>{{ __('hyper.orderinfo_order_status') }}：</label>
+                        <label>{{ __('hyper.orderinfo_order_status') }}: </label>
                         <span>
                             @switch($order['ord_status'])
                                 @case(1)
@@ -69,7 +69,7 @@
                     </div>
                     <div class="mb-1">
                         {{-- 支付方式 --}}
-                        <label>{{ __('hyper.orderinfo_payment_method') }}：</label>
+                        <label>{{ __('hyper.orderinfo_payment_method') }}: </label>
                         <span>{{ \App\Models\Pays::find($order['pay_way'])->pay_name }}</span>
                     </div>
                 </div>

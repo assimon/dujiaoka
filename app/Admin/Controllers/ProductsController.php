@@ -31,7 +31,7 @@ class ProductsController extends AdminController
         $grid->column('pd_name', __('Pd name'))->label();
         $grid->column('pd_picture', __('Pd picture'))->image();
         $grid->column('classify.name', __('Pd class'));
-        $grid->column('pd_type', __('Pd type'))->editable('select', [1 => '卡密', 2 => '代充']);
+        $grid->column('pd_type', __('Pd type'))->editable('select', [1 => '自动发货', 2 => '人工发货']);
         $grid->column('cost_price', __('Cost price'))->editable();
         $grid->column('actual_price', __('Actual price'))->editable();
         $grid->column('in_stock', __('In stock'));
@@ -78,20 +78,20 @@ class ProductsController extends AdminController
             $dataArr[$classify['id']] = $classify['name'];
         }
         $form->select('pd_class', __('Pd class'))->options($dataArr)->required();
-        $form->currency('cost_price', __('Cost price'))->rules('required|numeric', ['required' => '不能为空','numeric' => '请正确填写金额，整数或小数']);
-        $form->currency('actual_price', __('Actual price'))->rules('required|numeric', ['required' => '不能为空','numeric' => '请正确填写金额,整数或小数']);
-        $form->image('pd_picture', __('Pd picture'))->uniqueName()->help('可以为空。');
-        $form->textarea('wholesale_price', __('Wholesale price'))->help('例如5=3 代表5件或以上每件3元，一行一个');
-        $form->number('in_stock', __('In stock'))->help('(卡密商品请不要填写库存，服务器自行识别)')->default(0);
+        $form->currency('cost_price', __('Cost price'))->rules('required|numeric', ['required' => '不能为空','numeric' => '请填写正确的金额，整数或小数']);
+        $form->currency('actual_price', __('Actual price'))->rules('required|numeric', ['required' => '不能为空','numeric' => '请填写正确的金额，整数或小数']);
+        $form->image('pd_picture', __('Pd picture'))->uniqueName()->help('可以为空，为空则为默认图片');
+        $form->textarea('wholesale_price', __('Wholesale price'))->help('例如：填写 5=3 表示客户购买 5 件或以上时，每件价格为 3 元。一行一个');
+        $form->number('in_stock', __('In stock'))->help('（如商品为自动发货类型请不要填写库存，系统会自动识别）')->default(0);
         $form->number('sales_volume', __('Sales volume'))->default(0);
         $form->number('ord', __('Ord'))->default(1);
         $form->UEditor('buy_prompt', __('Buy prompt'));
         $form->UEditor('pd_info', __('Pd info'));
-        $form->radio('pd_type', __('Pd type'))->options([1=> '自动发卡', 2=> '代充'])
+        $form->radio('pd_type', __('Pd type'))->options([1=> '自动发货', 2=> '人工发货'])
             ->rules('required',['请选择类型'])
             ->default(1);
-        $form->radio('isopen_coupon', __('Is open coupon'))->options([1 => '开启', 2 => '关闭'])->default(1);
-        $form->textarea('other_ipu', __('Other ipu'))->help('(仅针对代充商品有效，一行一个) 例如：qqpwd=QQ密码=true 代表多一个qqpwd输入框，需要输入的内容是QQ密码，true为必填 false为可空');
+        $form->radio('isopen_coupon', __('Is open coupon'))->options([1 => '是', 2 => '否'])->default(1);
+        $form->textarea('other_ipu', __('Other ipu'))->help('例如：填写 qqpwd=QQ 密码=true 表示产品详情页会新增一个 qqpwd 输入框，客户可在其中输入 QQ 密码，true 为必填，false 为选填（仅对人工发货类商品有效，一行一个）');
         $form->radio('pd_status', __('Pd status'))
             ->options([1=> '上架', 2=> '下架'])
             ->rules('required',['请选择状态'])

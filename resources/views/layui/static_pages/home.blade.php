@@ -8,7 +8,7 @@
         <div class="layui-row">
             <div class="layui-col-md8 layui-col-md-offset2 layui-col-xs12">
                 <div class="layui-card cardcon">
-                    <div class="layui-card-header">{{ $classify['name'] }}：</div>
+                    <div class="layui-card-header">{{ $classify['name'] }}</div>
                     <div class="layui-card-body">
                         <div class="layui-row" >
                             <table class="layui-table" lay-even lay-skin="nob">
@@ -42,7 +42,7 @@
                                                 <span style="color: #FF5722">{{ __('system.charge') }}</span>
                                             @endif
                                         </td>
-                                        <td><b class="product-box-price">￥{{ $product['actual_price'] }}</b></td>
+                                        <td><b class="product-box-price">¥{{ $product['actual_price'] }}</b></td>
                                         <td>{{ $product['in_stock'] }}</td>
                                         <td>@if($product['wholesale_price'])
                                                 <span class="layui-badge layui-bg-orange">{{ __('system.discount') }}</span>

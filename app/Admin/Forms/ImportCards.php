@@ -31,10 +31,10 @@ class ImportCards extends Form
             'product_id' => 'required',
             'card_info' => 'required',
         );
-        $messages = ['product_id.required' => '请选择商品', 'card_info.required' => '请输入卡密内容'];
+        $messages = ['product_id.required' => '请选择商品', 'card_info.required' => '请输入卡密信息'];
         $validator = Validator::make($data, $rules, $messages);
         if ($validator->fails()) {
-            return admin_error('提醒', $validator->errors()->first());
+            return admin_error('提示', $validator->errors()->first());
         } else {
             $cardList = explode(PHP_EOL, $data['card_info']);
             $kamiList = [];
@@ -50,12 +50,12 @@ class ImportCards extends Form
             }
             $posts = Cards::insert($kamiList);
             if (!$posts) {
-                return admin_error('提醒', '导入失败，请检查格式');
+                return admin_error('提示', '导入失败，请检查格式');
             }
         }
         // 增加库存
         Products::where('id', '=', $data['product_id'])->increment('in_stock', count($kamiList));
-        admin_success('提醒', '操作成功本次共导入:'.count($kamiList).'条卡密');
+        admin_success('提示', '操作成功本次共导入 '.count($kamiList).' 条卡密信息');
 
         return redirect(config('admin.route.prefix') . '/cards');
     }
@@ -72,8 +72,8 @@ class ImportCards extends Form
             $commodClass[$val['id']] = $val['pd_name'];
         }
         $this->select('product_id', __('Product id'))->options($commodClass)->rules('required',['请选择商品'])->default(key($commodClass));
-        $this->textarea('card_info', __('Card info'))->rules('required',['请输入卡密内容'])->rows(20)->help('一行一个，回车分隔');
-        $this->radio('checkm', '是否去掉重复卡密')->options([1 => '否', 2 => '是'])->default(1);
+        $this->textarea('card_info', __('Card info'))->rules('required',['请输入卡密信息'])->rows(20)->help('一行一个，用回车键分隔');
+        $this->radio('checkm', '是否去除重复卡密')->options([1 => '否', 2 => '是'])->default(1);
         return $this;
     }
 

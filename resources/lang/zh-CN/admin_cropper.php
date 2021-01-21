@@ -1,9 +1,9 @@
 <?php
 
 return [
-    'choose'                => '选择要剪裁的图片',
-    'title'                  => '图片剪裁器',
-    'done'                   => '剪裁',
+    'choose'                => '选择要裁剪的图片',
+    'title'                  => '图像裁剪器',
+    'done'                   => '裁剪',
     'origin'                 => '原图',
     'clear'                  => '清空',
 ];

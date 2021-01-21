@@ -42,16 +42,16 @@
                                     <form class="layui-form layui-form-pane" action="{{ url('postOrder') }}" method="post">
                                         {{ csrf_field() }}
                                         <div class="product-info">
-                                            <span style="color:#6c6c6c">{{ __('system.price') }}：</span>
-                                            <span class="product-price">¥ {{ $actual_price }}</span>
-                                            <span class="product-price-cost-price">¥ {{ $cost_price }}</span>
+                                            <span style="color:#6c6c6c">¥</span>
+                                            <span class="product-price">{{ $actual_price }}</span>
+                                            <span class="product-price-cost-price">¥{{ $cost_price }}</span>
                                         </div>
 
                                         @if(!empty($wholesale_price) && is_array($wholesale_price))
                                             <div class="product-info">
-                                                <span style="color:#F40;font-size: 18px;font-weight: 400"><i class="layui-icon layui-icon-praise"></i>{{ __('system.wholesale_discount') }}：</span>
+                                                <span style="color:#F40;font-size: 18px;font-weight: 400"><i class="layui-icon layui-icon-praise"></i> {{ __('system.wholesale_discount') }}</span>
                                                 @foreach($wholesale_price as $ws)
-                                                    <p class="ws-price">{{ __('system.purchase_quantity') }}{{ $ws['number'] }} {{__('system.the_above')}},{{ __('system.each') }}： <span class="layui-badge layui-bg-orange">{{ $ws['price']  }}￥</span></p>
+                                                    <p class="ws-price">{{ __('system.purchase_quantity') }} {{ $ws['number'] }} {{__('system.the_above')}}{{ __('system.each') }} <span class="layui-badge layui-bg-orange">¥{{ $ws['price'] }}</span></p>
                                                 @endforeach
 
                                             </div>
@@ -62,13 +62,13 @@
                                             <label class="layui-form-label">{{ __('system.email') }}</label>
                                             <div class="layui-input-block">
                                                 <input type="hidden" name="pid" value="{{ $id }}">
-                                                <input type="email" name="account" value=""  required lay-verify="required|email" placeholder="{{ __('system.email') }}" autocomplete="off" class="layui-input">
+                                                <input type="email" name="account" value="" required lay-verify="required|email" placeholder="{{ __('system.email') }}" autocomplete="off" class="layui-input">
                                             </div>
                                         </div>
                                         <div class="layui-form-item">
                                             <label class="layui-form-label">{{ __('system.quantity') }}</label>
                                             <div class="layui-input-inline">
-                                                <input type="number" name="order_number" required  lay-verify="required|order_number" placeholder="" value="1" autocomplete="off" class="layui-input">
+                                                <input type="number" name="order_number" required lay-verify="required|order_number" placeholder="" value="1" autocomplete="off" class="layui-input">
                                             </div>
 
                                         </div>
@@ -96,7 +96,7 @@
                                         <div class="layui-form-item">
                                             <label class="layui-form-label">{{ __('system.search_password') }}</label>
                                             <div class="layui-input-block">
-                                                <input type="password" name="search_pwd" value=""  required lay-verify="required" placeholder="{{ __('prompt.set_search_password') }}" autocomplete="off" class="layui-input">
+                                                <input type="password" name="search_pwd" value="" required lay-verify="required" placeholder="{{ __('prompt.set_search_password') }}" autocomplete="off" class="layui-input">
                                             </div>
                                         </div>
                                         @endif
@@ -104,10 +104,10 @@
                                         <div class="layui-form-item">
                                             <label class="layui-form-label">{{ __('system.verify_code') }}</label>
                                             <div class="layui-input-inline">
-                                                <input type="text" name="verify_img" value=""  required lay-verify="required" placeholder="{{ __('system.verify_code') }}" autocomplete="off" class="layui-input">
+                                                <input type="text" name="verify_img" value="" required lay-verify="required" placeholder="{{ __('system.verify_code') }}" autocomplete="off" class="layui-input">
                                             </div>
                                             <div class="buy-captcha">
-                                                <img class="captcha-img"  src="{{ captcha_src('buy') }}" onclick="refresh()">
+                                                <img class="captcha-img" src="{{ captcha_src('buy') }}" onclick="refresh()">
                                             </div>
                                             <script>
                                                 function refresh(){
@@ -116,7 +116,7 @@
                                             </script>
                                         </div>
                                         @endif
-										@if(config('app.shgeetest'))
+                                        @if(config('app.shgeetest'))
                                         <div class="layui-form-item" style="position: relative;">
                                             <label for="L_vercode" class="layui-form-label">{{ __('system.behavior_verification') }}</label>
                                             <div class="layui-input-inline">
@@ -134,7 +134,7 @@
                                         <div class="layui-form-item">
                                             <label class="layui-form-label">{{ __('system.promo_code') }}</label>
                                             <div class="layui-input-block">
-                                                <input type="text" name="coupon_code"   placeholder="{{ __('prompt.have_promo_code') }}" value="" autocomplete="off" class="layui-input">
+                                                <input type="text" name="coupon_code" placeholder="{{ __('prompt.have_promo_code') }}" value="" autocomplete="off" class="layui-input">
                                             </div>
                                         </div>
                                         @endif

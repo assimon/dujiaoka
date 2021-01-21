@@ -9,7 +9,7 @@
     </div>
 </div>
 <div class="row">
-	<div class="col-12">
+    <div class="col-12">
         <div class="card">
             <div class="card-body">
                 {{ __('hyper.searchOrder_query_tips') }}
@@ -44,11 +44,11 @@
                 <div class="tab-content">
                     <div class="tab-pane show active" id="dingdanhao">
                         <form class="needs-validation" action="{{ url('searchOrderById') }}" method="post">
-                        	{{ csrf_field() }}
+                            {{ csrf_field() }}
                             <div class="form-group mb-3">
                                 {{-- 订单编号 --}}
                                 <label for="validationCustom01">{{ __('hyper.searchOrder_order_number') }}</label>
-                                <input type="text" class="form-control" name="order_id" required  placeholder="请输入订单编号">
+                                <input type="text" class="form-control" name="order_id" required  placeholder="{{ __('hyper.searchOrder_input_order_num') }}">
                             </div>
                             <div class="form-group mb-3">
                                 {{-- 立即查询 --}}
@@ -60,17 +60,17 @@
                     </div>
                     <div class="tab-pane" id="youxiang">
                         <form class="needs-validation" action="{{ url('searchOrderByAccount') }}" method="post">
-                        	{{ csrf_field() }}
+                            {{ csrf_field() }}
                             <div class="form-group mb-3">
                                 {{-- 邮箱 --}}
                                 <label for="validationCustom01">{{ __('hyper.searchOrder_email') }}</label>
-                                <input type="email" class="form-control" name="account" required  placeholder="请输入邮箱">
+                                <input type="email" class="form-control" name="account" required  placeholder="{{ __('hyper.searchOrder_input_email') }}">
                             </div>
                             @if(config('webset.isopen_searchpwd') == 1)
                             <div class="form-group mb-3">
                                 {{-- 查询密码 --}}
                                 <label for="validationCustom01">{{ __('hyper.searchOrder_search_password') }}</label>
-                                <input type="password" class="form-control" name="search_pwd" required  placeholder="请输入查询密码">
+                                <input type="password" class="form-control" name="search_pwd" required  placeholder="{{ __('hyper.searchOrder_input_query_pwd') }}">
                             </div>
                             @endif
                             <div class="form-group mb-3">
@@ -83,14 +83,14 @@
                     </div>
                     <div class="tab-pane" id="liulanqi">
                         <form class="needs-validation" action="{{ url('searchOrderByBrowser') }}">
-                        	{{ csrf_field() }}
+                            {{ csrf_field() }}
                             <div class="form-group mb-3">
                                 {{-- 立即查询 --}}
                                 <button class="btn btn-primary" type="submit">{{ __('hyper.searchOrder_search_now') }}</button>
                             </div>
                         </form>
                     </div>
-                </div>                                          
+                </div>
             </div>
         </div>
     </div>

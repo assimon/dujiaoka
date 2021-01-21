@@ -36,7 +36,7 @@
                                             <span class="layui-badge layui-bg-orange">{{ __('system.charge') }}</span>
                                         @endif
                                     </li>
-                                    <li><strong>{{ __('system.total_order_price') }}:</strong>  <span class="layui-badge layui-bg-blue">{{ $order['ord_price'] }}</span></li>
+                                    <li><strong>{{ __('system.total_order_price') }}:</strong> <span class="layui-badge layui-bg-blue">{{ $order['ord_price'] }}</span></li>
                                     <li><strong>{{ __('system.order_status') }}:</strong> <!----> <!---->
 
                                             @switch($order['ord_status'])
@@ -61,7 +61,7 @@
                                 <div class="order-info">
                                     {!! str_replace(PHP_EOL, '<br/>', $order['ord_info']) !!}
                                 </div>
-                                <button type="button"  class="layui-btn layui-btn-normal" data-clipboard-text="{{ $order['ord_info'] }}" style="width: 100%">{{ __('system.order_copy') }}</button>
+                                <button type="button" class="layui-btn layui-btn-normal" data-clipboard-text="{{ $order['ord_info'] }}" style="width: 100%">{{ __('system.order_copy') }}</button>
                             </div>
                         </div>
                 </div>

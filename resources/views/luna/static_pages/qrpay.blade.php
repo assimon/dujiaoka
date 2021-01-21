@@ -17,7 +17,7 @@
                     <div class="layui-card-body">
                         <div class="product-info">
                             <p style="color: #3C8CE7 ;font-size: 18px;font-weight: 700; text-align: center;margin: 20px 0">
-                                {{ __('system.payment_method') }}：[{{ $payname }}], {{ __('system.order_expiration_date') }}{{ config('app.order_expire_date') }}{{ __('system.expiration_date') }}
+                                {{ __('system.payment_method') }}: [{{ $payname }}] {{ __('system.order_expiration_date') }} {{ config('app.order_expire_date') }} {{ __('system.expiration_date') }}
                             </p>
                         </div>
 

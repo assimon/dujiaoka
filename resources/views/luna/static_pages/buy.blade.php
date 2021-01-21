@@ -74,22 +74,22 @@
                                     </span>
                                 </div>
                                 <div class="price">
-                                    <span class="price-sign">￥</span>
+                                    <span class="price-sign">¥</span>
                                     <span class="price-num">{{ $actual_price }}</span>
-                                    <span class="price-c">[<del>￥{{ $cost_price }}</del>]</span>
+                                    <span class="price-c">[<del>¥{{ $cost_price }}</del>]</span>
                                 </div>
 
                                 @if(!empty($wholesale_price) && is_array($wholesale_price))
                                     <div class="sale">
                                         @foreach($wholesale_price as $ws)
                                             <span class="small-tips tips-pink">
-                                            {{ __('luna.goods_disc_1') }}{{ $ws['number'] }}{{ __('luna.goods_disc_2') }}{{ $ws['price']  }}{{ __('luna.goods_disc_3') }}
+                                            {{ __('luna.goods_disc_1') }}{{ $ws['number'] }}{{ __('luna.goods_disc_2') }}{{ $ws['price'] }}{{ __('luna.goods_disc_3') }}
                                         </span>
                                         @endforeach
                                     </div>
                                 @endif
                                 <div class="entry notSelection">
-                                    <span class="l-msg">{{ __('luna.buy_num') }}：</span>
+                                    <span class="l-msg">{{ __('luna.buy_num') }}</span>
                                     <label class="input">
                                         <span class="sub">
                                             <svg t="1602946172380" class="icon" viewBox="0 0 1025 1024" version="1.1"
@@ -115,7 +115,7 @@
                                     </label>
                                 </div>
                                 <div class="entry">
-                                    <span class="l-msg">{{ __('luna.buy_email') }}：</span>
+                                    <span class="l-msg">{{ __('luna.buy_email') }}</span>
                                     <label class="input">
                                         <input type="text" name="account"
                                                required lay-verify="required|email"
@@ -124,7 +124,7 @@
                                 </div>
                                 @if($isopen_coupon == 1)
                                     <div class="entry">
-                                        <span class="l-msg">{{ __('luna.buy_disc') }}：</span>
+                                        <span class="l-msg">{{ __('luna.buy_disc') }}</span>
                                         <label class="input">
                                             <input type="text" name="coupon_code"
                                                    placeholder="{{ __('luna.buy_disc_tips') }}">
@@ -135,7 +135,7 @@
                                 @if($pd_type == 2 && is_array($other_ipu))
                                     @foreach($other_ipu as $ipu)
                                         <div class="entry">
-                                            <span class="l-msg">{{ $ipu['desc'] }}：</span>
+                                            <span class="l-msg">{{ $ipu['desc'] }}</span>
                                             <label class="input">
                                                 <input type="text" name="{{ $ipu['field'] }}"
                                                        @if($ipu['rule'] !== false) required lay-verify="required" @endif
@@ -146,7 +146,7 @@
                                 @endif
                                 @if(config('webset.isopen_searchpwd') == 1)
                                     <div class="entry">
-                                        <span class="l-msg">{{ __('luna.buy_pass') }}：</span>
+                                        <span class="l-msg">{{ __('luna.buy_pass') }}</span>
                                         <label class="input">
                                             <input type="text" name="search_pwd" value=""
                                                    required lay-verify="required"
@@ -156,7 +156,7 @@
                                 @endif
                                 @if(config('webset.verify_code') == 1)
                                     <div class="entry code">
-                                        <span class="l-msg">{{ __('luna.buy_code') }}：</span>
+                                        <span class="l-msg">{{ __('luna.buy_code') }}</span>
                                         <label class="input">
                                             <input type="text"
                                                    name="verify_img" value=""
@@ -175,7 +175,7 @@
                                 @endif
                                 @if(config('app.shgeetest'))
                                     <div class="entry code">
-                                        <span class="l-msg">{{ __('system.behavior_verification') }}：</span>
+                                        <span class="l-msg">{{ __('system.behavior_verification') }}</span>
                                         <span id="geetest-captcha"></span>
                                         <span id="wait-geetest-captcha"
                                               class="show">{{ __('luna.buy_loading_verification') }}</span>
@@ -291,7 +291,7 @@
                     form.on('submit(postOrder)', function (data) {
                         var validate = captchaObj.getValidate();
                         if (!validate) {
-                            layer.msg('请正确完成行为验证', {
+                            layer.msg('{{ __('client_fail_alert') }}', {
                                 icon: 5
                             });
                             return false;

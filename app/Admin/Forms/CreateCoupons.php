@@ -15,7 +15,7 @@ class CreateCoupons extends Form
      *
      * @var string
      */
-    public $title = '优惠码生成';
+    public $title = '生成优惠码';
 
     /**
      * Handle the form request.
@@ -46,9 +46,9 @@ class CreateCoupons extends Form
         }
         $posts = Coupons::insert($coupon);
         if (!$posts) {
-            admin_error('提醒', '数据处理成功失败.');
+            admin_error('提示', '数据处理失败');
         }
-        admin_success('提醒', '生成优惠券成功');
+        admin_success('提示', '优惠码生成成功');
 
         return redirect(config('admin.route.prefix') . '/coupons');
     }
@@ -68,8 +68,8 @@ class CreateCoupons extends Form
         $this->select('product_id', __('Product id'))->options($commodClass)->rules('required',['请选择商品'])->default(key($commodClass));
         $this->radio('c_type', __('C type'))->options([1 => '一次性使用', 2 => '重复使用'])->default(1);
         $this->currency('discount', __('Discount'))->rules('required|numeric', ['required' => '优惠金额不能为空','numeric' => '请正确填写金额，整数或小数'])->default(1);
-        $this->text('ret', __('Ret'))->default(1)->help('当类型为一次性时，系统默认可用次数为1');
-        $this->text('number', __('Number'))->default(1)->help('当类型为重复使用时，系统只创建一张');
+        $this->text('ret', __('Ret'))->default(1)->help('当类型为一次性时，系统默认可用次数为 1');
+        $this->text('number', __('Number'))->default(1)->help('当类型为重复使用时，系统只创建一个优惠码');
         return $this;
     }
 

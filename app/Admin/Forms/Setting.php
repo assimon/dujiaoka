@@ -41,19 +41,19 @@ class Setting extends Form
     public function form()
     {
         $this->text('title', __('Sys title'))->rules('required');
-        $this->image('img_logo', __('Sys img logo'))->help('网站logo');
+        $this->image('img_logo', __('Sys img logo'))->help('网站 Logo');
         $this->text('text_logo', __('Sys text logo'))->rules('required');
         $this->text('keywords', __('Sys keywords'))->rules('required');
         $this->textarea('description', __('Sys description'))->rules('required');
         $this->select('tpl_sign', __('Sys templates'))->options(config('dujiao.templates'))->rules('required');
-        $this->email('manage_email', __('Sys manage email'))->rules('required')->help("用于接收待处理订单提示");
-        $this->select('langs', __('Sys Langs'))->options(config('dujiao.language'))->rules('required')->help('默认为简体中文zh-CN,不会翻译语言包不要改');
+        $this->email('manage_email', __('Sys manage email'))->rules('required')->help("用于接收待处理订单提醒");
+        $this->select('langs', __('Sys Langs'))->options(config('dujiao.language'))->rules('required')->help('默认为简体中文 zh-CN，不会翻译语言包不要改');
         $this->radio('verify_code', __('Verify Code'))->options([1 => '开启', 2 => '关闭'])->default(1);
         $this->radio('isopen_searchpwd', __('Is open searchpwd'))->options([1 => '开启', 2 => '关闭'])->default(1);
         $this->radio('isopen_serverj', __('Is open serverj'))->options([1 => '开启', 2 => '关闭'])->default(1);
         $this->text('serverj_token', __('Serverj token'));
         $this->UEditor('notice', __('Sys notice'));
-        $this->textarea('footer', __('Sys footer'))->help('可以填写一些统计代码或者icp备案信息');
+        $this->textarea('footer', __('Sys footer'))->help('可填写统计代码或 ICP 备案信息');
 
     }
 

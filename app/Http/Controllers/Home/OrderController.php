@@ -36,7 +36,7 @@ class OrderController extends Controller
     private $productService;
 
     /**
-     * 优惠券服务层
+     * 优惠码服务层
      * @var
      */
     private $couponService;
@@ -111,7 +111,7 @@ class OrderController extends Controller
             'pd_type' => $product['pd_type'],
             'actual_price' => $product['actual_price'],
             'buy_amount' => intval($data['order_number']), // 订单个数
-            'account' => $data['account'], // 充值账号
+            'account' => $data['account'], // 订单邮箱
             'search_pwd' => $data['search_pwd'] ?? 'dujiaoka',
             'buy_ip' => $request->getClientIp(),
             'other_ipu' => ''
@@ -122,10 +122,10 @@ class OrderController extends Controller
         // 计算订单总价
         $this->orderService->calculateThePrice();
         /**
-         * 这里是优惠券处理逻辑.
+         * 这里是优惠码处理逻辑.
          */
         if (isset($data['coupon_code']) && $product['isopen_coupon'] == 1) {
-            // 先查出有没有优惠券
+            // 先查出有没有优惠码
             $coupon = $this->couponService->couponByProduct($data['pid'], $data['coupon_code']);
             if (!$coupon) throw new AppException(__('prompt.coupon_does_not_exist'));
             $this->orderService->setCoupon($coupon);

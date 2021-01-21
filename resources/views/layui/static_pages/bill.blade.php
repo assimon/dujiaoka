@@ -9,7 +9,7 @@
 
                 <div class="layui-card-body">
                     <div class="product-info">
-                        <p style="color: #1E9FFF;font-size: 20px;font-weight: 500; text-align: center" >{{ __('system.note') }}：{{ config('app.order_expire_date') }} {{ __('system.prompt_to_cancel_order') }}！</p>
+                        <p style="color: #1E9FFF;font-size: 20px;font-weight: 500; text-align: center" >{{ __('system.note') }}{{ config('app.order_expire_date') }} {{ __('system.prompt_to_cancel_order') }}</p>
                     </div>
                     <table class="layui-table" lay-skin="" >
                         <colgroup>
@@ -18,11 +18,11 @@
                         </colgroup>
                         <tbody>
                         <tr>
-                            <td>{{ __('system.order_number') }}：</td>
+                            <td>{{ __('system.order_number') }}:</td>
                             <td>{{ $order_id }}</td>
                         </tr>
                         <tr>
-                            <td>{{ __('system.product_name') }}：</td>
+                            <td>{{ __('system.product_name') }}:</td>
                             <td>
                                 <span class="layui-badge layui-bg-blue">
                                     {{ $pd_name }}
@@ -30,7 +30,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>{{ __('system.commodity_price') }}：</td>
+                            <td>{{ __('system.commodity_price') }}:</td>
                             <td>
                                 <span class="layui-badge layui-bg-orange">
                                     {{ $product_price }}
@@ -38,25 +38,25 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>{{ __('system.purchase_quantity') }}：</td>
+                            <td>{{ __('system.purchase_quantity') }}:</td>
                             <td>x {{ $buy_amount }}</td>
                         </tr>
                         @if(isset($coupon_code))
                         <tr>
-                            <td>{{ __('system.promo_code') }}：</td>
+                            <td>{{ __('system.promo_code') }}:</td>
                             <td><span class="layui-badge layui-bg-orange">{{ $coupon_code }}</span></td>
                         </tr>
                         <tr>
-                            <td>{{ __('system.discounted_price') }}：</td>
+                            <td>{{ __('system.discounted_price') }}:</td>
                             <td> <span class="layui-badge layui-bg-green">{{ $discount }}</span></td>
                         </tr>
                         @endif
                         <tr>
-                            <td>{{ __('system.actual_payment') }}：</td>
+                            <td>{{ __('system.actual_payment') }}:</td>
                             <td><span class="layui-badge layui-bg-red">{{ $actual_price }}</span></td>
                         </tr>
                         <tr>
-                            <td>{{ __('system.email') }}：</td>
+                            <td>{{ __('system.email') }}:</td>
                             <td>{{ $account }}</td>
                         </tr>
                         @if($other_ipu)
@@ -66,7 +66,7 @@
                         </tr>
                         @endif
                         <tr>
-                            <td>{{ __('system.payment_method') }}：</td>
+                            <td>{{ __('system.payment_method') }}:</td>
                             <td>{{ \App\Models\Pays::find($pay_way)->pay_name }}</td>
                         </tr>
                         </tbody>

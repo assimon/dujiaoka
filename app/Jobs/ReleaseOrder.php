@@ -60,7 +60,7 @@ class ReleaseOrder implements ShouldQueue
             // 已经过期 释放库存
             $res = Products::where('id', '=', $this->productId)->increment('in_stock', $this->stock);
             $orderCache = json_decode($orderCache, true);
-            // 如果存在优惠券，就将优惠券次数+1
+            // 如果存在优惠码，就将优惠码次数+1
             if (isset($orderCache['coupon_id'])) {
                 Coupons::where('id', '=', $orderCache['coupon_id'])->increment('ret', 1);
                 if ($orderCache['coupon_type'] == 1) {
