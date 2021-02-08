@@ -115,6 +115,14 @@ demo地址：[http://dujiaoka.com](http://dujiaoka.com)
 <a href="https://www.kvmla.pro/aff.php?aff=2761"><img src="https://i.loli.net/2020/07/10/FZRSU1NemgM6zXJ.png" alt="kvmla.com"></a>
 </p>
 
+## Thanks
+
+Thanks JetBrains for the free open source license
+
+<a href="https://www.jetbrains.com/?from=gev" target="_blank">
+	<img src="https://raw.githubusercontent.com/Allenxuxu/doc/master/jetbrains.png" width = "260" align=center />
+</a>
+
 
 ## License
 
