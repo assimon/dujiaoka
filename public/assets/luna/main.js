@@ -97,7 +97,7 @@ $(function (w) {
     let numDoc = $("#orderNumber");
     $('.sub').click(function () {
         orderNumber--;
-        if (orderNumber <= 0) return layer.msg('购买数量不能低于1件');
+        if (orderNumber <= 0) return layer.msg('购买数量不能低于 1 件');
         numDoc.val(orderNumber);
     })
     $('.add').click(function () {
@@ -110,7 +110,7 @@ $(function (w) {
         if (val <= 0) {
             $(this).val(1);
             orderNumber = 1;
-            return layer.msg('购买数量不能低于1件');
+            return layer.msg('购买数量不能低于 1 件');
         }
         if (val > stock) {
             $(this).val(stock);

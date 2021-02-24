@@ -61,7 +61,7 @@ class CouponsController extends AdminController
         $grid->filter(function($filter) {
             // 去掉默认的id过滤器
             $filter->disableIdFilter();
-            $filter->equal('card', '优惠券码');
+            $filter->equal('card', '优惠码');
             $pdlisy = Products::where('pd_type', 1)->get(['id', 'pd_name'])->toArray();
             $commod = [];
             foreach ($pdlisy as $val)

@@ -44,9 +44,9 @@ class CardsController extends AdminController
         $grid->filter(function($filter) use ($commodClass){
             // 去掉默认的id过滤器
             $filter->disableIdFilter();
-            $filter->equal('id', '卡密id');
+            $filter->equal('id', '卡密 ID');
             // 在这里添加字段过滤器
-            $filter->like('card_info', '卡密内容');
+            $filter->like('card_info', '卡密信息');
             $filter->equal('product_id', '所属商品')->select($commodClass);
             $filter->equal('card_status', '状态')->select([1 => '未售出', 2 => '已售出']);
         });

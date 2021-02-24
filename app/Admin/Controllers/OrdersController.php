@@ -31,13 +31,13 @@ class OrdersController extends AdminController
         $grid->column('ord_title', __('Ord title'));
         $grid->column('product.pd_name', __('Product id'));
         $grid->column('coupon.card', __('Coupon id'));
-        $grid->column('ord_class', __('Ord class'))->using([1 => '自动发卡', 2 => '代充']);
+        $grid->column('ord_class', __('Ord class'))->using([1 => '自动发货', 2 => '人工发货']);
         $grid->column('product_price', __('Product price'))->label('warning');
         $grid->column('buy_amount', __('Buy amount'))->label('info');
         $grid->column('ord_price', __('Ord price'))->label('success');
         $grid->column('account', __('Account'))->copyable();
         $grid->column('pay.pay_name', __('Pay way'));
-        $grid->column('ord_status', __('Ord status'))->editable('select', [1 => '待处理', 2 => '已处理', 3 => '处理成功', 4 => '处理失败']);
+        $grid->column('ord_status', __('Ord status'))->editable('select', [1 => '待处理', 2 => '已处理', 3 => '已完成', 4 => '已失败']);
         $grid->column('created_at', __('Created at'));
         $grid->column('updated_at', __('Updated at'));
         $grid->disableCreateButton();
@@ -50,8 +50,8 @@ class OrdersController extends AdminController
             $filter->scope('trashed', '回收站')->onlyTrashed();
             // 去掉默认的id过滤器
             $filter->disableIdFilter();
-            $filter->equal('order_id', '订单id');
-            $filter->equal('account', '充值账号');
+            $filter->equal('order_id', '订单号');
+            $filter->equal('account', '订单邮箱');
             $pdlisy = Products::get(['id', 'pd_name'])->toArray();
             $commod = [];
             foreach ($pdlisy as $val)
@@ -60,9 +60,9 @@ class OrdersController extends AdminController
             }
             $filter->equal('product_id', '所属商品')->select($commod);
             // 在这里添加字段过滤器
-            $filter->equal('ord_status', '订单状态')->select([1 => '待处理', 2 => '已处理', 3 => '已完成', 4 => '处理失败']);
-            $filter->equal('ord_class', '订单类型')->select([1 => '卡密', 2 => '代充']);
-            $filter->date('created_at', '订单日期');
+            $filter->equal('ord_status', '订单状态')->select([1 => '待处理', 2 => '已处理', 3 => '已完成', 4 => '已失败']);
+            $filter->equal('ord_class', '订单类型')->select([1 => '自动发货', 2 => '人工发货']);
+            $filter->date('created_at', '创建时间');
         });
         return $grid;
     }
@@ -81,7 +81,7 @@ class OrdersController extends AdminController
         $form->display('ord_title', __('Ord title'));
         $form->display('product.pd_name', __('Product id'));
         $form->display('coupon.card', __('Coupon id'));
-        $form->radio('ord_class', __('Ord class'))->options([1 => '自动发卡', 2 => '代充'])->disable();
+        $form->radio('ord_class', __('Ord class'))->options([1 => '自动发货', 2 => '手动发货'])->disable();
         $form->display('product_price', __('Product price'))->default(0.00);
         $form->display('ord_price', __('Ord price'))->default(0.00);
         $form->display('buy_amount', __('Buy amount'));

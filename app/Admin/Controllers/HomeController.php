@@ -31,14 +31,14 @@ class HomeController extends Controller
         $head = [
             'date' => '日期',
             'order_num' => '当日订单总数',
-            'ord_price' => '当日总销售额',
+            'ord_price' => '当日销售总额',
         ];
         $echarts = (new Echarts('近七日', '销售数据'))
             ->setSeriesType('bar')
             ->setData($orders->toArray())
             ->bindLegend($head);
         return $content
-            ->title('控制台首页')
+            ->title('仪表盘')
             ->description('welcome to manager...')
             ->row(self::title())
             ->body(new Box('销售数据', $echarts))
@@ -60,16 +60,16 @@ class HomeController extends Controller
     {
         $envs = [
             ['name' => 'PHP 版本', 'value' => 'PHP/' . PHP_VERSION],
-            ['name' => 'Laravel内核版本', 'value' => app()->version()],
+            ['name' => 'Laravel 框架版本', 'value' => app()->version()],
             ['name' => 'CGI', 'value' => php_sapi_name()],
-            ['name' => '服务器名称', 'value' => php_uname()],
+            ['name' => '服务器信息', 'value' => php_uname()],
             ['name' => '网页服务器', 'value' => Arr::get($_SERVER, 'SERVER_SOFTWARE')],
 
             ['name' => '缓存配置', 'value' => config('cache.default')],
             ['name' => 'Session 配置', 'value' => config('session.driver')],
             ['name' => '消息队列配置', 'value' => config('queue.default')],
 
-            ['name' => '时区	', 'value' => config('app.timezone')],
+            ['name' => '时区', 'value' => config('app.timezone')],
             ['name' => 'Locale', 'value' => config('app.locale')],
             ['name' => 'Env', 'value' => config('app.env')],
             ['name' => 'URL', 'value' => config('app.url')],

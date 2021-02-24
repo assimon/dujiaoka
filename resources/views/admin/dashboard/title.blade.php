@@ -30,6 +30,6 @@
 </div>
 <div class="links">
     <a href="https://github.com/assimon/dujiaoka" target="_blank">GITHUB</a>
-    <a href="http://dujiaoka.com"  target="_blank">当前系统版本：V1.8.2</a>
+    <a href="http://dujiaoka.com"  target="_blank">当前版本：V1.8.2</a>
     <a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=37b6b06f7c941dae20dcd5784088905d6461064d7f33478692f0c4215546cee0"><img border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="发卡交流群" title="发卡交流群"></a>
 </div>

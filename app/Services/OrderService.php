@@ -41,7 +41,7 @@ class OrderService
     private $productService;
 
     /**
-     * 优惠券服务层
+     * 优惠码服务层
      * @var
      */
     private $couponService;
@@ -78,7 +78,7 @@ class OrderService
     }
 
     /**
-     * 设置优惠券.
+     * 设置优惠码.
      * @param $coupon
      */
     public function setCoupon($coupon)
@@ -141,7 +141,7 @@ class OrderService
             // 减去数据库库存
             $deStock = $this->productService->stockDecr($this->product['id'], $this->orderInfo['buy_amount']);
             if (isset($this->orderInfo['coupon_code'])) {
-                // 将优惠券设置为已经使用 且次数-1
+                // 将优惠码设置为已经使用 且次数-1
                 $inCoupon = $this->couponService->used($this->orderInfo['coupon_code']);
                 $inCouponNum =  $this->couponService->numberDecr($this->orderInfo['coupon_code']);
             } else {
@@ -174,12 +174,12 @@ class OrderService
 
         // 判断缓存里是否已经没有订单了，没有说明已经处理了
         $orderInfo = json_decode(Redis::hget('PENDING_ORDERS_LIST', $outTradeNo), true);
-        if (empty($orderInfo)) throw new AppException("订单不存在:{$outTradeNo}");
+        if (empty($orderInfo)) throw new AppException("订单不存在: {$outTradeNo}");
         // 判断金额是否一致
         $cacheTamount = (float)$orderInfo['actual_price'];
         if ($cacheTamount != $totalAmount) {
             Log::debug("异常订单！实际付款与订单总金额不一致！$totalAmount");
-            if (empty($orderInfo)) throw new AppException("异常订单！实际付款与订单总金额不一致！:{$outTradeNo}");
+            if (empty($orderInfo)) throw new AppException("订单异常！实际付款与订单总金额不一致！订单号: {$outTradeNo}");
         }
         $order = [
             'order_id' => $orderInfo['order_id'],
@@ -202,7 +202,7 @@ class OrderService
             //  卡密商品 查询出待发货的卡密到邮件队列
             $cardList = $this->cardsService->cardByProduct($orderInfo['product_id'], $orderInfo['buy_amount']);
             if (empty($cardList) || count($cardList) != $orderInfo['buy_amount']) {
-                $order['ord_info'] = '发卡异常请联系管理员核查!';
+                $order['ord_info'] = '自动发货异常，请联系工作人员核查！';
             } else {
                 $cardUpdate = [];
                 foreach ($cardList as $value) {
@@ -287,7 +287,7 @@ class OrderService
 
 
     /**
-     * 处理优惠券逻辑.
+     * 处理优惠码逻辑.
      * @param Coupons $coupon 优惠码.
      * @param int $pid 商品id.
      * @param array $cacheOrder 订单缓存数组.

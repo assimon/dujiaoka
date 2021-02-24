@@ -63,7 +63,7 @@
                                         </li>
                                         <li>
                                             <strong>{{ __('system.total_order_price') }}:</strong>
-                                            <span class="small-tips tips-green">￥{{ $order['ord_price'] }}</span>
+                                            <span class="small-tips tips-green">¥{{ $order['ord_price'] }}</span>
                                         </li>
                                         <li><strong>{{ __('luna.order_status') }}:</strong> <!----> <!---->
 
@@ -90,9 +90,7 @@
                                                 @break
                                             @endswitch
                                         </li>
-                                        <li><strong>{{ __('system.payment_method') }}
-                                                :</strong> {{ \App\Models\Pays::find($order['pay_way'])->pay_name }}
-                                        </li>
+                                        <li><strong>{{ __('system.payment_method') }}:</strong> {{ \App\Models\Pays::find($order['pay_way'])->pay_name }}</li>
                                     </ul>
                                 </div>
                                 <div class="layui-col-md4">

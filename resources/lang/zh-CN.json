@@ -10,18 +10,18 @@
 
     "Order id": "订单号",
     "Product id": "所属商品",
-    "Coupon id": "优惠券",
+    "Coupon id": "优惠码",
     "Ord class": "类型",
     "Product price": "单价",
     "Ord price": "总价",
     "Buy amount": "数量",
     "Ord title": "名称",
     "Search pwd": "查询密码",
-    "Account": "充值账号",
+    "Account": "订单邮箱",
     "Ord info": "订单详情",
-    "Pay ord": "第三方支付号",
-    "Pay way": "支付网关",
-    "Buy ip": "购买者ip",
+    "Pay ord": "第三方支付订单号",
+    "Pay way": "支付方式",
+    "Buy ip": "客户 IP",
     "Ord status": "订单状态",
 
     "Class Name": "分类名称",
@@ -39,7 +39,7 @@
     "Buy prompt": "购买提示",
     "Pd info": "商品详情",
     "Pd type": "类型",
-    "Other ipu": "代充输入框配置",
+    "Other ipu": "自定义字段",
     "Pd status": "状态",
     "Pd class": "所属分类",
 
@@ -52,8 +52,8 @@
     "Pay name": "支付名称",
     "Pay check": "支付标识",
     "Pay method": "支付方式",
-    "Merchant id": "商户id",
-    "Merchant key": "商户key",
+    "Merchant id": "商户 ID",
+    "Merchant key": "商户 KEY",
     "Merchant pem": "商户密钥",
     "Pay handleroute": "支付处理路由",
     "Pay status": "支付状态",
@@ -62,12 +62,12 @@
     "Tpl content": "邮件内容",
     "Tpl token": "邮件标识",
 
-    "Card info": "卡密",
+    "Card info": "卡密信息",
     "Card status": "卡密状态",
 
     "Sys title": "网站标题",
-    "Sys img logo": "图片LOGO",
-    "Sys text logo": "文字LOGO",
+    "Sys img logo": "图片 Logo",
+    "Sys text logo": "文字 Logo",
     "Sys keywords": "网站关键词",
     "Sys description": "网站描述",
     "Sys templates" : "模板",
@@ -84,10 +84,10 @@
     "Mail encryption" : "加密协议",
     "Sys Langs" : "前台语言",
     "Verify Code": "下单验证码",
-    "Is open coupon": "优惠券入口",
+    "Is open coupon": "允许使用优惠码",
     "Is open searchpwd": "查询密码",
-    "Is open serverj": "Server酱推送",
-    "Serverj token": "Server酱通信token"
+    "Is open serverj": "Server 酱推送",
+    "Serverj token": "Server 酱通信 Token"
 
 
 

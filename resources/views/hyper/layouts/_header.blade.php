@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-    <html lang="en">
+    <html lang="{{ app()->getLocale() }}">
     <head>
         <meta charset="utf-8" />
         <title>{{ config('webset.title') }}</title>
@@ -40,7 +40,7 @@
               color: #3c4655;
             }
             .custom-control-label {
-            	line-height: 24px;
+                line-height: 24px;
             }
             .buy-product img {
                 max-width:100%;
@@ -53,14 +53,14 @@
             @media screen and (min-width: 767px) {
                 .sp-height {
                     position: relative;
-	                overflow: hidden;
+                    overflow: hidden;
                     width: 100%;
                 }
                 .scrollbar {
-	                overflow-x: hidden;
-	                overflow-y: auto;
-	                scrollbar-width: none; /* Firefox */
-	                -ms-overflow-style: none; /* IE 10+ */
+                    overflow-x: hidden;
+                    overflow-y: auto;
+                    scrollbar-width: none; /* Firefox */
+                    -ms-overflow-style: none; /* IE 10+ */
                 }
                 .scrollbar::-webkit-scrollbar {
                     display: none; /* Chrome Safari */

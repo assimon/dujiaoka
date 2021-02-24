@@ -10,7 +10,7 @@ class CouponService
 {
 
     /**
-     * 根据优惠券和商品获得优惠券详情
+     * 根据优惠码和商品获得优惠码详情
      * @param int $productId
      * @param string $coupon
      * @return \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Model|object|null
@@ -21,7 +21,7 @@ class CouponService
     }
 
     /**
-     * 设置优惠券已使用
+     * 设置优惠码已使用
      * @param string $coupon
      * @return int
      */
@@ -33,7 +33,7 @@ class CouponService
     }
 
     /**
-     * 设置优惠券-1
+     * 设置优惠码-1
      * @param string $coupon
      */
     public function numberDecr(string $coupon)

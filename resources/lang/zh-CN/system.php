@@ -2,7 +2,7 @@
 
 return [
     'back_btn' => '返回',
-    'home_page' => '购卡首页',
+    'home_page' => '网站首页',
     'order_search' => '订单查询',
     'announcement' => '公告',
     'email' => '邮箱',
@@ -13,8 +13,8 @@ return [
     'mobile_phone_purchase' => '手机扫码下单',
 
     'confirm_order' => '确认订单',
-    'note' => '注意',
-    'prompt_to_cancel_order' => '分钟内未完成支付订单将作废',
+    'note' => '注意：',
+    'prompt_to_cancel_order' => '分钟内未完成支付订单将作废！',
 
     'order_number' => '订单号',
     'order_title' => '订单名称',
@@ -32,17 +32,17 @@ return [
     'pay_immediately' => '立即支付',
 
     'automatic_delivery' => '自动发货',
-    'charge' => '代充',
+    'charge' => '人工发货',
     'discount' => '折',
 
     'in_stock' => '库存',
     'price' => '价格',
     'wholesale_discount' => '批发优惠',
 
-    'the_above' => '数量或以上',
+    'the_above' => '个或以上，',
     'each' => '每个',
     'verify_code' => '验证码',
-	'behavior_verification' => '行为验证',
+    'behavior_verification' => '行为验证',
     'click_to_behavior_verification' => '点击进行此处行为验证',
     'success_behavior_verification' => '已完成行为验证',
     'order_now' => '立即下单',
@@ -51,11 +51,11 @@ return [
     'product_desciption' => '商品介绍',
     'product_class' => '类型',
 
-    'number_of_orders' => '下单数量',
+    'number_of_orders' => '购买数量',
     'order_time' => '下单时间',
     'order_class' => '订单类型',
     'total_order_price' => '订单总价',
-    'order_status' => '状态',
+    'order_status' => '订单状态',
     'order_pending' => '待处理',
     'order_processed' => '已处理',
     'order_completed' => '已完成',
@@ -63,17 +63,15 @@ return [
     'order_copy' => '复制',
 
     'scan_code_to_pay' => '扫码支付',
-    'order_expiration_date' => '请打开APP扫码支付！有效期',
+    'order_expiration_date' => '请打开 APP 扫码支付！有效期',
     'expiration_date' => '分钟',
-    'open_app_to_pay' => '打开app支付',
-
+    'open_app_to_pay' => '打开 APP 支付',
 
     'order_search_by_number' => '订单号查询',
     'order_search_by_email' => '邮箱查询',
     'order_search_by_ie' => '浏览器查询',
 
-
-    'query_tips' => '最多只能查询近5笔订单',
+    'query_tips' => '最多只能查询最近 5 笔订单',
 
     'search_now' => '立即查询',
 

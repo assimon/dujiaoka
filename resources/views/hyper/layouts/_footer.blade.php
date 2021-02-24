@@ -4,7 +4,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-6">
-            	<div class="footer-links">
+                <div class="footer-links">
                     Powered by <a href="https://github.com/assimon/dujiaoka">@独角数卡.</a>
                 </div>
             </div>
@@ -17,13 +17,13 @@
     </div>
 </footer>
 <div id="loading">
-	<div id="loading-center">
-		<div id="loading-center-absolute">
-			<div class="object" id="object_one"></div>
-			<div class="object" id="object_two"></div>
-			<div class="object" id="object_three"></div>
-		</div>
-	</div>
+    <div id="loading-center">
+        <div id="loading-center-absolute">
+            <div class="object" id="object_one"></div>
+            <div class="object" id="object_two"></div>
+            <div class="object" id="object_three"></div>
+        </div>
+    </div>
 </div>
 </div>
 <!-- end Footer -->
