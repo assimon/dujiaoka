@@ -65,7 +65,7 @@ class ServerJiang implements ShouldQueue
             ]
         ];
         $context  = stream_context_create($opts);
-        $res = file_get_contents('https://sc.ftqq.com/'.config('webset.serverj_token').'.send', false, $context);
+        $res = file_get_contents('https://sctapi.ftqq.com/'.config('webset.serverj_token').'.send', false, $context);
         Log::info($res);
     }
 }
