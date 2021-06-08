@@ -92,11 +92,11 @@ demo地址：[http://dujiaoka.com](http://dujiaoka.com)
 
 ## 安装篇
 
-- [Linux环境安装](wiki/linux_install)
-- [宝塔环境安装](wiki/bt_install)
-- [常见问题锦集](wiki/problems)
-- [系统升级](wiki/update)
-- [各支付对应后台配置](wiki/problems#各支付对应配置)
+- [Linux环境安装](https://github.com/assimon/dujiaoka/wiki/linux_install)
+- [宝塔环境安装](https://github.com/assimon/dujiaoka/wiki/bt_install)
+- [常见问题锦集](https://github.com/assimon/dujiaoka/wiki/problems)
+- [系统升级](https://github.com/assimon/dujiaoka/wiki/update)
+- [各支付对应后台配置](https://github.com/assimon/dujiaoka/wiki/problems#各支付对应配置)
 
 
 ## 默认后台
