@@ -94,6 +94,7 @@ demo地址：[http://dujiaoka.com](http://dujiaoka.com)
 
 - [Linux环境安装](https://github.com/assimon/dujiaoka/wiki/linux_install)
 - [宝塔环境安装](https://github.com/assimon/dujiaoka/wiki/bt_install)
+- [2.0版本宝塔安装教程](https://github.com/assimon/dujiaoka/wiki/bt_install_2)
 - [常见问题锦集](https://github.com/assimon/dujiaoka/wiki/problems)
 - [系统升级](https://github.com/assimon/dujiaoka/wiki/update)
 - [各支付对应后台配置](https://github.com/assimon/dujiaoka/wiki/problems#各支付对应配置)
