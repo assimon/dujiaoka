@@ -172,7 +172,7 @@ class HomeController extends BaseController
             // 写入配置
             file_put_contents($envPath, $envTemp);
             // 导入sql
-            DB::unprepared(file_get_contents($installLock));
+            DB::unprepared(file_get_contents($installSql));
             // 写入安装锁
             file_put_contents($installLock, 'install ok');
             return 'success';
