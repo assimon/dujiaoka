@@ -19,7 +19,8 @@
         "mews/captcha": "^3.2",
         "simplesoftwareio/simple-qrcode": "^4.2",
         "xhat/payjs-laravel": "^1.6",
-        "yansongda/pay": "^2.10"
+        "yansongda/pay": "^2.10",
+        "stripe/stripe-php": "^7.61"
     },
     "require-dev": {
         "facade/ignition": "^1.16.15",
