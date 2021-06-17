@@ -25,9 +25,9 @@ class StripeController extends PayController
             default:
                 try {
                     \Stripe\Stripe::setApiKey($this->payGateway->merchant_id);
-                    $amount = (float)$this->order->actual_price * 100;
-                    $price = number_format((float)$this->order->actual_price, 2, '.', '');
-                    $usd = number_format($this->getUsdCurrency($this->order->actual_price), 2, '.', '') * 100;
+                    $amount = bcmul($this->order->actual_price, 100, 2);
+                    $price = $this->order->actual_price;
+                    $usd = bcmul($this->getUsdCurrency($this->order->actual_price), 100, 2);
                     $orderid = $this->order->order_sn;
                     $pk = $this->payGateway->merchant_id;
                     $return_url = site_url() . $this->payGateway->pay_handleroute . '/return_url/?orderid=' . $this->order->order_sn;
@@ -496,7 +496,7 @@ class StripeController extends PayController
                 $payGateway = $this->payService->detail($cacheord->pay_id);
                 \Stripe\Stripe::setApiKey($payGateway -> merchant_pem);
                 $result = \Stripe\Charge::create([
-                    'amount' => number_format($this->getUsdCurrency($cacheord->actual_price), 2, '.', '') * 100,
+                    'amount' => bcmul($this->getUsdCurrency($cacheord->actual_price), 100,2),
                     'currency' => 'usd',
                     'source' => $data['stripeToken'],
                 ]);
@@ -528,11 +528,11 @@ class StripeController extends PayController
         $dfFxrate = 0.13;
         foreach ($fxrate['data'] as $item) {
             if ($item['ZCcyNbr'] == "美元") {
-                $dfFxrate = 100 / $item['ZRtcOfr'];
+                $dfFxrate = bcdiv(100, $item['ZRtcOfr'], 2);
                 break;
             }
         }
-        return $cny * $dfFxrate;
+        return bcmul($cny , $dfFxrate , 2);
     }
 
 
