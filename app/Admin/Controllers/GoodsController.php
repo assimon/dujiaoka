@@ -122,6 +122,9 @@ class GoodsController extends AdminController
         return Form::make(new Goods(), function (Form $form) {
             $form->display('id');
             $form->text('gd_name')->required();
+            $form->select('group_id')->options(
+                GoodsGroupModel::query()->pluck('gp_name', 'id')
+            )->required();
             $form->image('picture')->autoUpload()->uniqueName()->help(admin_trans('goods.helps.picture'));
             $form->radio('type')->options(GoodsModel::getGoodsTypeMap())->default(GoodsModel::AUTOMATIC_DELIVERY)->required();
             $form->currency('retail_price')->default(0)->help(admin_trans('goods.helps.retail_price'));
