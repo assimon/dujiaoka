@@ -42,6 +42,10 @@ demo地址：[http://dujiaoka.com](http://dujiaoka.com)
 认真观看部署教程我可以保证您98%可能性能部署成功！  
 勤动手，多思考，善研究！
 
+## 使用交流     
+QQ群：568679748 （需付费，管理较严）    
+Telegram: [https://t.me/dujiaoka](https://t.me/dujiaoka) (免费，管理相对宽松)
+
 
 ## 界面尝鲜
 【layui模板】
