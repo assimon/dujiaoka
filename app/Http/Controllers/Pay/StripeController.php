@@ -345,7 +345,7 @@ class StripeController extends PayController
                     $(\".cardpay_content\").html(\"\");
                     $(\".cardpay_content\").html(\"<p class='am-alert am-alert-success'>支付成功，正在跳转页面</p>\");
                     window.setTimeout(function () {
-                        location.href = \"/searchOrderById?order_id=$orderid\"
+                        location.href = \"/detail-order-sn/$orderid\"
                     }, 800);
                 } else {
                     $(\".am-alert\").show();
