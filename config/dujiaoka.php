@@ -12,8 +12,8 @@ return [
     // 模板集合
     'templates' => [
         'layui' => 'Layui',
-       /* 'luna' => 'Luna[Julyssn]',
-        'hyper' => 'hyper[Bimoe]'*/
+        'luna' => 'Luna[Julyssn]',
+        /*'hyper' => 'hyper[Bimoe]'*/
     ],
     // 语言
     'language' => [

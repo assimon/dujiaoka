@@ -10,6 +10,7 @@
 
 use App\Exceptions\AppException;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Storage;
 
 if (! function_exists('replace_mail_tpl')) {
 
@@ -195,5 +196,20 @@ if (! function_exists('signquery_string')) {
             $sign .= "$key=$val"; //拼接为url参数形式
         }
         return $sign;
+    }
+}
+
+if (!function_exists('picture_ulr')) {
+
+    /**
+     * 生成前台图片链接 不存在使用默认图
+     * @param string $file 图片地址
+     * @param false $getHost 是否只获取图片前缀域名
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\UrlGenerator|string
+     */
+    function picture_ulr($file, $getHost = false)
+    {
+        if ($getHost) return Storage::disk('admin')->url('');
+        return $file ? Storage::disk('admin')->url($file) : url('assets/common/images/default.jpg');
     }
 }

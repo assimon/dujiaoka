@@ -51,7 +51,7 @@
                             icon: 1,
                             closeBtn:0
                         }, function(){
-                            window.location.href = "{{ url('search-order-sn', ['orderSN' => $orderid]) }}"
+                            window.location.href = "{{ url('detail-order-sn', ['orderSN' => $orderid]) }}"
                         });
                     }
                 }
