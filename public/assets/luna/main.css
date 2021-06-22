@@ -118,7 +118,6 @@ input[type="number"] {
     vertical-align: middle;
 }
 
-
 .header .header-box .notice {
     margin-top: 20px;
     padding: 0 15px;
@@ -173,6 +172,8 @@ input[type="number"] {
 
 .main .cate {
     padding-top: 20px;
+    margin: 0 10px;
+    font-size: 0;
 }
 
 .main .cate .cate-box {
@@ -182,10 +183,9 @@ input[type="number"] {
     min-width: 130px;
     background: #f1f1f1;
     border-radius: 10px;
-    margin-right: 14px;
     height: 67px;
-    padding-right: 20px;
-    padding-left: 19px;
+    padding: 0 20px;
+    margin: 0 10px;
     cursor: pointer;
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -249,6 +249,7 @@ input[type="number"] {
     padding: 18px;
     vertical-align: middle;
     min-width: 185px;
+    min-height: 80px;
     background: #fff;
     border: 2px solid #f1f4fb;
     -webkit-box-shadow: 0 4px 10px 0 rgba(135, 142, 154, .14);
@@ -363,7 +364,6 @@ input[type="number"] {
     height: 60px;
     display: inline-block;
 }
-
 
 .query-m svg {
     margin-left: 15px;
@@ -611,7 +611,6 @@ input[type="number"] {
     padding-top: 10px;
 }
 
-
 .pay-type {
     display: inline-block;
     text-align: center;
@@ -719,7 +718,6 @@ input[type="number"] {
     color: #999;
 }
 
-
 .err_title {
     color: #545454;
     font-size: 20px;
@@ -757,14 +755,12 @@ input[type="number"] {
     background-image: linear-gradient(135deg, #3C8CE7 10%, #00EAFF 100%);
 }
 
-
 .pay-title {
     color: #737373;
     font-weight: 700;
     font-size: 20px;
     margin: 0 15px;
 }
-
 
 .order-list {
     margin-left: initial;
@@ -842,5 +838,11 @@ input[type="number"] {
 
     .order-info {
         margin-top: 10px;
+    }
+}
+
+@media (max-width: 425px) {
+    .main .cate .cate-box {
+        min-width: calc(50% - 60px);
     }
 }

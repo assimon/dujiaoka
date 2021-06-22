@@ -125,7 +125,7 @@
                                                placeholder="{{ __('luna.buy_email_tips') }}">
                                     </label>
                                 </div>
-                                @if($open_coupon == 1)
+                                @if(isset($open_coupon))
                                     <div class="entry">
                                         <span class="l-msg">{{ __('luna.buy_disc') }}：</span>
                                         <label class="input">
