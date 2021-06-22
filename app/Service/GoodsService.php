@@ -89,8 +89,8 @@ class GoodsService
             format_wholesale_price($goods->wholesale_price_cnf) :
             null;
         // 如果存在其他配置输入框且为代充
-        $goods->other_ipu = $goods->other_ipu ?
-            format_charge_input($goods->other_ipu) :
+        $goods->other_ipu = $goods->other_ipu_cnf ?
+            format_charge_input($goods->other_ipu_cnf) :
             null;
         return $goods;
     }

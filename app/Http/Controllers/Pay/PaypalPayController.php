@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Pay;
 
 
 use App\Exceptions\AppException;
+use App\Http\Controllers\PayController;
 use App\Models\Pays;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;

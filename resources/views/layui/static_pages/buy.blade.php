@@ -15,7 +15,7 @@
                         <div class="layui-col-md3 layui-hide-xs">
                             <div class="layui-card">
                                 <div class="layui-card-body">
-                                    <img src="{{ \Illuminate\Support\Facades\Storage::disk('admin')->url($picture ?? 'asstes/common/images/default.jpg') }}" width="100%" height="100%">
+                                    <img src="{{ picture_ulr($picture) }}" width="100%" height="100%">
                                 </div>
                                 <div class="layui-card-body">
                                     <img src="data:image/png;base64,{!! base64_encode(QrCode::format('png')->size(200)->generate(Request::url())) !!}" width="100%" height="100%">
