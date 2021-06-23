@@ -108,6 +108,7 @@
                                                 :</strong> {{ $order['pay']['pay_name'] ?? ''  }}</li>
                                     </ul>
                                 </div>
+                                @php $info =''; @endphp
                                 @if($order['info'])
                                     @php
                                         $info = $order['info'];
