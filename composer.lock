@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8c6471c0d0d583541ada2d76de34d177",
+    "content-hash": "caca491e65a77b728c5d289767678956",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
-            "version": "2.0.3",
+            "version": "1.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Bacon/BaconQrCode.git",
-                "reference": "3e9d791b67d0a2912922b7b7c7312f4b37af41e4"
+                "reference": "5a91b62b9d37cee635bbf8d553f4546057250bee"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Bacon/BaconQrCode/zipball/3e9d791b67d0a2912922b7b7c7312f4b37af41e4",
-                "reference": "3e9d791b67d0a2912922b7b7c7312f4b37af41e4",
+                "url": "https://api.github.com/repos/Bacon/BaconQrCode/zipball/5a91b62b9d37cee635bbf8d553f4546057250bee",
+                "reference": "5a91b62b9d37cee635bbf8d553f4546057250bee",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -27,22 +27,19 @@
                 ]
             },
             "require": {
-                "dasprid/enum": "^1.0.3",
                 "ext-iconv": "*",
-                "php": "^7.1 || ^8.0"
+                "php": "^5.4|^7.0"
             },
             "require-dev": {
-                "phly/keep-a-changelog": "^1.4",
-                "phpunit/phpunit": "^7 | ^8 | ^9",
-                "squizlabs/php_codesniffer": "^3.4"
+                "phpunit/phpunit": "^4.8"
             },
             "suggest": {
-                "ext-imagick": "to generate QR code images"
+                "ext-gd": "to generate QR code images"
             },
             "type": "library",
             "autoload": {
-                "psr-4": {
-                    "BaconQrCode\\": "src/"
+                "psr-0": {
+                    "BaconQrCode": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -53,7 +50,7 @@
                 {
                     "name": "Ben Scholzen 'DASPRiD'",
                     "email": "mail@dasprids.de",
-                    "homepage": "https://dasprids.de/",
+                    "homepage": "http://www.dasprids.de",
                     "role": "Developer"
                 }
             ],
@@ -61,9 +58,9 @@
             "homepage": "https://github.com/Bacon/BaconQrCode",
             "support": {
                 "issues": "https://github.com/Bacon/BaconQrCode/issues",
-                "source": "https://github.com/Bacon/BaconQrCode/tree/2.0.3"
+                "source": "https://github.com/Bacon/BaconQrCode/tree/master"
             },
-            "time": "2020-10-30T02:02:47+00:00"
+            "time": "2017-10-17T09:59:25+00:00"
         },
         {
             "name": "box/spout",
@@ -144,59 +141,6 @@
                 "source": "https://github.com/box/spout/tree/v3.3.0"
             },
             "time": "2021-05-14T21:18:09+00:00"
-        },
-        {
-            "name": "dasprid/enum",
-            "version": "1.0.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/DASPRiD/Enum.git",
-                "reference": "5abf82f213618696dda8e3bf6f64dd042d8542b2"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/DASPRiD/Enum/zipball/5abf82f213618696dda8e3bf6f64dd042d8542b2",
-                "reference": "5abf82f213618696dda8e3bf6f64dd042d8542b2",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^7 | ^8 | ^9",
-                "squizlabs/php_codesniffer": "^3.4"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "DASPRiD\\Enum\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-2-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Ben Scholzen 'DASPRiD'",
-                    "email": "mail@dasprids.de",
-                    "homepage": "https://dasprids.de/",
-                    "role": "Developer"
-                }
-            ],
-            "description": "PHP 7.1 enum implementation",
-            "keywords": [
-                "enum",
-                "map"
-            ],
-            "support": {
-                "issues": "https://github.com/DASPRiD/Enum/issues",
-                "source": "https://github.com/DASPRiD/Enum/tree/1.0.3"
-            },
-            "time": "2020-10-02T16:03:48+00:00"
         },
         {
             "name": "dcat/easy-excel",
@@ -2905,16 +2849,16 @@
         },
         {
             "name": "simplesoftwareio/simple-qrcode",
-            "version": "4.2.0",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/SimpleSoftwareIO/simple-qrcode.git",
-                "reference": "916db7948ca6772d54bb617259c768c9cdc8d537"
+                "reference": "90b2282dd29be1e52565e9832dc23af41610ea07"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/SimpleSoftwareIO/simple-qrcode/zipball/916db7948ca6772d54bb617259c768c9cdc8d537",
-                "reference": "916db7948ca6772d54bb617259c768c9cdc8d537",
+                "url": "https://api.github.com/repos/SimpleSoftwareIO/simple-qrcode/zipball/90b2282dd29be1e52565e9832dc23af41610ea07",
+                "reference": "90b2282dd29be1e52565e9832dc23af41610ea07",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -2924,17 +2868,14 @@
                 ]
             },
             "require": {
-                "bacon/bacon-qr-code": "^2.0",
+                "bacon/bacon-qr-code": "1.0.*",
                 "ext-gd": "*",
-                "php": ">=7.2|^8.0"
+                "illuminate/support": ">=5.0.0",
+                "php": ">=7.0"
             },
             "require-dev": {
-                "mockery/mockery": "~1",
-                "phpunit/phpunit": "~9"
-            },
-            "suggest": {
-                "ext-imagick": "Allows the generation of PNG QrCodes.",
-                "illuminate/support": "Allows for use within Laravel."
+                "mockery/mockery": "0.9.*",
+                "phpunit/phpunit": "~6"
             },
             "type": "library",
             "extra": {
@@ -2948,7 +2889,7 @@
                 }
             },
             "autoload": {
-                "psr-4": {
+                "psr-0": {
                     "SimpleSoftwareIO\\QrCode\\": "src"
                 }
             },
@@ -2963,7 +2904,7 @@
                 }
             ],
             "description": "Simple QrCode is a QR code generator made for Laravel.",
-            "homepage": "https://www.simplesoftware.io/#/docs/simple-qrcode",
+            "homepage": "http://www.simplesoftware.io",
             "keywords": [
                 "Simple",
                 "generator",
@@ -2973,9 +2914,9 @@
             ],
             "support": {
                 "issues": "https://github.com/SimpleSoftwareIO/simple-qrcode/issues",
-                "source": "https://github.com/SimpleSoftwareIO/simple-qrcode/tree/4.2.0"
+                "source": "https://github.com/SimpleSoftwareIO/simple-qrcode/tree/2.0.0"
             },
-            "time": "2021-02-08T20:43:55+00:00"
+            "time": "2017-11-26T15:27:12+00:00"
         },
         {
             "name": "spatie/eloquent-sortable",
@@ -3050,6 +2991,67 @@
                 }
             ],
             "time": "2021-01-18T00:32:12+00:00"
+        },
+        {
+            "name": "stripe/stripe-php",
+            "version": "v7.84.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/stripe/stripe-php.git",
+                "reference": "cc04a86f11a548f83d437f548137dc86a03d2eea"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/stripe/stripe-php/zipball/cc04a86f11a548f83d437f548137dc86a03d2eea",
+                "reference": "cc04a86f11a548f83d437f548137dc86a03d2eea",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "ext-json": "*",
+                "ext-mbstring": "*",
+                "php": ">=5.6.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "2.17.1",
+                "php-coveralls/php-coveralls": "^2.1",
+                "phpunit/phpunit": "^5.7",
+                "squizlabs/php_codesniffer": "^3.3",
+                "symfony/process": "~3.4"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Stripe\\": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Stripe and contributors",
+                    "homepage": "https://github.com/stripe/stripe-php/contributors"
+                }
+            ],
+            "description": "Stripe PHP Library",
+            "homepage": "https://stripe.com/",
+            "keywords": [
+                "api",
+                "payment processing",
+                "stripe"
+            ],
+            "support": {
+                "issues": "https://github.com/stripe/stripe-php/issues",
+                "source": "https://github.com/stripe/stripe-php/tree/v7.84.0"
+            },
+            "time": "2021-06-16T23:44:39+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -8681,5 +8683,5 @@
         "php": "^7.2.5|^8.0"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.0.0"
+    "plugin-api-version": "2.1.0"
 }

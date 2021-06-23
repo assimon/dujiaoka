@@ -17,7 +17,8 @@
         "laravel/framework": "^6.20.26",
         "laravel/tinker": "^2.5",
         "mews/captcha": "^3.2",
-        "simplesoftwareio/simple-qrcode": "^4.2",
+        "simplesoftwareio/simple-qrcode": "2.0.0",
+        "stripe/stripe-php": "^7.84",
         "xhat/payjs-laravel": "^1.6",
         "yansongda/pay": "^2.10"
     },
