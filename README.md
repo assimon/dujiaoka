@@ -71,7 +71,7 @@ Telegram: [https://t.me/dujiaoka](https://t.me/dujiaoka) (免费，管理相对�
 - [x] [麻瓜宝数字货币支付](https://mugglepay.com/)
 - [x] V免签支付
 - [x] 全网易支付支持(通用彩虹版)
-- [x] [stripe(针对彩虹版)](https://stripe.com/)
+- [x] [stripe](https://stripe.com/)
 
 ## 基本环境要求
 
