@@ -25,7 +25,7 @@ class StripeController extends PayController
             default:
                 try {
                     \Stripe\Stripe::setApiKey($this->payGateway->merchant_id);
-                    $amount = bcmul($this->order->actual_price, 100, 0);
+                    $amount = bcmul($this->order->actual_price, 100, 2);
                     $price = $this->order->actual_price;
                     $usd = bcmul($this->getUsdCurrency($this->order->actual_price), 100, 2);
                     $orderid = $this->order->order_sn;
