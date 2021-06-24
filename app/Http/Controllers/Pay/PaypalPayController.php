@@ -3,12 +3,11 @@
 namespace App\Http\Controllers\Pay;
 
 
-use App\Exceptions\AppException;
+use AmrShawky\LaravelCurrency\Facade\Currency;
+use App\Exceptions\RuleValidationException;
 use App\Http\Controllers\PayController;
-use App\Models\Pays;
-use GuzzleHttp\Client;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Redis;
+use Illuminate\Support\Facades\Log;
 use PayPal\Api\Amount;
 use PayPal\Api\Details;
 use PayPal\Api\Item;
@@ -21,62 +20,58 @@ use PayPal\Api\Transaction;
 use PayPal\Auth\OAuthTokenCredential;
 use PayPal\Exception\PayPalConnectionException;
 use PayPal\Rest\ApiContext;
-use Illuminate\Support\Facades\Log;
 
 class PaypalPayController extends PayController
 {
 
-    public function gateway($payway, $oid)
+    const Currency = 'USD'; //货币单位
+
+    public function gateway(string $payway, string $orderSN)
     {
-        $this->checkOrder($payway, $oid);
-        // paypal id
-        $clientId = $this->payInfo['merchant_id'];
-        // paypal 密钥
-        $clientSecret = $this->payInfo['merchant_pem'];
-        $acceptUrl = site_url(). $this->payInfo['pay_handleroute'] . '/return_url?order_id='.$this->orderInfo['order_id'];
-        $currency = 'USD';
-        $paypal = new ApiContext(
-            new OAuthTokenCredential(
-                $clientId,
-                $clientSecret
-            )
-        );
-        // 正式环境还是沙箱
-        if (!config('app.paypal_sandebox')) {
-            $paypal->setConfig(
-                ['mode' => 'live']
+        try {
+            // 加载网关
+            $this->loadGateWay($orderSN, $payway);
+            $paypal = new ApiContext(
+                new OAuthTokenCredential(
+                    $this->payGateway->merchant_key,
+                    $this->payGateway->merchant_pem
+                )
             );
-        }
-        $product = $this->orderInfo['product_name'];
-        try {
-            $price = number_format($this->getUsdCurrency($this->orderInfo['actual_price']), 2, '.', '');
-        } catch (\Exception $exception) {
-            throw new AppException($exception->getMessage());
-        }
-        $shipping = 0;
-        $total = $price + $shipping;//总价
-        $description = $this->orderInfo['product_name'];
-
-        $payer = (new Payer())->setPaymentMethod('paypal');
-        $item = (new Item())->setName($product)->setCurrency($currency)->setQuantity(1)->setPrice($price);
-
-        $itemList = (new ItemList())->setItems([$item]);
-
-        $details = (new Details())->setShipping($shipping)->setSubtotal($price);
-
-        $amount = (new Amount())->setCurrency($currency)->setTotal($total)->setDetails($details);
-
-        $transaction = (new Transaction())->setAmount($amount)->setItemList($itemList)->setDescription($description)->setInvoiceNumber($this->orderInfo['order_id']);
-        $redirectUrls = (new RedirectUrls())->setReturnUrl($acceptUrl)->setCancelUrl($acceptUrl);
-
-        $payment = (new Payment())->setIntent('sale')->setPayer($payer)->setRedirectUrls($redirectUrls)->setTransactions([$transaction]);
-        try {
+            $paypal->setConfig(['mode' => 'live']);
+            $product = $this->order->title;
+            // 得到汇率
+            $price = Currency::convert()
+                ->from('CNY')
+                ->to('USD')
+                ->amount($this->order->actual_price)
+                ->get();
+            $shipping = 0;
+            $description = $this->order->title;
+            $total = bcadd($price, $shipping, 2); //总价
+            $payer = new Payer();
+            $payer->setPaymentMethod('paypal');
+            $item = new Item();
+            $item->setName($product)->setCurrency(self::Currency)->setQuantity($this->order->buy_amount)->setPrice($price);
+            $itemList = new ItemList();
+            $itemList->setItems([$item]);
+            $details = new Details();
+            $details->setShipping($shipping)->setSubtotal($price);
+            $amount = new Amount();
+            $amount->setCurrency(self::Currency)->setTotal($total)->setDetails($details);
+            $transaction = new Transaction();
+            $transaction->setAmount($amount)->setItemList($itemList)->setDescription($description)->setInvoiceNumber($this->order->order_sn);
+            $redirectUrls = new RedirectUrls();
+            $redirectUrls->setReturnUrl(route('paypal-return', ['success' => 'ok', 'orderSN' => $this->order->order_sn]))->setCancelUrl(route('paypal-return', ['success' => 'no', 'orderSN' => $this->order->order_sn]));
+            $payment = new Payment();
+            $payment->setIntent('sale')->setPayer($payer)->setRedirectUrls($redirectUrls)->setTransactions([$transaction]);
             $payment->create($paypal);
-        } catch (PayPalConnectionException $e) {
-            throw new AppException(__('prompt.abnormal_payment_channel') . $e->getData());
+            $approvalUrl = $payment->getApprovalLink();
+            return redirect($approvalUrl);
+        } catch (PayPalConnectionException $payPalConnectionException) {
+            return $this->err($payPalConnectionException->getMessage());
+        } catch (RuleValidationException $exception) {
+            return $this->err($exception->getMessage());
         }
-        $approvalUrl = $payment->getApprovalLink();
-        return redirect($approvalUrl);
     }
 
     /**
@@ -84,107 +79,67 @@ class PaypalPayController extends PayController
      */
     public function returnUrl(Request $request)
     {
-        $oid = $request->get('order_id');
-        $paymentId = $request->get('paymentId');
-        $payerId = $request->get('PayerID');
-        $cacheord = json_decode(Redis::hget('PENDING_ORDERS_LIST', $oid), true);
-        if (!$cacheord) {
+        $success = $request->input('success');
+        $paymentId =  $request->input('paymentId');
+        $payerID =  $request->input('PayerID');
+        $orderSN = $request->input('orderSN');
+        if ($success == 'no' || empty($paymentId) || empty($payerID)) {
+            // 取消支付
+           redirect(url('detail-order-sn', ['orderSN' => $payerID]));
+        }
+        $order = $this->orderService->detailOrderSN($orderSN);
+        if (!$order) {
             return 'error';
         }
-        $payInfo = Pays::where('id', $cacheord['pay_way'])->first()->toArray();
+        $payGateway = $this->payService->detail($order->pay_id);
+        if (!$payGateway) {
+            return 'error';
+        }
         $paypal = new ApiContext(
             new OAuthTokenCredential(
-                $payInfo['merchant_id'],
-                $payInfo['merchant_pem']
+                $payGateway->merchant_key,
+                $payGateway->merchant_pem
             )
         );
-        // 正式环境还是沙箱
-        if (!config('app.paypal_sandebox')) {
-            $paypal->setConfig(
-                ['mode' => 'live']
-            );
-        }
+        $paypal->setConfig(['mode' => 'live']);
         $payment = Payment::get($paymentId, $paypal);
         $execute = new PaymentExecution();
-        $execute->setPayerId($payerId);
-        try{
-            $result = $payment->execute($execute, $paypal);
-            $payData = $result->toArray();
-            if ($payData['payer']['status'] == "VERIFIED" && $payData['transactions'][0]['amount']['currency'] == "USD") {
-                $this->orderService->successOrder($oid, $paymentId, $cacheord['actual_price']);
-                return redirect(site_url().'searchOrderById?order_id='.$oid);
-            }
-        } catch(\Exception $e) {
-            throw new AppException(__('prompt.abnormal_payment_channel') . $e->getMessage());
+        $execute->setPayerId($payerID);
+        try {
+            $payment->execute($execute, $paypal);
+            $this->orderProcessService->completedOrder($orderSN, $order->actual_price, $paymentId);
+            Log::info("paypal支付成功",  ['支付成功，支付ID【' . $paymentId . '】,支付人ID【' . $payerID . '】']);
+        } catch (\Exception $e) {
+            Log::error("paypal支付失败", ['支付失败，支付ID【' . $paymentId . '】,支付人ID【' . $payerID . '】']);
         }
+        return redirect(url('detail-order-sn', ['orderSN' => $orderSN]));
     }
 
 
     /**
      * 异步通知
+     * TODO: 暂未实现，但是好像只实现同步回调即可。这个可以放在后面实现
      */
     public function notifyUrl(Request $request)
     {
-        $data = $request->post();
-        if (!isset($data['resource']['transactions'])) return;
-        $oid = $data['resource']['transactions'][0]['invoice_number'];
-        $paymentId = $data['resource']['id'];
-        $payerId =$data['resource']['payer']['payer_info']['payer_id'];
-        $cacheord = json_decode(Redis::hget('PENDING_ORDERS_LIST', $oid), true);
-        if (!$cacheord) {
-            return 'error';
-        }
-        $payInfo = Pays::where('id', $cacheord['pay_way'])->first()->toArray();
-        $paypal = new ApiContext(
-            new OAuthTokenCredential(
-                $payInfo['merchant_id'],
-                $payInfo['merchant_pem']
-            )
-        );
-        // 正式环境还是沙箱
-        if (!config('app.paypal_sandebox')) {
-            $paypal->setConfig(
-                ['mode' => 'live']
-            );
-        }
-        $payment = Payment::get($paymentId, $paypal);
-        $execute = new PaymentExecution();
-        $execute->setPayerId($payerId);
-        try{
-            $result = $payment->execute($execute, $paypal);
-            $payData = $result->toArray();
-            if ($payData['payer']['status'] == "VERIFIED" && $payData['transactions'][0]['amount']['currency'] == "USD") {
-                $this->orderService->successOrder($oid, $paymentId, $cacheord['actual_price']);
-            }
-        } catch(\Exception $e) {
-           Log::info('paypal异常：' . $e->getMessage());
+        //获取回调结果
+        $json_data = $this->get_JsonData();
+        if(!empty($json_data)){
+            Log::debug("paypal notify info:\r\n" . json_encode($json_data));
+        }else{
+            Log::debug("paypal notify fail:参加为空");
         }
 
     }
 
-    /**
-     * 根据RMB获取美元
-     * @param $cny
-     * @return float|int
-     * @throws \Exception
-     */
-    public function getUsdCurrency($cny)
+    private function get_JsonData()
     {
-        $client = new Client();
-        $res = $client->get('https://m.cmbchina.com/api/rate/getfxrate');
-        $fxrate = json_decode($res->getBody(), true);
-        if (!isset($fxrate['data'])) {
-            throw new \Exception('汇率接口异常');
+        $json = file_get_contents('php://input');
+        if ($json) {
+            $json = str_replace("'", '', $json);
+            $json = json_decode($json,true);
         }
-        $dfFxrate = 0.13;
-        foreach ($fxrate['data'] as $item) {
-            if ($item['ZCcyNbr'] == "美元") {
-                $dfFxrate = 100 / $item['ZRtcOfr'];
-                break;
-            }
-        }
-        return $cny * $dfFxrate;
+        return $json;
     }
-
 
 }

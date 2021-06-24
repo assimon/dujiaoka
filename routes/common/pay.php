@@ -32,8 +32,8 @@ Route::group(['prefix' => 'pay', 'namespace' => 'Pay', 'middleware' => ['dujiaok
     Route::get('yipay/notify_url', 'YipayController@notifyUrl');
     // paypal
     Route::get('paypal/{payway}/{orderSN}', 'PaypalPayController@gateway');
-    Route::get('paypal/return_url', 'PaypalPayController@returnUrl');
-    Route::post('paypal/notify_url', 'PaypalPayController@notifyUrl');
+    Route::get('paypal/return_url', 'PaypalPayController@returnUrl')->name('paypal-return');
+    Route::any('paypal/notify_url', 'PaypalPayController@notifyUrl');
     // Mugglepay
     Route::get('mugglepay/{payway}/{orderSN}', 'MugglepayController@gateway');
     Route::post('mugglepay/notify_url', 'MugglepayController@notifyUrl');
