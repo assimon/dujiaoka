@@ -27,7 +27,7 @@ class VpayController extends PayController
                 "payId" => date('YmdHis') . rand(1, 65535),//平台ID号
                 "price" => (float)$this->order->actual_price,//原价
                 'param' => $this->order->order_sn,
-                'returnUrl' => url($this->payGateway->pay_handleroute . '/return_url', ['order_id' => $this->order->order_sn]),
+                'returnUrl' => route('vpay-return', ['order_id' => $this->order->order_sn]),
                 'notifyUrl' => url($this->payGateway->pay_handleroute . '/notify_url'),
                 "isHtml" => 1,
             );

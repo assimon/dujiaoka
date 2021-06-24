@@ -40,7 +40,7 @@ Route::group(['prefix' => 'pay', 'namespace' => 'Pay', 'middleware' => ['dujiaok
     // V免签
     Route::get('vpay/{payway}/{orderSN}', 'VpayController@gateway');
     Route::get('vpay/notify_url', 'VpayController@notifyUrl');
-    Route::get('vpay/return_url', 'VpayController@returnUrl');
+    Route::get('vpay/return_url', 'VpayController@returnUrl')->name('vpay-return');
     // stripe
     Route::get('stripe/{payway}/{oid}','StripeController@gateway');
     Route::get('stripe/return_url','StripeController@returnUrl');
