@@ -69,10 +69,7 @@ class PayController extends BaseController
         if ($this->order->status == Order::STATUS_EXPIRED) {
             throw new RuleValidationException(__('dujiaoka.prompt.order_is_expired'));
         }
-        // 已经支付了
-        if ($this->order->status > Order::STATUS_WAIT_PAY) {
-            throw new RuleValidationException(__('dujiaoka.prompt.order_already_paid'));
-        }
+
     }
 
     /**
@@ -114,6 +111,10 @@ class PayController extends BaseController
     {
         try {
             $this->checkOrder($orderSN);
+            // 已经支付了
+            if ($this->order->status > Order::STATUS_WAIT_PAY) {
+                throw new RuleValidationException(__('dujiaoka.prompt.order_already_paid'));
+            }
             $bccomp = bccomp($this->order->actual_price, 0.00, 2);
             // 如果订单金额为0 代表无需支付，直接成功
             if ($bccomp == 0) {
