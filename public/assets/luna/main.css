@@ -1,5 +1,5 @@
 body {
-    /*background: url(https://www.kuaifaka.com/static/img/back.f6b9993.png);*/
+    background: url(/assets/luna/img/background.png) no-repeat;
 }
 
 input::-webkit-outer-spin-button,
@@ -14,7 +14,6 @@ input[type="number"] {
 .noML {
     margin-left: initial !important;
 }
-
 
 .hide {
     display: none;
@@ -796,6 +795,9 @@ input[type="number"] {
 
 /*手机端适应*/
 @media (max-width: 768px) {
+    body {
+        background: initial;
+    }
     .header {
         background-image: linear-gradient(135deg, #3C8CE7 10%, #00EAFF 100%);
         color: #fff;

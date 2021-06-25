@@ -101,13 +101,13 @@
     let orderNumber = 1;
     let numDoc = $("#orderNumber");
     $('.sub').click(function () {
+        if (orderNumber - 1 <= 0) return layer.msg(tipsMsg.least_one);
         orderNumber--;
-        if (orderNumber <= 0) return layer.msg('购买数量不能低于1件');
         numDoc.val(orderNumber);
     })
     $('.add').click(function () {
+        if (orderNumber + 1 > stock) return layer.msg(tipsMsg.exceeds);
         orderNumber++;
-        if (orderNumber > stock) return layer.msg('购买数量不能多余库存数量');
         numDoc.val(orderNumber + '');
     })
     numDoc.change(function () {
@@ -115,12 +115,12 @@
         if (val <= 0) {
             $(this).val(1);
             orderNumber = 1;
-            return layer.msg('购买数量不能低于1件');
+            return layer.msg(tipsMsg.least_one);
         }
         if (val > stock) {
             $(this).val(stock);
             orderNumber = stock;
-            return layer.msg('购买数量不能多余库存数量');
+            return layer.msg(tipsMsg.exceeds);
         }
         orderNumber = val;
     })
@@ -133,7 +133,7 @@
             '<img src="' + imgUrl + '" alt=""></div>';
         layer.open({
             type    : 1,
-            title   : qrSvg + '扫描二维码 手机下单',
+            title   : qrSvg + tipsMsg.mobile_order,
             closeBtn: 2,
             area    : msgArea,
             skin    : 'home-tips',

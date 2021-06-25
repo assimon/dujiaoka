@@ -3,8 +3,8 @@
 return [
 
     //luna模板
-    'home_choice_cate'=>'选择分类',
-    'home_choice_goods'=>'选择商品',
+    'home_choice_cate' => '选择分类',
+    'home_choice_goods' => '选择商品',
     'order_search_m' => '查单',
     'goods_num' => '商品数量',
     'goods_disc_1' => '满',
@@ -31,6 +31,10 @@ return [
 
     'order_number' => '订单编号',
     'email' => '订单邮箱',
-    'order_status' => '订单状态'
+    'order_status' => '订单状态',
 
+
+    'least_one' => '购买数量不能低于1件',
+    'exceeds' => '购买数量不能多大于库存数量',
+    'mobile_order' => '扫描二维码 手机下单'
 ];
