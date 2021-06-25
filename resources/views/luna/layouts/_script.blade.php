@@ -1,8 +1,9 @@
 <script>
     let tipsMsg = {
-        least_one   : '{{ __('luna.least_one') }}',
-        exceeds     : '{{ __('luna.exceeds') }}',
-        mobile_order: '{{ __('luna.mobile_order') }}'
+        least_one    : '{{ __('luna.least_one') }}',
+        exceeds      : '{{ __('luna.exceeds') }}',
+        exceeds_limit: '{{ __('luna.exceeds_limit') }}',
+        mobile_order : '{{ __('luna.mobile_order') }}'
     };
 </script>
 <script src="/assets/layui/layui.js"></script>

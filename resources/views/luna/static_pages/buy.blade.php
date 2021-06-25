@@ -64,9 +64,11 @@
                                     <span>
                                         {{ $gd_name }}
                                         @if($type == \App\Models\Goods::AUTOMATIC_DELIVERY)
-                                            <span class="small-tips tips-green">{{ __('goods.fields.automatic_delivery') }}</span>
+                                            <span
+                                                class="small-tips tips-green">{{ __('goods.fields.automatic_delivery') }}</span>
                                         @else
-                                            <span class="small-tips tips-yellow">{{ __('goods.fields.manual_processing') }}</span>
+                                            <span
+                                                class="small-tips tips-yellow">{{ __('goods.fields.manual_processing') }}</span>
                                         @endif
                                         <span class="small-tips tips-blue">{{__('goods.fields.in_stock')}}({{ $in_stock }})</span>
                                         @if($buy_limit_num > 0)
@@ -152,27 +154,31 @@
                                         @endphp
                                         @if(count($option))
                                             <style>
-                                                .layui-form-select{
+                                                .layui-form-select {
                                                     width: 300px;
                                                     display: inline-block;
                                                 }
-                                                .layui-form-pane .layui-input{
+
+                                                .layui-form-pane .layui-input {
                                                     border-radius: 4px;
                                                     height: 37px;
                                                     width: 312px;
                                                 }
-                                                .layui-form-select .layui-edge{
+
+                                                .layui-form-select .layui-edge {
                                                     right: 0px;
                                                 }
-                                                @media (max-width: 768px){
-                                                    .layui-form-select{
+
+                                                @media (max-width: 768px) {
+                                                    .layui-form-select {
                                                         width: calc(100% - 83px);
                                                     }
 
-                                                    .layui-form-pane .layui-input{
+                                                    .layui-form-pane .layui-input {
                                                         width: 100%;
                                                     }
-                                                    .layui-form-select .layui-edge{
+
+                                                    .layui-form-select .layui-edge {
                                                         right: 10px;
                                                     }
                                                 }
@@ -180,22 +186,25 @@
                                             <div class="entry">
                                                 <span class="l-msg">{{ $name }}：</span>
                                                 <label class="input">
-                                                        <select class="layui-bg-blue" name="{{ $ipu['field'] }}" @if($ipu['rule'] !== false) required lay-verify="required" @endif>
-                                                            @foreach($option as $opt)
+                                                    <select class="layui-bg-blue" name="{{ $ipu['field'] }}"
+                                                            @if($ipu['rule'] !== false) required
+                                                            lay-verify="required" @endif>
+                                                        @foreach($option as $opt)
                                                             <option value="{{ $opt }}">{{ $opt }}</option>
-                                                            @endforeach
-                                                        </select>
+                                                        @endforeach
+                                                    </select>
                                                 </label>
                                             </div>
                                         @else
-                                        <div class="entry">
-                                            <span class="l-msg">{{ $ipu['desc'] }}：</span>
-                                            <label class="input">
-                                                <input type="text" name="{{ $ipu['field'] }}"
-                                                       @if($ipu['rule'] !== false) required lay-verify="required" @endif
-                                                       placeholder="{{ $ipu['desc'] }}">
-                                            </label>
-                                        </div>
+                                            <div class="entry">
+                                                <span class="l-msg">{{ $ipu['desc'] }}：</span>
+                                                <label class="input">
+                                                    <input type="text" name="{{ $ipu['field'] }}"
+                                                           @if($ipu['rule'] !== false) required lay-verify="required"
+                                                           @endif
+                                                           placeholder="{{ $ipu['desc'] }}">
+                                                </label>
+                                            </div>
                                         @endif
                                     @endforeach
                                 @endif
@@ -319,7 +328,7 @@
 
     @include('luna.layouts._footer')
     </body>
-    <script>let stock = {{ $in_stock }};</script>
+    <script>let stock = {{ $in_stock }}, limitNum = {{$buy_limit_num}};</script>
 @endsection
 @section('js')
     <script src="https://cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
@@ -339,7 +348,7 @@
                 }
             })
             @if(dujiaoka_config_get('is_open_geetest') == \App\Models\Goods::STATUS_OPEN )
-            !function (url) {
+                !function (url) {
                 var handlerEmbed = function (captchaObj) {
                     form.on('submit(postOrder)', function (data) {
                         var validate = captchaObj.getValidate();
@@ -388,10 +397,10 @@
                 return true;
             });
             new Viewer(document.querySelector('.viewer-pictures'), {
-                url: 'data-original',
+                url    : 'data-original',
                 toolbar: false,
-                navbar: false,
-                title: false,
+                navbar : false,
+                title  : false,
             });
         });
 

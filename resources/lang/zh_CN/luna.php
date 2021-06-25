@@ -35,6 +35,7 @@ return [
 
 
     'least_one' => '购买数量不能低于1件',
-    'exceeds' => '购买数量不能多大于库存数量',
+    'exceeds' => '购买数量不能多于库存数量',
+    'exceeds_limit' => '购买数量不能多于限购数量',
     'mobile_order' => '扫描二维码 手机下单'
 ];

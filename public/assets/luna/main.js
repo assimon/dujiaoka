@@ -101,12 +101,13 @@
     let orderNumber = 1;
     let numDoc = $("#orderNumber");
     $('.sub').click(function () {
-        if (orderNumber - 1 <= 0) return layer.msg(tipsMsg.least_one);
+        if (orderNumber <= 1) return layer.msg(tipsMsg.least_one);
         orderNumber--;
         numDoc.val(orderNumber);
     })
     $('.add').click(function () {
-        if (orderNumber + 1 > stock) return layer.msg(tipsMsg.exceeds);
+        if (orderNumber >= limitNum) return layer.msg(tipsMsg.exceeds_limit);
+        if (orderNumber >= stock) return layer.msg(tipsMsg.exceeds);
         orderNumber++;
         numDoc.val(orderNumber + '');
     })
