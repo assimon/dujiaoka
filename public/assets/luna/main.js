@@ -106,8 +106,11 @@
         numDoc.val(orderNumber);
     })
     $('.add').click(function () {
-        if (limitNum > 0 && orderNumber >= limitNum) return layer.msg(tipsMsg.exceeds_limit);
-        if (orderNumber >= stock) return layer.msg(tipsMsg.exceeds);
+        if (stock > limitNum) {
+            if (limitNum > 0 && orderNumber >= limitNum) return layer.msg(tipsMsg.exceeds_limit);
+        } else {
+            if (orderNumber >= stock) return layer.msg(tipsMsg.exceeds);
+        }
         orderNumber++;
         numDoc.val(orderNumber + '');
     })
@@ -118,15 +121,18 @@
             orderNumber = 1;
             return layer.msg(tipsMsg.least_one);
         }
-        if (val > stock) {
-            $(this).val(stock);
-            orderNumber = stock;
-            return layer.msg(tipsMsg.exceeds);
-        }
-        if (limitNum > 0 && val > limitNum) {
-            $(this).val(limitNum);
-            orderNumber = limitNum;
-            return layer.msg(tipsMsg.exceeds_limit);
+        if (stock > limitNum) {
+            if (limitNum > 0 && val > limitNum) {
+                $(this).val(limitNum);
+                orderNumber = limitNum;
+                return layer.msg(tipsMsg.exceeds_limit);
+            }
+        } else {
+            if (val > stock) {
+                $(this).val(stock);
+                orderNumber = stock;
+                return layer.msg(tipsMsg.exceeds);
+            }
         }
         orderNumber = val;
     })
