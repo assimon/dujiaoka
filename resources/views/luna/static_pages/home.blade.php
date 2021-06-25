@@ -96,7 +96,7 @@
 
     <script>
         let title    = "{{ __('dujiaoka.site_announcement') }}",
-            tipsCon  = '{!! dujiaoka_config_get('notice') !!}',
+            tipsCon  = '{!! str_replace(["\r\n", "\r", "\n"], "", dujiaoka_config_get('notice')); !!}',
             goodsMsg = {!! json_encode($data) !!};
     </script>
 @endsection
