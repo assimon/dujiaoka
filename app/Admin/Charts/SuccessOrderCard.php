@@ -63,6 +63,7 @@ class SuccessOrderCard extends Line
         $orderGroup = Order::query()
             ->where('created_at', '>=', $startTime)
             ->where('created_at', '<=', $endTime)
+            ->where('status', Order::STATUS_COMPLETED)
             ->select(DB::raw('DATE(created_at) as date'), DB::raw('count(id) as num'))
             ->groupBy('date')
             ->pluck('num')

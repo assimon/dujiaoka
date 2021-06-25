@@ -80,7 +80,7 @@ class PayoutRateCard extends Donut
         $unpaid = Order::query()
             ->where('created_at', '>=', $startTime)
             ->where('created_at', '<=', $endTime)
-            ->where('status', Order::STATUS_PENDING)
+            ->where('status', '<=', Order::STATUS_PENDING)
             ->count();
         $this->withContent($success, $unpaid);
         // 图表数据
