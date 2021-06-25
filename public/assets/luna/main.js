@@ -121,8 +121,8 @@
             orderNumber = 1;
             return layer.msg(tipsMsg.least_one);
         }
-        if (stock > limitNum) {
-            if (limitNum > 0 && val > limitNum) {
+        if (limitNum > 0 && stock > limitNum) {
+            if (val > limitNum) {
                 $(this).val(limitNum);
                 orderNumber = limitNum;
                 return layer.msg(tipsMsg.exceeds_limit);
