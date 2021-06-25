@@ -14,7 +14,7 @@ service=所在区服[1号服务器|2号服务器|3号服务器]=true
 
 ## 背景图
 
-#### 设计能力有限，觉得背景图不好看的，可自行更换。建议尺寸：1920px*1224px
+#### 设计能力有限，觉得背景图不好看的，可自行更换（建议尺寸：1920px*1224px）
 
 背景图文件位置
 
@@ -22,20 +22,17 @@ service=所在区服[1号服务器|2号服务器|3号服务器]=true
 你的部署路径/public/assets/luna/img/background.png
 ```
 
-#### 也可去掉背景图。屏蔽main.css中的背景图样式即可
+#### 也可去掉背景图 屏蔽_nav.blade.php中的一个div即可 
 
-main.css位置
-
-```
-你的部署路径/public/assets/luna/main.css
-```
+_nav.blade.php位置
 
 ```
-/*屏蔽掉文件第二行的background即可去掉背景图。例：*/
-body {
-    /*background: url(/assets/luna/img/background.png) no-repeat;*/
-}
+你的部署路径/resources/views/luna/layouts/_nav.blade.php
+```
 
+```
+/*屏蔽掉文件第一行的div标签即可去掉背景图。例：*/
+{{--<div class="background"></div>--}}
 ```
 
 ## 作者信息

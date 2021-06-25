@@ -106,7 +106,7 @@
         numDoc.val(orderNumber);
     })
     $('.add').click(function () {
-        if (orderNumber >= limitNum) return layer.msg(tipsMsg.exceeds_limit);
+        if (limitNum > 0 && orderNumber >= limitNum) return layer.msg(tipsMsg.exceeds_limit);
         if (orderNumber >= stock) return layer.msg(tipsMsg.exceeds);
         orderNumber++;
         numDoc.val(orderNumber + '');
@@ -122,6 +122,11 @@
             $(this).val(stock);
             orderNumber = stock;
             return layer.msg(tipsMsg.exceeds);
+        }
+        if (limitNum > 0 && val > limitNum) {
+            $(this).val(limitNum);
+            orderNumber = limitNum;
+            return layer.msg(tipsMsg.exceeds_limit);
         }
         orderNumber = val;
     })

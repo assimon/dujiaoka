@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ app()->getLocale() }}">
+<html lang="{{ str_replace('_','-',strtolower(app()->getLocale())) }}">
 @include('luna.layouts._header')
 @yield('content')
 @include('luna.layouts._script')
