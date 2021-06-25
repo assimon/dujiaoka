@@ -46,7 +46,7 @@ class AlipayController extends PayController
                         $result['actual_price'] = (float)$this->order->actual_price;
                         $result['orderid'] = $this->order->order_sn;
                         $result['jump_payuri'] = $result['qr_code'];
-                        return $this->render('static_pages/qrpay', $result);
+                        return $this->render('static_pages/qrpay', $result, __('dujiaoka.scan_qrcode_to_pay'));
                     } catch (\Exception $e) {
                         return $this->err(__('dujiaoka.prompt.abnormal_payment_channel') . $e->getMessage());
                     }

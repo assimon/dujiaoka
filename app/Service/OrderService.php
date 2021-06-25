@@ -184,7 +184,7 @@ class OrderService
      * @copyright assimon<ashang@utf8.hk>
      * @link      http://utf8.hk/
      */
-    public function detailOrderSN(string $orderSN): Order
+    public function detailOrderSN(string $orderSN):? Order
     {
         $order = Order::query()->with(['coupon', 'pay', 'goods'])->where('order_sn', $orderSN)->first();
         return $order;

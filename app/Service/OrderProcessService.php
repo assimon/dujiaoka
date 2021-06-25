@@ -447,6 +447,8 @@ class OrderProcessService
             'ord_title' => $order->title,
             'order_id' => $order->order_sn,
             'buy_amount' => $order->buy_amount,
+            'ord_price' => $order->actual_price,
+            'created_at' => $order->created_at,
         ];
         $tpl = $this->emailtplService->detailByToken('manual_send_manage_mail');
         $mailBody = replace_mail_tpl($tpl, $mailData);

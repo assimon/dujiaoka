@@ -496,7 +496,7 @@ class StripeController extends PayController
                 $payGateway = $this->payService->detail($cacheord->pay_id);
                 \Stripe\Stripe::setApiKey($payGateway -> merchant_pem);
                 $result = \Stripe\Charge::create([
-                    'amount' => bcmul($this->getUsdCurrency($cacheord->actual_price), 100,2),
+                    'amount' => bcmul($this->getUsdCurrency($cacheord->actual_price), 100,0),
                     'currency' => 'usd',
                     'source' => $data['stripeToken'],
                 ]);
