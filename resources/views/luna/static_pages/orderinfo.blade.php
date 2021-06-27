@@ -79,25 +79,25 @@
                                                 @case(\App\Models\Order::STATUS_PENDING)
                                                 <span
                                                     class="small-tips tips-green">
-                                                    {{ __('order.fields.status_pending') }}<
-                                                    /span>
+                                                    {{ __('order.fields.status_pending') }}
+                                                </span>
                                                 @break
-                                                    @case(\App\Models\Order::STATUS_PROCESSING)
+                                                @case(\App\Models\Order::STATUS_PROCESSING)
                                                 <span class="small-tips tips-green">
                                                     {{ __('order.fields.status_processing') }}
                                                 </span>
                                                 @break
-                                                    @case(\App\Models\Order::STATUS_COMPLETED)
+                                                @case(\App\Models\Order::STATUS_COMPLETED)
                                                 <span class="small-tips tips-green">
                                                     {{ __('order.fields.status_completed') }}
                                                 </span>
                                                 @break
-                                                    @case(\App\Models\Order::STATUS_FAILURE)
+                                                @case(\App\Models\Order::STATUS_FAILURE)
                                                 <span class="small-tips tips-black">
                                                     {{ __('order.fields.status_failure') }}
                                                 </span>
                                                 @break
-                                                    @case(\App\Models\Order::STATUS_ABNORMAL)
+                                                @case(\App\Models\Order::STATUS_ABNORMAL)
                                                 <span class="small-tips tips-black">
                                                     {{ __('order.fields.status_abnormal') }}
                                                 </span>
@@ -237,7 +237,6 @@
             var clipboard = new ClipboardJS('.clipboard-but');
             clipboard.on('success', function (e) {
                 layer.msg("{{ __('dujiaoka.prompt.copy_text_success') }}");
-
             });
             clipboard.on('error', function (e) {
                 layer.msg("{{ __('dujiaoka.prompt.copy_text_failed') }}");
