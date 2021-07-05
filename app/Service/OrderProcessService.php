@@ -452,8 +452,9 @@ class OrderProcessService
         ];
         $tpl = $this->emailtplService->detailByToken('manual_send_manage_mail');
         $mailBody = replace_mail_tpl($tpl, $mailData);
+        $manageMail = dujiaoka_config_get('manage_email', '');
         // 邮件发送
-        MailSend::dispatch($order->email, $mailBody['tpl_name'], $mailBody['tpl_content']);
+        MailSend::dispatch($manageMail, $mailBody['tpl_name'], $mailBody['tpl_content']);
         return $order;
     }
 
