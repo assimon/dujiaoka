@@ -53,7 +53,6 @@ class OrderController extends AdminController
                 ->select(OrderModel::getStatusMap());
             $grid->column('created_at');
             $grid->column('updated_at')->sortable();
-            $grid->fixColumns(3, -4);
             $grid->disableEditButton();
             $grid->disableCreateButton();
             $grid->filter(function (Grid\Filter $filter) {
