@@ -52,10 +52,4 @@
     .hide {
         display: none;
     }
-    @if(dujiaoka_config_get('template') == 'hyper')
-    .geetest_holder.geetest_wind {
-        width: 100%!important;
-        min-width: 100%!important;
-    }
-    @endif
 </style>
