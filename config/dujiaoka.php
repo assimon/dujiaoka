@@ -13,7 +13,7 @@ return [
     'templates' => [
         'layui' => 'Layui',
         'luna' => 'Luna[Julyssn]',
-        /*'hyper' => 'hyper[Bimoe]'*/
+        'hyper' => 'hyper[Bimoe]'
     ],
     // 语言
     'language' => [

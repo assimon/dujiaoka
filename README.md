@@ -52,11 +52,11 @@ Telegram: [https://t.me/dujiaoka](https://t.me/dujiaoka) (免费，管理相对�
 ![首页.png](https://i.loli.net/2020/08/04/lZOBGXtsHxIUi6W.png)   
 ![后台.png](https://i.loli.net/2020/04/07/ZcYLqN4d2fuAI7X.png)
 
-【luna模板】
+【luna模板】 
 ![首页.png](https://i.loli.net/2020/10/24/ElKwJFsQy4a9fZi.png)
 ![订单页.png](https://i.loli.net/2020/10/24/jG5Mw137HrzOlFA.png)
 
-【hyper模板】(2.0.+版本暂未适配)
+【hyper模板】  
 ![首页.png](https://i.loli.net/2021/01/06/nHCSV5PdJIzT6Gy.png)
 
 ## 支付接口已集成
