@@ -81,7 +81,7 @@ Telegram: [https://t.me/dujiaoka](https://t.me/dujiaoka) (免费，管理相对�
 - Redis (高性能缓存服务)
 - Supervisor (一个python编写的进程管理服务)
 - Composer (PHP包管理器)
-- Linux/Win (Win下未测试，建议直接Linux)
+- Linux (Win下未测试，建议直接Linux)
 
 ## PHP环境要求
 
@@ -98,7 +98,7 @@ Telegram: [https://t.me/dujiaoka](https://t.me/dujiaoka) (免费，管理相对�
 
 - [Linux环境安装](https://github.com/assimon/dujiaoka/wiki/linux_install)
 - [1.x版本宝塔环境安装](https://github.com/assimon/dujiaoka/wiki/1.x_bt_install)
-- [2.0版本宝塔安装教程](https://github.com/assimon/dujiaoka/wiki/bt_install_2)
+- [2.x版本宝塔安装教程](https://github.com/assimon/dujiaoka/wiki/bt_install_2)
 - [常见问题锦集-你遇到的问题大部分能在这里找到解决！！](https://github.com/assimon/dujiaoka/wiki/problems)
 - [系统升级](https://github.com/assimon/dujiaoka/wiki/update)
 - [各支付对应后台配置](https://github.com/assimon/dujiaoka/wiki/problems#各支付对应配置)
