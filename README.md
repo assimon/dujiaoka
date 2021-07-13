@@ -97,9 +97,9 @@ Telegram: [https://t.me/dujiaoka](https://t.me/dujiaoka) (免费，管理相对�
 ## 安装篇
 
 - [Linux环境安装](https://github.com/assimon/dujiaoka/wiki/linux_install)
-- [宝塔环境安装](https://github.com/assimon/dujiaoka/wiki/bt_install)
+- [1.x版本宝塔环境安装](https://github.com/assimon/dujiaoka/wiki/1.x_bt_install)
 - [2.0版本宝塔安装教程](https://github.com/assimon/dujiaoka/wiki/bt_install_2)
-- [常见问题锦集](https://github.com/assimon/dujiaoka/wiki/problems)
+- [常见问题锦集-你遇到的问题大部分能在这里找到解决！！](https://github.com/assimon/dujiaoka/wiki/problems)
 - [系统升级](https://github.com/assimon/dujiaoka/wiki/update)
 - [各支付对应后台配置](https://github.com/assimon/dujiaoka/wiki/problems#各支付对应配置)
 
