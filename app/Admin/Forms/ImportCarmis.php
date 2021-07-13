@@ -35,7 +35,7 @@ class ImportCarmis extends Form
             if (trim($val) != "") {
                 $carmisData[] = [
                     'goods_id' => $input['goods_id'],
-                    'carmi' => $val,
+                    'carmi' => trim($val),
                     'status' => Carmis::STATUS_UNSOLD,
                     'created_at' => date('Y-m-d H:i:s'),
                     'updated_at' => date('Y-m-d H:i:s'),
