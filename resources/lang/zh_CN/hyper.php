@@ -8,6 +8,7 @@ return [
     'error_back_btn'      => '返回',
     'error_error'         => '错误',
     'order_search'        => '查询订单',
+    'global_currency'     => '￥',
 
     # home.blade.php
 
@@ -23,7 +24,6 @@ return [
     'home_charge'             => '人工发货',
     'home_buy'                => '购买',
     'home_sell_out'           => '售罄',
-    'home_rmb'                => '￥',
 
     # buy.blade.php
     'buy_title'                 => '产品详细信息',

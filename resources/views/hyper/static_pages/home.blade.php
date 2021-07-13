@@ -60,7 +60,7 @@
                                         <p class="shop-name text-truncate">{{ $goods['gd_name'] }}</p>
                                         <div class="shop-center">
                                             {{-- 价格 --}}
-                                            <span class="shop-price">{{ __('hyper.home_rmb') }}{{ $goods['actual_price'] }}</span>
+                                            <span class="shop-price">{{ __('hyper.global_currency') }}{{ $goods['actual_price'] }}</span>
                                             @if($goods['wholesale_price_cnf'])
                                                 {{-- 折扣 --}}
                                                 <span class="hyper-badge" style="margin-left: auto;">{{ __('hyper.home_discount') }}</span>
