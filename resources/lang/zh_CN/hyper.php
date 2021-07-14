@@ -99,6 +99,7 @@ return [
     'orderinfo_tips'               => '提示',
     'orderinfo_copy_success'       => '复制成功',
     'orderinfo_copy_error'         => '复制失败',
+    'orderinfo_order_information'  => '没有找到订单信息',
 
     # qrpay.blade.php
 

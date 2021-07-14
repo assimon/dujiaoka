@@ -232,6 +232,10 @@
                 border-radius: 5px;
                 cursor: pointer;
             }
+            .geetest_holder.geetest_wind {
+                width: 100%!important;
+                min-width: 100%!important;
+            }
         </style>
     </head>
 
