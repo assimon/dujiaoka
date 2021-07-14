@@ -248,7 +248,7 @@
                         <div class="container">
                             <!-- LOGO -->
                             <a href="/" class="topnav-logo" style="float: none;">
-                                <img src="/assets/common/images/default.jpg" height="48">
+                                <img src="{{ picture_ulr(dujiaoka_config_get('img_logo')) }}" height="48">
                                 <div class="info">{{ dujiaoka_config_get('text_logo') }}</div>
                             </a>
                             <ul class="list-unstyled topbar-right-menu float-right mb-0">
