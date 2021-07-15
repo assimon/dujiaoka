@@ -99,6 +99,17 @@
     </div>
 </div>
 @endforeach
+@if(!count($orders))
+    <div class="row justify-content-center">
+        <div class="col-lg-4">
+            <div class="text-center">
+                <h1 class="text-error mt-4">error</h1>
+                <h4 class="text-uppercase text-danger mt-3">{{ __('hyper.orderinfo_order_information') }}</h4>
+                <a class="btn btn-info mt-3" href="javascript:history.back(-1);"><i class="mdi mdi-reply"></i> {{ __('hyper.error_back_btn') }}</a>
+            </div> <!-- end /.text-center-->
+        </div> <!-- end col-->
+    </div>
+@endif
 @stop
 
 @section('tpljs')
