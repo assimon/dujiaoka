@@ -81,10 +81,10 @@
                 <div class="goods-name"><< d.gd_name >></div>
                 <div class="goods-price">
                     ￥<< d.actual_price >>
-                    <<# layui.each(d.wholesale_price_arr, function(index, item){ >>
-                    <div>{{ __('luna.goods_disc_1') }}<< item[0] >>{{ __('luna.goods_disc_2') }}<< item[1]
-                        >>{{ __('luna.goods_disc_3') }}</div>
-                    <<# }); >>
+                        <<# layui.each(d.wholesale_price_arr, function(index, item){ >>
+                        <div>{{ __('luna.goods_disc_1') }}<< item[0] >>{{ __('luna.goods_disc_2') }}<< item[1]
+                            >>{{ __('luna.goods_disc_3') }}</div>
+                        <<# }); >>
                 </div>
                 <div class="goods-num">
                     <div><p style="width: << d.proportion >>%;"></p></div>
