@@ -24,8 +24,6 @@
                                 </div>
                             </div>
                         </div>
-
-
                         <!-- 商品详细区 -->
                         <div class="layui-col-md8  layui-col-xs12" >
                             <div class="layui-card">
@@ -177,10 +175,14 @@
         </div>
 
     </div>
+    <div class="buy-prompt" hidden>
+        {!! $buy_prompt !!}
+    </div>
 @stop
 
 @section('tpljs')
     <script>
+        var buyPrompt = $(".buy-prompt").html()
         var instock = {{ $in_stock }}
         layui.use(['form', 'layer'], function(){
             var form = layui.form;
@@ -207,7 +209,7 @@
                 skin: 'layui-layer-lan', //加上边框
                 area: ['60%', '50%'], //宽高
                 title: "{{ __('goods.fields.buy_prompt') }}",
-                content: '<div class="buy-prompt">{!! $buy_prompt !!}<div>'
+                content: buyPrompt
             });
             @endif
 

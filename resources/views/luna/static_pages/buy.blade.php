@@ -327,6 +327,9 @@
     </div>
 
     @include('luna.layouts._footer')
+    <div class="buy-prompt" hidden>
+        {!! $buy_prompt !!}
+    </div>
     </body>
     <script>let stock = {{ $in_stock }}, limitNum = {{$buy_limit_num}};</script>
 @endsection
@@ -336,8 +339,8 @@
     <link rel="stylesheet" href="/assets/luna/js/viewerjs/viewer.min.css">
     <script src="/assets/luna/js/viewerjs/viewer.min.js"></script>
     <script>
-        var buyPrompt = '{!! $buy_prompt !!}';
-        if (buyPrompt) window.tipsMsg("{{ __('goods.fields.buy_prompt') }}", buyPrompt);
+        var buyPrompt = $(".buy-prompt").html();
+        if ($.trim(buyPrompt)) window.tipsMsg("{{ __('goods.fields.buy_prompt') }}", buyPrompt);
         gtWidth = window.clientWidth <= 767 ? '100%' : '312px';
         layui.use(['form'], function () {
             var form = layui.form;
