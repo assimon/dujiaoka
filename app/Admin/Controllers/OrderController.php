@@ -53,7 +53,6 @@ class OrderController extends AdminController
                 ->select(OrderModel::getStatusMap());
             $grid->column('created_at');
             $grid->column('updated_at')->sortable();
-            $grid->disableEditButton();
             $grid->disableCreateButton();
             $grid->filter(function (Grid\Filter $filter) {
                 $filter->equal('order_sn');
@@ -130,26 +129,26 @@ class OrderController extends AdminController
      */
     protected function form()
     {
-        return Form::make(new Order(), function (Form $form) {
+        return Form::make(new Order(['goods', 'coupon', 'pay']), function (Form $form) {
             $form->display('id');
-            $form->text('actual_price');
-            $form->text('buy_amount');
-            $form->text('buy_ip');
-            $form->text('coupon_discount_price');
-            $form->text('coupon_id');
-            $form->text('email');
-            $form->text('goods_id');
-            $form->text('goods_price');
-            $form->text('info');
-            $form->text('order_sn');
-            $form->text('pay_id');
-            $form->text('status');
-            $form->text('search_pwd');
+            $form->display('order_sn');
             $form->text('title');
-            $form->text('total_price');
-            $form->text('trade_no');
-            $form->text('type');
-            $form->text('wholesale_discount_price');
+            $form->display('goods.gd_name', admin_trans('order.fields.goods_id'));
+            $form->display('goods_price');
+            $form->display('buy_amount');
+            $form->display('coupon.coupon', admin_trans('order.fields.coupon_id'));
+            $form->display('coupon_discount_price');
+            $form->display('wholesale_discount_price');
+            $form->display('total_price');
+            $form->display('actual_price');
+            $form->display('email');
+            $form->textarea('info');
+            $form->display('buy_ip');
+            $form->display('pay.pay_name', admin_trans('order.fields.pay_id'));
+            $form->radio('status')->options(OrderModel::getStatusMap());
+            $form->text('search_pwd');
+            $form->display('trade_no');
+            $form->radio('type')->options(OrderModel::getTypeMap())->disable();
             $form->display('created_at');
             $form->display('updated_at');
         });
