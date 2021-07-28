@@ -148,7 +148,7 @@ class OrderController extends AdminController
             $form->radio('status')->options(OrderModel::getStatusMap());
             $form->text('search_pwd');
             $form->display('trade_no');
-            $form->radio('type')->options(OrderModel::getTypeMap())->disable();
+            $form->radio('type')->options(OrderModel::getTypeMap());
             $form->display('created_at');
             $form->display('updated_at');
         });
