@@ -782,7 +782,7 @@ TkSuQmCC" />
                         .done(function (ret) {
                             if (ret === 'success') {
                                 $('#error').hide();
-                                $("#success").text("安装成功！开始你的梦想之旅吧！").show();
+                                $("#success").text("安装成功！您的后台登录账号密码均为：admin，请及时登录修改！").show();
                                 $('<a class="btn" href="/">访问首页</a> <a class="btn" href=\"'+ adminurl +'\" style="background:#18bc9c">访问后台</a>').insertAfter($button);
                                 $button.remove();
                             } else {
