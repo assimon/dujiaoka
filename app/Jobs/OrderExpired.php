@@ -19,7 +19,7 @@ class OrderExpired implements ShouldQueue
      *
      * @var int
      */
-    public $tries = 1;
+    public $tries = 3;
 
     /**
      * 任务可以执行的最大秒数 (超时时间)。
