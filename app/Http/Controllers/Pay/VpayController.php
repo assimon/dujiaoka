@@ -85,4 +85,5 @@ class VpayController extends PayController
         sleep(1);
         return redirect(url('detail-order-sn', ['orderSN' => $oid]));
     }
+
 }

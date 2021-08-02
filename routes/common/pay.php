@@ -24,6 +24,7 @@ Route::group(['prefix' => 'pay', 'namespace' => 'Pay', 'middleware' => ['dujiaok
     // Paysapi
     Route::get('paysapi/{payway}/{orderSN}', 'PaysapiController@gateway');
     Route::post('paysapi/notify_url', 'PaysapiController@notifyUrl');
+    Route::get('paysapi/return_url', 'PaysapiController@returnUrl')->name('paysapi-return');
     // payjs
     Route::get('payjs/{payway}/{orderSN}', 'PayjsController@gateway');
     Route::post('payjs/notify_url', 'PayjsController@notifyUrl');
