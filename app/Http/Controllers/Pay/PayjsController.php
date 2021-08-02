@@ -26,7 +26,7 @@ class PayjsController extends PayController
             switch ($payway){
                 case 'payjswescan':
                     try{
-                        $payres =  Payjs::native($data);
+                        $payres = Payjs::native($data);
                         if ($payres['return_code'] != 1) {
                             throw new RuleValidationException($payres['return_msg']);
                         }
@@ -34,7 +34,7 @@ class PayjsController extends PayController
                         $result['actual_price'] = (float)$this->order->actual_price;
                         $result['orderid'] = $this->order->order_sn;
                         $result['qr_code'] = $payres['code_url'];
-                        return $this->view('static_pages/qrpay', $result);
+                        return $this->render('static_pages/qrpay', $result, __('dujiaoka.scan_qrcode_to_pay'));
                     } catch (\Exception $e) {
                         throw new RuleValidationException(__('dujiaoka.prompt.abnormal_payment_channel') . $e->getMessage());
                     }
