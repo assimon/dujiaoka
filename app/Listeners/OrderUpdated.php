@@ -37,7 +37,8 @@ class OrderUpdated
             'webname' => $sysCache['text_logo'] ?? '独角数卡',
             'weburl' => config('app.url'),
             'order_id' => $event->order->order_sn,
-            'ord_price' => $event->order->actual_price
+            'ord_price' => $event->order->actual_price,
+            'ord_info' => $event->order->info
         ];
         $to = $event->order->email;
         // 邮件

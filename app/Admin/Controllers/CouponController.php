@@ -24,6 +24,7 @@ class CouponController extends AdminController
     protected function grid()
     {
         return Grid::make(new Coupon(['goods']), function (Grid $grid) {
+            $grid->model()->orderBy('id', 'DESC');
             $grid->column('id')->sortable();
             $grid->column('discount');
             $grid->column('is_use')->select(CouponModel::getStatusUseMap());
