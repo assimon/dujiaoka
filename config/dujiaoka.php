@@ -8,7 +8,7 @@
  */
 
 return [
-    'dujiaoka_version' => '2.0.0',
+    'dujiaoka_version' => '2.0.1',
     // 模板集合
     'templates' => [
         'layui' => 'Layui',

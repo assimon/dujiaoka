@@ -5,6 +5,7 @@ namespace App\Admin\Controllers;
 use App\Admin\Actions\Post\BatchRestore;
 use App\Admin\Actions\Post\Restore;
 use App\Admin\Repositories\Goods;
+use App\Models\Carmis;
 use App\Models\Coupon;
 use App\Models\GoodsGroup as GoodsGroupModel;
 use Dcat\Admin\Admin;
@@ -39,7 +40,14 @@ class GoodsController extends AdminController
                 ]);
             $grid->column('retail_price');
             $grid->column('actual_price')->sortable();
-            $grid->column('in_stock');
+            $grid->column('in_stock')->display(function () {
+                // 如果为自动发货，则加载库存卡密
+                if ($this->type == GoodsModel::AUTOMATIC_DELIVERY) {
+                    return Carmis::query()->where('goods_id', $this->id)->count();
+                } else {
+                    return $this->in_stock;
+                }
+            });
             $grid->column('sales_volume');
             $grid->column('ord')->editable()->sortable();
             $grid->column('is_open')->switch();
