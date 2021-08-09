@@ -473,7 +473,6 @@ INSERT INTO `pays` VALUES (14, '易支付-支付宝', 'alipay', 1, 1, '商户号
 INSERT INTO `pays` VALUES (15, '易支付-微信', 'wxpay', 1, 1, '商户号', NULL, '密钥', '/pay/yipay', 1, '2020-07-14 16:27:06', NULL, NULL);
 INSERT INTO `pays` VALUES (16, '易支付-QQ 钱包', 'qqpay', 1, 1, '商户号', NULL, '密钥', '/pay/yipay', 1, '2020-07-14 16:27:03', NULL, NULL);
 INSERT INTO `pays` VALUES (17, 'PayPal', 'paypal', 1, 1, '商户号', NULL, '密钥', '/pay/paypal', 1, '2020-07-14 16:25:20', NULL, NULL);
-INSERT INTO `pays` VALUES (18, 'Mugglepay 数字货币', 'mgcoin', 1, 1, '商户号', NULL, '密钥', '/pay/mugglepay', 1, '2020-07-14 16:27:00', NULL, NULL);
 INSERT INTO `pays` VALUES (19, 'V 免签支付宝', 'vzfb', 1, 1, 'V 免签通讯密钥', NULL, 'V 免签地址 例如 https://vpay.qq.com/    结尾必须有/', 'pay/vpay', 1, '2020-05-01 13:15:56', '2020-05-01 13:18:29', NULL);
 INSERT INTO `pays` VALUES (20, 'V 免签微信', 'vwx', 1, 1, 'V 免签通讯密钥', NULL, 'V 免签地址 例如 https://vpay.qq.com/    结尾必须有/', 'pay/vpay', 1, '2020-05-01 13:17:28', '2020-05-01 13:18:38', NULL);
 INSERT INTO `pays` VALUES (21, 'Stripe[微信支付宝]', 'stripe', 1, 1, 'pk开头的可发布密钥', NULL, 'sk开头的密钥', 'pay/stripe', 1, '2020-10-29 13:15:56', '2020-10-29 13:18:29', NULL);

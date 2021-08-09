@@ -68,7 +68,6 @@ Telegram: [https://t.me/dujiaoka](https://t.me/dujiaoka) (免费，管理相对�
 - [x] 码支付(QQ/支付宝/微信)
 - [x] 微信企业扫码支付
 - [x] [Paypal支付(默认美元)](https://www.paypal.com)
-- [x] [麻瓜宝数字货币支付](https://mugglepay.com/)
 - [x] V免签支付
 - [x] 全网易支付支持(通用彩虹版)
 - [x] [stripe](https://stripe.com/)
