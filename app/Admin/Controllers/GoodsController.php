@@ -43,7 +43,9 @@ class GoodsController extends AdminController
             $grid->column('in_stock')->display(function () {
                 // 如果为自动发货，则加载库存卡密
                 if ($this->type == GoodsModel::AUTOMATIC_DELIVERY) {
-                    return Carmis::query()->where('goods_id', $this->id)->count();
+                    return Carmis::query()->where('goods_id', $this->id)
+                        ->where('status', Carmis::STATUS_UNSOLD)
+                        ->count();
                 } else {
                     return $this->in_stock;
                 }
