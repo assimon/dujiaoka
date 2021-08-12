@@ -74,7 +74,7 @@
                             {{-- 购买数量 --}}
                             <div class="buy-title">{{ __('hyper.buy_purchase_quantity') }}</div>
                             <div class="input-group">
-                                <input data-toggle="touchspin" type="text" name="by_amount" value="1">
+                                <input data-toggle="touchspin" type="text" name="by_amount" value="1" data-bts-max="1000">
                             </div>
                         </div>
                         @if(dujiaoka_config_get('is_open_search_pwd') == \App\Models\Goods::STATUS_OPEN)
