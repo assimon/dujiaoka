@@ -25,6 +25,7 @@ return [
         'notice' => '站点公告',
         'footer' => '页脚自定义代码',
         'manage_email' => '管理员邮箱',
+        'is_open_anti_red' => '是否开启微信/QQ防红',
         'is_open_img_code' => '是否开启图形验证码',
         'is_open_search_pwd' => '是否开启查询密码',
         'is_open_server_jiang' => '是否开启server酱',

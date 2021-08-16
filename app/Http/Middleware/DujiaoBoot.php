@@ -27,9 +27,11 @@ class DujiaoBoot
         $nowUri = site_url() . $request->path();
         $tplPath = 'common/notencent';
         if (
-            strpos($userAgent, 'QQ/')
+            (strpos($userAgent, 'QQ/')
             ||
-            strpos($userAgent, 'MicroMessenger') !== false
+            strpos($userAgent, 'MicroMessenger') !== false)
+            &&
+            dujiaoka_config_get('is_open_anti_red', BaseModel::STATUS_OPEN) == BaseModel::STATUS_OPEN
         ) {
             return response()->view($tplPath, ['nowUri' => $nowUri]);
         }
