@@ -2,8 +2,8 @@
 
 namespace App\Http\Middleware;
 
+use App\Providers\AppServiceProvider;
 use Closure;
-use Dcat\Admin\AdminServiceProvider;
 
 class DujiaoSystem
 {
@@ -24,7 +24,7 @@ class DujiaoSystem
             config([
                 'admin'  =>  array_merge(config('admin'), $httpsConfig)
             ]);
-            (new AdminServiceProvider(app()))->register();
+            (new AppServiceProvider(app()))->register();
         }
         return $next($request);
     }
