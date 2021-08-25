@@ -68,9 +68,9 @@
                             </div>
                             <div class="layui-col-md4">
                                 <div class="order-info">
-                                    {!! str_replace(PHP_EOL, '<br/>', $order['info']) !!}
+                                    {{ str_replace(PHP_EOL, '<br/>', $order['info']) }}
                                 </div>
-                                <button type="button"  class="layui-btn layui-btn-normal" data-clipboard-text="{{ $order['info'] }}" style="width: 100%">{{ __('dujiaoka.copy_text') }}</button>
+                                <button type="button"  class="layui-btn layui-btn-normal" data-clipboard-text="{{str_replace(PHP_EOL, '<br/>', $order['info'])}}" style="width: 100%">{{ __('dujiaoka.copy_text') }}</button>
                             </div>
                         </div>
                 </div>

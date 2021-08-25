@@ -123,7 +123,7 @@
                                 @endif
                                 <div class="layui-col-md4">
                                     <textarea disabled spellcheck="false"
-                                              class="order-info">{!! $info !!}</textarea>
+                                              class="order-info">{{$info}}</textarea>
                                     <div class="btn" style="width: 100%">
                                         <button class="clipboard-but" type="button"
                                                 data-clipboard-text="{{ $info }}"
