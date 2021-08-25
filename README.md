@@ -11,7 +11,7 @@
 
 开源式站长自动化售货解决方案、高效、稳定、快速！
 
-demo地址：[http://dujiaoka.com](http://dujiaoka.com)
+demo地址：[http://demo.dujiaoka.com](http://demo.dujiaoka.com)
 
 - 框架来自：[laravel/framework](https://github.com/laravel/laravel).
 - 后台管理系统：[laravel-admin](https://laravel-admin.org/).
