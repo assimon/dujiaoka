@@ -3,7 +3,7 @@ services:
   web:
     build: .
     ports:
-      - "9998:80"
+      - "80:80"
       - "9000:9000"
     environment:
       WEB_DOCUMENT_ROOT: "/app/public"
