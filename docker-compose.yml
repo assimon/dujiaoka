@@ -1,9 +1,9 @@
-version: "3.3"
+version: "2.0.1-Antibody"
 services:
   web:
     build: .
     ports:
-      - "80:80"
+      - "9998:80"
       - "9000:9000"
     environment:
       WEB_DOCUMENT_ROOT: "/app/public"

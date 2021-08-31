@@ -94,7 +94,8 @@ Telegram: [https://t.me/dujiaoka](https://t.me/dujiaoka) (免费，管理相对�
 
 
 ## 安装篇
-- Docker安装: ``docker-compose -f docker-compose.yml up -d web``
+- Docker Compose 安装: ``docker-compose -f docker-compose.yml up -d web``
+- Docker Run 安装: ``docker run -dit --name dujiaoka -p 80:80 -p 9000:9000 -e WEB_DOCUMENT_ROOT=/app/public dujiaoka:2.0.1-Antibody``
 - [Linux环境安装](https://github.com/assimon/dujiaoka/wiki/linux_install)
 - [1.x版本宝塔环境安装](https://github.com/assimon/dujiaoka/wiki/1.x_bt_install)
 - [2.x版本宝塔安装教程](https://github.com/assimon/dujiaoka/wiki/2.x_bt_install)
