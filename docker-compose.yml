@@ -1,4 +1,4 @@
-version: "2.0.1-Antibody"
+version: "2.2"
 services:
   web:
     build: .

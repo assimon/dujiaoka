@@ -1,4 +1,4 @@
-FROM webdevops/php-nginx
+FROM webdevops/php-nginx:7.4
 COPY . /app
 WORKDIR /app
 RUN [ "sh", "-c", "composer install --ignore-platform-reqs" ]
