@@ -58,7 +58,7 @@
                             i.wholesale_price_arr[k] = ii.split("=");
                         })
                     }
-                    i.proportion = i.sales_volume && i.in_stock ? (i.in_stock / (i.in_stock + i.sales_volume)) * 100 : 0;
+                    i.proportion =  i.in_stock ? (i.in_stock / (i.in_stock + i.sales_volume)) * 100 : 0;
                     laytpl(goodsTpl).render(i, function (html) {
                         goodsHtml += html;
                     });
