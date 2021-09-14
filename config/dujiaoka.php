@@ -8,10 +8,10 @@
  */
 
 return [
-    'dujiaoka_version' => '2.0.1',
+    'dujiaoka_version' => '2.0.2',
     // 模板集合
     'templates' => [
-        'layui' => 'Layui',
+        'unicorn' => '官方[独角兽]',
         'luna' => 'Luna[Julyssn]',
         'hyper' => 'hyper[Bimoe]'
     ],

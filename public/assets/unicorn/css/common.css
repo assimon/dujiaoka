@@ -1,0 +1,72 @@
+@font-face {
+    font-family: 'iconfont';
+    src: url('../fonts/iconfont.woff2?t=1631608872177') format('woff2'),
+    url('../fonts/iconfont.woff?t=1631608872177') format('woff'),
+    url('../fonts/iconfont.ttf?t=1631608872177') format('truetype');
+}
+.ali-icon {
+    font-family: "iconfont" !important;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.fl {
+    float: left;
+}
+.fr {
+    float: right;
+}
+
+/* 页面装载 */
+.page-wrapper {
+    background-color: #fff;
+}
+
+.header-top {
+    background-color: #f1f1f1;
+    border-bottom: 1px solid #dadada;
+    -webkit-box-shadow: 0 -1px 3px rgb(0 0 0 / 3%) inset;
+    box-shadow: 0 -1px 3px rgb(0 0 0 / 3%) inset;
+    font-size: 14px;
+}
+
+.header-top-right-btns {
+    float: right;
+    text-align: center;
+    font-size: 0;
+}
+
+.header-top-right-btns .btn-group>button {
+    padding: 8px 10px;
+    margin: 0;
+    text-align: center;
+    color: #999;
+    font-size: 14px;
+    border-right: 1px solid #e3e3e3;
+    border-left: 1px solid transparent;
+}
+
+.btn-group>button:hover {
+    color: #e84c3d;
+    background-color: #fafafa;
+    border-right-color: #e3e3e3;
+}
+
+.header-top-right-btns .btn-group:last-child>button {
+    border-right-color: transparent;
+}
+
+.header {
+    padding: 20px 0;
+    border-bottom: 1px solid #eaeaea;
+    background: #fff;
+}
+
+.logo img {
+    height: 52px;
+}
+
+.footer {
+    background-color:transparent;
+}

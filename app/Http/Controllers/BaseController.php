@@ -27,7 +27,7 @@ class BaseController extends Controller
      */
     protected function render(string $tpl, $data = [], string $pageTitle = '')
     {
-        $layout = dujiaoka_config_get('template', 'layui');
+        $layout = dujiaoka_config_get('template', 'unicorn');
         $tplPath = $layout . '/' .$tpl;
         return view($tplPath, $data)->with('page_title', $pageTitle);
     }
@@ -45,7 +45,7 @@ class BaseController extends Controller
      */
     protected function err(string $content, $jumpUri = '')
     {
-        $layout = dujiaoka_config_get('template', 'layui');
+        $layout = dujiaoka_config_get('template', 'unicorn');
         $tplPath = $layout . '/errors/error';
         return view($tplPath, ['title' => __('dujiaoka.error_title'), 'content' => $content, 'url' => $jumpUri])
             ->with('page_title', __('dujiaoka.error_title'));

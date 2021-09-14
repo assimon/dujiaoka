@@ -50,11 +50,17 @@ class SystemSetting extends Form
                 ->default(BaseModel::STATUS_CLOSE);
             $this->switch('is_open_search_pwd', admin_trans('system-setting.fields.is_open_search_pwd'))
                 ->default(BaseModel::STATUS_CLOSE);
+            $this->editor('notice', admin_trans('system-setting.fields.notice'));
+            $this->textarea('footer', admin_trans('system-setting.fields.footer'));
+        });
+        $this->tab(admin_trans('system-setting.labels.order_push_setting'), function () {
             $this->switch('is_open_server_jiang', admin_trans('system-setting.fields.is_open_server_jiang'))
                 ->default(BaseModel::STATUS_CLOSE);
             $this->text('server_jiang_token', admin_trans('system-setting.fields.server_jiang_token'));
-            $this->editor('notice', admin_trans('system-setting.fields.notice'));
-            $this->textarea('footer', admin_trans('system-setting.fields.footer'));
+            $this->switch('is_open_telegram_push', admin_trans('system-setting.fields.is_open_telegram_push'))
+                ->default(BaseModel::STATUS_CLOSE);
+            $this->text('telegram_bot_token', admin_trans('system-setting.fields.telegram_bot_token'));
+            $this->text('telegram_userid', admin_trans('system-setting.fields.telegram_userid'));
         });
         $this->tab(admin_trans('system-setting.labels.mail_setting'), function () {
             $this->text('driver', admin_trans('system-setting.fields.driver'))->default('smtp')->required();

@@ -13,6 +13,7 @@ return [
         'system_setting' => '系统设置',
         'base_setting' => '基本设置',
         'mail_setting' => '邮件服务',
+        'order_push_setting' => '订单推送配置',
         'geetest' => '极验验证',
     ],
 
@@ -30,6 +31,9 @@ return [
         'is_open_search_pwd' => '是否开启查询密码',
         'is_open_server_jiang' => '是否开启server酱',
         'server_jiang_token' => 'server酱通讯token',
+        'is_open_telegram_push' => '是否开启Telegram推送',
+        'telegram_userid' => 'Telegram用户id',
+        'telegram_bot_token' => 'Telegram通讯token',
         'template' => '站点模板',
         'language' => '站点语言',
         'order_expire_time' => '订单过期时间(分钟)',

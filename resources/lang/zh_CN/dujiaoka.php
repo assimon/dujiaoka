@@ -48,16 +48,19 @@ return [
     'search_now' => '立即查询',
 
     'home_page' => '首页',
+    'group_all' => '全部',
     'order_search' => '订单查询',
     'site_announcement' => '公告',
     'price' => '价格',
     'wholesale_discount' => '批发价',
     'order_now' => '下单',
     'not' => '无',
+    'close' => '关闭',
     'discount' => '折',
+    'home_discount'  => '折扣',
     'share_qr' => '分享此商品',
-    'by_amount' => '购买数量',
-    'or_the_above' => '数量或以上',
+    'by_amount' => '购买',
+    'or_the_above' => '件或以上',
     'each' => '每个',
     'email' => '邮箱',
     'payment_method' => '支付方式',
@@ -65,6 +68,7 @@ return [
     'img_verify_code' => '图形验证码',
     'coupon_code' => '优惠码',
     'copy_text' => '复制',
+    'search_goods_name' => '商品名称...',
 
     'behavior_verification' => '行为验证',
     'click_to_behavior_verification' => '点击进行此处行为验证',
@@ -119,6 +123,7 @@ return [
         'search_order_browser_tips' => '最多只能查询最近 5 笔订单',
         'no_related_order_found_for_cache' => '未找到相关订单缓存！',
         'no_related_order_found' => '未找到相关订单！',
+        'new_order_push' => '新订单通知'
     ],
 
     'equipment' => [
@@ -129,7 +134,9 @@ return [
         'apple_device' => '苹果设备',
         'android_device' => '安卓设备',
         'click_on_the_upper_right_corner' => '点击右上角',
-        'open_the_browser' => '在 浏览器 打开'
+        'open_the_browser' => '在 浏览器 打开',
+        'what_do_you_need_today' => '今天需要一点什么？',
+        'self_promotion' => '优质的商品和卓越的客户服务代表完美的交易流程体现。',
     ],
 
     'page-title' => [

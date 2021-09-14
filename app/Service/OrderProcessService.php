@@ -13,6 +13,7 @@ use App\Exceptions\RuleValidationException;
 use App\Jobs\MailSend;
 use App\Jobs\OrderExpired;
 use App\Jobs\ServerJiang;
+use App\Jobs\TelegramPush;
 use App\Models\BaseModel;
 use App\Models\Coupon;
 use App\Models\Goods;
@@ -409,8 +410,12 @@ class OrderProcessService
             $this->goodsService->salesVolumeIncr($order->goods_id, $order->buy_amount);
             DB::commit();
             // 如果开启了server酱
-            if (dujiaoka_config_get('is_open_server_jiang') == BaseModel::STATUS_OPEN) {
+            if (dujiaoka_config_get('is_open_server_jiang', 0) == BaseModel::STATUS_OPEN) {
                 ServerJiang::dispatch($order);
+            }
+            // 如果开启了TG推送
+            if (dujiaoka_config_get('is_open_telegram_push', 0) == BaseModel::STATUS_OPEN) {
+                TelegramPush::dispatch($order);
             }
             return $completedOrder;
         } catch (\Exception $exception) {

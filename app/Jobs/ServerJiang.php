@@ -50,7 +50,7 @@ class ServerJiang implements ShouldQueue
     public function handle()
     {
         $postdata = http_build_query([
-            'text' => "新订单通知:{$this->order['ord_title']}",
+            'text' => __('dujiaoka.prompt.new_order_push') . ":{$this->order['ord_title']}",
             'desp' => "
 - ". __('order.fields.title') ."：{$this->order->title}
 - ". __('order.fields.order_sn') ."：{$this->order->order_sn}
