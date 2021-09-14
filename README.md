@@ -15,7 +15,7 @@ demo地址：[http://demo.dujiaoka.com](http://demo.dujiaoka.com)
 
 - 框架来自：[laravel/framework](https://github.com/laravel/laravel).
 - 后台管理系统：[laravel-admin](https://laravel-admin.org/).
-- 前端ui [layui](https://www.layui.com/).
+- 前端ui [bootstrap](https://getbootstrap.com/).
 
 核心贡献者：
 - [iLay1678](https://github.com/iLay1678)
@@ -45,16 +45,14 @@ demo地址：[http://demo.dujiaoka.com](http://demo.dujiaoka.com)
 ## 使用交流     
 QQ群：568679748 （需付费，管理较严）    
 Telegram: [https://t.me/dujiaoka](https://t.me/dujiaoka) (免费，管理相对宽松)
-
+关注Telegram官方频道：[https://t.me/dujiaoshuka](https://t.me/dujiaoshuka) (系统更新通知，bug更新，重大事件推送)
 
 ## 界面尝鲜
-【layui模板】
-![首页.png](https://i.loli.net/2020/08/04/lZOBGXtsHxIUi6W.png)   
-![后台.png](https://i.loli.net/2020/04/07/ZcYLqN4d2fuAI7X.png)
+【官方unicorn模板】
+![首页.png](https://i.loli.net/2021/09/14/NZIl6s9RXbHwkmA.png)
 
 【luna模板】 
 ![首页.png](https://i.loli.net/2020/10/24/ElKwJFsQy4a9fZi.png)
-![订单页.png](https://i.loli.net/2020/10/24/jG5Mw137HrzOlFA.png)
 
 【hyper模板】  
 ![首页.png](https://i.loli.net/2021/01/06/nHCSV5PdJIzT6Gy.png)

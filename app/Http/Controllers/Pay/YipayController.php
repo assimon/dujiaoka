@@ -88,4 +88,13 @@ class YipayController extends PayController
             return 'success';
         }
     }
+
+    public function returnUrl(Request $request)
+    {
+        $oid = $request->get('order_id');
+        // 有些易支付太垃了，异步通知还没到就跳转了，导致订单显示待支付，其实已经支付了，所以这里休眠2秒
+        sleep(2);
+        return redirect(url('detail-order-sn', ['orderSN' => $oid]));
+    }
+
 }

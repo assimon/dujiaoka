@@ -31,13 +31,11 @@ Route::group(['prefix' => 'pay', 'namespace' => 'Pay', 'middleware' => ['dujiaok
     // 易支付
     Route::get('yipay/{payway}/{orderSN}', 'YipayController@gateway');
     Route::get('yipay/notify_url', 'YipayController@notifyUrl');
+    Route::get('yipay/return_url', 'YipayController@returnUrl')->name('yipay-return');
     // paypal
     Route::get('paypal/{payway}/{orderSN}', 'PaypalPayController@gateway');
     Route::get('paypal/return_url', 'PaypalPayController@returnUrl')->name('paypal-return');
     Route::any('paypal/notify_url', 'PaypalPayController@notifyUrl');
-    // Mugglepay
-    Route::get('mugglepay/{payway}/{orderSN}', 'MugglepayController@gateway');
-    Route::post('mugglepay/notify_url', 'MugglepayController@notifyUrl');
     // V免签
     Route::get('vpay/{payway}/{orderSN}', 'VpayController@gateway');
     Route::get('vpay/notify_url', 'VpayController@notifyUrl');

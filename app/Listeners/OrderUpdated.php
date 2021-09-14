@@ -38,7 +38,7 @@ class OrderUpdated
             'weburl' => config('app.url'),
             'order_id' => $event->order->order_sn,
             'ord_price' => $event->order->actual_price,
-            'ord_info' => $event->order->info
+            'ord_info' => str_replace(PHP_EOL, '<br/>', $event->order->info)
         ];
         $to = $event->order->email;
         // 邮件
