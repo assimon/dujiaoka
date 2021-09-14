@@ -44,7 +44,7 @@ demo地址：[http://demo.dujiaoka.com](http://demo.dujiaoka.com)
 
 ## 使用交流     
 QQ群：568679748 （需付费，管理较严）    
-Telegram: [https://t.me/dujiaoka](https://t.me/dujiaoka) (免费，管理相对宽松)
+Telegram: [https://t.me/dujiaoka](https://t.me/dujiaoka) (免费，管理相对宽松)     
 关注Telegram官方频道：[https://t.me/dujiaoshuka](https://t.me/dujiaoshuka) (系统更新通知，bug更新，重大事件推送)
 
 ## 界面尝鲜
