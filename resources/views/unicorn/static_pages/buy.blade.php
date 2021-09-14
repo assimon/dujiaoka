@@ -4,8 +4,8 @@
     <section class="main-container">
         <div class="container">
             <div class="good-card">
-                <div class="row">
-                    <div class="col-12">
+                <div class="row justify-content-center">
+                    <div class="col-12 col-md-8">
                         <div class="card mt-3">
                             <div class="row no-gutters">
                                 <div class="col-md-4">
@@ -54,7 +54,7 @@
                                                 {{ csrf_field() }}
                                                 <div class="form-group row">
                                                     <div class="col-12">
-                                                        <h6>{{ __('dujiaoka.price') }}：{{ __('dujiaoka.money_symbol') }} {{ $retail_price }}</h6>
+                                                        <h6>{{ __('dujiaoka.price') }}：{{ __('dujiaoka.money_symbol') }} {{ $actual_price }}</h6>
                                                     </div>
                                                     <div class="col-xs-12 col-md-6">
                                                         <input type="hidden" name="gid" value="{{ $id }}">
@@ -146,8 +146,8 @@
 
                 </div>
 
-                <div class="row">
-                    <div class="col-xs-12">
+                <div class="row justify-content-center">
+                    <div class="col-12 col-md-8">
                         <div class="card mt-3 mb-3">
                             <div class="card-header">
                                 <h5>{{ __('goods.fields.description') }}</h5>

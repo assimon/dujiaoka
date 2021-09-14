@@ -32,4 +32,24 @@
     <!-- main end -->
 @stop
 @section('js')
+    <script>
+        var getting = {
+            url:'{{ url('check-order-status', ['orderSN' => $orderid]) }}',
+            dataType:'json',
+            success:function(res) {
+                if (res.code == 400001) {
+                    window.clearTimeout(timer);
+                    alert("{{ __('dujiaoka.prompt.order_is_expired') }}")
+                    setTimeout("window.location.href ='/'",3000);
+                }
+                if (res.code == 200) {
+                    window.clearTimeout(timer);
+                    alert("{{ __('dujiaoka.prompt.payment_successful') }}")
+                    setTimeout("window.location.href ='{{ url('detail-order-sn', ['orderSN' => $orderid]) }}'",3000);
+                }
+            }
+        };
+        var timer = window.setInterval(function(){$.ajax(getting)},5000);
+    </script>
+
 @stop
