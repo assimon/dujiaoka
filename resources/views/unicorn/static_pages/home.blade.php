@@ -1,5 +1,26 @@
 @extends('unicorn.layouts.default')
 @section('content')
+    <div class="notice" >
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card mt-3">
+                        <div class="card-body">
+                            <div class="jumbotron jumbotron-fluid p-1">
+                                <div class="container">
+                                    <h4 class="">{{ __('dujiaoka.site_announcement') }}：</h4>
+                                    <p class="lead">{!! dujiaoka_config_get('notice') !!}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
     <!-- main start -->
     <section class="main-container">
         <!-- category start -->

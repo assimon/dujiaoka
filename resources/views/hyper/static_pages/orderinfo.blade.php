@@ -91,9 +91,9 @@
             <div class="card card-body">
                 <h5 class="card-title">{{ __('hyper.orderinfo_carmi') }}</h5>
                 <div class="kami-info">
-                    {{str_replace(PHP_EOL, '<br/>', $order['info'])}}
+                    {{$order['info']}}
                 </div>
-                <button class="btn btn-info kami-btn" data-clipboard-text="{{str_replace(PHP_EOL, '<br/>', $order['info'])}}">{{ __('hyper.orderinfo_copy_carmi') }}</button>
+                <button class="btn btn-info kami-btn" data-clipboard-text="{{$order['info']}}">{{ __('hyper.orderinfo_copy_carmi') }}</button>
             </div>
         </div>
     </div>
