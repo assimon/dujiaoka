@@ -9,4 +9,4 @@
 <script src="/assets/luna/layui/layui.js"></script>
 <script src="/assets/luna/js/jquery-3.4.1.min.js"></script>
 <script src="/assets/luna/main.js"></script>
-<script src="/assets/luna/layui/modules/layer.js"></script>
+<script src="/assets/luna/layui/lay/modules/layer.js"></script>
