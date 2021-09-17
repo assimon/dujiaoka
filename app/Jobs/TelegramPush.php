@@ -34,6 +34,12 @@ class TelegramPush implements ShouldQueue
      */
     private $order;
 
+    /**
+     * 商品服务层.
+     * @var \App\Service\PayService
+     */
+    private $goodsService;
+
 
     /**
      * Create a new job instance.
@@ -43,6 +49,7 @@ class TelegramPush implements ShouldQueue
     public function __construct(Order $order)
     {
         $this->order = $order;
+        $this->goodsService = app('Service\GoodsService');
     }
 
     /**
@@ -52,13 +59,14 @@ class TelegramPush implements ShouldQueue
      */
     public function handle()
     {
+        $goodInfo = $this->goodsService->detail($this->order->goods_id);
         $formatText = '*'. __('dujiaoka.prompt.new_order_push') .':*'.'%0A'
             . __('order.fields.order_sn') .': `'.$this->order->order_sn.'`%0A'
             . __('order.fields.title') .': '.$this->order->title.'%0A'
             . __('order.fields.actual_price') .': '.$this->order->actual_price.'%0A'
             . __('order.fields.email') .': `'.$this->order->email.'`%0A'
-            . __('goods.fields.gd_name') .': `'.$this->order->goods->gd_name.'`%0A'
-            . __('goods.fields.in_stock') .': `'.$this->order->goods->in_stock.'`%0A'
+            . __('goods.fields.gd_name') .': `'.$goodInfo->gd_name.'`%0A'
+            . __('goods.fields.in_stock') .': `'.$goodInfo->in_stock.'`%0A'
             . __('order.fields.order_created') .': '.$this->order->created_at;
         $client = new Client([
             'timeout' => 30,
