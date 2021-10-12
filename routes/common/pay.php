@@ -45,4 +45,7 @@ Route::group(['prefix' => 'pay', 'namespace' => 'Pay', 'middleware' => ['dujiaok
     Route::get('stripe/return_url','StripeController@returnUrl');
     Route::get('stripe/check','StripeController@check');
     Route::get('stripe/charge','StripeController@charge');
+    // Coinbase
+    Route::get('coinbase/{payway}/{orderSN}', 'CoinbaseController@gateway');
+    Route::post('coinbase/notify_url', 'CoinbaseController@notifyUrl');  	
 });
