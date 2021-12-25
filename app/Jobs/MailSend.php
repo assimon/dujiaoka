@@ -68,7 +68,7 @@ class MailSend implements ShouldQueue
                 'name'      =>  $sysConfig['from_name'] ?? '独角发卡'
             ],
             'password' => $sysConfig['password'] ?? '',
-            'encryption' => $sysConfig['encryption'] ?? 'ssl'
+            'encryption' => $sysConfig['encryption'] ?? ''
         ];
         $to = $this->to;
         //  覆盖 mail 配置
