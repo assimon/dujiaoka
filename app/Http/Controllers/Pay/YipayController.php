@@ -20,7 +20,7 @@ class YipayController extends PayController
                 'out_trade_no' => $this->order->order_sn,
                 'return_url' => url('detail-order-sn', ['orderSN' => $this->order->order_sn]),
                 'notify_url' => url($this->payGateway->pay_handleroute . '/notify_url'),
-                'name'   => $this->order->title,
+                'name'   => $this->order->order_sn,
                 'money'  => (float)$this->order->actual_price,
                 'sign' => $this->payGateway->merchant_pem,
                 'sign_type' =>'MD5'

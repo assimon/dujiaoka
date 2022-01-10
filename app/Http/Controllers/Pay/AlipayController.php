@@ -35,7 +35,7 @@ class AlipayController extends PayController
             $order = [
                 'out_trade_no' => $this->order->order_sn,
                 'total_amount' => (float)$this->order->actual_price,
-                'subject' => $this->order->title
+                'subject' => $this->order->order_sn
             ];
             switch ($payway){
                 case 'zfbf2f':
