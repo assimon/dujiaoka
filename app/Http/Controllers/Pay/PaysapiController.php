@@ -21,7 +21,7 @@ class PaysapiController extends PayController
             $orderuid = $this->order->email;       //此处传入您网站用户的用户名，方便在paysapi后台查看是谁付的款，强烈建议加上。可忽略。
             //校验传入的表单，确保价格为正常价格（整数，1位小数，2位小数都可以），支付渠道只能是1或者2，orderuid长度不要超过33个中英文字。
             //此处就在您服务器生成新订单，并把创建的订单号传入到下面的orderid中。
-            $goodsname = $this->order->title;
+            $goodsname = $this->order->order_sn;
             $orderid = $this->order->order_sn;    //每次有任何参数变化，订单号就变一个吧。
             $uid = $this->payGateway->merchant_id; //"此处填写PaysApi的uid";
             $token = $this->payGateway->merchant_pem; //"此处填写PaysApi的Token";
