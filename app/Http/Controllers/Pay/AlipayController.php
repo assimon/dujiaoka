@@ -42,7 +42,7 @@ class AlipayController extends PayController
                 case 'alipayscan':
                     try{
                         $result = Pay::alipay($config)->scan($order)->toArray();
-                        $result['payname'] = $this->payGateway->pay_name;
+                        $result['payname'] = $this->order->order_sn;
                         $result['actual_price'] = (float)$this->order->actual_price;
                         $result['orderid'] = $this->order->order_sn;
                         $result['jump_payuri'] = $result['qr_code'];
