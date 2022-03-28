@@ -4,7 +4,7 @@ return [
     'fields' => [
         'id'                    => 'ID',
         'name'                  => '名稱',
-        'username'              => '用戶名',
+        'username'              => '賬戶',
         'email'                 => '信箱',
         'http_path'             => 'HTTP路徑',
         'password'              => '密碼',
@@ -12,7 +12,7 @@ return [
         'created_at'            => '建立時間',
         'updated_at'            => '更新時間',
         'permissions'           => '權限',
-        'slug'                  => '標示',
+        'slug'                  => '標識',
         'user'                  => '用戶',
         'order'                 => '排序',
         'ip'                    => 'IP',
@@ -21,21 +21,17 @@ return [
         'roles'                 => '角色',
         'path'                  => '路徑',
         'input'                 => '輸入',
-        'type'                  => '类型',
+        'type'                  => '類型',
     ],
     'labels' => [
-        'list'     => '列表',
+        'list'     => '清單',
         'edit'     => '編輯',
         'detail'   => '詳細',
-        'create'   => '創建',
-        'root'     => 'root',
+        'create'   => '建立',
+        'root'     => '根',
         'scaffold' => '代碼生成器',
     ],
-
     'options' => [
-        'permissions' => [
-
-        ],
+        //
     ],
-
 ];
