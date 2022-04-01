@@ -1,15 +1,15 @@
 @extends('hyper.layouts.default')
 @section('content')
-<div class="row">
-    <div class="col-12 offset-md-3">
+<div class="row justify-content-center">
+    <div class="col-lg-6">
         <div class="page-title-box">
             {{-- 确认订单 --}}
             <h4 class="page-title">{{ __('hyper.bill_title') }}</h4>
         </div>
     </div>
 </div>
-<div class="row">
-    <div class="col-md-6 offset-md-3">
+<div class="row justify-content-center">
+    <div class="col-lg-6">
         <div class="card card-body">
         	<div class="mx-auto">
         	    {{-- 订单编号 --}}
@@ -48,9 +48,5 @@
     </div>
 </div>
 @stop
-
-@section('tpljs')
-    <script>
-
-    </script>
+@section('js')
 @stop
