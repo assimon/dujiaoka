@@ -79,8 +79,8 @@
                     @else
                     <a href="javascript:void(0);" onclick="sell_out_tip()" class="home-card category ribbon-box">
                         <div class="ribbon-two ribbon-two-primary">
-                            {{-- 售罄 --}}
-                            <span>{{ __('hyper.home_sell_out') }}</span>
+                        {{-- 缺货 --}}
+                            <span>{{ __('hyper.home_out_of_stock') }}</span>
                         </div>
                     @endif
                         <img class="home-img" src="/assets/hyper/images/loading.gif" data-src="{{ picture_ulr($goods['picture']) }}">
