@@ -51,7 +51,7 @@
                     <a href="{{ url("/buy/{$goods['id']}") }}" class="home-card category">
                     @else
                     <a href="javascript:void(0);" onclick="sell_out_tip()" class="home-card category ribbon-box">
-                        <div class="ribbon-two ribbon-two-primary">
+                        <div class="ribbon-two ribbon-two-danger">
                             {{-- 缺货 --}}
                             <span>{{ __('hyper.home_out_of_stock') }}</span>
                         </div>
@@ -78,8 +78,8 @@
                     <a href="{{ url("/buy/{$goods['id']}") }}" class="home-card category">
                     @else
                     <a href="javascript:void(0);" onclick="sell_out_tip()" class="home-card category ribbon-box">
-                        <div class="ribbon-two ribbon-two-primary">
-                        {{-- 缺货 --}}
+                        <div class="ribbon-two ribbon-two-danger">
+                            {{-- 缺货 --}}
                             <span>{{ __('hyper.home_out_of_stock') }}</span>
                         </div>
                     @endif
