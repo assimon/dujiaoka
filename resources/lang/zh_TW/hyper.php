@@ -23,7 +23,10 @@ return [
     'home_automatic_delivery' => '自動發貨',
     'home_charge'             => '人工發貨',
     'home_buy'                => '購買',
-    'home_sell_out'           => '售罄',
+    'home_out_of_stock'       => '售罄',
+    'home_whole'              => '全部',
+    'home_tip'                =>'提示',
+    'home_sell_out_tip'       =>'商品缺貨',
 
     # buy.blade.php
     'buy_title'                 => '產品詳細資訊',
@@ -108,7 +111,7 @@ return [
     'qrpay_expiration_date'       => '分鐘',
     'qrpay_actual_payment'        => '商品總價',
     'qrpay_open_app_to_pay'       => '打開app支付',
-    'qrpay_notice'                => '通知！',
+    'qrpay_notice'                => '通知',
     'payment_successful'          => '支付成功！',
     'order_pay_timeout'           => '支付逾時！',
 
