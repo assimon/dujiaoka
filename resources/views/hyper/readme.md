@@ -8,7 +8,7 @@ Link: https://coderthemes.com/hyper/
 
 ### Author
 
-Bimoes
+彼萌
 
 ### Telegram
 
@@ -16,4 +16,4 @@ https://t.me/bimoe
 
 ### Update
 
-2021-7-13 10:12
+2022-4-1

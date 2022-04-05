@@ -8,7 +8,7 @@ return [
     'error_back_btn'      => '返回',
     'error_error'         => '错误',
     'order_search'        => '查询订单',
-    'global_currency'     => '￥',
+    'global_currency'     => '¥',
 
     # home.blade.php
 
@@ -23,7 +23,10 @@ return [
     'home_automatic_delivery' => '自动发货',
     'home_charge'             => '人工发货',
     'home_buy'                => '购买',
-    'home_sell_out'           => '售罄',
+    'home_out_of_stock'       => '缺货',
+    'home_whole'              => '全部',
+    'home_tip'                =>'提示',
+    'home_sell_out_tip'       =>'商品缺货',
 
     # buy.blade.php
     'buy_title'                 => '产品详细信息',
@@ -108,7 +111,7 @@ return [
     'qrpay_expiration_date'       => '分钟',
     'qrpay_actual_payment'        => '商品总价',
     'qrpay_open_app_to_pay'       => '打开app支付',
-    'qrpay_notice'                => '通知！',
+    'qrpay_notice'                => '通知',
     'payment_successful'          => '支付成功！',
     'order_pay_timeout'           => '支付超时！',
 

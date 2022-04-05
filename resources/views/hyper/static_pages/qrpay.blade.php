@@ -1,15 +1,15 @@
 @extends('hyper.layouts.default')
 @section('content')
-<div class="row">
-    <div class="col-12 offset-md-3">
+<div class="row justify-content-center">
+    <div class="col-lg-6">
         <div class="page-title-box">
             {{-- 扫码支付 --}}
             <h4 class="page-title">{{ __('hyper.qrpay_title') }}</h4>
         </div>
     </div>
 </div>
-<div class="row">
-    <div class="col-md-6 offset-md-3">
+<div class="row justify-content-center">
+    <div class="col-lg-6">
         <div class="card border-primary border">
             <div class="card-body">
                 <h5 class="card-title text-primary text-center">{{ __('hyper.qrpay_order_expiration_date') }} {{ dujiaoka_config_get('order_expire_time', 5) }} {{ __('hyper.qrpay_expiration_date') }}</h5>
@@ -25,11 +25,8 @@
         </div>
     </div>
 </div>
-
-
 @stop
-
-@section('tpljs')
+@section('js')
     <script>
         var getting = {
             url:'{{ url('check-order-status', ['orderSN' => $orderid]) }}',
@@ -37,12 +34,12 @@
             success:function(res) {
                 if (res.code == 400001) {
                     window.clearTimeout(timer);
-                    $.NotificationApp.send("{{ __('hyper.qrpay_notice') }}","{{ __('hyper.order_pay_timeout') }}","bottom-right","rgba(0,0,0,0.2)","warning");
+                    $.NotificationApp.send("{{ __('hyper.qrpay_notice') }}","{{ __('hyper.order_pay_timeout') }}","top-center","rgba(0,0,0,0.2)","warning");
                     setTimeout("window.location.href ='/'",3000);
                 }
                 if (res.code == 200) {
                     window.clearTimeout(timer);
-                    $.NotificationApp.send("{{ __('hyper.qrpay_notice') }}","{{ __('hyper.payment_successful') }}","bottom-right","rgba(0,0,0,0.2)","success");
+                    $.NotificationApp.send("{{ __('hyper.qrpay_notice') }}","{{ __('hyper.payment_successful') }}","top-center","rgba(0,0,0,0.2)","success");
                     setTimeout("window.location.href ='{{ url('detail-order-sn', ['orderSN' => $orderid]) }}'",3000);
                 }
             }
