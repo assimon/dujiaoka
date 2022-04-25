@@ -100,7 +100,7 @@ Telegram: [https://t.me/dujiaoka](https://t.me/dujiaoka) (免费，管理相对�
 - [系统升级](https://github.com/assimon/dujiaoka/wiki/update)
 - [各支付对应后台配置](https://github.com/assimon/dujiaoka/wiki/problems#各支付对应配置)
 
-# 推荐服务器 
+## 🔥推荐服务器 
 - （美国免备案vps，配置3核3G仅需`24.28$`≈`159RMB`一年支持支付宝付款）[👉🏻点我直达](https://my.racknerd.com/aff.php?aff=2745&pid=199)
 
 ## 默认后台
