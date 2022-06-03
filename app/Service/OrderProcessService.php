@@ -315,7 +315,7 @@ class OrderProcessService
             // 设置商品
             $order->goods_id = $this->goods->id;
             // 标题
-            $order->title = $this->goods->gd_name . 'x' . $this->buyAmount;
+            $order->title = $this->goods->gd_name . ' x ' . $this->buyAmount;
             // 订单类型
             $order->type = $this->goods->type;
             // 查询密码
