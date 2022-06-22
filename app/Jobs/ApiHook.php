@@ -78,7 +78,7 @@ class ApiHook implements ShouldQueue
             'http' => [
                 'method'  => 'POST',
                 'header'  => 'Content-type: application/json',
-                'content' => json_encode($postdata)
+                'content' => json_encode($postdata,JSON_UNESCAPED_UNICODE)
             ]
         ];
         $context  = stream_context_create($opts);
