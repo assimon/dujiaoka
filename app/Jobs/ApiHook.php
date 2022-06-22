@@ -58,7 +58,10 @@ class ApiHook implements ShouldQueue
     public function handle()
     {
         $goodInfo = $this->goodsService->detail($this->order->goods_id);
-
+        // 判断是否有配置支付回调
+        if(empty($goodInfo->api_hook)){
+            return;
+        }
         $postdata = [
             'title' => $this->order->title,
             'order_sn' => $this->order->order_sn,
