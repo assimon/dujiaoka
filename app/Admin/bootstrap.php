@@ -24,3 +24,10 @@ use Dcat\Admin\Show;
  * Admin::js('/packages/prettydocs/js/main.js');
  *
  */
+Grid::resolving(function (Grid $grid){
+    $grid->filter(function (Filter $filter){
+        $filter->panel();
+    });
+    $grid->withBorder();
+    $grid->scrollbarX();
+});
