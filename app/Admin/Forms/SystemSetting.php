@@ -68,7 +68,7 @@ class SystemSetting extends Form
             $this->text('port', admin_trans('system-setting.fields.port'))->default(587);
             $this->text('username', admin_trans('system-setting.fields.username'));
             $this->text('password', admin_trans('system-setting.fields.password'));
-            $this->text('encryption', admin_trans('system-setting.fields.encryption'))->default('ssl');
+            $this->text('encryption', admin_trans('system-setting.fields.encryption'));
             $this->text('from_address', admin_trans('system-setting.fields.from_address'));
             $this->text('from_name', admin_trans('system-setting.fields.from_name'));
         });
