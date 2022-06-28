@@ -1,7 +1,11 @@
 @extends('luna.layouts.default')
 
 @section('notice')
-    @include('luna.layouts._notice')
+    @include('luna.layouts._notice_xs')
+@endsection
+
+@section('notice_min')
+    @include('luna.layouts._notice_sm')
 @endsection
 
 @section('content')

@@ -22,3 +22,4 @@
         </div>
     </div>
 </div>
+@yield('notice_min')

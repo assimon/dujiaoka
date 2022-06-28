@@ -37,3 +37,4 @@ _nav.blade.php位置
 
 ## 作者信息
 [Julyssn](https://github.com/Julyssn) 七月 QQ：77322509
+[发卡网](https://faka.win) TG: [@发卡网](https://t.me/super_faka_bot) 增加luna移动端公告、增加公告边框、为支付跳转按钮与支付二维码之间增加间距

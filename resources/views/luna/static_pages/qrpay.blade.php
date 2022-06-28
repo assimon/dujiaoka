@@ -34,7 +34,7 @@
                         </div>
 
                         <div
-                            style="text-align: center; border: 3px solid #3C8CE7 ;border-radius: 10px;width: 300px;margin: 0 auto;padding-top: 10px">
+                            style="text-align: center; border: 3px solid #3C8CE7 ;border-radius: 10px;width: 300px;margin: 0 auto;padding-top: 10px;@if(!Agent::isMobile())padding-bottom: 20px;@endif">
                             <p class="product-pay-price" style="font-size: 16px;color: #737373;">
                                 {{ __('dujiaoka.amount_to_be_paid') }}
                                 : {{ __('dujiaoka.money_symbol') }}{{ $actual_price }}
