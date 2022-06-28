@@ -10,6 +10,7 @@
 namespace App\Service;
 
 use App\Exceptions\RuleValidationException;
+use App\Jobs\ApiHook;
 use App\Jobs\MailSend;
 use App\Jobs\OrderExpired;
 use App\Jobs\ServerJiang;
@@ -63,7 +64,7 @@ class OrderProcessService
 
     /**
      * 商品服务层.
-     * @var \App\Service\PayService
+     * @var \App\Service\GoodsService
      */
     private $goodsService;
 
@@ -417,6 +418,8 @@ class OrderProcessService
             if (dujiaoka_config_get('is_open_telegram_push', 0) == BaseModel::STATUS_OPEN) {
                 TelegramPush::dispatch($order);
             }
+            // 回调事件
+            ApiHook::dispatch($order);
             return $completedOrder;
         } catch (\Exception $exception) {
             DB::rollBack();
