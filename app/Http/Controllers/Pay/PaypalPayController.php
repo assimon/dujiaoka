@@ -40,19 +40,18 @@ class PaypalPayController extends PayController
             $paypal->setConfig(['mode' => 'live']);
             $product = $this->order->title;
             // 得到汇率
-            $price = Currency::convert()
+            $total = Currency::convert()
                 ->from('CNY')
                 ->to('USD')
-                ->amount($this->order->goods_price)
+                ->amount($this->order->actual_price)
                 ->round(2)
                 ->get();
             $shipping = 0;
             $description = $this->order->title;
-            $total = bcmul($price, $this->order->buy_amount, 2); //总价
             $payer = new Payer();
             $payer->setPaymentMethod('paypal');
             $item = new Item();
-            $item->setName($product)->setCurrency(self::Currency)->setQuantity($this->order->buy_amount)->setPrice($price);
+            $item->setName($product)->setCurrency(self::Currency)->setQuantity(1)->setPrice($total);
             $itemList = new ItemList();
             $itemList->setItems([$item]);
             $details = new Details();
