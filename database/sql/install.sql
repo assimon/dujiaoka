@@ -222,7 +222,7 @@ CREATE TABLE `carmis` (
   `id` bigint NOT NULL AUTO_INCREMENT,
   `goods_id` int NOT NULL COMMENT '所属商品',
   `status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '状态 1未售出 2已售出',
-  `is_loop` tinyint(1) NOT NULL DEFAULT '1' COMMENT '循环卡密 1是 2否',
+  `is_loop` tinyint(1) NOT NULL DEFAULT '0' COMMENT '循环卡密 1是 0否',
   `carmi` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL COMMENT '卡密',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
