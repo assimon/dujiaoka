@@ -50,6 +50,8 @@ class SystemSetting extends Form
                 ->default(BaseModel::STATUS_CLOSE);
             $this->switch('is_open_search_pwd', admin_trans('system-setting.fields.is_open_search_pwd'))
                 ->default(BaseModel::STATUS_CLOSE);
+            $this->switch('is_open_google_translate', admin_trans('system-setting.fields.is_open_google_translate'))
+                ->default(BaseModel::STATUS_CLOSE);
             $this->editor('notice', admin_trans('system-setting.fields.notice'));
             $this->textarea('footer', admin_trans('system-setting.fields.footer'));
         });

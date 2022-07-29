@@ -11,3 +11,6 @@
         <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     @endif
 </head>
+@if(dujiaoka_config_get('is_open_google_translate') == \App\Models\BaseModel::STATUS_OPEN)
+@include('luna.layouts.google_translate')
+@endif
