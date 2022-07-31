@@ -52,5 +52,8 @@ Route::group(['prefix' => 'pay', 'namespace' => 'Pay', 'middleware' => ['dujiaok
     Route::get('epusdt/{payway}/{orderSN}', 'EpusdtController@gateway');
     Route::post('epusdt/notify_url', 'EpusdtController@notifyUrl');
     Route::get('epusdt/return_url', 'EpusdtController@returnUrl')->name('epusdt-return');
+    // token188
+    Route::get('Token188/{payway}/{orderSN}', 'Token188Controller@gateway');
+    Route::any('Token188/notify_url', 'Token188Controller@notifyUrl');
 
 });

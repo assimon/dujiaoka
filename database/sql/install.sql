@@ -478,6 +478,7 @@ INSERT INTO `pays` VALUES (20, 'V 免签微信', 'vwx', 1, 1, 'V 免签通讯密
 INSERT INTO `pays` VALUES (21, 'Stripe[微信支付宝]', 'stripe', 1, 1, 'pk开头的可发布密钥', NULL, 'sk开头的密钥', 'pay/stripe', 1, '2020-10-29 13:15:56', '2020-10-29 13:18:29', NULL);
 INSERT INTO `pays` VALUES (22, 'Coinbase[加密货币]', 'coinbase', 1, 3, '费率', 'API密钥', '共享密钥', 'pay/coinbase', 0, '2021-08-15 13:15:56', '2021-10-12 13:15:56', NULL);
 INSERT INTO `pays` VALUES (23, 'Epusdt[trc20]', 'epusdt', 1, 3, 'API密钥', '不填即可', 'api请求地址', 'pay/epusdt', 0, '2022-03-22 13:15:56', '2022-03-22 13:15:56', NULL);
+INSERT INTO `pays` VALUES (24, 'Token188[trc20]', 'Token188', 1, 3, '商户ID', '商户密钥', '商户密钥', '/pay/Token188', 0, '2022-07-31 13:15:56', '2022-07-31 12:12:19', NULL);
 
 -- ----------------------------
 COMMIT;
