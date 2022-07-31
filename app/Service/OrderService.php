@@ -14,6 +14,7 @@ use App\Exceptions\RuleValidationException;
 use App\Models\BaseModel;
 use App\Models\Coupon;
 use App\Models\Goods;
+use App\Models\Carmis;
 use App\Models\Order;
 use App\Rules\SearchPwd;
 use App\Rules\VerifyImg;
@@ -114,6 +115,29 @@ class OrderService
             throw new RuleValidationException(__('dujiaoka.prompt.inventory_shortage'));
         }
         return $goods;
+    }
+	
+    /**
+     * 判断是否有循环卡密
+     *
+     * @param int $goodsID 商品id
+     * @return array|null
+     *
+     * @author    ZhangYiQiu<me@zhangyiqiu.net>
+     * @copyright ZhangYiQiu<me@zhangyiqiu.net>
+     * @link      http://zhangyiqiu.net/
+     */
+    public function validatorLoopCarmis(Request $request)
+    {
+        $carmis = Carmis::query()
+            ->where('goods_id', $request->input('gid'))
+            ->where('status', Carmis::STATUS_UNSOLD)
+            ->where('is_loop', true)
+            ->get();
+        if($carmis != null && $request->input('by_amount') > 1){
+			throw new RuleValidationException(__('dujiaoka.prompt.loop_carmis_limit'));
+		}
+		return $carmis;
     }
 
     /**
