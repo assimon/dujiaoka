@@ -61,11 +61,12 @@ class OrderService
             'email' => ['required', 'email'],
             'payway' => ['required', 'integer'],
             'search_pwd' => [new SearchPwd()],
-            'by_amount' => ['required', 'integer'],
+            'by_amount' => ['required', 'integer', 'min:1'],
             'img_verify_code' => [new VerifyImg()],
         ], [
             'by_amount.required' =>  __('dujiaoka.prompt.buy_amount_format_error'),
             'by_amount.integer' =>  __('dujiaoka.prompt.buy_amount_format_error'),
+            'by_amount.min' =>  __('dujiaoka.prompt.buy_amount_format_error'),
             'payway.required' =>  __('dujiaoka.prompt.please_select_mode_of_payment'),
             'payway.integer' =>  __('dujiaoka.prompt.please_select_mode_of_payment'),
             'email.required' =>  __('dujiaoka.prompt.email_format_error'),
