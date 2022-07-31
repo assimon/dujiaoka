@@ -44,6 +44,9 @@
 Telegram: [https://t.me/dujiaoka](https://t.me/dujiaoka)    
 关注Telegram官方频道：[https://t.me/dujiaoshuka](https://t.me/dujiaoshuka) (系统更新通知，bug更新，重大事件推送)
 
+## 🔥角集-为你的梦想助力(站点推广/商品求购/资源比价等)
+Telegram官方频道：[https://t.me/dujiaoji](https://t.me/dujiaoji)   
+
 ## 界面尝鲜
 【官方unicorn模板】
 ![首页.png](https://i.loli.net/2021/09/14/NZIl6s9RXbHwkmA.png)
