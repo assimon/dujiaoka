@@ -12,6 +12,8 @@ return [
         'buy_prompt' => '购买提示',
         'description' => '商品描述',
         'gd_name' => '商品名称',
+        'gd_description' => '商品描述',
+        'gd_keywords' => '商品关键字',
         'in_stock' => '库存',
         'ord' => '排序权重',
         'other_ipu_cnf' => '其他输入框配置',
