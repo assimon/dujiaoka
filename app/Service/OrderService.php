@@ -133,8 +133,8 @@ class OrderService
             ->where('goods_id', $request->input('gid'))
             ->where('status', Carmis::STATUS_UNSOLD)
             ->where('is_loop', true)
-            ->get();
-        if($carmis != null && $request->input('by_amount') > 1){
+            ->count();
+        if($carmis > 0 && $request->input('by_amount') > 1){
 			throw new RuleValidationException(__('dujiaoka.prompt.loop_carmis_limit'));
 		}
 		return $carmis;
