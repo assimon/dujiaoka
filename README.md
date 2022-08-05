@@ -44,8 +44,11 @@
 Telegram: [https://t.me/dujiaoka](https://t.me/dujiaoka)    
 关注Telegram官方频道：[https://t.me/dujiaoshuka](https://t.me/dujiaoshuka) (系统更新通知，bug更新，重大事件推送)
 
-## 🔥角集-为你的梦想助力(站点推广/商品求购/资源比价等)
+## 角集-为你的梦想助力(站点推广/商品求购/资源比价等)
 Telegram官方频道：[https://t.me/dujiaoji](https://t.me/dujiaoji)   
+
+## 🔥推荐服务器 
+- 美国免备案vps，配置1核1G仅需（`17.99$`≈`120RMB`）一年，支持支付宝付款 [👉🏻点我直达](https://app.cloudcone.com.cn/vps/1/create?token=vps-1&ref=5244)     
 
 ## 界面尝鲜
 【官方unicorn模板】
