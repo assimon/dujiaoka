@@ -312,7 +312,7 @@ class OrderProcessService
         try {
             $order = new Order();
             // 生成订单号
-            $order->order_sn = Str::random(16);
+            $order->order_sn = strtoupper(Str::random(16));
             // 设置商品
             $order->goods_id = $this->goods->id;
             // 标题
