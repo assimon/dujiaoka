@@ -29,6 +29,7 @@ return [
         'is_open_anti_red' => '是否开启微信/QQ防红',
         'is_open_img_code' => '是否开启图形验证码',
         'is_open_search_pwd' => '是否开启查询密码',
+        'is_open_google_translate' => '是否开启google翻译',
         'is_open_server_jiang' => '是否开启server酱',
         'server_jiang_token' => 'server酱通讯token',
         'is_open_telegram_push' => '是否开启Telegram推送',

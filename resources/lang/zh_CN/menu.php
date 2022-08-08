@@ -27,6 +27,7 @@ return [
         'pay_configuration'  => '支付配置',
         'order_manage' => '销售数据',
         'order'        => '订单列表',
-        'system_setting' => '系统设置'
+        'system_setting' => '系统设置',
+        'email_test' => '邮件测试'
     ],
 ];

@@ -123,7 +123,8 @@ return [
         'search_order_browser_tips' => '最多只能查询最近 5 笔订单',
         'no_related_order_found_for_cache' => '未找到相关订单缓存！',
         'no_related_order_found' => '未找到相关订单！',
-        'new_order_push' => '新订单通知'
+        'new_order_push' => '新订单通知',
+        'loop_carmis_limit' => '此商品最多购买一件！'
     ],
 
     'equipment' => [

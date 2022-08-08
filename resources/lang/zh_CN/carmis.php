@@ -11,6 +11,8 @@ return [
         'carmi' => '卡密内容',
         'status_unsold' => '未售出',
         'status_sold' => '已售出',
+        'is_loop' => '循环卡密',
+		'yes'=>'是',
         'import_carmis' => '导入卡密',
         'carmis_list' => '卡密列表',
         'carmis_txt' => '卡密文本',
