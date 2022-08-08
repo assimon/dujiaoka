@@ -333,6 +333,8 @@ CREATE TABLE `goods` (
   `id` int NOT NULL AUTO_INCREMENT,
   `group_id` int NOT NULL COMMENT '所属分类id',
   `gd_name` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '商品名称',
+  `gd_description` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '商品描述',
+  `gd_keywords` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '商品关键字',
   `picture` text CHARACTER SET utf8 COLLATE utf8_unicode_ci COMMENT '商品图片',
   `retail_price` decimal(10,2) DEFAULT '0.00' COMMENT '零售价',
   `actual_price` decimal(10,2) NOT NULL DEFAULT '0.00' COMMENT '实际售价',

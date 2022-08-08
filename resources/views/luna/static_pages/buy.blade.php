@@ -1,4 +1,4 @@
-@extends('luna.layouts.default')
+@extends('luna.layouts.seo')
 
 @section('notice')
     @include('luna.layouts._notice')
