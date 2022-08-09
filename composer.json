@@ -11,7 +11,7 @@
         "php": "^7.2.5|^8.0",
         "amrshawky/laravel-currency": "^4.0",
         "dcat/easy-excel": "^1.0",
-        "dcat/laravel-admin": "2.*",
+        "dcat/laravel-admin": "^2",
         "fideloper/proxy": "^4.4",
         "germey/geetest": "^3.1",
         "jenssegers/agent": "^2.6",
