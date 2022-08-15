@@ -63,6 +63,15 @@ class SystemSetting extends Form
                 ->default(BaseModel::STATUS_CLOSE);
             $this->text('telegram_bot_token', admin_trans('system-setting.fields.telegram_bot_token'));
             $this->text('telegram_userid', admin_trans('system-setting.fields.telegram_userid'));
+            $this->switch('is_open_bark_push', admin_trans('system-setting.fields.is_open_bark_push'))
+                ->default(BaseModel::STATUS_CLOSE);
+            $this->switch('is_open_bark_push_url', admin_trans('system-setting.fields.is_open_bark_push_url'))
+                ->default(BaseModel::STATUS_CLOSE);
+            $this->text('bark_server', admin_trans('system-setting.fields.bark_server'));
+            $this->text('bark_token', admin_trans('system-setting.fields.bark_token'));
+            $this->switch('is_open_qywxbot_push', admin_trans('system-setting.fields.is_open_qywxbot_push'))
+                ->default(BaseModel::STATUS_CLOSE);
+            $this->text('qywxbot_key', admin_trans('system-setting.fields.qywxbot_key'));
         });
         $this->tab(admin_trans('system-setting.labels.mail_setting'), function () {
             $this->text('driver', admin_trans('system-setting.fields.driver'))->default('smtp')->required();
