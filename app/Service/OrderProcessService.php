@@ -15,6 +15,8 @@ use App\Jobs\MailSend;
 use App\Jobs\OrderExpired;
 use App\Jobs\ServerJiang;
 use App\Jobs\TelegramPush;
+use App\Jobs\BarkPush;
+use App\Jobs\WorkWeiXinPush;
 use App\Models\BaseModel;
 use App\Models\Coupon;
 use App\Models\Goods;
@@ -417,6 +419,14 @@ class OrderProcessService
             // 如果开启了TG推送
             if (dujiaoka_config_get('is_open_telegram_push', 0) == BaseModel::STATUS_OPEN) {
                 TelegramPush::dispatch($order);
+            }
+            // 如果开启了Bark推送
+            if (dujiaoka_config_get('is_open_bark_push', 0) == BaseModel::STATUS_OPEN) {
+                BarkPush::dispatch($order);
+            }
+            // 如果开启了企业微信Bot推送
+            if (dujiaoka_config_get('is_open_qywxbot_push', 0) == BaseModel::STATUS_OPEN) {
+                WorkWeiXinPush::dispatch($order);
             }
             // 回调事件
             ApiHook::dispatch($order);

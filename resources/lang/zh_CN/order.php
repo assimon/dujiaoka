@@ -15,6 +15,7 @@ return [
         'goods_id' => '所属商品',
         'goods_price' => '商品单价',
         'info' => '订单详情',
+        'order_id' => '订单ID',
         'order_sn' => '订单号',
         'pay_id' => '支付通道',
         'status' => '订单状态',
