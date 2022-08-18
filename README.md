@@ -47,6 +47,9 @@ Telegram: [https://t.me/dujiaoka](https://t.me/dujiaoka)
 ## 角集-为你的梦想助力(站点推广/商品求购/资源比价等)
 Telegram官方频道：[https://t.me/dujiaoji](https://t.me/dujiaoji)   
 
+## 🔥推荐服务器 
+- （美国免备案vps，配置3核3G仅需`24.28$`≈`159RMB`一年/支持支付宝付款）[👉🏻点我直达](https://my.racknerd.com/aff.php?aff=2745&pid=199)
+
 ## 界面尝鲜
 【官方unicorn模板】
 ![首页.png](https://i.loli.net/2021/09/14/NZIl6s9RXbHwkmA.png)
