@@ -6,8 +6,8 @@ return [
         'coupon' => '优惠码',
     ],
     'fields' => [
-        'type' => '优惠类型',
-        'discount' => '优惠金额',
+        'type' => '是否优惠系数',
+        'discount' => '金额/系数',
         'is_use' => '是否已经使用',
         'is_open' => '是否启用',
         'coupon' => '优惠码',
@@ -21,3 +21,4 @@ return [
     'options' => [
     ],
 ];
+
