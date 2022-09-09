@@ -231,7 +231,14 @@ class OrderProcessService
         $couponPrice = 0;
         // 优惠码优惠价格
         if ($this->coupon) {
-            $couponPrice =  $this->coupon->discount;
+            $typePrice = $this->coupon->type;
+            if($typePrice == 0){
+                $couponPrice =  $this->coupon->discount;
+            }else{
+                $totalPrice = $this->calculateTheTotalPrice(); // 实际原总价
+                $couponPrice1 = bcmul($totalPrice, $this->coupon->discount, 2);
+                $couponPrice = $totalPrice - $couponPrice1; //计算折扣
+            }
         }
         return $couponPrice;
     }
