@@ -25,7 +25,6 @@ class StripeCheckoutController extends PayController
                 ->amount($this->order->actual_price)
                 ->round(2)
                 ->get();
-            $TotalAmount1 = $this->order->actual_price;  
             $TotalAmount = $price * 100;
             $data = [
                 'success_url'         => url('detail-order-sn', ['orderSN' => $this->order->order_sn]),
@@ -37,7 +36,7 @@ class StripeCheckoutController extends PayController
                         'product_data' => [
                             'name' => $this->order->order_sn
                         ],
-                        'unit_amount'  => $TotalAmount // //使用 $TotalAmount1 不转换
+                        'unit_amount'  => $TotalAmount 
                     ],
                     'quantity'   => 1
                 ]],
