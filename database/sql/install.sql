@@ -44,6 +44,8 @@ INSERT INTO `admin_menu` VALUES (21, 19, 19, 'Pay_Configuration', 'fa-cc-visa', 
 INSERT INTO `admin_menu` VALUES (22, 0, 8, 'Order_Manage', 'fa-table', NULL, '', 1, '2021-05-23 20:43:43', '2021-05-23 20:44:20');
 INSERT INTO `admin_menu` VALUES (23, 22, 20, 'Order', 'fa-heart', '/order', '', 1, '2021-05-23 20:46:13', '2021-05-23 20:47:16');
 INSERT INTO `admin_menu` VALUES (24, 19, 21, 'System_Setting', 'fa-cogs', '/system-setting', '', 1, '2021-05-26 10:26:34', '2021-05-26 10:26:34');
+INSERT INTO `admin_menu` VALUES (25, 19, 22, 'Email_Test', 'fa-envelope', '/email-test', '', 1, '2022-07-26 12:09:34', '2022-07-26 12:17:21');
+
 COMMIT;
 
 -- ----------------------------
@@ -220,6 +222,7 @@ CREATE TABLE `carmis` (
   `id` bigint NOT NULL AUTO_INCREMENT,
   `goods_id` int NOT NULL COMMENT '所属商品',
   `status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '状态 1未售出 2已售出',
+  `is_loop` tinyint(1) NOT NULL DEFAULT '0' COMMENT '循环卡密 1是 0否',
   `carmi` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL COMMENT '卡密',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
@@ -330,6 +333,8 @@ CREATE TABLE `goods` (
   `id` int NOT NULL AUTO_INCREMENT,
   `group_id` int NOT NULL COMMENT '所属分类id',
   `gd_name` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '商品名称',
+  `gd_description` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '商品描述',
+  `gd_keywords` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '商品关键字',
   `picture` text CHARACTER SET utf8 COLLATE utf8_unicode_ci COMMENT '商品图片',
   `retail_price` decimal(10,2) DEFAULT '0.00' COMMENT '零售价',
   `actual_price` decimal(10,2) NOT NULL DEFAULT '0.00' COMMENT '实际售价',

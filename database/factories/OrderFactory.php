@@ -4,10 +4,11 @@
 
 use App\Model;
 use Faker\Generator as Faker;
+use Illuminate\Support\Str;
 
 $factory->define(\App\Models\Order::class, function (Faker $faker) {
     return [
-        'order_sn' => \Illuminate\Support\Str::random(12),
+        'order_sn' => strtoupper(Str::random(12)),
         'goods_id' => rand(1, 3),
         'coupon_id' => rand(1, 3),
         'title' => $faker->words(3, true),
@@ -23,7 +24,7 @@ $factory->define(\App\Models\Order::class, function (Faker $faker) {
         'info' => $faker->words(3, true),
         'pay_id' => rand(1, 20),
         'buy_ip' => $faker->ipv4,
-        'trade_no' => \Illuminate\Support\Str::random(12),
+        'trade_no' => strtoupper(Str::random(12)),
         'status' => rand(1, 5),
         'created_at' => $faker->dateTimeBetween('-7 days', 'now', 'PRC'),
         'updated_at' => $faker->dateTimeBetween('-7 days', 'now', 'PRC'),

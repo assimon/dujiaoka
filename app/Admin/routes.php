@@ -21,4 +21,5 @@ Route::group([
     $router->resource('order', 'OrderController');
     $router->get('import-carmis', 'CarmisController@importCarmis');
     $router->get('system-setting', 'SystemSettingController@systemSetting');
+    $router->get('email-test', 'EmailTestController@emailTest');
 });

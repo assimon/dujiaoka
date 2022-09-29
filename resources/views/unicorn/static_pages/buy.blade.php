@@ -1,4 +1,4 @@
-@extends('unicorn.layouts.default')
+@extends('unicorn.layouts.seo')
 @section('content')
     <!-- main start -->
     <section class="main-container">

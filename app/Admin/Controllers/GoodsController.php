@@ -31,6 +31,8 @@ class GoodsController extends AdminController
             $grid->column('id')->sortable();
             $grid->column('picture')->image('', 100, 100);
             $grid->column('gd_name');
+            $grid->column('gd_description');
+            $grid->column('gd_keywords');
             $grid->column('group.gp_name', admin_trans('goods.fields.group_id'));
             $grid->column('type')
                 ->using(GoodsModel::getGoodsTypeMap())
@@ -90,6 +92,8 @@ class GoodsController extends AdminController
         return Show::make($id, new Goods(), function (Show $show) {
             $show->id('id');
             $show->field('gd_name');
+            $form->field('gd_description');
+            $form->field('gd_keywords');
             $show->field('picture')->image();
             $show->field('retail_price');
             $show->field('actual_price');
@@ -132,6 +136,8 @@ class GoodsController extends AdminController
         return Form::make(new Goods(), function (Form $form) {
             $form->display('id');
             $form->text('gd_name')->required();
+            $form->text('gd_description')->required();
+            $form->text('gd_keywords')->required();
             $form->select('group_id')->options(
                 GoodsGroupModel::query()->pluck('gp_name', 'id')
             )->required();

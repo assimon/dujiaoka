@@ -14,6 +14,7 @@ use App\Exceptions\RuleValidationException;
 use App\Models\BaseModel;
 use App\Models\Coupon;
 use App\Models\Goods;
+use App\Models\Carmis;
 use App\Models\Order;
 use App\Rules\SearchPwd;
 use App\Rules\VerifyImg;
@@ -61,11 +62,12 @@ class OrderService
             'email' => ['required', 'email'],
             'payway' => ['required', 'integer'],
             'search_pwd' => [new SearchPwd()],
-            'by_amount' => ['required', 'integer'],
+            'by_amount' => ['required', 'integer', 'min:1'],
             'img_verify_code' => [new VerifyImg()],
         ], [
             'by_amount.required' =>  __('dujiaoka.prompt.buy_amount_format_error'),
             'by_amount.integer' =>  __('dujiaoka.prompt.buy_amount_format_error'),
+            'by_amount.min' =>  __('dujiaoka.prompt.buy_amount_format_error'),
             'payway.required' =>  __('dujiaoka.prompt.please_select_mode_of_payment'),
             'payway.integer' =>  __('dujiaoka.prompt.please_select_mode_of_payment'),
             'email.required' =>  __('dujiaoka.prompt.email_format_error'),
@@ -113,6 +115,29 @@ class OrderService
             throw new RuleValidationException(__('dujiaoka.prompt.inventory_shortage'));
         }
         return $goods;
+    }
+	
+    /**
+     * 判断是否有循环卡密
+     *
+     * @param int $goodsID 商品id
+     * @return array|null
+     *
+     * @author    ZhangYiQiu<me@zhangyiqiu.net>
+     * @copyright ZhangYiQiu<me@zhangyiqiu.net>
+     * @link      http://zhangyiqiu.net/
+     */
+    public function validatorLoopCarmis(Request $request)
+    {
+        $carmis = Carmis::query()
+            ->where('goods_id', $request->input('gid'))
+            ->where('status', Carmis::STATUS_UNSOLD)
+            ->where('is_loop', true)
+            ->count();
+        if($carmis > 0 && $request->input('by_amount') > 1){
+			throw new RuleValidationException(__('dujiaoka.prompt.loop_carmis_limit'));
+		}
+		return $carmis;
     }
 
     /**

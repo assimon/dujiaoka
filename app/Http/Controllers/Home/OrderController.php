@@ -60,6 +60,7 @@ class OrderController extends BaseController
         try {
             $this->orderService->validatorCreateOrder($request);
             $goods = $this->orderService->validatorGoods($request);
+            $this->orderService->validatorLoopCarmis($request);
             // 设置商品
             $this->orderProcessService->setGoods($goods);
             // 优惠码

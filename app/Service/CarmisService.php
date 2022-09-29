@@ -48,7 +48,7 @@ class CarmisService
      */
     public function soldByIDS(array $ids): bool
     {
-        return Carmis::query()->whereIn('id', $ids)->update(['status' => Carmis::STATUS_SOLD]);
+        return Carmis::query()->whereIn('id', $ids)->where('is_loop', 0)->update(['status' => Carmis::STATUS_SOLD]);
     }
 
 }

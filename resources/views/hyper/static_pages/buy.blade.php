@@ -1,4 +1,4 @@
-@extends('hyper.layouts.default')
+@extends('hyper.layouts.seo')
 @section('content')
 <div class="row">
     <div class="col-12">
