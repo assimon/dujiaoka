@@ -50,7 +50,7 @@ class StripeCheckoutController extends PayController
             return $this->err(__('dujiaoka.prompt.abnormal_payment_channel') . $e->getMessage());
         }
     }
-    //webhook地址:https://shop.liner77.xyz/pay/stripecheckout/webhook  自行替换域名 
+    //webhook地址:https://www.baidu.com/pay/stripecheckout/webhook  自行替换域名 
     //侦听的事件: 'checkout.session.completed' 'checkout.session.async_payment_succeeded'
     public function webhook(Request $request)
     {   
