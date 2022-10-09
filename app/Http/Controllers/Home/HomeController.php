@@ -149,7 +149,7 @@ class HomeController extends BaseController
             ];
             $dbConfig['redis']['default'] = array_merge($dbConfig['redis']['default'], $redisDB);
             config(['database' => $dbConfig]);
-            (new DatabaseServiceProvider(app()))->register();
+            DB::purge();
             // db测试
             DB::connection()->select('select 1 limit 1');
             // redis测试
