@@ -59,7 +59,7 @@ class MailSend implements ShouldQueue
         $title = $this->title;
         $sysConfig = cache('system-setting');
         $mailConfig = [
-            'driver' => $sysConfig['driver'] ?? 'stmp',
+            'driver' => $sysConfig['driver'] ?? 'smtp',
             'host' => $sysConfig['host'] ?? '',
             'port' => $sysConfig['port'] ?? '465',
             'username' => $sysConfig['username'] ?? '',
