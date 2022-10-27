@@ -233,12 +233,14 @@ class OrderController extends BaseController
     public function searchOrderByBrowser(Request $request)
     {
         $cookies = Cookie::get('dujiaoka_orders');
-        if (empty($cookies)) {
-            return $this->err(__('dujiaoka.prompt.no_related_order_found_for_cache'));
+        if (!empty($cookies)) {
+            $orderSNS = json_decode($cookies, true);
+            $orders = $this->orderService->byOrderSNS($orderSNS);
+            if (count($orders) > 0) {
+                return $this->render('static_pages/orderinfo', ['orders' => $orders], __('dujiaoka.page-title.order-detail'));
+            }
         }
-        $orderSNS = json_decode($cookies, true);
-        $orders = $this->orderService->byOrderSNS($orderSNS);
-        return $this->render('static_pages/orderinfo', ['orders' => $orders], __('dujiaoka.page-title.order-detail'));
+        return $this->err(__('dujiaoka.prompt.no_related_order_found_for_cache'));
     }
 
     /**
