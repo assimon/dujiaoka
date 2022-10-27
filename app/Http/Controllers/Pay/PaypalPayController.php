@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Pay;
 
-
 use AmrShawky\LaravelCurrency\Facade\Currency;
 use App\Exceptions\RuleValidationException;
 use App\Http\Controllers\PayController;
@@ -23,7 +22,6 @@ use PayPal\Rest\ApiContext;
 
 class PaypalPayController extends PayController
 {
-
     const Currency = 'USD'; //货币单位
 
     public function gateway(string $payway, string $orderSN)
@@ -85,7 +83,7 @@ class PaypalPayController extends PayController
         $orderSN = $request->input('orderSN');
         if ($success == 'no' || empty($paymentId) || empty($payerID)) {
             // 取消支付
-            redirect(url('detail-order-sn', ['orderSN' => $payerID]));
+            return redirect(url('detail-order-sn', ['orderSN' => $orderSN]));
         }
         $order = $this->orderService->detailOrderSN($orderSN);
         if (!$order) {
@@ -115,7 +113,6 @@ class PaypalPayController extends PayController
         return redirect(url('detail-order-sn', ['orderSN' => $orderSN]));
     }
 
-
     /**
      * 异步通知
      * TODO: 暂未实现，但是好像只实现同步回调即可。这个可以放在后面实现
@@ -141,5 +138,4 @@ class PaypalPayController extends PayController
         }
         return $json;
     }
-
 }
