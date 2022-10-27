@@ -26,7 +26,7 @@ return [
         'automatic_delivery' => '自動發貨',
         'manual_processing' => '人工處理',
         'is_open' => '是否上架',
-        'coupon_id' => '可用折扣碼'
+        'coupon_id' => '可用折扣碼',
     ],
     'options' => [
     ],
@@ -37,6 +37,5 @@ return [
         'buy_limit_num' => '防止惡意刷庫存，0為不限製客戶單次下單最大數量',
         'other_ipu_cnf' => '格式為[唯一標識(英文)=輸入框名字=是否必填]，例如：填寫 line_account=Line賬戶=true 表示產品詳情頁會新增一個 [Line賬戶] 輸入框，客戶可在其中輸入 [Line賬戶]，true 為必填，false 為選填。（一行一個）',
         'wholesale_price_cnf' => '例如：填寫 5=3 表示客戶購買 5 件或以上時，每件價格為 3 元。一行一個',
-
-    ]
+    ],
 ];

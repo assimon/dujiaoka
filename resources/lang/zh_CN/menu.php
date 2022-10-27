@@ -28,6 +28,6 @@ return [
         'order_manage' => '销售数据',
         'order'        => '订单列表',
         'system_setting' => '系统设置',
-        'email_test' => '邮件测试'
+        'email_test'   => '邮件测试',
     ],
 ];

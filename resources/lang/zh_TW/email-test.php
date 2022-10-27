@@ -9,10 +9,10 @@
 
 return [
     'labels' => [
-        'success' => '发送成功',
+        'success' => '發送成功',
         'to' => '收件人',
-        'title' => '邮件标题',
-        'body' => '邮件内容',
+        'title' => '郵件標題',
+        'body' => '郵件內容',
     ],
     'fields' => [
     ],

@@ -15,6 +15,7 @@ return [
         'goods_id' => '所屬商品',
         'goods_price' => '商品單價',
         'info' => '訂單詳情',
+        'order_id' => '訂單ID',
         'order_sn' => '訂單號',
         'pay_id' => '支付通道',
         'status' => '訂單狀態',

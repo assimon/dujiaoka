@@ -33,9 +33,8 @@ return [
     'email' => '訂單信箱',
     'order_status' => '訂單狀態',
 
-
     'least_one' => '購買數量不能低於1件',
     'exceeds' => '購買數量不能多於庫存數量',
     'exceeds_limit' => '購買數量不能多於限購數量',
-    'mobile_order' => '掃描QRcode 行動電話下單'
+    'mobile_order' => '掃描QRcode 行動電話下單',
 ];

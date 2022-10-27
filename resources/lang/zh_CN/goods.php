@@ -26,7 +26,7 @@ return [
         'automatic_delivery' => '自动发货',
         'manual_processing' => '人工处理',
         'is_open' => '是否上架',
-        'coupon_id' => '可用优惠码'
+        'coupon_id' => '可用优惠码',
     ],
     'options' => [
     ],
@@ -37,6 +37,5 @@ return [
         'buy_limit_num' => '防止恶意刷库存，0为不限制客户单次下单最大数量',
         'other_ipu_cnf' => '格式为[唯一标识(英文)=输入框名字=是否必填]，例如：填写 qq_account=QQ账号=true 表示产品详情页会新增一个 [QQ账号] 输入框，客户可在其中输入 [QQ账号]，true 为必填，false 为选填。（一行一个）',
         'wholesale_price_cnf' => '例如：填写 5=3 表示客户购买 5 件或以上时，每件价格为 3 元。一行一个',
-
-    ]
+    ],
 ];

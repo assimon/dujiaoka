@@ -16,7 +16,7 @@ return [
         'type_repeat' => '重復使用',
         'status_use' => '已使用',
         'status_unused' => '未使用',
-        'goods_id' => '可用商品'
+        'goods_id' => '可用商品',
     ],
     'options' => [
     ],

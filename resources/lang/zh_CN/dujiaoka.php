@@ -91,7 +91,6 @@ return [
     'money_symbol' => '￥',
     'purchase_limit' => '每单限',
 
-
     'prompt' => [
         'server_illegal_request' => '非法请求！',
         'the_goods_is_not_on_the_shelves' => '该商品未上架！',
@@ -124,7 +123,7 @@ return [
         'no_related_order_found_for_cache' => '未找到相关订单缓存！',
         'no_related_order_found' => '未找到相关订单！',
         'new_order_push' => '新订单通知',
-        'loop_carmis_limit' => '此商品最多购买一件！'
+        'loop_carmis_limit' => '此商品最多购买一件！',
     ],
 
     'equipment' => [
@@ -144,6 +143,6 @@ return [
         'home' => '首页',
         'bill' => '订单确认',
         'order-detail' => '订单详情',
-        'order-search' => '订单查询'
-    ]
+        'order-search' => '订单查询',
+    ],
 ];

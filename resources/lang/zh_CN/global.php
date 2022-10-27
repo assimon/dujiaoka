@@ -32,6 +32,5 @@ return [
         'scaffold' => '代码生成器',
     ],
     'options' => [
-        //
     ],
 ];

@@ -16,7 +16,6 @@ return [
         'order_push_setting' => '订单推送配置',
         'geetest' => '极验验证',
     ],
-
     'fields' => [
         'title' => '网站标题',
         'text_logo' => '文字LOGO',
@@ -64,6 +63,6 @@ return [
     ],
     'rule_messages' => [
         'save_system_setting_success' => '系统配置保存成功！',
-        'change_reboot_php_worker' => '修改部分配置需要重启[supervisor]或php进程管理工具才会生效，例如邮件服务，server酱等。'
-    ]
+        'change_reboot_php_worker' => '修改部分配置需要重启[supervisor]或php进程管理工具才会生效，例如邮件服务，server酱等。',
+    ],
 ];

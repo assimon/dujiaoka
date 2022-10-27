@@ -32,6 +32,5 @@ return [
         'scaffold' => '代碼生成器',
     ],
     'options' => [
-        //
     ],
 ];

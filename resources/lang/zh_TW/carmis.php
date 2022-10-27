@@ -13,6 +13,7 @@ return [
         'status_sold' => '已售出',
         'is_loop' => '循環卡密',
         'yes'=>'是',
+        'no' => '否',
         'import_carmis' => '匯入卡密',
         'carmis_list' => '卡密清單',
         'carmis_txt' => '卡密文字',
@@ -22,10 +23,10 @@ return [
     'options' => [
     ],
     'helps' => [
-        'carmis_list' => '一行一個，輸入鍵分隔。請勿匯入單個文字長度過大的卡密，容易導致記憶體溢出。如果卡密過大建議修改商品為人工處理'
+        'carmis_list' => '一行一個，輸入鍵分隔。請勿匯入單個文字長度過大的卡密，容易導致記憶體溢出。如果卡密過大建議修改商品為人工處理',
     ],
     'rule_messages' => [
         'carmis_list_and_carmis_txt_can_not_be_empty' => '請填寫需要匯入的卡密或選取需要上傳的卡密檔案',
-        'import_carmis_success' => '匯入卡密成功！'
-    ]
+        'import_carmis_success' => '匯入卡密成功！',
+    ],
 ];

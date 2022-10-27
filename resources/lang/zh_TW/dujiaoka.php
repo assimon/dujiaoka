@@ -91,7 +91,6 @@ return [
     'money_symbol' => '￥',
     'purchase_limit' => '每單限',
 
-
     'prompt' => [
         'server_illegal_request' => '非法請求！',
         'the_goods_is_not_on_the_shelves' => '該商品未上架！',
@@ -123,7 +122,7 @@ return [
         'search_order_browser_tips' => '最多只能查詢最近 5 筆訂單',
         'no_related_order_found_for_cache' => '未找到相關訂單快取！',
         'no_related_order_found' => '未找到相關訂單！',
-        'new_order_push' => '新訂單通知'
+        'new_order_push' => '新訂單通知',
     ],
 
     'equipment' => [
@@ -143,6 +142,6 @@ return [
         'home' => '首頁',
         'bill' => '訂單確認',
         'order-detail' => '訂單詳情',
-        'order-search' => '訂單查詢'
-    ]
+        'order-search' => '訂單查詢',
+    ],
 ];
