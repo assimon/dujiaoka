@@ -9,7 +9,7 @@
     </div>
 </div>
 <div class="row">
-	<div class="col-12">
+    <div class="col-12">
         <div class="card">
             <div class="card-body">
                 {{ __('hyper.searchOrder_query_tips') }}
@@ -44,7 +44,7 @@
                 <div class="tab-content">
                     <div class="tab-pane show active" id="dingdanhao">
                         <form class="needs-validation" action="{{ url('search-order-by-sn') }}" method="post">
-                        	{{ csrf_field() }}
+                            {{ csrf_field() }}
                             <div class="form-group mb-3">
                                 {{-- 订单编号 --}}
                                 <label for="validationCustom01">{{ __('hyper.searchOrder_order_number') }}</label>
@@ -60,7 +60,7 @@
                     </div>
                     <div class="tab-pane" id="youxiang">
                         <form class="needs-validation" action="{{ url('search-order-by-email') }}" method="post">
-                        	{{ csrf_field() }}
+                            {{ csrf_field() }}
                             <div class="form-group mb-3">
                                 {{-- 邮箱 --}}
                                 <label for="validationCustom01">{{ __('hyper.searchOrder_email') }}</label>
@@ -83,7 +83,7 @@
                     </div>
                     <div class="tab-pane" id="liulanqi">
                         <form class="needs-validation" action="{{ url('search-order-by-browser') }}" method="post">
-                        	{{ csrf_field() }}
+                            {{ csrf_field() }}
                             <div class="form-group mb-3">
                                 {{-- 立即查询 --}}
                                 <button class="btn btn-primary" type="submit">{{ __('hyper.searchOrder_search_now') }}</button>

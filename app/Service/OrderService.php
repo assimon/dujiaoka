@@ -116,7 +116,7 @@ class OrderService
         }
         return $goods;
     }
-	
+    
     /**
      * 判断是否有循环卡密
      *
@@ -135,9 +135,9 @@ class OrderService
             ->where('is_loop', true)
             ->count();
         if($carmis > 0 && $request->input('by_amount') > 1){
-			throw new RuleValidationException(__('dujiaoka.prompt.loop_carmis_limit'));
-		}
-		return $carmis;
+            throw new RuleValidationException(__('dujiaoka.prompt.loop_carmis_limit'));
+        }
+        return $carmis;
     }
 
     /**

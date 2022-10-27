@@ -8,19 +8,19 @@
  */
 
 .cm-s-pastel-on-dark.CodeMirror {
-	background: #2c2827;
-	color: #8F938F;
-	line-height: 1.5;
-	font-size: 14px;
+    background: #2c2827;
+    color: #8F938F;
+    line-height: 1.5;
+    font-size: 14px;
 }
 .cm-s-pastel-on-dark div.CodeMirror-selected { background: rgba(221,240,255,0.2) !important; }
 .cm-s-pastel-on-dark.CodeMirror ::selection { background: rgba(221,240,255,0.2); }
 .cm-s-pastel-on-dark.CodeMirror ::-moz-selection { background: rgba(221,240,255,0.2); }
 
 .cm-s-pastel-on-dark .CodeMirror-gutters {
-	background: #34302f;
-	border-right: 0px;
-	padding: 0 3px;
+    background: #34302f;
+    border-right: 0px;
+    padding: 0 3px;
 }
 .cm-s-pastel-on-dark .CodeMirror-guttermarker { color: white; }
 .cm-s-pastel-on-dark .CodeMirror-guttermarker-subtle { color: #8F938F; }
@@ -42,12 +42,12 @@
 .cm-s-pastel-on-dark span.cm-link { color: #ae81ff; }
 .cm-s-pastel-on-dark span.cm-qualifier,.cm-s-pastel-on-dark span.cm-builtin { color: #C1C144; }
 .cm-s-pastel-on-dark span.cm-error {
-	background: #757aD8;
-	color: #f8f8f0;
+    background: #757aD8;
+    color: #f8f8f0;
 }
 .cm-s-pastel-on-dark .CodeMirror-activeline-background { background: rgba(255, 255, 255, 0.031) !important; }
 .cm-s-pastel-on-dark .CodeMirror-matchingbracket {
-	border: 1px solid rgba(255,255,255,0.25);
-	color: #8F938F !important;
-	margin: -1px -1px 0 -1px;
+    border: 1px solid rgba(255,255,255,0.25);
+    color: #8F938F !important;
+    margin: -1px -1px 0 -1px;
 }

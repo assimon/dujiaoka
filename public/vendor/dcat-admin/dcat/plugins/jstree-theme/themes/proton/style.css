@@ -928,12 +928,12 @@ filter: gray;
 @media (max-width: 768px) {
   .jstree-proton-responsive {
     /*
-	.jstree-open > .jstree-ocl,
-	.jstree-closed > .jstree-ocl {
-	border-radius:20px;
-	background-color:white;
-	}
-	*/
+    .jstree-open > .jstree-ocl,
+    .jstree-closed > .jstree-ocl {
+    border-radius:20px;
+    background-color:white;
+    }
+    */
   }
   .jstree-proton-responsive .jstree-container-ul {
     overflow: hidden;

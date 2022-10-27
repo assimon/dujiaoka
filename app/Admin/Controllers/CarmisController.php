@@ -76,7 +76,7 @@ class CarmisController extends AdminController
                     return admin_trans('carmis.fields.status_sold');
                 }
             });
-			$show->field('is_loop')->as(function ($v) {return $v==1?admin_trans('carmis.fields.yes'):"";});
+            $show->field('is_loop')->as(function ($v) {return $v==1?admin_trans('carmis.fields.yes'):"";});
             $show->field('carmi');
             $show->field('created_at');
             $show->field('updated_at');

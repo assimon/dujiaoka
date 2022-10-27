@@ -82,36 +82,36 @@ class CoinbaseController extends PayController
     {
         $payload = file_get_contents( 'php://input' );
         $sig    = $_SERVER['HTTP_X_CC_WEBHOOK_SIGNATURE'];
-		$data       = json_decode( $payload, true );
-		$event_data = $data['event']['data'];
-		$order = $this->orderService->detailOrderSN($event_data['metadata']['customer_id']);//
-		if (!$order) {
-			return 'fail';
-		}
-		$payGateway = $this->payService->detail($order->pay_id);
-		if (!$payGateway) {
-			return 'fail';
-		}
-		$secret = $payGateway->merchant_pem;//共享密钥
-		$sig2 = hash_hmac( 'sha256', $payload, $secret );
+        $data       = json_decode( $payload, true );
+        $event_data = $data['event']['data'];
+        $order = $this->orderService->detailOrderSN($event_data['metadata']['customer_id']);//
+        if (!$order) {
+            return 'fail';
+        }
+        $payGateway = $this->payService->detail($order->pay_id);
+        if (!$payGateway) {
+            return 'fail';
+        }
+        $secret = $payGateway->merchant_pem;//共享密钥
+        $sig2 = hash_hmac( 'sha256', $payload, $secret );
         $result_str=array("confirmed","resolved");//返回的结果字符串数组
-		if (!empty( $payload ) && ($sig === $sig2))
-		{
+        if (!empty( $payload ) && ($sig === $sig2))
+        {
 
-			foreach ($event_data['payments'] as $payment) {
-				//if ((strtolower($payment['status']) === 'confirmed')||(strtolower($payment['status']) === 'resolved')) {
+            foreach ($event_data['payments'] as $payment) {
+                //if ((strtolower($payment['status']) === 'confirmed')||(strtolower($payment['status']) === 'resolved')) {
                 if(in_array(strtolower($payment['status']),$result_str)){
-					$return_pay_amount = $payment['value']['local']['amount'];
-					$return_currency=$payment['value']['local']['currency'];
-					$return_status=strtolower($payment['status']);
-				}
-			}
+                    $return_pay_amount = $payment['value']['local']['amount'];
+                    $return_currency=$payment['value']['local']['currency'];
+                    $return_status=strtolower($payment['status']);
+                }
+            }
             if($return_currency !== 'CNY')
-			{
-				return 'error|Notify: Wrong currency:'.$return_currency;
-			}
+            {
+                return 'error|Notify: Wrong currency:'.$return_currency;
+            }
 
-			$bccomp = bccomp($order->actual_price, $return_pay_amount, 2); //如果订单金额 大于 实际支付金额 返回1，抛出异常
+            $bccomp = bccomp($order->actual_price, $return_pay_amount, 2); //如果订单金额 大于 实际支付金额 返回1，抛出异常
             if ($bccomp == 1) {
                 throw new \Exception(__('Coinbase付款金额不足'));
             }

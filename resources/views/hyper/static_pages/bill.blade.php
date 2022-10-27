@@ -11,8 +11,8 @@
 <div class="row justify-content-center">
     <div class="col-lg-6">
         <div class="card card-body">
-        	<div class="mx-auto">
-        	    {{-- 订单编号 --}}
+            <div class="mx-auto">
+                {{-- 订单编号 --}}
                 <div class="mb-1"><label>{{ __('hyper.bill_order_number') }}：</label><span>{{ $order_sn }}</span></div>
                 {{-- 商品名称 --}}
                 <div class="mb-1"><label>{{ __('hyper.bill_product_name') }}：</label><span>{{ $title }}</span></div>
@@ -39,7 +39,7 @@
             </div>
             <div class="text-center">
                 {{-- 立即支付 --}}
-            	<a href="{{ url('pay-gateway', ['handle' => urlencode($pay['pay_handleroute']),'payway' => $pay['pay_check'], 'orderSN' => $order_sn]) }}"
+                <a href="{{ url('pay-gateway', ['handle' => urlencode($pay['pay_handleroute']),'payway' => $pay['pay_check'], 'orderSN' => $order_sn]) }}"
                    class="btn btn-danger">
                     {{ __('hyper.bill_pay_immediately') }}
                 </a>

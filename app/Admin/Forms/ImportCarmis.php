@@ -49,9 +49,9 @@ class ImportCarmis extends Form
         // 删除文件
         Storage::disk('public')->delete($input['carmis_txt']);
         return $this
-				->response()
-				->success(admin_trans('carmis.rule_messages.import_carmis_success'))
-				->location('/carmis');
+                ->response()
+                ->success(admin_trans('carmis.rule_messages.import_carmis_success'))
+                ->location('/carmis');
     }
 
     /**

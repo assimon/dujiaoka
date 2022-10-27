@@ -62,21 +62,21 @@ class WorkWeiXinPush implements ShouldQueue
         $goodInfo = $this->goodsService->detail($this->order->goods_id);
         $client = new Client();
         $apiUrl = 'https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key='. dujiaoka_config_get('qywxbot_key');
-		$params = [
-			"msgtype"=>"markdown",
-			"markdown"=>[
-				"content"=>__('dujiaoka.prompt.new_order_push').'(<font color="warning">'.$this->order->actual_price."</font>元)\n"
-				.'>'.__('order.fields.order_id') .': <font color="comment">'.$this->order->id."</font>\n"
-				.'>'.__('order.fields.order_sn') .': <font color="comment">'.$this->order->order_sn."</font>\n"
-				.'>'.__('order.fields.pay_id') .': <font color="comment">'.$this->order->pay->pay_name."</font>\n"
-				.'>'.__('order.fields.title') .': <font color="comment">'.$this->order->title."</font>\n"
-				.'>'.__('order.fields.actual_price') .': <font color="comment">'.$this->order->actual_price."</font>\n"
-				.'>'.__('order.fields.email') .': <font color="comment">'.$this->order->email."</font>\n"
-				.'>'.__('goods.fields.gd_name') .': <font color="comment">'.$goodInfo->gd_name."</font>\n"
-				.'>'.__('goods.fields.in_stock') .': <font color="comment">'.$goodInfo->in_stock."</font>\n"
-				.'>'.__('order.fields.order_created') .': <font color="comment">'.$this->order->created_at."</font>"
-			]
-		];
+        $params = [
+            "msgtype"=>"markdown",
+            "markdown"=>[
+                "content"=>__('dujiaoka.prompt.new_order_push').'(<font color="warning">'.$this->order->actual_price."</font>元)\n"
+                .'>'.__('order.fields.order_id') .': <font color="comment">'.$this->order->id."</font>\n"
+                .'>'.__('order.fields.order_sn') .': <font color="comment">'.$this->order->order_sn."</font>\n"
+                .'>'.__('order.fields.pay_id') .': <font color="comment">'.$this->order->pay->pay_name."</font>\n"
+                .'>'.__('order.fields.title') .': <font color="comment">'.$this->order->title."</font>\n"
+                .'>'.__('order.fields.actual_price') .': <font color="comment">'.$this->order->actual_price."</font>\n"
+                .'>'.__('order.fields.email') .': <font color="comment">'.$this->order->email."</font>\n"
+                .'>'.__('goods.fields.gd_name') .': <font color="comment">'.$goodInfo->gd_name."</font>\n"
+                .'>'.__('goods.fields.in_stock') .': <font color="comment">'.$goodInfo->in_stock."</font>\n"
+                .'>'.__('order.fields.order_created') .': <font color="comment">'.$this->order->created_at."</font>"
+            ]
+        ];
         $client->post($apiUrl,['json' => $params, 'verify' => false]);
     }
 }

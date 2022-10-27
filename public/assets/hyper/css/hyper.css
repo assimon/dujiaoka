@@ -192,10 +192,10 @@ body[data-layout=topnav] .content-page {
         font-size: 14px;
         display: flex;
         align-items: flex-start;
-    	border-radius: 5px;
-    	cursor: pointer;
+        border-radius: 5px;
+        cursor: pointer;
         background-color: #fff;
-    	
+        
     }
     .home-img {
         max-width: 80px;
@@ -208,11 +208,11 @@ body[data-layout=topnav] .content-page {
     .name {
         font-size: 14px;
         min-height: 42px;
-    	display: -webkit-box;
+        display: -webkit-box;
         -webkit-line-clamp: 2;
-    	-webkit-box-orient: vertical;
-    	overflow: hidden;
-    	text-align: left;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-align: left;
     }
     .price {
         color: #d0021b;
@@ -234,8 +234,8 @@ body[data-layout=topnav] .content-page {
         font-size: 14px;
         display: flex;
         flex-direction: column;
-    	border-radius: 5px;
-    	cursor: pointer;
+        border-radius: 5px;
+        cursor: pointer;
         background-color: #fff;
     }
     .home-img {
@@ -277,8 +277,8 @@ body[data-layout=topnav] .content-page {
         font-size: 14px;
         display: flex;
         flex-direction: column;
-    	border-radius: 5px;
-    	cursor: pointer;
+        border-radius: 5px;
+        cursor: pointer;
         background-color: #fff;
     }
     .home-img {
@@ -319,8 +319,8 @@ body[data-layout=topnav] .content-page {
         font-size: 14px;
         display: flex;
         flex-direction: column;
-    	border-radius: 5px;
-    	cursor: pointer;
+        border-radius: 5px;
+        cursor: pointer;
         background-color: #fff;
     }
     .home-img {

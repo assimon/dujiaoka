@@ -48,21 +48,21 @@ class EmailTest extends Form
       ]);
       // 重新注册驱动
       (new MailServiceProvider(app()))->register();
-	  try
-	  {
-		  Mail::send(['html' => 'email.mail'], ['body' => $body], function ($message) use ($to, $title){
-			  $message->to($to)->subject($title);
-		  });
-	  }
-	  catch(\Exception $e)
-	  {
-		  return $this
-					->response()
-					->error($e->getMessage());
-	  }
+      try
+      {
+          Mail::send(['html' => 'email.mail'], ['body' => $body], function ($message) use ($to, $title){
+              $message->to($to)->subject($title);
+          });
+      }
+      catch(\Exception $e)
+      {
+          return $this
+                    ->response()
+                    ->error($e->getMessage());
+      }
       return $this
-				->response()
-				->success(admin_trans('email-test.labels.success'));
+                ->response()
+                ->success(admin_trans('email-test.labels.success'));
     }
 
     /**

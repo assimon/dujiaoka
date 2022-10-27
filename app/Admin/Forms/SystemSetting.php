@@ -19,8 +19,8 @@ class SystemSetting extends Form
     {
         Cache::put('system-setting', $input);
         return $this
-				->response()
-				->success(admin_trans('system-setting.rule_messages.save_system_setting_success'));
+                ->response()
+                ->success(admin_trans('system-setting.rule_messages.save_system_setting_success'));
     }
 
     /**
