@@ -17,8 +17,6 @@ use Dcat\Admin\Widgets\Card;
 
 class CarmisController extends AdminController
 {
-
-
     /**
      * Make a grid builder.
      *
@@ -31,7 +29,7 @@ class CarmisController extends AdminController
             $grid->column('id')->sortable();
             $grid->column('goods.gd_name', admin_trans('carmis.fields.goods_id'));
             $grid->column('status')->select(CarmisModel::getStatusMap());
-            $grid->column('is_loop')->display(function($v){return $v==1?admin_trans('carmis.fields.yes'):"";});
+            $grid->column('is_loop')->switch();
             $grid->column('carmi')->limit(20);
             $grid->column('created_at');
             $grid->column('updated_at')->sortable();
@@ -76,7 +74,13 @@ class CarmisController extends AdminController
                     return admin_trans('carmis.fields.status_sold');
                 }
             });
-            $show->field('is_loop')->as(function ($v) {return $v==1?admin_trans('carmis.fields.yes'):"";});
+            $show->field('is_loop')->as(function ($isOpen) {
+                if ($isOpen == CarmisModel::STATUS_OPEN) {
+                    return admin_trans('carmis.fields.yes');
+                } else {
+                    return admin_trans('carmis.fields.no');
+                }
+            });
             $show->field('carmi');
             $show->field('created_at');
             $show->field('updated_at');
