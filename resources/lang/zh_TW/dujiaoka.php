@@ -123,6 +123,7 @@ return [
         'no_related_order_found_for_cache' => '未找到相關訂單快取！',
         'no_related_order_found' => '未找到相關訂單！',
         'new_order_push' => '新訂單通知',
+        'loop_carmis_limit' => '此商品最多購買一件！',
     ],
 
     'equipment' => [
