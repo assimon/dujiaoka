@@ -23,7 +23,6 @@
                                         <li class="nav-item">
                                             <a class="nav-link" data-bs-toggle="tab" href="#order_search_by_browser">{{ __('dujiaoka.order_search_by_browser') }}</a>
                                         </li>
-
                                     </ul>
                                     <div id="searchTabContent" class="tab-content">
                                         <div class="tab-pane fade active show" id="order_search_by_sn">
@@ -37,7 +36,9 @@
                                                     </div>
                                                     <div class="col-12 mt-3">
                                                         <button type="submit" class="btn btn-outline-primary">
-                                                            <i class="ali-icon">&#xe65c;</i> {{ __('dujiaoka.search_now') }}</button>
+                                                            <i class="ali-icon">&#xe65c;</i>
+                                                            {{ __('dujiaoka.search_now') }}
+                                                        </button>
                                                     </div>
                                                 </div>
                                             </form>
@@ -60,7 +61,9 @@
                                                     @endif
                                                     <div class="col-12 mt-3">
                                                         <button type="submit" class="btn btn-outline-primary">
-                                                            <i class="ali-icon">&#xe65c;</i> {{ __('dujiaoka.search_now') }}</button>
+                                                            <i class="ali-icon">&#xe65c;</i>
+                                                            {{ __('dujiaoka.search_now') }}
+                                                        </button>
                                                     </div>
                                                 </div>
                                             </form>
@@ -71,7 +74,9 @@
                                                 <div class="form-group row">
                                                     <div class="col-12 mt-3">
                                                         <button type="submit" class="btn btn-outline-primary">
-                                                            <i class="ali-icon">&#xe65c;</i> {{ __('dujiaoka.search_now') }}</button>
+                                                            <i class="ali-icon">&#xe65c;</i>
+                                                            {{ __('dujiaoka.search_now') }}
+                                                        </button>
                                                     </div>
                                                 </div>
                                             </form>

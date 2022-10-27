@@ -4,6 +4,7 @@
     url('../fonts/iconfont.woff?t=1631608872177') format('woff'),
     url('../fonts/iconfont.ttf?t=1631608872177') format('truetype');
 }
+
 .ali-icon {
     font-family: "iconfont" !important;
     font-style: normal;
@@ -14,6 +15,7 @@
 .fl {
     float: left;
 }
+
 .fr {
     float: right;
 }
@@ -69,4 +71,11 @@
 
 .footer {
     background-color:transparent;
+}
+
+#google_translate_element {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1021;
 }

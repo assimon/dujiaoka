@@ -4,7 +4,7 @@
         <div class="row">
             <div class="col-md-3">
                 <div class="header-left clearfix">
-                    <div class="logo text-center  d-none d-md-block">
+                    <div class="logo text-center d-none d-md-block">
                         <a href="/">
                             <img src="{{ picture_ulr(dujiaoka_config_get('img_logo')) }}" alt="Logo">
                         </a>
@@ -21,12 +21,10 @@
                                     aria-label="Toggle navigation">
                                 <span class="navbar-toggler-icon"></span>
                             </button>
-
                             <div class="collapse navbar-collapse" id="navbarColor">
                                 <ul class="navbar-nav me-auto">
                                     <li class="nav-item">
-                                        <a class="nav-link @if(\Illuminate\Support\Facades\Request::path() == '/') active @endif " href="/">{{__('dujiaoka.home_page')}}
-                                        </a>
+                                        <a class="nav-link @if(\Illuminate\Support\Facades\Request::path() == '/') active @endif " href="/">{{__('dujiaoka.home_page')}}</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link @if(\Illuminate\Support\Facades\Request::url() == url('order-search')) active @endif" href="{{ url('order-search') }}">{{ __('dujiaoka.order_search') }}</a>

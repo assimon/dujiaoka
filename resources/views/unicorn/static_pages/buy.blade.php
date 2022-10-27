@@ -9,13 +9,13 @@
                         <div class="card mt-3">
                             <div class="row no-gutters">
                                 <div class="col-md-4">
-                                    <img src="{{ picture_ulr($picture) }}"
-                                         class="card-img-top p-5" alt="{{ $gd_name }}">
+                                    <img src="{{ picture_ulr($picture) }}" class="card-img-top p-5" alt="{{ $gd_name }}">
                                     @if($type == \App\Models\Goods::AUTOMATIC_DELIVERY)
-                                        <h6><small class="badge bg-success  position-absolute top-0 start-0">
+                                        <h6>
+                                            <small class="badge bg-success  position-absolute top-0 start-0">
                                                 <i class="ali-icon">&#xe7db;</i>
-                                                {{ __('goods.fields.automatic_delivery') }}</small>
-
+                                                {{ __('goods.fields.automatic_delivery') }}
+                                            </small>
                                         </h6>
                                     @else
                                         <h6>
@@ -25,7 +25,6 @@
                                             </small>
                                         </h6>
                                     @endif
-
                                 </div>
                                 <div class="col-md-8">
                                     <div class="card-body p-4">
@@ -34,23 +33,24 @@
                                             <small class="text-muted">{{__('goods.fields.in_stock')}}：{{ $in_stock }}</small>
                                         </h6>
                                         @if($buy_limit_num > 0)
-                                            <h6><small class="badge bg-danger">
-                                                    {{__('dujiaoka.purchase_limit')}}({{ $buy_limit_num }})</small>
+                                            <h6>
+                                                <small class="badge bg-danger">
+                                                    {{__('dujiaoka.purchase_limit')}}({{ $buy_limit_num }})
+                                                </small>
                                             </h6>
                                         @endif
                                         @if(!empty($wholesale_price_cnf) && is_array($wholesale_price_cnf))
                                             <div class="sale">
                                                 @foreach($wholesale_price_cnf as $ws)
                                                     <span class="badge bg-dark mt-1 mb-1">
-                                                     <i class="ali-icon">&#xe77d;</i>
-                                                    {{ __('dujiaoka.by_amount') }}{{ $ws['number'] }}{{ __('dujiaoka.or_the_above') }},{{ __('dujiaoka.each') }}：{{ $ws['price']  }}{{ __('dujiaoka.money_symbol') }}
+                                                        <i class="ali-icon">&#xe77d;</i>
+                                                        {{ __('dujiaoka.by_amount') }}{{ $ws['number'] }}{{ __('dujiaoka.or_the_above') }},{{ __('dujiaoka.each') }}：{{ $ws['price']  }}{{ __('dujiaoka.money_symbol') }}
                                                     </span>
                                                 @endforeach
                                             </div>
                                         @endif
-
                                         <div class="buy-form mt-3">
-                                            <form  action="{{ url('create-order') }}" method="post">
+                                            <form action="{{ url('create-order') }}" method="post">
                                                 {{ csrf_field() }}
                                                 <div class="form-group row">
                                                     <div class="col-12">
@@ -84,7 +84,6 @@
                                                                    id="search_pwd" name="search_pwd" required  placeholder="" value="" >
                                                         </div>
                                                     @endif
-
                                                     @if(dujiaoka_config_get('is_open_img_code') == \App\Models\Goods::STATUS_OPEN)
                                                         <div class="col-12 col-md-6">
                                                             <label for="verifyCode" class=" col-form-label">{{ __('dujiaoka.img_verify_code') }}:</label>
@@ -102,7 +101,6 @@
                                                         </div>
                                                     @endif
                                                 </div>
-
                                                 <div class="form-group row">
                                                     @if($type == \App\Models\Goods::MANUAL_PROCESSING && is_array($other_ipu))
                                                         @foreach($other_ipu as $ipu)
@@ -113,29 +111,28 @@
                                                                        id="{{ $ipu['field'] }}" name="{{ $ipu['field'] }}"  @if($ipu['rule'] !== false) required @endif placeholder="{{ $ipu['desc'] }}">
                                                             </div>
                                                         @endforeach
-
                                                     @endif
-                                                        <div class="col-12">
-                                                            <fieldset>
-                                                                <label for="coupon" class="col-form-label">{{ __('dujiaoka.payment_method') }}：</label>
-                                                                @foreach($payways as $index => $way)
-                                                                    <div class="form-check form-check-inline">
-                                                                        <label class="form-check-label">
-                                                                            <input type="radio" class="form-check-input"
-                                                                                   name="payway" value="{{ $way['id'] }}" @if($index == 0) checked="checked" @endif>
-                                                                            {{ $way['pay_name'] }}
-                                                                        </label>
-                                                                    </div>
-                                                                @endforeach
-
-                                                            </fieldset>
-                                                        </div>
+                                                    <div class="col-12">
+                                                        <label for="coupon" class="col-form-label">{{ __('dujiaoka.payment_method') }}：</label>
+                                                        <fieldset>
+                                                            @foreach($payways as $index => $way)
+                                                                <div class="form-check form-check-inline">
+                                                                    <label class="form-check-label">
+                                                                        <input type="radio" class="form-check-input"
+                                                                                name="payway" value="{{ $way['id'] }}" @if($index == 0) checked="checked" @endif>
+                                                                        {{ $way['pay_name'] }}
+                                                                    </label>
+                                                                </div>
+                                                            @endforeach
+                                                        </fieldset>
+                                                    </div>
                                                     <div class="col-12 mt-2">
-                                                        <button type="submit" id="submit" class="btn btn-outline-primary"> <i
-                                                                class="ali-icon">&#xe7d8;</i> {{ __('dujiaoka.order_now') }}</button>
+                                                        <button type="submit" id="submit" class="btn btn-outline-primary">
+                                                            <i class="ali-icon">&#xe7d8;</i>
+                                                            {{ __('dujiaoka.order_now') }}
+                                                        </button>
                                                     </div>
                                                 </div>
-
                                             </form>
                                         </div>
                                     </div>
@@ -143,9 +140,7 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
-
                 <div class="row justify-content-center">
                     <div class="col-12 col-md-8">
                         <div class="card mt-3 mb-3">
@@ -160,7 +155,6 @@
                 </div>
             </div>
         </div>
-
     </section>
     <!-- main end -->
     <!-- Modal -->
@@ -185,29 +179,28 @@
 @section('js')
 <script src="/assets/unicorn/js/bootstrap-input-spinner.js"></script>
 <script>
-            @if(!empty($buy_prompt))
-            var myModal = new bootstrap.Modal(document.getElementById('staticBackdrop'))
-            $(function(){
-                myModal.show()
-            });
-            @endif
-            $("input[type='number']").inputSpinner();
-            $('#submit').click(function(){
-                if($("input[name='by_amount']").val() > {{ $in_stock }}){
-                    {{-- 数量不允许大于库存 --}}
-                    $(".modal-body").html("{{ __('dujiaoka.prompt.inventory_shortage') }}")
-                    myModal.show()
-                    return false;
-                }
-                @if($buy_limit_num > 0)
-                if($("input[name='by_amount']").val() > {{ $buy_limit_num }}){
-                    {{-- 已超过限购数量 --}}
-                    $(".modal-body").html("{{ __('dujiaoka.prompt.purchase_limit_exceeded') }}")
-                    myModal.show()
-                    return false;
-                }
-                @endif
-            });
+    @if(!empty($buy_prompt))
+        var myModal = new bootstrap.Modal(document.getElementById('staticBackdrop'));
+        $(function() {
+            myModal.show()
+        });
+    @endif
+    $("input[type='number']").inputSpinner();
+    $('#submit').click(function() {
+        if ($("input[name='by_amount']").val() > {{ $in_stock }}) {
+            {{-- 数量不允许大于库存 --}}
+            $(".modal-body").html("{{ __('dujiaoka.prompt.inventory_shortage') }}");
+            myModal.show();
+            return false;
+        }
+        @if($buy_limit_num > 0)
+            if ($("input[name='by_amount']").val() > {{ $buy_limit_num }}) {
+                {{-- 已超过限购数量 --}}
+                $(".modal-body").html("{{ __('dujiaoka.prompt.purchase_limit_exceeded') }}");
+                myModal.show();
+                return false;
+            }
+        @endif
+    });
 </script>
-
 @stop

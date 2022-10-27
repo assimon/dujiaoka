@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_','-',strtolower(app()->getLocale())) }}">
-<body>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -21,11 +20,15 @@
     <link rel="stylesheet" href="/assets/unicorn/css/common.css">
     <link rel="stylesheet" href="/assets/unicorn/css/index.css">
 </head>
+<body>
+@if(dujiaoka_config_get('is_open_google_translate') == \App\Models\BaseModel::STATUS_OPEN)
+    @include('unicorn.layouts.google_translate')
+@endif
 @include('unicorn.layouts._nav')
 @yield('content')
 @include('unicorn.layouts._footer')
-</body>
 @include('unicorn.layouts._script')
 @section('js')
 @show
+</body>
 </html>
