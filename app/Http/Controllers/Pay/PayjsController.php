@@ -57,6 +57,9 @@ class PayjsController extends PayController
         if (!$payGateway) {
             return 'error';
         }
+        if($payGateway->pay_handleroute != '/pay/payjs'){
+            return 'fail';
+        }
         config(['payjs.mchid' => $payGateway->merchant_id, 'payjs.key' => $payGateway->merchant_pem]);
         $notify_info = Payjs::notify();
         $totalFee = bcdiv($notify_info['total_fee'], 100, 2);
