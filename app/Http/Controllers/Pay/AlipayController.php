@@ -78,6 +78,9 @@ class AlipayController extends PayController
         if (!$payGateway) {
             return 'error';
         }
+        if($payGateway->pay_handleroute != '/pay/alipay'){
+            return 'fail';
+        }
         $config = [
             'app_id' => $payGateway->merchant_id,
             'ali_public_key' => $payGateway->merchant_key,
