@@ -79,6 +79,9 @@ class EpusdtController extends PayController
         if (!$payGateway) {
             return 'fail';
         }
+        if($payGateway->pay_handleroute != 'pay/epusdt'){
+            return 'fail';
+        }
         $signature = $this->epusdtSign($data, $payGateway->merchant_id);
         if ($data['signature'] != $signature) { //不合法的数据
             return 'fail';  //返回失败 继续补单

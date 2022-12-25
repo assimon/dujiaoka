@@ -67,6 +67,9 @@ class YipayController extends PayController
         if (!$payGateway) {
             return 'fail';
         }
+        if($payGateway->pay_handleroute != '/pay/yipay'){
+            return 'fail';
+        }
         ksort($data); //重新排序$data数组
         reset($data); //内部指针指向数组中的第一个元素
         $sign = '';

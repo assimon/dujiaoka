@@ -66,6 +66,9 @@ class WepayController extends PayController
         if (!$payGateway) {
             return 'error';
         }
+        if($payGateway->pay_handleroute != '/pay/wepay'){
+            return 'error';
+        }
         $config = [
             'app_id' => $payGateway->merchant_id,
             'mch_id' => $payGateway->merchant_key,

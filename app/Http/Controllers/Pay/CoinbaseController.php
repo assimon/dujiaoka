@@ -92,6 +92,9 @@ class CoinbaseController extends PayController
 		if (!$payGateway) {
 			return 'fail';
 		}
+        if($payGateway->pay_handleroute != 'pay/coinbase'){
+            return 'fail';
+        }
 		$secret = $payGateway->merchant_pem;//共享密钥
 		$sig2 = hash_hmac( 'sha256', $payload, $secret );
         $result_str=array("confirmed","resolved");//返回的结果字符串数组

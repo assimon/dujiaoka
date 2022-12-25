@@ -95,6 +95,9 @@ class PaypalPayController extends PayController
         if (!$payGateway) {
             return 'error';
         }
+        if($payGateway->pay_handleroute != '/pay/paypal'){
+            return 'error';
+        }
         $paypal = new ApiContext(
             new OAuthTokenCredential(
                 $payGateway->merchant_key,
