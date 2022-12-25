@@ -89,7 +89,9 @@ class PaysapiController extends PayController
         if (!$payGateway) {
             return 'error';
         }
-
+        if($payGateway->pay_handleroute != '/pay/paysapi'){
+            return 'error';
+        }
         $temps = md5($data['orderid'] . $data['orderuid'] . $data['paysapi_id'] . $data['price'] . $data['realprice'] . $payGateway->merchant_pem);
         if ($temps != $data['key']){
             return 'fail';
