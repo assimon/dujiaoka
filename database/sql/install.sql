@@ -483,7 +483,7 @@ INSERT INTO `pays` VALUES (20, 'V 免签微信', 'vwx', 1, 1, 'V 免签通讯密
 INSERT INTO `pays` VALUES (21, 'Stripe[微信支付宝]', 'stripe', 1, 1, 'pk开头的可发布密钥', NULL, 'sk开头的密钥', 'pay/stripe', 1, '2020-10-29 13:15:56', '2020-10-29 13:18:29', NULL);
 INSERT INTO `pays` VALUES (22, 'Coinbase[加密货币]', 'coinbase', 1, 3, '费率', 'API密钥', '共享密钥', 'pay/coinbase', 0, '2021-08-15 13:15:56', '2021-10-12 13:15:56', NULL);
 INSERT INTO `pays` VALUES (23, 'Epusdt[trc20]', 'epusdt', 1, 3, 'API密钥', '不填即可', 'api请求地址', 'pay/epusdt', 0, '2022-03-22 13:15:56', '2022-03-22 13:15:56', NULL);
-
+INSERT INTO `pays` VALUES (24, 'stripeCheckout', 'stripeCheckout', '1', '3', 'sk_live_xxxxxxxxxxxxxxxxxxx', '//自行替换k_live_xx和 whsec_xxx开头的密钥\r\n//webhook地址:https://www.baidu.com/pay/stripecheckout/webhook 自行替换域名 \r\n//侦听的事件: \'checkout.session.completed\' \'checkout.session.async_payment_succeeded\'\r\n//默认cny转hkd', 'whsec_xxxxxxxxxxxxxxxxxxx', 'pay/stripecheckout', '0', '2022-04-26 19:27:31', '2022-09-29 21:21:55', NULL);
 -- ----------------------------
 COMMIT;
 
