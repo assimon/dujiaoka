@@ -440,6 +440,38 @@ BEGIN;
 COMMIT;
 
 -- ----------------------------
+-- Table structure for admin_extension_histories
+-- ----------------------------
+DROP TABLE IF EXISTS `admin_extension_histories`;
+CREATE TABLE `admin_extension_histories` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  `type` tinyint(4) NOT NULL DEFAULT '1',
+  `version` varchar(20) NOT NULL DEFAULT '0',
+  `detail` text,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
+
+-- ----------------------------
+-- Table structure for admin_extensions
+-- ----------------------------
+DROP TABLE IF EXISTS `admin_extensions`;
+CREATE TABLE `admin_extensions` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` text,
+  `version` text,
+  `is_enabled` tinyint(4) DEFAULT NULL,
+  `options` text,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+
+SET FOREIGN_KEY_CHECKS = 1;
+
+-- ----------------------------
 -- Table structure for pays
 -- ----------------------------
 DROP TABLE IF EXISTS `pays`;
