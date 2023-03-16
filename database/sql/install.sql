@@ -507,7 +507,6 @@ INSERT INTO `pays` VALUES (7, '码支付支付宝', 'mzfb', 1, 1, '商户号', '
 INSERT INTO `pays` VALUES (8, '码支付微信', 'mwx', 1, 1, '商户号', '', '密钥', '/pay/mapay', 1, '2019-07-11 09:06:23', '2019-07-11 12:13:05', NULL);
 INSERT INTO `pays` VALUES (9, 'Paysapi 支付宝', 'pszfb', 1, 1, '商户号', '', '密钥', '/pay/paysapi', 1, '2019-07-11 09:31:12', '2019-07-11 09:31:12', NULL);
 INSERT INTO `pays` VALUES (10, 'Paysapi 微信', 'pswx', 1, 1, '商户号', '', '密钥', '/pay/paysapi', 1, '2019-07-11 09:31:43', '2019-07-11 09:31:43', NULL);
-INSERT INTO `pays` VALUES (11, '微信扫码', 'wescan', 2, 1, '商户号', '', '密钥', '/pay/wepay', 1, '2019-07-12 07:50:20', '2019-07-12 08:08:26', NULL);
 INSERT INTO `pays` VALUES (12, 'Payjs 微信扫码', 'payjswescan', 1, 1, '商户号', '', '密钥', '/pay/payjs', 1, '2019-07-25 07:28:42', '2019-08-20 12:17:58', NULL);
 INSERT INTO `pays` VALUES (14, '易支付-支付宝', 'alipay', 1, 1, '商户号', '', '密钥', '/pay/yipay', 2, '2020-01-10 15:22:56', '2020-01-11 06:33:07', NULL);
 INSERT INTO `pays` VALUES (15, '易支付-微信', 'wxpay', 1, 1, '商户号', NULL, '密钥', '/pay/yipay', 1, '2020-07-14 16:27:06', NULL, NULL);
