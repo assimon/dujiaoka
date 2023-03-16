@@ -7,6 +7,7 @@
                     <div class="logo text-center  d-none d-md-block">
                         <a href="/">
                             <img src="{{ picture_ulr(dujiaoka_config_get('img_logo')) }}" alt="Logo">
+                            {{ dujiaoka_config_get('text_logo') }}
                         </a>
                     </div>
                 </div>
@@ -15,7 +16,6 @@
                 <div class="header-right clearfix">
                     <nav class="navbar navbar-expand-lg navbar-light">
                         <div class="container-fluid">
-                            <a class="navbar-brand" href="/">{{ dujiaoka_config_get('text_logo') }}</a>
                             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#navbarColor" aria-controls="navbarColor" aria-expanded="false"
                                     aria-label="Toggle navigation">

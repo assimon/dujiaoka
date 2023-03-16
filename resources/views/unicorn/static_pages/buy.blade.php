@@ -50,7 +50,7 @@
                                         @endif
 
                                         <div class="buy-form mt-3">
-                                            <form  action="{{ url('create-order') }}" method="post">
+                                            <form  action="{{ url('create-order') }}" onsubmit="return order()" method="post">
                                                 {{ csrf_field() }}
                                                 <div class="form-group row">
                                                     <div class="col-12">
@@ -101,6 +101,13 @@
                                                             </div>
                                                         </div>
                                                     @endif
+                                                    @if(dujiaoka_config_get('is_open_geetest') == \App\Models\Goods::STATUS_OPEN)
+                                                        <div class="entry code">
+                                                            <p></p>
+                                                            <span id="geetest-captcha"></span>
+                                                            <span id="wait-geetest-captcha" class="show">{{ __('luna.buy_loading_verification') }}</span>
+                                                        </div>
+                                                    @endif
                                                 </div>
 
                                                 <div class="form-group row">
@@ -115,20 +122,15 @@
                                                         @endforeach
 
                                                     @endif
+                                                    
                                                         <div class="col-12">
-                                                            <fieldset>
-                                                                <label for="coupon" class="col-form-label">{{ __('dujiaoka.payment_method') }}：</label>
-                                                                @foreach($payways as $index => $way)
-                                                                    <div class="form-check form-check-inline">
-                                                                        <label class="form-check-label">
-                                                                            <input type="radio" class="form-check-input"
-                                                                                   name="payway" value="{{ $way['id'] }}" @if($index == 0) checked="checked" @endif>
-                                                                            {{ $way['pay_name'] }}
-                                                                        </label>
+                                                            <div class="pay notSelection">
+                                                                <input type="hidden" name="payway" lay-verify="payway" value="{{ $payways[0]['id'] ?? 0 }}">
+                                                                @foreach($payways as $key => $way)
+                                                                    <div class="pay-type @if($key == 0) pay-select @endif" data-type="{{ $way['pay_check'] }}" data-id="{{ $way['id'] }}" data-name="{{ $way['pay_name'] }}">
                                                                     </div>
                                                                 @endforeach
-
-                                                            </fieldset>
+                                                            </div>
                                                         </div>
                                                     <div class="col-12 mt-2">
                                                         <button type="submit" id="submit" class="btn btn-outline-primary"> <i
@@ -184,15 +186,48 @@
 @stop
 @section('js')
 <script src="/assets/unicorn/js/bootstrap-input-spinner.js"></script>
+<script src="https://static.geetest.com/static/tools/gt.js"></script>
 <script>
-            @if(!empty($buy_prompt))
             var myModal = new bootstrap.Modal(document.getElementById('staticBackdrop'))
+            @if(!empty($buy_prompt))
             $(function(){
                 myModal.show()
             });
             @endif
+            gtWidth = window.clientWidth <= 767 ? '100%' : '312px';
+            function submit(){
+                return true;
+            }
+            @if(dujiaoka_config_get('is_open_geetest') == \App\Models\Goods::STATUS_OPEN )
+                var captchaObj;
+                !function (url) {
+                $.ajax({
+                    url     : url + "?t=" + (new Date()).getTime(),
+                    type    : "get",
+                    dataType: "json",
+                    success : function (data) {
+                        initGeetest({
+                            width      : gtWidth,
+                            gt         : data.gt,
+                            challenge  : data.challenge,
+                            product    : "popup",
+                            offline    : !data.success,
+                            new_captcha: data.new_captcha,
+                            lang       : 'zh-cn',
+                            http       : 'http' + '://'
+                        }, function(obj){
+                            captchaObj = obj;
+                            captchaObj.onReady(function () {
+                                $("#wait-geetest-captcha")[0].className = "hide";
+                            });
+                            captchaObj.appendTo("#geetest-captcha");
+                        });
+                    }
+                });
+            }('/check-geetest');
+            @endif
             $("input[type='number']").inputSpinner();
-            $('#submit').click(function(){
+            function order(){
                 if($("input[name='by_amount']").val() > {{ $in_stock }}){
                     {{-- 数量不允许大于库存 --}}
                     $(".modal-body").html("{{ __('dujiaoka.prompt.inventory_shortage') }}")
@@ -207,7 +242,17 @@
                     return false;
                 }
                 @endif
-            });
+                @if(dujiaoka_config_get('is_open_geetest') == \App\Models\Goods::STATUS_OPEN )
+                    var validate = captchaObj.getValidate();
+                    if (!validate) {
+                        $(".modal-body").html("请正确完成行为验证")
+                        myModal.show()
+                        return false;
+                    }
+                    return true;
+                @endif
+                return true;
+            }
 </script>
 
 @stop
