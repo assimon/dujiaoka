@@ -43,6 +43,24 @@ class WepayController extends PayController
                         throw new RuleValidationException(__('dujiaoka.prompt.abnormal_payment_channel') . $e->getMessage());
                     }
                     break;
+                case 'miniapp':
+                    try{
+                        if(!isset($_REQUEST['oid'])){
+                            $url = file_get_contents(env('WECHAT_API_SERVER')."?order=".$order['out_trade_no']);
+                            $url = json_decode($url,true);
+                            if($url['status'] == "error")
+                                throw new RuleValidationException("小程序目标页面不存在。");
+                            $url = $url['message']['msg'];
+                            $sHtml = "<script>window.location.href=\"".$url."\"</script>";
+                            return $sHtml;
+                        }
+                        $order['openid'] = $_REQUEST['oid'];
+                        $result = Pay::wechat($config)->miniapp($order)->toArray();
+                        return json_encode($result);
+                    } catch (\Exception $e) {
+                        throw new RuleValidationException(__('dujiaoka.prompt.abnormal_payment_channel') . $e->getMessage());
+                    }
+                    break;        
 
             }
         } catch (RuleValidationException $exception) {
