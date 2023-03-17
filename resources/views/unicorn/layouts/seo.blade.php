@@ -16,8 +16,8 @@
     @if(\request()->getScheme() == "https")
         <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     @endif
-    <link rel="stylesheet" href="assets/unicorn/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/unicorn/css/index.css">
+    <link rel="stylesheet" href="/assets/unicorn/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/unicorn/css/index.css">
 </head>
 @include('unicorn.layouts._nav')
 @yield('content')
