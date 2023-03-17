@@ -231,7 +231,12 @@ class OrderProcessService
         $couponPrice = 0;
         // 优惠码优惠价格
         if ($this->coupon) {
-            $couponPrice =  $this->coupon->discount;
+            if($this->coupon->type == Coupon::TYPE_FIXED){
+                $couponPrice =  $this->coupon->discount;
+            }else{
+                $totalPrice = $this->calculateTheTotalPrice(); // 总价
+                $couponPrice = $totalPrice - bcmul($totalPrice, $this->coupon->discount, 2); //计算折扣
+            }
         }
         return $couponPrice;
     }
@@ -353,12 +358,9 @@ class OrderProcessService
             // 保存订单
             $order->save();
             // 如果有用到优惠券
-            if ($this->coupon) {
-                // 设置优惠码已经使用
-                $this->couponService->used($this->coupon->coupon);
-                // 使用次数-1
-                $this->couponService->retDecr($this->coupon->coupon);
-            }
+            if ($this->coupon) 
+                $this->couponService->retDecr($this->coupon->coupon);// 使用次数-1
+            
             // 将订单加入队列 x分钟后过期
             $expiredOrderDate = dujiaoka_config_get('order_expire_time', 5);
             OrderExpired::dispatch($order->order_sn)->delay(Carbon::now()->addMinutes($expiredOrderDate));

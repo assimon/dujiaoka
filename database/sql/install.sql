@@ -244,7 +244,7 @@ DROP TABLE IF EXISTS `coupons`;
 CREATE TABLE `coupons` (
   `id` int NOT NULL AUTO_INCREMENT,
   `discount` decimal(10,2) NOT NULL DEFAULT '0.00' COMMENT '优惠金额',
-  `is_use` tinyint(1) NOT NULL DEFAULT '1' COMMENT '是否已经使用 1未使用 2已使用',
+  `type` tinyint(1) NOT NULL DEFAULT '1' COMMENT '优惠类型 1百分比优惠 2固定金额优惠',
   `is_open` tinyint(1) NOT NULL DEFAULT '1' COMMENT '是否启用 1是 0否',
   `coupon` varchar(150) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL COMMENT '优惠码',
   `ret` int NOT NULL DEFAULT '0' COMMENT '剩余使用次数',
