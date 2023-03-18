@@ -92,8 +92,8 @@ class GoodsController extends AdminController
         return Show::make($id, new Goods(), function (Show $show) {
             $show->id('id');
             $show->field('gd_name');
-            $form->field('gd_description');
-            $form->field('gd_keywords');
+            $show->field('gd_description');
+            $show->field('gd_keywords');
             $show->field('picture')->image();
             $show->field('retail_price');
             $show->field('actual_price');

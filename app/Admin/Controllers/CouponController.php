@@ -27,7 +27,7 @@ class CouponController extends AdminController
             $grid->model()->orderBy('id', 'DESC');
             $grid->column('id')->sortable();
             $grid->column('discount');
-            $grid->column('is_use')->select(CouponModel::getStatusUseMap());
+            $grid->column('type')->select(CouponModel::getTypeMap());
             $grid->column('is_open')->switch();
             $grid->column('coupon')->copyable();
             $grid->column('ret');
@@ -65,11 +65,11 @@ class CouponController extends AdminController
         return Show::make($id, new Coupon(), function (Show $show) {
             $show->field('id');
             $show->field('discount');
-            $show->field('is_use')->as(function ($isUse) {
-                if ($isUse == CouponModel::STATUS_UNUSED) {
-                    return admin_trans('coupon.fields.status_unused');
+            $show->field('type')->as(function ($type) {
+                if ($type == CouponModel::TYPE_PERCENT) {
+                    return admin_trans('coupon.fields.type_percent');
                 } else {
-                    return admin_trans('coupon.fields.status_use');
+                    return admin_trans('coupon.fields.type_fixed');
                 }
             });
             $show->field('is_open')->as(function ($isOPen) {
@@ -107,7 +107,7 @@ class CouponController extends AdminController
             $form->currency('discount')->default(0)->required();
             $form->text('coupon')->required();
             $form->number('ret')->default(1);
-            $form->radio('is_use')->options(CouponModel::getStatusUseMap())->default(CouponModel::STATUS_UNUSED);
+            $form->select('type')->options(CouponModel::getTypeMap())->default(CouponModel::TYPE_PERCENT);
             $form->switch('is_open')->default(CouponModel::STATUS_OPEN);
             $form->display('created_at');
             $form->display('updated_at');

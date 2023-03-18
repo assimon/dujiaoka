@@ -35,18 +35,6 @@ class CouponService
     }
 
     /**
-     * 设置优惠券已使用
-     * @param string $coupon
-     * @return bool
-     */
-    public function used(string $coupon): bool
-    {
-        return Coupon::query()
-            ->where('coupon',  $coupon)
-            ->update(['is_use' => Coupon::STATUS_USE]);
-    }
-
-    /**
      * 设置优惠券使用次数 -1
      * @param string $coupon
      * @return int

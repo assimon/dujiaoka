@@ -11,25 +11,8 @@ class Coupon extends BaseModel
 
     protected $table = 'coupons';
 
-    /**
-     * 一次性使用
-     */
-    const TYPE_ONE_TIME = 1;
-
-    /**
-     * 重复使用
-     */
-    const TYPE_REPEAT = 2;
-
-    /**
-     * 未使用
-     */
-    const STATUS_UNUSED = 1;
-
-    /**
-     * 已使用
-     */
-    const STATUS_USE = 2;
+    const TYPE_PERCENT = 1; //系数优惠
+    const TYPE_FIXED = 2; //固定金额优惠
 
     /**
      * 关联商品
@@ -46,11 +29,11 @@ class Coupon extends BaseModel
     }
 
 
-    public static function getStatusUseMap()
+    public static function getTypeMap()
     {
         return [
-            self::STATUS_USE => admin_trans('coupon.fields.status_use'),
-            self::STATUS_UNUSED => admin_trans('coupon.fields.status_unused'),
+            self::TYPE_PERCENT => admin_trans('coupon.fields.type_percent'),
+            self::TYPE_FIXED => admin_trans('coupon.fields.type_fixed'),
         ];
     }
 

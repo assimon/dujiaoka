@@ -9,8 +9,6 @@
         <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     @endif
     <link rel="stylesheet" href="/assets/unicorn/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/assets/unicorn/css/base.css">
-    <link rel="stylesheet" href="/assets/unicorn/css/common.css">
     <link rel="stylesheet" href="/assets/unicorn/css/index.css">
 </head>
 

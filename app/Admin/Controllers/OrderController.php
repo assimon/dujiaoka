@@ -147,7 +147,7 @@ class OrderController extends AdminController
             $form->display('pay.pay_name', admin_trans('order.fields.pay_id'));
             $form->radio('status')->options(OrderModel::getStatusMap());
             $form->text('search_pwd');
-            $form->display('trade_no');
+            $form->text('trade_no');
             $form->radio('type')->options(OrderModel::getTypeMap());
             $form->display('created_at');
             $form->display('updated_at');

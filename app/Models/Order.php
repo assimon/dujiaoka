@@ -143,4 +143,29 @@ class Order extends BaseModel
         return $this->belongsTo(Pay::class, 'pay_id');
     }
 
+    /**
+     * 订单状态更新时处理
+     *
+     * @param Order $order
+     * @return mixed
+     *
+     * @author    outtime<i@treeo.cn>
+     * @copyright outtime<i@treeo.cn>
+     * @link      https://outti.me
+     */
+    public function setStatusAttribute($value){
+        // 如果订单状态不是待支付，或者状态不是已完成，直接返回
+        if($this->status != Order::STATUS_WAIT_PAY || intval($value) != Order::STATUS_COMPLETED){
+            $this->attributes['status'] = $value;
+            return;
+        }
+        // 如果订单类型不是自动发货，直接返回
+        if(!empty($this->info) || $this->type != Order::AUTOMATIC_DELIVERY){
+            $this->attributes['status'] = $value;
+            return;
+        }
+        // 手动补单进行发货处理
+        if($value == Order::STATUS_COMPLETED)
+            app('Service\OrderProcessService')->completedOrder($this->order_sn, $this->actual_price);
+    }
 }

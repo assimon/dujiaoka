@@ -1,51 +1,325 @@
+@font-face {
+	font-family: 'iconfont';
+	src: url('../fonts/iconfont.woff2?t=1631608872177') format('woff2'),
+    url('../fonts/iconfont.woff?t=1631608872177') format('woff'),
+    url('../fonts/iconfont.ttf?t=1631608872177') format('truetype');
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+em,
+i {
+	font-style: normal;
+}
+
+li {
+	list-style: none;
+}
+
+ol li{
+	list-style-type: decimal;
+}
+
+ul li{
+	list-style-type: disc;
+}
+.good-card li{
+    list-style: none;
+}
+
+
+img {
+	border: 0;
+	vertical-align: middle;
+	max-width: 100%;
+	height: auto;
+}
+
+button {
+	cursor: pointer;
+}
+
+a {
+	color: #666;
+	text-decoration: none;
+}
+
+button,
+input {
+	border: 0;
+	outline: none;
+}
+
+body {
+	-webkit-font-smoothing: antialiased;
+	background-color: #fff;
+}
+
+.hide,
+.none {
+	display: none;
+}
+
+.ali-icon {
+	font-family: "iconfont" !important;
+	font-style: normal;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.fl {
+	float: left;
+}
+
+.fr {
+	float: right;
+}
+
+/* 页面装载 */
+.page-wrapper {
+	background-color: #fff;
+}
+
+.header-top {
+	background-color: #f1f1f1;
+	border-bottom: 1px solid #dadada;
+	-webkit-box-shadow: 0 -1px 3px rgb(0 0 0 / 3%) inset;
+	box-shadow: 0 -1px 3px rgb(0 0 0 / 3%) inset;
+	font-size: 14px;
+}
+
+.logo {
+	filter: brightness(0);
+}
+
+.header-top-right-btns {
+	float: right;
+	text-align: center;
+	font-size: 0;
+}
+
+.header-top-right-btns .btn-group>button {
+	padding: 8px 10px;
+	margin: 0;
+	text-align: center;
+	color: #999;
+	font-size: 14px;
+	border-right: 1px solid #e3e3e3;
+	border-left: 1px solid transparent;
+}
+
+.btn-group>button:hover {
+	color: #e84c3d;
+	background-color: #fafafa;
+	border-right-color: #e3e3e3;
+}
+
+.header-top-right-btns .btn-group:last-child>button {
+	border-right-color: transparent;
+}
+
+.header {
+	padding: 20px 0;
+	border-bottom: 1px solid #eaeaea;
+	background: rgba(255, 255, 255, 0.8);
+	backdrop-filter: blur(12px);
+	-webkit-backdrop-filter: blur(12px);
+}
+
+.header li{
+    list-style: none;
+}
+
+.logo img {
+	height: 52px;
+}
+
+.footer {
+	background-color: transparent;
+}
+
+/* pay-type */
+.pay {
+	margin-top: 20px;
+	border-top: 1px solid #f7f7f7;
+	padding-top: 10px;
+}
+
+.pay-type {
+	display: inline-block;
+	text-align: center;
+	background: #f7f7f7;
+	border: 2px solid #e7e7e7;
+	border-radius: 5px;
+	position: relative;
+	padding: 7px 10px;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	cursor: pointer;
+}
+
+.pay-type svg {
+	vertical-align: middle;
+}
+
+.pay-select {
+	border: 2px solid rgb(51, 105, 255);
+	background: rgb(248, 250, 255);
+	color: rgb(51, 105, 255);
+}
+
 .recommend p {
-    font-size: 14px;
+	font-size: 14px;
 }
 
 .category {
-    padding: 40px 0;
+	padding: 40px 0;
 }
 
 .separator {
-    display: block;
-    width: 60px;
-    height: 5px;
-    margin: 15px auto 15px;
-    background-color: #cccccc;
-    position: relative;
-    border: 1px solid #cccccc;
+	display: block;
+	width: 60px;
+	height: 5px;
+	margin: 15px auto 15px;
+	background-color: #cccccc;
+	position: relative;
+	border: 1px solid #cccccc;
 }
 
 .separator:after {
-    width: 30px;
-    height: 5px;
-    background: #333333;
-    position: absolute;
-    top: -1px;
-    left: -1px;
-    content: "";
+	width: 30px;
+	height: 5px;
+	background: #333333;
+	position: absolute;
+	top: -1px;
+	left: -1px;
+	content: "";
 }
 
 .category-menus li {
-    display: inline-block;
-    margin: 4px;
+	display: inline-block;
+	margin: 4px;
 }
 
 .goods-buy {
-    line-height: 40px;
-    font-size: 13px;
+	line-height: 40px;
+	font-size: 13px;
 }
-
 
 .goods-introduction-cate {
-    display: -webkit-box;
-    overflow: hidden;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
+	display: -webkit-box;
+	overflow: hidden;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
 }
 
-
-
 .buy-form label {
-    font-size: 16px;
+	font-size: 16px;
+}
+
+@media (prefers-color-scheme:dark) {
+	body {
+		background: #292827;
+		color: #ffffff;
+	}
+
+	a {
+		color: #cccccc;
+	}
+
+	.header {
+		background: rgba(46,45,41, 0.8);
+		border-bottom: 1px solid #343434;
+	}
+
+	.navbar-light .navbar-brand {
+		color: #fff;
+	}
+
+	.navbar-light .navbar-brand:focus, .navbar-light .navbar-brand:hover {
+		color: #fff;
+	}
+
+	.navbar-light .navbar-nav .nav-link {
+		color: rgba(255, 255, 255, .6);
+	}
+
+	.navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover {
+		color: #fff;
+	}
+
+	.navbar-light .navbar-nav .nav-link.disabled {
+		color: rgba(255, 255, 255, .25);
+	}
+
+	.navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .show > .nav-link {
+		color: #fff;
+	}
+
+	.navbar-light .navbar-toggler {
+		color: rgba(255, 255, 255, .6);
+		border-color: rgba(255, 255, 255, .1);
+	}
+
+	.navbar-light .navbar-toggler-icon {
+		background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.6%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+	}
+
+	.navbar-light .navbar-text {
+		color: rgba(255, 255, 255, .6);
+	}
+
+	.navbar-light .navbar-text a, .navbar-light .navbar-text a:focus, .navbar-light .navbar-text a:hover {
+		color: #fff;
+	}
+
+	.card {
+		background-color: #292827;
+		border: 1px solid rgba(255,255,255,.125);
+	}
+
+	.form-control {
+		color: #bbbbbb;
+		background-color: #292827;
+		border: 1px solid rgba(255, 255, 255, 0.1);
+	}
+
+	.form-control:focus {
+		background-color: #292827;
+		border-color: #3b3b3b;
+		box-shadow: 0 0 0 .25rem rgba(69, 130, 236, .25);
+		color: #bbbbbb;
+	}
+
+	.page-wrapper {
+		background-color: #292827;
+	}
+
+	.btn-outline-dark {
+		color: #f8f9fa;
+		background-color: transparent;
+	}
+
+	.pay-type {
+		background: #202020;
+		border: 2px solid #424242;
+	}
+
+	.pay-select {
+		border: 2px solid rgb(51, 105, 255);
+		background: rgb(10, 10, 10);
+	}
+
+	.logo {
+		filter: brightness(1);
+	}
+
+	.modal-content {
+		background-color: #181818;
+		border: 1px solid rgba(70, 70, 70, 0.2);
+	}
 }

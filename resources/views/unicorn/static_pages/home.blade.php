@@ -100,6 +100,9 @@
                                                             {{ __('dujiaoka.home_discount') }}
                                                         </button>
                                                     @endif
+                                                        <button type="button" class="btn btn-sm btn-outline-primary">
+                                                            <strong>{{__('goods.fields.sales_volume')}}：{{ $goods['sales_volume'] }}</strong>
+                                                        </button>                                                    
                                                     <h6 class="mt-2"><small class="text-muted">{{__('goods.fields.in_stock')}}：{{ $goods['in_stock'] }}</small></h6>
                                                     <a href="{{ url("/buy/{$goods['id']}") }}" class="btn btn-primary fr">
                                                         <i class="ali-icon">&#xe7d8;</i>
@@ -149,6 +152,9 @@
                                                                 {{ __('dujiaoka.home_discount') }}
                                                             </button>
                                                         @endif
+                                                        <button type="button" class="btn btn-sm btn-outline-primary">
+                                                            <strong>{{__('goods.fields.sales_volume')}}：{{ $goods['sales_volume'] }}</strong>
+                                                        </button>
                                                     <h6 class="mt-2"><small class="text-muted">{{__('goods.fields.in_stock')}}：{{ $goods['in_stock'] }}</small></h6>
                                                     <a href="{{ url("/buy/{$goods['id']}") }}" class="btn btn-primary fr">
                                                         <i class="ali-icon">&#xe7d8;</i>

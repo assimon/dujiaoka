@@ -7,6 +7,16 @@
 <a href="https://shang.qq.com/wpa/qunwpa?idkey=37b6b06f7c941dae20dcd5784088905d6461064d7f33478692f0c4215546cee0"><img src="https://img.shields.io/badge/QQ%E7%BE%A4-568679748-green" alt="QQ群：568679748"></a>
 </p>
 
+## 修改提要
+这是一份独角数卡的官方魔改版，以下是相对于[dc53741](https://github.com/assimon/dujiaoka/commit/dc53741e275007b8c81c43319ee657ef011bad93)的更改：
+
+- 补充插件表结构
+- Unicorn模板支持深色模式，优化样式，显示销量，支持极验验证
+- 新增支付宝WAP支付，微信小程序支付[（开发参考）](https://github.com/outtimes/dujiaoka/wiki/微信小程序支付开发说明)
+- 优先全站HTTPS
+- 支持手动补单
+- 优惠券支持系数优惠/固定金额优惠
+
 ## 独角数卡
 
 开源式站长自动化售货解决方案、高效、稳定、快速！
