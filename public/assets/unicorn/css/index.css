@@ -35,6 +35,8 @@ ul li{
 img {
 	border: 0;
 	vertical-align: middle;
+	max-width: 100%;
+	height: auto;
 }
 
 button {
