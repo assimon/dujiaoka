@@ -132,12 +132,17 @@ if (! function_exists('format_charge_input')) {
         foreach ($inputArr as $key => $val) {
             if ($val != "") {
                 $explodeFormat = explode('=', delete_html_code($val));
-                if (count($explodeFormat) != 3) {
+                if (count($explodeFormat) < 3) {
                     return null;
                 }
                 $formatData[$key]['field'] = $explodeFormat[0];
                 $formatData[$key]['desc'] = $explodeFormat[1];
                 $formatData[$key]['rule'] = filter_var($explodeFormat[2], FILTER_VALIDATE_BOOLEAN);
+                if(count($explodeFormat) > 3){
+                    $formatData[$key]['placeholder'] = $explodeFormat[3];
+                }else{
+                    $formatData[$key]['placeholder'] = $formatData[$key]['desc'];
+                }
             }
         }
         return $formatData;
