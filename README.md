@@ -1,15 +1,16 @@
-<p align="center"><img src="https://i.loli.net/2020/04/07/nAzjDJlX7oc5qEw.png" width="400"></p>
+![](https://files.mdnice.com/user/39773/dc2143d7-422a-4fe3-8bcb-692e8c6cbd9a.png)
 
 <p align="center">
-<a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/license-MIT-blue" alt="license MIT"></a>
-<a href="https://github.com/assimon/dujiaoka/releases/tag/2.0.4"><img src="https://img.shields.io/badge/version-2.0.4-red" alt="version 2.0.4"></a>
-<a href="https://www.php.net/releases/7_4_0.php"><img src="https://img.shields.io/badge/PHP-7.4-lightgrey" alt="php74"></a>
-<a href="https://shang.qq.com/wpa/qunwpa?idkey=37b6b06f7c941dae20dcd5784088905d6461064d7f33478692f0c4215546cee0"><img src="https://img.shields.io/badge/QQ%E7%BE%A4-568679748-green" alt="QQ群：568679748"></a>
+<img alt="GitHub" src="https://img.shields.io/github/license/outtimes/dujiaoka?style=for-the-badge">
+<img alt="GitHub tag (latest by date)" src="https://img.shields.io/github/v/tag/outtimes/dujiaoka?label=version&style=for-the-badge">
+<img alt="PHP Version" src="https://img.shields.io/static/v1?label=PHP&message=7.4&style=for-the-badge">
+<img alt="Telegram" src="https://img.shields.io/static/v1?label=Telegram&logo=Telegram&message=@dujiaoka&style=for-the-badge&color=blue&&link=https://t.me/dujiaoka">
 </p>
 
-## 修改提要
-这是一份独角数卡的官方魔改版，以下是相对于[dc53741](https://github.com/assimon/dujiaoka/commit/dc53741e275007b8c81c43319ee657ef011bad93)的更改：
+## :bulb:版本介绍
+这是一份基于[独角数卡](https://github.com/assimon/dujiaoka)在[dc53741](https://github.com/assimon/dujiaoka/commit/dc53741e275007b8c81c43319ee657ef011bad93)基础上修改的版本。此版本在部分功能上与原版有所修改，故请以本仓库的Wiki/Issues得到的反馈为准。
 
+以下是目前几个比较重要的更改：
 - 补充插件表结构
 - Unicorn模板支持深色模式，优化样式，显示销量，支持极验验证
 - 新增支付宝WAP支付，微信小程序支付[（开发参考）](https://github.com/outtimes/dujiaoka/wiki/微信小程序支付开发说明)
@@ -17,62 +18,62 @@
 - 支持手动补单
 - 优惠券支持系数优惠/固定金额优惠
 
-## 独角数卡
+## :open_book:关于此项目
 
-开源式站长自动化售货解决方案、高效、稳定、快速！
+- 程序框架使用 [Laravel](https://github.com/laravel/laravel)
+- 后台系统框架 [Dcat Admin](http://www.dcatadmin.com)
+- 部分支付系统集成 [yansongda/Pay](https://github.com/yansongda/pay)
+- 区块链代币支付系统集成 [Tokenpay](https://github.com/LightCountry/TokenPay)
 
-- 框架来自：[laravel/framework](https://github.com/laravel/laravel).
-- 后台管理系统：[laravel-admin](https://laravel-admin.org/).
-- 前端ui [bootstrap](https://getbootstrap.com/).
+### 项目原版作者：
+- [Assimon](https://github.com/assimon)
 
-核心贡献者：
+#### 核心贡献者：
 - [iLay1678](https://github.com/iLay1678)
 
-模板贡献者：
+#### 模板贡献者：
 - [Julyssn](https://github.com/Julyssn) 模板`luna`作者
 - [bimoe](https://github.com/bimoe) 模板`hyper`作者
 
-鸣谢以上开源项目及贡献者，排名不分先后.
+鸣谢以上开源项目及贡献者，排名不分先后。
 
-## 系统优势
+## :thinking:为什么选择独角数卡
 
-采用业界流行的`laravel`框架，安全及稳定性提升。    
-支持`自定义前端模板`功能   
-支持`国际化多语言包`（需自行翻译）  
-代码全部开源，所有扩展包采用composer加载，代码所有内容可溯源！     
-长期技术更新支持！
+- 基于`Laravel`框架开发，优雅且带来安全稳定的系统架构。
+- 简洁优雅的`系统模板`，能自行上手客制化。
+- 支持`多国语言扩展`，能自行将独角数卡翻译到目标语言。
+- 代码*全开源*，所有信息均安全存储在您的服务器上。
+- `5K+`的用户的选择，众多资深使用者为你答疑解惑（不是一定）。
 
-## 写在前面
-本程序有一定的上手难度（对于小白而言），需要您对linux服务器有基本的认识和操作度   
-且本程序不支持虚拟主机，大概率也不支持windows服务器！  
-如果您连宝塔、phpstudy、AppNode等一键可视化服务器面板也未曾使用或听说过，那么我大概率劝您放弃本程序！  
-如果您觉得部署有难度，建议仔细阅读（仔细！）宝塔视频安装篇教程，里面有保姆级的安装流程和视频教程！   
-认真观看部署教程我可以保证您98%可能性能部署成功！  
-勤动手，多思考，善研究！
+## :wink:在开始之前你需要知道
 
-## 使用交流      
-Telegram: [https://t.me/dujiaoka](https://t.me/dujiaoka)    
-关注Telegram官方频道：[https://t.me/dujiaoshuka](https://t.me/dujiaoshuka) (系统更新通知，bug更新，重大事件推送)
+- 本程序有一定的上手安装难度，请具备Linux服务器相关的基础知识，跟随Wiki一步一步安装基本不会出现问题。
+- 本程序不支持虚拟主机，未在Windows服务器上进行测试，请直接使用Linux服务器完成搭建。
+- 本程序*暂不支持*PHP8，请使用PHP7.4及以上的版本
+- 提问，没人回答？买别人的时间。
 
-## 角集-为你的梦想助力(站点推广/商品求购/资源比价等)
-Telegram官方频道：[https://t.me/dujiaoji](https://t.me/dujiaoji)   
+## :speech_balloon:使用交流
+- 原作者的[Telegram群组](https://t.me/dujiaoka)
+- 原作者的[Telegram官方频道](https://t.me/dujiaoshuka)
 
-## 🔥推荐服务器 
-- （美国免备案vps，配置2核2G仅需`20.98$`≈`145RMB`一年/支持支付宝付款）[👉🏻点我直达](https://my.racknerd.com/aff.php?aff=2745&pid=681)
+## :eye_speech_bubble:相关推荐
+- [两米商店 2MStore](https://buy.2m.pub) ，也可视为前台演示站。
+> 以下为原作者推荐
+> - （美国免备案vps，配置2核2G仅需`20.98$`≈`145RMB`一年/支持支付宝付款）[👉🏻点我直达](https://my.racknerd.com/aff.php?aff=2745&pid=681)
 
-## 界面尝鲜
-【官方unicorn模板】
-![首页.png](https://i.loli.net/2021/09/14/NZIl6s9RXbHwkmA.png)
+## :open_mouth:快速预览
+【官方`Unicorn`模板首页】
+![首页](https://files.mdnice.com/user/39773/7669cf85-4e93-4572-a1b8-f11170c50b90.png)
 
-【luna模板】 
-![首页.png](https://i.loli.net/2020/10/24/ElKwJFsQy4a9fZi.png)
+【`hyper`模板】  
+![](https://files.mdnice.com/user/39773/5f649d68-a1ce-4911-accb-2b7467e8fa4f.png)
 
-【hyper模板】  
-![首页.png](https://i.loli.net/2021/01/06/nHCSV5PdJIzT6Gy.png)
+【`luna`模板】 
+![](https://files.mdnice.com/user/39773/10ffe97d-fb17-4f69-bb4e-e82f9befdc3d.png)
 
-## 安装篇
+## :compass:相关教程
+> 以下为原作者提供
 - [Linux环境安装](https://github.com/assimon/dujiaoka/wiki/linux_install)
-- [Docker安装](https://github.com/assimon/dujiaoka/wiki/docker_install)
 - [2.x版本宝塔安装教程](https://github.com/assimon/dujiaoka/wiki/2.x_bt_install)
 - [1.x版本宝塔环境安装](https://github.com/assimon/dujiaoka/wiki/1.x_bt_install)
 - [常见问题锦集-你遇到的问题大部分能在这里找到解决！！](https://github.com/assimon/dujiaoka/wiki/problems)
@@ -80,32 +81,19 @@ Telegram官方频道：[https://t.me/dujiaoji](https://t.me/dujiaoji)
 - [各支付对应后台配置](https://github.com/assimon/dujiaoka/wiki/problems#各支付对应配置)
 - [视频教程及工具集合](https://pan.dujiaoka.com)
 
-## 支付接口已集成
-- [x] 支付宝当面付
-- [x] 支付宝PC支付
-- [x] 支付宝手机支付
-- [x] [payjs微信扫码](http://payjs.cn).
-- [x] [Paysapi(支付宝/微信)](https://www.paysapi.com/).
+## :bank:支持的支付接口
+- [x] 支付宝当面付、PC网站、手机网站
+- [x] 微信Native、H5、小程序
+- [x] Payjs
 - [x] 码支付(QQ/支付宝/微信)
-- [x] 微信企业扫码支付
 - [x] [Paypal支付(默认美元)](https://www.paypal.com)
 - [x] V免签支付
 - [x] 全网易支付支持(通用彩虹版)
 - [x] [stripe](https://stripe.com/)
 
-## 基本环境要求
+## :earth_asia:PHP环境要求
 
-- (PHP + PHPCLI) version = 7.4
-- Nginx version >= 1.16
-- MYSQL version >= 5.6
-- Redis (高性能缓存服务)
-- Supervisor (一个python编写的进程管理服务)
-- Composer (PHP包管理器)
-- Linux (Win下未测试，建议直接Linux)
-
-## PHP环境要求
-
-星号(*)为必须执行的要求，其他为建议内容
+星号(\*)为*必须*执行的要求，其他为建议内容
 
 - **\*安装`fileinfo`扩展**
 - **\*安装`redis`扩展**
@@ -113,29 +101,19 @@ Telegram官方频道：[https://t.me/dujiaoji](https://t.me/dujiaoji)
 - **\*需要开启的函数：`putenv`，`proc_open`，`pcntl_signal`，`pcntl_alarm`**
 - 安装`opcache`扩展
 
-## 默认后台
+## :cop:默认管理信息（请务必安装完后修改）
 
 - 后台路径 `/admin`
 - 默认管理员账号 `admin`
 - 默认管理员密码 `admin`
 
-## 免责声明
+## :eyes:免责声明
 
-独角数卡程序是免费开源的产品，仅用于学习交流使用！       
-不可用于任何违反`中华人民共和国(含台湾省)`或`使用者所在地区`法律法规的用途。      
+独角数卡是一款用于学习PHP搭建自动化销售系统的程序案例，仅供学习交流使用。
+严禁用于用于任何违反`中华人民共和国(含台湾省)`或`使用者所在地区`法律法规的用途。      
 因为作者即本人仅完成代码的开发和开源活动`(开源即任何人都可以下载使用)`，从未参与用户的任何运营和盈利活动。    
 且不知晓用户后续将`程序源代码`用于何种用途，故用户使用过程中所带来的任何法律责任即由用户自己承担。      
 
-
-## Thanks
-
-Thanks JetBrains for the free open source license
-
-<a href="https://www.jetbrains.com/?from=gev" target="_blank">
-	<img src="https://i.loli.net/2021/02/08/2aejB8rwNmQR7FG.png" width = "260" align=center />
-</a>
-
-
-## License
+## :raised_hands:License
 
 独角数卡 DJK Inc [MIT license](https://opensource.org/licenses/MIT).
