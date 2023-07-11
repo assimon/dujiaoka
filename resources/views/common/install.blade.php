@@ -778,7 +778,7 @@ TkSuQmCC" />
                         .text('安装中...')
                         .prop('disabled', true);
                     var adminurl = $("input[name='admin_path']").val()
-                    $.post('{{ url('/do-install') }}', $(this).serialize())
+                    $.post('/do-install', $(this).serialize())
                         .done(function (ret) {
                             if (ret === 'success') {
                                 $('#error').hide();
