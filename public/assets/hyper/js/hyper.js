@@ -11,6 +11,7 @@ $(function() {
 	let paySvgArr = {
 		zfbf2f     : alipaySvg,
 		aliweb     : alipaySvg,
+		aliwap     : alipaySvg,
 		mqq        : qqSvg,
 		mzfb       : alipaySvg,
 		mwx        : weChatSvg,
