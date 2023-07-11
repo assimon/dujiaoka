@@ -489,12 +489,12 @@ INSERT INTO `pays` VALUES (25,'USDT-TRC20', 'tokenpay-usdt-trc', 1, 3, 'USDT_TRC
 INSERT INTO `pays` VALUES (26,'ETH', 'tokenpay-eth', 1, 3, 'EVM_ETH_ETH', '你的API密钥', 'https://token-pay.xxx.com', 'pay/tokenpay', 1, now(), now(), NULL);
 INSERT INTO `pays` VALUES (27,'USDT-ERC20', 'tokenpay-usdt-eth', 1, 3, 'EVM_ETH_USDT_ERC20', '你的API密钥', 'https://token-pay.xxx.com', 'pay/tokenpay', 1, now(), now(), NULL);
 INSERT INTO `pays` VALUES (28,'USDC-ERC20', 'tokenpay-usdc-eth', 1, 3, 'EVM_ETH_USDC_ERC20', '你的API密钥', 'https://token-pay.xxx.com', 'pay/tokenpay', 1, now(), now(), NULL);
-INSERT INTO `pays` VALUES (26,'BNB', 'tokenpay-bnb', 1, 3, 'EVM_BSC_BNB', '你的API密钥', 'https://token-pay.xxx.com', 'pay/tokenpay', 1, now(), now(), NULL);
-INSERT INTO `pays` VALUES (27,'USDT-BSC', 'tokenpay-usdt-bsc', 1, 3, 'EVM_BSC_USDT_BEP20', '你的API密钥', 'https://token-pay.xxx.com', 'pay/tokenpay', 1, now(), now(), NULL);
-INSERT INTO `pays` VALUES (28,'USDC-BSC', 'tokenpay-usdc-bsc', 1, 3, 'EVM_BSC_USDC_BEP20', '你的API密钥', 'https://token-pay.xxx.com', 'pay/tokenpay', 1, now(), now(), NULL);
-INSERT INTO `pays` VALUES (26,'MATIC', 'tokenpay-matic', 1, 3, 'EVM_Polygon_MATIC', '你的API密钥', 'https://token-pay.xxx.com', 'pay/tokenpay', 1, now(), now(), NULL);
-INSERT INTO `pays` VALUES (27,'USDT-Polygon', 'tokenpay-usdt-polygon', 1, 3, 'EVM_Polygon_USDT_ERC20', '你的API密钥', 'https://token-pay.xxx.com', 'pay/tokenpay', 1, now(), now(), NULL);
-INSERT INTO `pays` VALUES (28,'USDC-Polygon', 'tokenpay-usdc-polygon', 1, 3, 'EVM_Polygon_USDC_ERC20', '你的API密钥', 'https://token-pay.xxx.com', 'pay/tokenpay', 1, now(), now(), NULL);
+INSERT INTO `pays` VALUES (29,'BNB', 'tokenpay-bnb', 1, 3, 'EVM_BSC_BNB', '你的API密钥', 'https://token-pay.xxx.com', 'pay/tokenpay', 1, now(), now(), NULL);
+INSERT INTO `pays` VALUES (30,'USDT-BSC', 'tokenpay-usdt-bsc', 1, 3, 'EVM_BSC_USDT_BEP20', '你的API密钥', 'https://token-pay.xxx.com', 'pay/tokenpay', 1, now(), now(), NULL);
+INSERT INTO `pays` VALUES (31,'USDC-BSC', 'tokenpay-usdc-bsc', 1, 3, 'EVM_BSC_USDC_BEP20', '你的API密钥', 'https://token-pay.xxx.com', 'pay/tokenpay', 1, now(), now(), NULL);
+INSERT INTO `pays` VALUES (32,'MATIC', 'tokenpay-matic', 1, 3, 'EVM_Polygon_MATIC', '你的API密钥', 'https://token-pay.xxx.com', 'pay/tokenpay', 1, now(), now(), NULL);
+INSERT INTO `pays` VALUES (33,'USDT-Polygon', 'tokenpay-usdt-polygon', 1, 3, 'EVM_Polygon_USDT_ERC20', '你的API密钥', 'https://token-pay.xxx.com', 'pay/tokenpay', 1, now(), now(), NULL);
+INSERT INTO `pays` VALUES (34,'USDC-Polygon', 'tokenpay-usdc-polygon', 1, 3, 'EVM_Polygon_USDC_ERC20', '你的API密钥', 'https://token-pay.xxx.com', 'pay/tokenpay', 1, now(), now(), NULL);
 
 -- ----------------------------
 COMMIT;
