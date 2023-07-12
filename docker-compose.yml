@@ -8,3 +8,24 @@ services:
     environment:
       WEB_DOCUMENT_ROOT: "/app/public"
     tty: true
+    links:
+      - mysql
+      - redis
+  mysql:
+    image: mariadb:focal
+    container_name: faka-data
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=Admin12345..
+      - MYSQL_DATABASE=dujiaoka
+      - MYSQL_USER=dujiaoka
+      - MYSQL_PASSWORD=dujiaokaMIMA
+    volumes:
+      - ./data/mysql:/var/lib/mysql
+
+  redis:
+    image: redis:alpine
+    container_name: faka-redis
+    restart: always
+    volumes:
+      - ./data/redis:/data
