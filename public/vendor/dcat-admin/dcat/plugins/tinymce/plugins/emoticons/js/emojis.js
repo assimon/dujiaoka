@@ -1,4 +1,4 @@
-// NOTE: Source: npm package: emojilib, file:emojis.json
+// Source: npm package: emojilib, file:emojis.json
 window.tinymce.Resource.add("tinymce.plugins.emoticons", {
   grinning: {
     keywords: [ "face", "smile", "happy", "joy", ":D", "grin" ],
@@ -27,6 +27,12 @@ window.tinymce.Resource.add("tinymce.plugins.emoticons", {
   rofl: {
     keywords: [ "face", "rolling", "floor", "laughing", "lol", "haha" ],
     "char": "\ud83e\udd23",
+    fitzpatrick_scale: false,
+    category: "people"
+  },
+  partying: {
+    keywords: [ "face", "celebration", "woohoo" ],
+    "char": "\ud83e\udd73",
     fitzpatrick_scale: false,
     category: "people"
   },
@@ -105,6 +111,12 @@ window.tinymce.Resource.add("tinymce.plugins.emoticons", {
   heart_eyes: {
     keywords: [ "face", "love", "like", "affection", "valentines", "infatuation", "crush", "heart" ],
     "char": "\ud83d\ude0d",
+    fitzpatrick_scale: false,
+    category: "people"
+  },
+  smiling_face_with_three_hearts: {
+    keywords: [ "face", "love", "like", "affection", "valentines", "infatuation", "crush", "hearts", "adore" ],
+    "char": "\ud83e\udd70",
     fitzpatrick_scale: false,
     category: "people"
   },
@@ -360,6 +372,12 @@ window.tinymce.Resource.add("tinymce.plugins.emoticons", {
     fitzpatrick_scale: false,
     category: "people"
   },
+  pleading: {
+    keywords: [ "face", "begging", "mercy" ],
+    "char": "\ud83e\udd7a",
+    fitzpatrick_scale: false,
+    category: "people"
+  },
   triumph: {
     keywords: [ "face", "gas", "phew", "proud", "pride" ],
     "char": "\ud83d\ude24",
@@ -438,6 +456,18 @@ window.tinymce.Resource.add("tinymce.plugins.emoticons", {
     fitzpatrick_scale: false,
     category: "people"
   },
+  hot: {
+    keywords: [ "face", "feverish", "heat", "red", "sweating" ],
+    "char": "\ud83e\udd75",
+    fitzpatrick_scale: false,
+    category: "people"
+  },
+  cold: {
+    keywords: [ "face", "blue", "freezing", "frozen", "frostbite", "icicles" ],
+    "char": "\ud83e\udd76",
+    fitzpatrick_scale: false,
+    category: "people"
+  },
   sob: {
     keywords: [ "face", "cry", "tears", "sad", "upset", "depressed" ],
     "char": "\ud83d\ude2d",
@@ -495,6 +525,12 @@ window.tinymce.Resource.add("tinymce.plugins.emoticons", {
   face_with_head_bandage: {
     keywords: [ "injured", "clumsy", "bandage", "hurt" ],
     "char": "\ud83e\udd15",
+    fitzpatrick_scale: false,
+    category: "people"
+  },
+  woozy: {
+    keywords: [ "face", "dizzy", "intoxicated", "tipsy", "wavy" ],
+    "char": "\ud83e\udd74",
     fitzpatrick_scale: false,
     category: "people"
   },
@@ -726,6 +762,18 @@ window.tinymce.Resource.add("tinymce.plugins.emoticons", {
     fitzpatrick_scale: true,
     category: "people"
   },
+  foot: {
+    keywords: [ "kick", "stomp" ],
+    "char": "\ud83e\uddb6",
+    fitzpatrick_scale: true,
+    category: "people"
+  },
+  leg: {
+    keywords: [ "kick", "limb" ],
+    "char": "\ud83e\uddb5",
+    fitzpatrick_scale: true,
+    category: "people"
+  },
   handshake: {
     keywords: [ "agreement", "shake" ],
     "char": "\ud83e\udd1d",
@@ -819,6 +867,12 @@ window.tinymce.Resource.add("tinymce.plugins.emoticons", {
   lips: {
     keywords: [ "mouth", "kiss" ],
     "char": "\ud83d\udc44",
+    fitzpatrick_scale: false,
+    category: "people"
+  },
+  tooth: {
+    keywords: [ "teeth", "dentist" ],
+    "char": "\ud83e\uddb7",
     fitzpatrick_scale: false,
     category: "people"
   },
@@ -1218,6 +1272,30 @@ window.tinymce.Resource.add("tinymce.plugins.emoticons", {
     fitzpatrick_scale: true,
     category: "people"
   },
+  woman_superhero: {
+    keywords: [ "woman", "female", "good", "heroine", "superpowers" ],
+    "char": "\ud83e\uddb8\u200d\u2640\ufe0f",
+    fitzpatrick_scale: true,
+    category: "people"
+  },
+  man_superhero: {
+    keywords: [ "man", "male", "good", "hero", "superpowers" ],
+    "char": "\ud83e\uddb8\u200d\u2642\ufe0f",
+    fitzpatrick_scale: true,
+    category: "people"
+  },
+  woman_supervillain: {
+    keywords: [ "woman", "female", "evil", "bad", "criminal", "heroine", "superpowers" ],
+    "char": "\ud83e\uddb9\u200d\u2640\ufe0f",
+    fitzpatrick_scale: true,
+    category: "people"
+  },
+  man_supervillain: {
+    keywords: [ "man", "male", "evil", "bad", "criminal", "hero", "superpowers" ],
+    "char": "\ud83e\uddb9\u200d\u2642\ufe0f",
+    fitzpatrick_scale: true,
+    category: "people"
+  },
   mrs_claus: {
     keywords: [ "woman", "female", "xmas", "mother christmas" ],
     "char": "\ud83e\udd36",
@@ -1436,7 +1514,7 @@ window.tinymce.Resource.add("tinymce.plugins.emoticons", {
   },
   man_facepalming: {
     keywords: [ "man", "male", "boy", "disbelief" ],
-    "char": "\ud83e\udd26",
+    "char": "\ud83e\udd26\u200d\u2642\ufe0f",
     fitzpatrick_scale: true,
     category: "people"
   },
@@ -1752,9 +1830,27 @@ window.tinymce.Resource.add("tinymce.plugins.emoticons", {
     fitzpatrick_scale: false,
     category: "people"
   },
+  yarn: {
+    keywords: [ "ball", "crochet", "knit" ],
+    "char": "\ud83e\uddf6",
+    fitzpatrick_scale: false,
+    category: "people"
+  },
+  thread: {
+    keywords: [ "needle", "sewing", "spool", "string" ],
+    "char": "\ud83e\uddf5",
+    fitzpatrick_scale: false,
+    category: "people"
+  },
   coat: {
     keywords: [ "jacket" ],
     "char": "\ud83e\udde5",
+    fitzpatrick_scale: false,
+    category: "people"
+  },
+  labcoat: {
+    keywords: [ "doctor", "experiment", "scientist", "chemist" ],
+    "char": "\ud83e\udd7c",
     fitzpatrick_scale: false,
     category: "people"
   },
@@ -1818,6 +1914,12 @@ window.tinymce.Resource.add("tinymce.plugins.emoticons", {
     fitzpatrick_scale: false,
     category: "people"
   },
+  flat_shoe: {
+    keywords: [ "ballet", "slip-on", "slipper" ],
+    "char": "\ud83e\udd7f",
+    fitzpatrick_scale: false,
+    category: "people"
+  },
   high_heel: {
     keywords: [ "fashion", "shoes", "female", "pumps", "stiletto" ],
     "char": "\ud83d\udc60",
@@ -1845,6 +1947,12 @@ window.tinymce.Resource.add("tinymce.plugins.emoticons", {
   athletic_shoe: {
     keywords: [ "shoes", "sports", "sneakers" ],
     "char": "\ud83d\udc5f",
+    fitzpatrick_scale: false,
+    category: "people"
+  },
+  hiking_boot: {
+    keywords: [ "backpacking", "camping", "hiking" ],
+    "char": "\ud83e\udd7e",
     fitzpatrick_scale: false,
     category: "people"
   },
@@ -1908,6 +2016,12 @@ window.tinymce.Resource.add("tinymce.plugins.emoticons", {
     fitzpatrick_scale: false,
     category: "people"
   },
+  luggage: {
+    keywords: [ "packing", "travel" ],
+    "char": "\ud83e\uddf3",
+    fitzpatrick_scale: false,
+    category: "people"
+  },
   pouch: {
     keywords: [ "bag", "accessories", "shopping" ],
     "char": "\ud83d\udc5d",
@@ -1941,6 +2055,12 @@ window.tinymce.Resource.add("tinymce.plugins.emoticons", {
   dark_sunglasses: {
     keywords: [ "face", "cool", "accessories" ],
     "char": "\ud83d\udd76",
+    fitzpatrick_scale: false,
+    category: "people"
+  },
+  goggles: {
+    keywords: [ "eyes", "protection", "safety" ],
+    "char": "\ud83e\udd7d",
     fitzpatrick_scale: false,
     category: "people"
   },
@@ -2487,6 +2607,66 @@ window.tinymce.Resource.add("tinymce.plugins.emoticons", {
   hedgehog: {
     keywords: [ "animal", "nature", "spiny" ],
     "char": "\ud83e\udd94",
+    fitzpatrick_scale: false,
+    category: "animals_and_nature"
+  },
+  raccoon: {
+    keywords: [ "animal", "nature" ],
+    "char": "\ud83e\udd9d",
+    fitzpatrick_scale: false,
+    category: "animals_and_nature"
+  },
+  llama: {
+    keywords: [ "animal", "nature", "alpaca" ],
+    "char": "\ud83e\udd99",
+    fitzpatrick_scale: false,
+    category: "animals_and_nature"
+  },
+  hippopotamus: {
+    keywords: [ "animal", "nature" ],
+    "char": "\ud83e\udd9b",
+    fitzpatrick_scale: false,
+    category: "animals_and_nature"
+  },
+  kangaroo: {
+    keywords: [ "animal", "nature", "australia", "joey", "hop", "marsupial" ],
+    "char": "\ud83e\udd98",
+    fitzpatrick_scale: false,
+    category: "animals_and_nature"
+  },
+  badger: {
+    keywords: [ "animal", "nature", "honey" ],
+    "char": "\ud83e\udda1",
+    fitzpatrick_scale: false,
+    category: "animals_and_nature"
+  },
+  swan: {
+    keywords: [ "animal", "nature", "bird" ],
+    "char": "\ud83e\udda2",
+    fitzpatrick_scale: false,
+    category: "animals_and_nature"
+  },
+  peacock: {
+    keywords: [ "animal", "nature", "peahen", "bird" ],
+    "char": "\ud83e\udd9a",
+    fitzpatrick_scale: false,
+    category: "animals_and_nature"
+  },
+  parrot: {
+    keywords: [ "animal", "nature", "bird", "pirate", "talk" ],
+    "char": "\ud83e\udd9c",
+    fitzpatrick_scale: false,
+    category: "animals_and_nature"
+  },
+  lobster: {
+    keywords: [ "animal", "nature", "bisque", "claws", "seafood" ],
+    "char": "\ud83e\udd9e",
+    fitzpatrick_scale: false,
+    category: "animals_and_nature"
+  },
+  mosquito: {
+    keywords: [ "animal", "nature", "insect", "malaria" ],
+    "char": "\ud83e\udd9f",
     fitzpatrick_scale: false,
     category: "animals_and_nature"
   },
@@ -3048,6 +3228,12 @@ window.tinymce.Resource.add("tinymce.plugins.emoticons", {
     fitzpatrick_scale: false,
     category: "food_and_drink"
   },
+  mango: {
+    keywords: [ "fruit", "food", "tropical" ],
+    "char": "\ud83e\udd6d",
+    fitzpatrick_scale: false,
+    category: "food_and_drink"
+  },
   avocado: {
     keywords: [ "fruit", "food" ],
     "char": "\ud83e\udd51",
@@ -3102,6 +3288,12 @@ window.tinymce.Resource.add("tinymce.plugins.emoticons", {
     fitzpatrick_scale: false,
     category: "food_and_drink"
   },
+  leafy_greens: {
+    keywords: [ "food", "vegetable", "plant", "bok choy", "cabbage", "kale", "lettuce" ],
+    "char": "\ud83e\udd6c",
+    fitzpatrick_scale: false,
+    category: "food_and_drink"
+  },
   sweet_potato: {
     keywords: [ "food", "nature" ],
     "char": "\ud83c\udf60",
@@ -3135,6 +3327,12 @@ window.tinymce.Resource.add("tinymce.plugins.emoticons", {
   baguette_bread: {
     keywords: [ "food", "bread", "french" ],
     "char": "\ud83e\udd56",
+    fitzpatrick_scale: false,
+    category: "food_and_drink"
+  },
+  bagel: {
+    keywords: [ "food", "bread", "bakery", "schmear" ],
+    "char": "\ud83e\udd6f",
     fitzpatrick_scale: false,
     category: "food_and_drink"
   },
@@ -3183,6 +3381,12 @@ window.tinymce.Resource.add("tinymce.plugins.emoticons", {
   meat_on_bone: {
     keywords: [ "good", "food", "drumstick" ],
     "char": "\ud83c\udf56",
+    fitzpatrick_scale: false,
+    category: "food_and_drink"
+  },
+  bone: {
+    keywords: [ "skeleton" ],
+    "char": "\ud83e\uddb4",
     fitzpatrick_scale: false,
     category: "food_and_drink"
   },
@@ -3372,6 +3576,18 @@ window.tinymce.Resource.add("tinymce.plugins.emoticons", {
     fitzpatrick_scale: false,
     category: "food_and_drink"
   },
+  cupcake: {
+    keywords: [ "food", "dessert", "bakery", "sweet" ],
+    "char": "\ud83e\uddc1",
+    fitzpatrick_scale: false,
+    category: "food_and_drink"
+  },
+  moon_cake: {
+    keywords: [ "food", "autumn" ],
+    "char": "\ud83e\udd6e",
+    fitzpatrick_scale: false,
+    category: "food_and_drink"
+  },
   birthday: {
     keywords: [ "food", "dessert", "cake" ],
     "char": "\ud83c\udf82",
@@ -3510,6 +3726,12 @@ window.tinymce.Resource.add("tinymce.plugins.emoticons", {
     fitzpatrick_scale: false,
     category: "food_and_drink"
   },
+  salt: {
+    keywords: [ "condiment", "shaker" ],
+    "char": "\ud83e\uddc2",
+    fitzpatrick_scale: false,
+    category: "food_and_drink"
+  },
   spoon: {
     keywords: [ "cutlery", "kitchen", "tableware" ],
     "char": "\ud83e\udd44",
@@ -3570,6 +3792,12 @@ window.tinymce.Resource.add("tinymce.plugins.emoticons", {
     fitzpatrick_scale: false,
     category: "activity"
   },
+  softball: {
+    keywords: [ "sports", "balls" ],
+    "char": "\ud83e\udd4e",
+    fitzpatrick_scale: false,
+    category: "activity"
+  },
   tennis: {
     keywords: [ "sports", "balls", "green" ],
     "char": "\ud83c\udfbe",
@@ -3585,6 +3813,12 @@ window.tinymce.Resource.add("tinymce.plugins.emoticons", {
   rugby_football: {
     keywords: [ "sports", "team" ],
     "char": "\ud83c\udfc9",
+    fitzpatrick_scale: false,
+    category: "activity"
+  },
+  flying_disc: {
+    keywords: [ "sports", "frisbee", "ultimate" ],
+    "char": "\ud83e\udd4f",
     fitzpatrick_scale: false,
     category: "activity"
   },
@@ -3639,6 +3873,12 @@ window.tinymce.Resource.add("tinymce.plugins.emoticons", {
   field_hockey: {
     keywords: [ "sports" ],
     "char": "\ud83c\udfd1",
+    fitzpatrick_scale: false,
+    category: "activity"
+  },
+  lacrosse: {
+    keywords: [ "sports", "ball", "stick" ],
+    "char": "\ud83e\udd4d",
     fitzpatrick_scale: false,
     category: "activity"
   },
@@ -3717,6 +3957,12 @@ window.tinymce.Resource.add("tinymce.plugins.emoticons", {
   curling_stone: {
     keywords: [ "sports" ],
     "char": "\ud83e\udd4c",
+    fitzpatrick_scale: false,
+    category: "activity"
+  },
+  skateboard: {
+    keywords: [ "board" ],
+    "char": "\ud83d\udef9",
     fitzpatrick_scale: false,
     category: "activity"
   },
@@ -4068,9 +4314,21 @@ window.tinymce.Resource.add("tinymce.plugins.emoticons", {
     fitzpatrick_scale: false,
     category: "activity"
   },
+  chess_pawn: {
+    keywords: [ "expendable" ],
+    "char": "\u265f",
+    fitzpatrick_scale: false,
+    category: "activity"
+  },
   slot_machine: {
     keywords: [ "bet", "gamble", "vegas", "fruit machine", "luck", "casino" ],
     "char": "\ud83c\udfb0",
+    fitzpatrick_scale: false,
+    category: "activity"
+  },
+  jigsaw: {
+    keywords: [ "interlocking", "puzzle", "piece" ],
+    "char": "\ud83e\udde9",
     fitzpatrick_scale: false,
     category: "activity"
   },
@@ -4980,6 +5238,12 @@ window.tinymce.Resource.add("tinymce.plugins.emoticons", {
     fitzpatrick_scale: false,
     category: "objects"
   },
+  compass: {
+    keywords: [ "magnetic", "navigation", "orienteering" ],
+    "char": "\ud83e\udded",
+    fitzpatrick_scale: false,
+    category: "objects"
+  },
   stopwatch: {
     keywords: [ "time", "deadline" ],
     "char": "\u23f1",
@@ -5052,6 +5316,12 @@ window.tinymce.Resource.add("tinymce.plugins.emoticons", {
     fitzpatrick_scale: false,
     category: "objects"
   },
+  fire_extinguisher: {
+    keywords: [ "quench" ],
+    "char": "\ud83e\uddef",
+    fitzpatrick_scale: false,
+    category: "objects"
+  },
   wastebasket: {
     keywords: [ "bin", "trash", "rubbish", "garbage", "toss" ],
     "char": "\ud83d\uddd1",
@@ -5118,6 +5388,12 @@ window.tinymce.Resource.add("tinymce.plugins.emoticons", {
     fitzpatrick_scale: false,
     category: "objects"
   },
+  toolbox: {
+    keywords: [ "tools", "diy", "fix", "maintainer", "mechanic" ],
+    "char": "\ud83e\uddf0",
+    fitzpatrick_scale: false,
+    category: "objects"
+  },
   wrench: {
     keywords: [ "tools", "diy", "ikea", "fix", "maintainer" ],
     "char": "\ud83d\udd27",
@@ -5160,9 +5436,21 @@ window.tinymce.Resource.add("tinymce.plugins.emoticons", {
     fitzpatrick_scale: false,
     category: "objects"
   },
+  brick: {
+    keywords: [ "bricks" ],
+    "char": "\ud83e\uddf1",
+    fitzpatrick_scale: false,
+    category: "objects"
+  },
   chains: {
     keywords: [ "lock", "arrest" ],
     "char": "\u26d3",
+    fitzpatrick_scale: false,
+    category: "objects"
+  },
+  magnet: {
+    keywords: [ "attraction", "magnetic" ],
+    "char": "\ud83e\uddf2",
     fitzpatrick_scale: false,
     category: "objects"
   },
@@ -5175,6 +5463,12 @@ window.tinymce.Resource.add("tinymce.plugins.emoticons", {
   bomb: {
     keywords: [ "boom", "explode", "explosion", "terrorism" ],
     "char": "\ud83d\udca3",
+    fitzpatrick_scale: false,
+    category: "objects"
+  },
+  firecracker: {
+    keywords: [ "dynamite", "boom", "explode", "explosion", "explosive" ],
+    "char": "\ud83e\udde8",
     fitzpatrick_scale: false,
     category: "objects"
   },
@@ -5244,6 +5538,12 @@ window.tinymce.Resource.add("tinymce.plugins.emoticons", {
     fitzpatrick_scale: false,
     category: "objects"
   },
+  nazar_amulet: {
+    keywords: [ "bead", "charm" ],
+    "char": "\ud83e\uddff",
+    fitzpatrick_scale: false,
+    category: "objects"
+  },
   barber: {
     keywords: [ "hair", "salon", "style" ],
     "char": "\ud83d\udc88",
@@ -5286,9 +5586,51 @@ window.tinymce.Resource.add("tinymce.plugins.emoticons", {
     fitzpatrick_scale: false,
     category: "objects"
   },
+  dna: {
+    keywords: [ "biologist", "genetics", "life" ],
+    "char": "\ud83e\uddec",
+    fitzpatrick_scale: false,
+    category: "objects"
+  },
+  microbe: {
+    keywords: [ "amoeba", "bacteria", "germs" ],
+    "char": "\ud83e\udda0",
+    fitzpatrick_scale: false,
+    category: "objects"
+  },
+  petri_dish: {
+    keywords: [ "bacteria", "biology", "culture", "lab" ],
+    "char": "\ud83e\uddeb",
+    fitzpatrick_scale: false,
+    category: "objects"
+  },
+  test_tube: {
+    keywords: [ "chemistry", "experiment", "lab", "science" ],
+    "char": "\ud83e\uddea",
+    fitzpatrick_scale: false,
+    category: "objects"
+  },
   thermometer: {
     keywords: [ "weather", "temperature", "hot", "cold" ],
     "char": "\ud83c\udf21",
+    fitzpatrick_scale: false,
+    category: "objects"
+  },
+  broom: {
+    keywords: [ "cleaning", "sweeping", "witch" ],
+    "char": "\ud83e\uddf9",
+    fitzpatrick_scale: false,
+    category: "objects"
+  },
+  basket: {
+    keywords: [ "laundry" ],
+    "char": "\ud83e\uddfa",
+    fitzpatrick_scale: false,
+    category: "objects"
+  },
+  toilet_paper: {
+    keywords: [ "roll" ],
+    "char": "\ud83e\uddfb",
     fitzpatrick_scale: false,
     category: "objects"
   },
@@ -5319,6 +5661,24 @@ window.tinymce.Resource.add("tinymce.plugins.emoticons", {
   bathtub: {
     keywords: [ "clean", "shower", "bathroom" ],
     "char": "\ud83d\udec1",
+    fitzpatrick_scale: false,
+    category: "objects"
+  },
+  soap: {
+    keywords: [ "bar", "bathing", "cleaning", "lather" ],
+    "char": "\ud83e\uddfc",
+    fitzpatrick_scale: false,
+    category: "objects"
+  },
+  sponge: {
+    keywords: [ "absorbing", "cleaning", "porous" ],
+    "char": "\ud83e\uddfd",
+    fitzpatrick_scale: false,
+    category: "objects"
+  },
+  lotion_bottle: {
+    keywords: [ "moisturizer", "sunscreen" ],
+    "char": "\ud83e\uddf4",
     fitzpatrick_scale: false,
     category: "objects"
   },
@@ -5361,6 +5721,12 @@ window.tinymce.Resource.add("tinymce.plugins.emoticons", {
   bellhop_bell: {
     keywords: [ "service" ],
     "char": "\ud83d\udece",
+    fitzpatrick_scale: false,
+    category: "objects"
+  },
+  teddy_bear: {
+    keywords: [ "plush", "stuffed" ],
+    "char": "\ud83e\uddf8",
     fitzpatrick_scale: false,
     category: "objects"
   },
@@ -5457,6 +5823,12 @@ window.tinymce.Resource.add("tinymce.plugins.emoticons", {
   izakaya_lantern: {
     keywords: [ "light", "paper", "halloween", "spooky" ],
     "char": "\ud83c\udfee",
+    fitzpatrick_scale: false,
+    category: "objects"
+  },
+  red_envelope: {
+    keywords: [ "gift" ],
+    "char": "\ud83e\udde7",
     fitzpatrick_scale: false,
     category: "objects"
   },
@@ -5559,6 +5931,12 @@ window.tinymce.Resource.add("tinymce.plugins.emoticons", {
   bookmark_tabs: {
     keywords: [ "favorite", "save", "order", "tidy" ],
     "char": "\ud83d\udcd1",
+    fitzpatrick_scale: false,
+    category: "objects"
+  },
+  receipt: {
+    keywords: [ "accounting", "expenses" ],
+    "char": "\ud83e\uddfe",
     fitzpatrick_scale: false,
     category: "objects"
   },
@@ -5724,6 +6102,12 @@ window.tinymce.Resource.add("tinymce.plugins.emoticons", {
     fitzpatrick_scale: false,
     category: "objects"
   },
+  safety_pin: {
+    keywords: [ "diaper" ],
+    "char": "\ud83e\uddf7",
+    fitzpatrick_scale: false,
+    category: "objects"
+  },
   link: {
     keywords: [ "rings", "url" ],
     "char": "\ud83d\udd17",
@@ -5757,6 +6141,12 @@ window.tinymce.Resource.add("tinymce.plugins.emoticons", {
   straight_ruler: {
     keywords: [ "stationery", "calculate", "length", "math", "school", "drawing", "architect", "sketch" ],
     "char": "\ud83d\udccf",
+    fitzpatrick_scale: false,
+    category: "objects"
+  },
+  abacus: {
+    keywords: [ "calculation" ],
+    "char": "\ud83e\uddee",
     fitzpatrick_scale: false,
     category: "objects"
   },
@@ -6313,7 +6703,7 @@ window.tinymce.Resource.add("tinymce.plugins.emoticons", {
     category: "symbols"
   },
   x: {
-    keywords: [ "no", "delete", "remove", "cancel" ],
+    keywords: [ "no", "delete", "remove", "cancel", "red" ],
     "char": "\u274c",
     fitzpatrick_scale: false,
     category: "symbols"
@@ -7059,6 +7449,12 @@ window.tinymce.Resource.add("tinymce.plugins.emoticons", {
   heavy_multiplication_x: {
     keywords: [ "math", "calculation" ],
     "char": "\u2716\ufe0f",
+    fitzpatrick_scale: false,
+    category: "symbols"
+  },
+  infinity: {
+    keywords: [ "forever" ],
+    "char": "\u267e",
     fitzpatrick_scale: false,
     category: "symbols"
   },
@@ -9009,6 +9405,18 @@ window.tinymce.Resource.add("tinymce.plugins.emoticons", {
   zimbabwe: {
     keywords: [ "zw", "flag", "nation", "country", "banner" ],
     "char": "\ud83c\uddff\ud83c\uddfc",
+    fitzpatrick_scale: false,
+    category: "flags"
+  },
+  united_nations: {
+    keywords: [ "un", "flag", "banner" ],
+    "char": "\ud83c\uddfa\ud83c\uddf3",
+    fitzpatrick_scale: false,
+    category: "flags"
+  },
+  pirate_flag: {
+    keywords: [ "skull", "crossbones", "flag", "banner" ],
+    "char": "\ud83c\udff4\u200d\u2620\ufe0f",
     fitzpatrick_scale: false,
     category: "flags"
   }
