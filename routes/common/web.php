@@ -25,7 +25,7 @@ Route::group(['middleware' => ['dujiaoka.boot'],'namespace' => 'Home'], function
     // 订单查询页
     Route::get('order-search', 'OrderController@orderSearch');
     // 检查订单状态
-    Route::get('check-order-status/{orderSN}', 'OrderController@checkOrderStatus');
+    Route::get('check-order-status/{orderSN}', 'OrderController@checkOrderStatus')->name('check-order-status');
     // 通过订单号查询
     Route::post('search-order-by-sn', 'OrderController@searchOrderBySN');
     // 通过邮箱查询

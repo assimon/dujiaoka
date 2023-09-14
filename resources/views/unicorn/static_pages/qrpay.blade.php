@@ -34,7 +34,8 @@
 @section('js')
     <script>
         var getting = {
-            url:'{{ url('check-order-status', ['orderSN' => $orderid]) }}',
+            {{--url:'{{ url('check-order-status', ['orderSN' => $orderid]) }}',--}}
+            url:'/check-order-status/{{ $orderid }}',
             dataType:'json',
             success:function(res) {
                 if (res.code == 400001) {

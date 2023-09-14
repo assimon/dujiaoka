@@ -18,6 +18,9 @@ Route::group(['prefix' => 'pay', 'namespace' => 'Pay', 'middleware' => ['dujiaok
     // 微信
     Route::get('wepay/{payway}/{orderSN}', 'WepayController@gateway');
     Route::post('wepay/notify_url', 'WepayController@notifyUrl');
+    // 蓝兔微信支付
+    Route::get('ltpay/{payway}/{orderSN}', 'LtpayController@gateway');
+    Route::post('ltpay/notify_url', 'LtpayController@notifyUrl');
     // 码支付
     Route::get('mapay/{payway}/{orderSN}', 'MapayController@gateway');
     Route::post('mapay/notify_url', 'MapayController@notifyUrl');
