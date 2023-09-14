@@ -27,11 +27,10 @@ class LtpayController extends PayController
                 'body' => $this->order->order_sn,
                 'timestamp' => time(),
                 'notify_url' => url($this->payGateway->pay_handleroute . '/notify_url'),
-                'time_expire' => '2m',
             ];
             // 将生成的签名添加到$config中
             $config['sign'] = $this->sign($config, $this->payGateway->merchant_pem);
-            $config['return_url'] = url('detail-order-sn', ['orderSN' => $this->order->order_sn]);
+            $config['time_expire'] = '5m';
             switch ($payway){
                 case 'ltwxnative':
                     try{
@@ -50,21 +49,21 @@ class LtpayController extends PayController
                             ],
                         ]);
                         $result = curl_exec($curl);
-                        $code = $result['code'];
+                        $resultArray = json_decode($result, true);
+                        $code = $resultArray['code'];
                         if ($code == 1){
                             return;
                         }
-                        $data = $result['data'];
-                        $result['qr_code'] = $data['QRcode_url'];
-                        $result['payname'] =$this->payGateway->pay_name;
-                        $result['actual_price'] = (float)$this->order->actual_price;
-                        $result['orderid'] = $this->order->order_sn;
-                        return $this->render('static_pages/qrpay', $result, __('dujiaoka.scan_qrcode_to_pay'));
+                        $data = $resultArray['data'];
+                        $resultArray['qr_code'] = $data['code_url'];
+                        $resultArray['payname'] =$this->payGateway->pay_name;
+                        $resultArray['actual_price'] = (float)$this->order->actual_price;
+                        $resultArray['orderid'] = $this->order->order_sn;
+                        return $this->render('static_pages/qrpay', $resultArray, __('dujiaoka.scan_qrcode_to_pay'));
                     } catch (\Exception $e) {
                         throw new RuleValidationException(__('dujiaoka.prompt.abnormal_payment_channel') . $e->getMessage());
                     }
                     break;
-
             }
         } catch (RuleValidationException $exception) {
             return $this->err($exception->getMessage());
@@ -76,35 +75,30 @@ class LtpayController extends PayController
      */
     public function notifyUrl(Request $request)
     {
-        $data = $request->post();
-        $order = $this->orderService->detailOrderSN($data['pay_id']);
+        $data = $request->all();
+        $code = $data['code'];
+        if ($code) {
+            return 'FAIL';
+        }
+        $order = $this->orderService->detailOrderSN($data['out_trade_no']);
         if (!$order) {
-            return 'fail';
+            return 'FAIL';
         }
         $payGateway = $this->payService->detail($order->pay_id);
         if (!$payGateway) {
-            return 'fail';
+            return 'FAIL';
         }
-        if($payGateway->pay_handleroute != '/pay/ltpay'){
-            return 'fail';
+        if($payGateway->pay_handleroute != 'pay/ltpay'){
+            return 'FAIL';
         }
         try{
-            // 验证签名
-            $total_fee = (float)$data->total_fee;
-            $this->orderProcessService->completedOrder($data->out_trade_no, $total_fee, $data->order_no);
-            return 'success';
+            $total_fee = (float)$data['total_fee'];
+            $this->orderProcessService->completedOrder($data['out_trade_no'], $total_fee, $data['order_no']);
+            return 'SUCCESS';
         } catch (\Exception $exception) {
-            return 'fail';
+            return 'FAIL';
         }
-        /*if (!$data['pay_no'] || md5($query . $payGateway->merchant_pem ) != $data['sign']) { //不合法的数据
-            return 'fail';  //返回失败 继续补单
-        } else { //合法的数据
-            //业务处理
-            $this->orderProcessService->completedOrder($data['pay_id'], $data['money'], $data['pay_id']);
-            return 'success';
-        }*/
     }
-
 
     /**
      * 获取sign
