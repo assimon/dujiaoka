@@ -701,43 +701,43 @@ TkSuQmCC" />
             <div class="form-group">
                 <div class="form-field">
                     <label>MySQL 数据库地址</label>
-                    <input name="db_host" value="127.0.0.1" required="">
+                    <input name="db_host" value="<?php echo getenv('DB_HOST') ?: '127.0.0.1'; ?>" required="">
                 </div>
 
                 <div class="form-field">
                     <label>MySQL 端口</label>
-                    <input name="db_port" value="3306" required="">
+                    <input name="db_port" value="<?php echo getenv('DB_PORT') ?: '3306'; ?>" required="">
                 </div>
                 <div class="form-field">
                     <label>MySQL 数据库名</label>
-                    <input name="db_database" value="dujiaoka" required="">
+                    <input name="db_database" value="<?php echo getenv('DB_DATABASE') ?: 'dujiaoka'; ?>" required="">
                 </div>
 
                 <div class="form-field">
                     <label>MySQL 用户名</label>
-                    <input name="db_username" value="root" required="">
+                    <input name="db_username" value="<?php echo getenv('DB_USERNAME') ?: 'root'; ?>" required="">
                 </div>
 
                 <div class="form-field">
                     <label>MySQL 密码</label>
-                    <input name="db_password"  required="">
+                    <input name="db_password" value="<?php echo getenv('DB_PASSWORD') ?: ''; ?>" required="">
                 </div>
             </div>
 
             <div class="form-group">
                 <div class="form-field">
                     <label>Redis 连接地址</label>
-                    <input name="redis_host" value="127.0.0.1" required="">
+                    <input name="redis_host" value="<?php echo getenv('REDIS_HOST') ?: '127.0.0.1'; ?>" required="">
                 </div>
 
                 <div class="form-field">
                     <label>Redis 密码</label>
-                    <input name="redis_password" value="" placeholder="默认不填写">
+                    <input name="redis_password" value="<?php echo getenv('REDIS_PASSWORD') ?: ''; ?>" placeholder="默认不填写">
                 </div>
 
                 <div class="form-field">
                     <label>Redis 端口</label>
-                    <input name="redis_port" value="6379" required="">
+                    <input name="redis_port" value="<?php echo getenv('REDIS_PORT') ?: '6379'; ?>" required="">
                 </div>
 
             </div>
