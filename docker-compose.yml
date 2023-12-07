@@ -2,9 +2,19 @@ version: "2.2"
 services:
   web:
     build: .
+    container_name: dujiaoka
     ports:
       - "80:80"
       - "9000:9000"
+    volumes:
+      # 增加此行，则将环境信息进行复制到容器，请确保你存在该文件
+      - ${DATA_DIR}/dujiaoka/.env:/app/.env
+      # 增加此行，避免每次重新创建容器都需要初始化
+      - ${DATA_DIR}/dujiaoka/install.lock:/app/install.lock
+      # 增加此行，确保将上传的资源映射出来，避免容器重新创建后图片不在了
+      - ${DATA_DIR}/dujiaoka/public/uploads:/app/public/uploads
     environment:
       WEB_DOCUMENT_ROOT: "/app/public"
+      TZ: Asia/Shanghai
     tty: true
+    restart: always
