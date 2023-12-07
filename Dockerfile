@@ -3,4 +3,4 @@ COPY . /app
 WORKDIR /app
 RUN [ "sh", "-c", "composer install --ignore-platform-reqs" ]
 RUN [ "sh", "-c", "chmod -R 777 /app" ]
-RUN [ "sh", "-c", "php artisan queue:work" ]
+RUN [ "sh", "-c", "php artisan queue:work  >/tmp/work.log 2>&1 &" ]
