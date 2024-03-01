@@ -37,7 +37,7 @@ class Refund extends RowAction
 
         $orderModel = $model::withTrashed()->findOrFail($key);
         // 检查支付状态
-        if ($orderModel->status != Order::STATUS_COMPLETED) {
+        if (!in_array($orderModel->status, [Order::STATUS_PENDING, Order::STATUS_PROCESSING, Order::STATUS_COMPLETED])) {
             throw new RuleValidationException(__('dujiaoka.order_pay_status_error'));
         }
         // 检查支付方式
