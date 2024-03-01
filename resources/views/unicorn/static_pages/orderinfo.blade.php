@@ -65,6 +65,9 @@
                                                     @case(\App\Models\Order::STATUS_ABNORMAL)
                                                     <span class="badge bg-danger">{{ __('order.fields.status_abnormal') }}</span>
                                                     @break
+                                                    @case(\App\Models\Order::STATUS_REFUNDED)
+                                                    <span class="badge bg-danger">{{ __('order.fields.status_refunded') }}</span>
+                                                    @break
                                                 @endswitch
                                             </div>
                                             <div class="mb-1">

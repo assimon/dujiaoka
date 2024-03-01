@@ -14,6 +14,7 @@ use App\Models\Order;
 use Yansongda\Pay\Pay;
 use Dcat\Admin\Grid\RowAction;
 use Illuminate\Http\Request;
+use App\Exceptions\RuleValidationException;
 
 class Refund extends RowAction
 {
@@ -37,11 +38,11 @@ class Refund extends RowAction
         $orderModel = $model::withTrashed()->findOrFail($key);
         // 检查支付状态
         if ($orderModel->status != Order::STATUS_COMPLETED) {
-            throw new RuleValidationException(__('dujiaoka.prompt.order_pay_status_error'));
+            throw new RuleValidationException(__('dujiaoka.order_pay_status_error'));
         }
         // 检查支付方式
         if ($orderModel->pay_id !== 8) { // 只支持微信扫码点 native 支付
-            throw new RuleValidationException(__('dujiaoka.prompt.order_refund_method_unsupport'));
+            throw new RuleValidationException(__('dujiaoka.order_refund_method_unsupport'));
         }
 
 
@@ -74,6 +75,10 @@ class Refund extends RowAction
         if ($result['return_code'] != 'SUCCESS') {
             return $this->response()->success(admin_trans('dujiaoka.refund_already_submit'))->refresh();
         }
+
+        $orderModel->update([
+            'status' => $model::STATUS_REFUNDED,
+        ]);
         return $this->response()->success(admin_trans('dujiaoka.refund_success'))->refresh();
     }
 
