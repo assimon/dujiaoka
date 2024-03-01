@@ -102,6 +102,11 @@
                                                     {{ __('order.fields.status_abnormal') }}
                                                 </span>
                                                 @break
+                                                @case(\App\Models\Order::STATUS_REFUNDED)
+                                                    <span class="small-tips tips-black">
+                                                        {{ __('order.fields.status_refunded') }}
+                                                    </span>
+                                                @break
                                             @endswitch
                                         </li>
                                         <li><strong>{{ __('dujiaoka.payment_method') }}
