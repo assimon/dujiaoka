@@ -57,10 +57,10 @@
             }
 
             var group = $("<div class='input-group'></div>");
-            var down = $("<button type='button'>-</button>").attr('class', 'btn btn-' + settings.downClass).click(function () {
+            var down = $("<button type='button'>-</button>").attr({'class': 'btn btn-' +settings.downClass, 'disabled': options.disabled}).click(function () {
                 setText(getVal() - 1);
             });
-            var up = $("<button type='button'>+</button>").attr('class', 'btn btn-' + settings.upClass).click(function () {
+            var up = $("<button type='button'>+</button>").attr({'class': 'btn btn-' +settings.upClass, 'disabled': options.disabled}).click(function () {
                 setText(getVal() + 1);
             });
             $("<span class='input-group-btn'></span>").append(down).appendTo(group);

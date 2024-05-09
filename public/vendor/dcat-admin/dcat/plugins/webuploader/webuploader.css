@@ -303,7 +303,8 @@
 
 .web-uploader .filelist li img {
 	width: auto;
-	height: 120px
+	height: 120px;
+	object-fit: cover;
 }
 
 .web-uploader .filelist li p.error {
