@@ -32,6 +32,7 @@ return [
         'status_failure' => '失败',
         'status_abnormal' => '异常',
         'status_expired' => '已过期',
+        'status_refunded' => '已退款',
         'order_created' => '订单创建时间',
         'order_detail' => '订单详情',
     ],
