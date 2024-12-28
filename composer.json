@@ -22,7 +22,8 @@
         "simplesoftwareio/simple-qrcode": "2.0.0",
         "stripe/stripe-php": "^7.84",
         "xhat/payjs-laravel": "^1.6",
-        "yansongda/pay": "^2.10"
+        "yansongda/pay": "^2.10",
+        "ext-json": "*"
     },
     "require-dev": {
         "facade/ignition": "^1.16.15",
