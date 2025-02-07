@@ -56,5 +56,9 @@ Route::group(['prefix' => 'pay', 'namespace' => 'Pay', 'middleware' => ['dujiaok
     Route::get('tokenpay/{payway}/{orderSN}', 'TokenPayController@gateway');
     Route::post('tokenpay/notify_url', 'TokenPayController@notifyUrl');
     Route::get('tokenpay/return_url', 'TokenPayController@returnUrl')->name('tokenpay-return');
+    // gomypay
+    Route::get('gomypay/{payway}/{orderSN}', '\App\Http\Controllers\Pay\GomypayController@gateway');
+    Route::post('gomypay/notify_url', '\App\Http\Controllers\Pay\GomypayController@notifyUrl')->name('gomypay-notify');
+    Route::get('gomypay/return_url', '\App\Http\Controllers\Pay\GomypayController@returnUrl')->name('gomypay-return');
 
 });

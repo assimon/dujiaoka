@@ -56,6 +56,11 @@
                                                     <div class="col-12">
                                                         <h6>{{ __('dujiaoka.price') }}：{{ __('dujiaoka.money_symbol') }} {{ $actual_price }}</h6>
                                                     </div>
+                                                    <div class="col-12 gomypay-notice" style="display: none;">
+                                                        <div class="alert alert-danger" role="alert">
+                                                            {{ __('dujiaoka.gomypay.order_number_notice') }}
+                                                        </div>
+                                                    </div>
                                                     <div class="col-xs-12 col-md-6">
                                                         <input type="hidden" name="gid" value="{{ $id }}">
                                                         <label for="email" class=" col-form-label">{{ __('dujiaoka.email') }}:</label>
@@ -185,29 +190,102 @@
 @section('js')
 <script src="/assets/unicorn/js/bootstrap-input-spinner.js"></script>
 <script>
-            @if(!empty($buy_prompt))
-            var myModal = new bootstrap.Modal(document.getElementById('staticBackdrop'))
-            $(function(){
+    // 在最開始就定義 myModal
+    var myModal = new bootstrap.Modal(document.getElementById('staticBackdrop'));
+    
+    @if(!empty($buy_prompt))
+    $(function(){
+        myModal.show()
+    });
+    @endif
+    
+    $("input[type='number']").inputSpinner();
+    
+    // 监听支付方式选择
+    $('input[name="payway"]').change(function() {
+        var selectedPayway = $(this).val();
+        
+        // 先移除之前可能添加的字段和提示
+        $('.gomypay-fields').remove();
+        $('.gomypay-notice').hide();
+        
+        // 发送 AJAX 请求到后端
+        $.ajax({
+            url: '{{ url("check-payway") }}',
+            method: 'POST',
+            data: {
+                payway: selectedPayway,
+                _token: '{{ csrf_token() }}'
+            },
+            success: function(response) {
+                // 先移除之前可能添加的字段和提示
+                $('.gomypay-fields').remove();
+                $('.gomypay-notice').hide();
+                
+                if (response.success && response.pay_check === 'gomypay') {
+                    // 顯示訂單編號提示
+                    $('.gomypay-notice').show();
+                    
+                    // 在 email 输入框后面添加名字和手机号码字段
+                    var additionalFields = `
+                        <div class="col-xs-12 col-md-6 gomypay-fields">
+                            <label for="name" class="col-form-label">{{ __('dujiaoka.gomypay.name') }}:</label>
+                            <input type="text" 
+                                   class="form-control form-control-sm"
+                                   name="name" 
+                                   id="name" 
+                                   required 
+                                   placeholder="{{ __('dujiaoka.gomypay.please_input_name') }}">
+                        </div>
+                        <div class="col-xs-12 col-md-6 gomypay-fields">
+                            <label for="phone" class="col-form-label">{{ __('dujiaoka.gomypay.phone') }}:</label>
+                            <input type="tel" 
+                                   class="form-control form-control-sm"
+                                   name="phone" 
+                                   id="phone" 
+                                   required 
+                                   placeholder="{{ __('dujiaoka.gomypay.please_input_phone') }}">
+                        </div>
+                    `;
+                    
+                    // 将新字段插入到 email 字段后面
+                    $(additionalFields).insertAfter('#email').closest('.col-xs-12.col-md-6');
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error('Error checking payway:', error);
+            }
+        });
+    });
+
+    $('#submit').click(function(){
+        // 檢查是否存在手機號碼輸入框（即是否為 gomypay 支付）
+        if ($('#phone').length > 0) {
+            var phoneNumber = $('#phone').val();
+            var phoneRegex = /^[0][9]\d{8}$/;
+            
+            if (!phoneRegex.test(phoneNumber)) {
+                $(".modal-body").html("{{ __('dujiaoka.gomypay.phone_format_error') }}")
                 myModal.show()
-            });
-            @endif
-            $("input[type='number']").inputSpinner();
-            $('#submit').click(function(){
-                if($("input[name='by_amount']").val() > {{ $in_stock }}){
-                    {{-- 数量不允许大于库存 --}}
-                    $(".modal-body").html("{{ __('dujiaoka.prompt.inventory_shortage') }}")
-                    myModal.show()
-                    return false;
-                }
-                @if($buy_limit_num > 0)
-                if($("input[name='by_amount']").val() > {{ $buy_limit_num }}){
-                    {{-- 已超过限购数量 --}}
-                    $(".modal-body").html("{{ __('dujiaoka.prompt.purchase_limit_exceeded') }}")
-                    myModal.show()
-                    return false;
-                }
-                @endif
-            });
+                return false;
+            }
+        }
+
+        if($("input[name='by_amount']").val() > {{ $in_stock }}){
+            {{-- 数量不允许大于库存 --}}
+            $(".modal-body").html("{{ __('dujiaoka.prompt.inventory_shortage') }}")
+            myModal.show()
+            return false;
+        }
+        @if($buy_limit_num > 0)
+        if($("input[name='by_amount']").val() > {{ $buy_limit_num }}){
+            {{-- 已超过限购数量 --}}
+            $(".modal-body").html("{{ __('dujiaoka.prompt.purchase_limit_exceeded') }}")
+            myModal.show()
+            return false;
+        }
+        @endif
+    });
 </script>
 
 @stop
