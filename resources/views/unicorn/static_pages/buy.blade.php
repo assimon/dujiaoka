@@ -221,6 +221,10 @@
                 // 先移除之前可能添加的字段和提示
                 $('.gomypay-fields').remove();
                 $('.gomypay-notice').hide();
+
+                if (response.success && response.pay_check === 'ecpay') {
+                    $('.gomypay-notice').show();
+                }
                 
                 if (response.success && response.pay_check === 'gomypay') {
                     // 顯示訂單編號提示

@@ -395,7 +395,7 @@ class OrderProcessService
                 $this->couponService->retDecr($this->coupon->coupon);
             }
             // 将订单加入队列 x分钟后过期
-            $expiredOrderDate = dujiaoka_config_get('order_expire_time', 5);
+            $expiredOrderDate = dujiaoka_config_get('order_expire_time', 30);
             OrderExpired::dispatch($order->order_sn)->delay(Carbon::now()->addMinutes($expiredOrderDate));
             return $order;
         } catch (\Exception $exception) {

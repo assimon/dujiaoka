@@ -7,6 +7,7 @@
  * @link      http://utf8.hk/
  */
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Pay\EcpayController;
 
 Route::get('pay-gateway/{handle}/{payway}/{orderSN}', 'PayController@redirectGateway');
 
@@ -60,5 +61,8 @@ Route::group(['prefix' => 'pay', 'namespace' => 'Pay', 'middleware' => ['dujiaok
     Route::get('gomypay/{payway}/{orderSN}', '\App\Http\Controllers\Pay\GomypayController@gateway');
     Route::post('gomypay/notify_url', '\App\Http\Controllers\Pay\GomypayController@notifyUrl')->name('gomypay-notify');
     Route::get('gomypay/return_url', '\App\Http\Controllers\Pay\GomypayController@returnUrl')->name('gomypay-return');
-
+    // ECPay 綠界金流
+    Route::get('ecpay/{payway}/{orderSN}', [EcpayController::class, 'gateway']);
+    Route::match(['get', 'post'], 'ecpay/notify_url', [EcpayController::class, 'notifyUrl'])->name('ecpay.notify');
+    Route::match(['get', 'post'], 'ecpay/return_url', [EcpayController::class, 'returnUrl'])->name('ecpay.return');
 });
