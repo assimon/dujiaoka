@@ -14,7 +14,11 @@ class EcpayController extends PayController
 {
     private $merchantPem;
     private $merchantKey;
+    private $merchantId;
+    private $action;
     protected $orderProcessService;
+    // 直接在程式中設定開發者模式
+    private $dev = false;  // true = 測試環境, false = 正式環境
 
     public function __construct(OrderProcessService $orderProcessService)
     {
@@ -34,14 +38,24 @@ class EcpayController extends PayController
                 return redirect()->back()->with('error', '支付初始化失敗');
             }
 
-            // 使用測試環境的商店資訊
-            $this->merchantKey = 'pwFHCqoQZGmho4w6';
-            $this->merchantPem = 'EkRm7iFT261dpevs';
-            $merchantId = '3002607';
+            // 根據開發模式設定相應的參數
+            if ($this->dev) {
+                // 測試環境參數
+                $this->merchantKey = 'pwFHCqoQZGmho4w6';
+                $this->merchantPem = 'EkRm7iFT261dpevs';
+                $this->merchantId = '3002607';
+                $this->action = 'https://payment-stage.ecpay.com.tw/Cashier/AioCheckOut/V5';
+            } else {
+                // 正式環境參數
+                $this->merchantKey = $this->payGateway['merchant_key'];
+                $this->merchantPem = $this->payGateway['merchant_pem'];
+                $this->merchantId = $this->payGateway['merchant_id'];
+                $this->action = 'https://payment.ecpay.com.tw/Cashier/AioCheckOut/V5';
+            }
 
             // 準備訂單資料
             $data = [
-                'MerchantID' => $merchantId,
+                'MerchantID' => $this->merchantId,
                 'MerchantTradeNo' => $orderSN,
                 'MerchantTradeDate' => date('Y/m/d H:i:s'),
                 'PaymentType' => 'aio',
@@ -56,14 +70,14 @@ class EcpayController extends PayController
             ];
 
             $data['CheckMacValue'] = $this->generateCheckMacValue($data);
-            $action = 'https://payment-stage.ecpay.com.tw/Cashier/AioCheckOut/V5';
 
             Log::info('ECPay payment request:', [
                 'orderSN' => $orderSN,
-                'amount' => $data['TotalAmount']
+                'amount' => $data['TotalAmount'],
+                'dev_mode' => $this->dev
             ]);
 
-            $html = '<form id="ecpay-form" method="post" action="' . $action . '">';
+            $html = '<form id="ecpay-form" method="post" action="' . $this->action . '">';
             foreach ($data as $key => $value) {
                 $html .= '<input type="hidden" name="' . $key . '" value="' . $value . '">';
             }
@@ -87,9 +101,7 @@ class EcpayController extends PayController
         Log::info('ECPay notify received:', $data);
 
         try {
-            $this->merchantKey = 'pwFHCqoQZGmho4w6';
-            $this->merchantPem = 'EkRm7iFT261dpevs';
-
+            // 不需要重新設置，因為已經在構造函數中設置了
             $checkMacValue = $data['CheckMacValue'];
             unset($data['CheckMacValue']);
             
