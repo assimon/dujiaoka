@@ -454,6 +454,7 @@ CREATE TABLE `pays` (
   `merchant_id` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '商户 ID',
   `merchant_key` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci COMMENT '商户 KEY',
   `merchant_pem` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '商户密钥',
+  `merchant_password` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL COMMENT '商户密碼',
   `pay_handleroute` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '支付处理路由',
   `is_open` tinyint(1) NOT NULL DEFAULT '1' COMMENT '是否启用 1是 0否',
   `created_at` timestamp NULL DEFAULT NULL,
