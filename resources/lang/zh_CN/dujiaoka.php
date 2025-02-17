@@ -145,5 +145,14 @@ return [
         'bill' => '订单确认',
         'order-detail' => '订单详情',
         'order-search' => '订单查询'
+    ],
+
+    'gomypay' => [
+        'name' => '姓名',
+        'phone' => '手机号码',
+        'please_input_name' => '请输入姓名',
+        'please_input_phone' => '请输入手机号码',
+        'phone_format_error' => '手机号码格式错误，请输入09开头的10位数字',
+        'order_number_notice' => '请牢记订单编号，付款完成后查询用',
     ]
 ];
