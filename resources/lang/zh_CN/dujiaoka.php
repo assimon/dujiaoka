@@ -90,6 +90,7 @@ return [
     'pay_order_expiration_date_prompt' => '请打开 APP 扫码支付！有效期:min分钟',
     'money_symbol' => '￥',
     'purchase_limit' => '每单限',
+    'language' => '语言',
 
 
     'prompt' => [

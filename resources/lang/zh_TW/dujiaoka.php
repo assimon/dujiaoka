@@ -90,6 +90,7 @@ return [
     'pay_order_expiration_date_prompt' => '請打開 APP 掃描 QRcode 支付！有效期:min分鐘',
     'money_symbol' => '￥',
     'purchase_limit' => '每單限',
+    'language' => '語言',
 
 
     'prompt' => [
