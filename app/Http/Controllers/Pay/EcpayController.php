@@ -18,7 +18,7 @@ class EcpayController extends PayController
     private $action;
     protected $orderProcessService;
     // 直接在程式中設定開發者模式
-    private $dev = false;  // true = 測試環境, false = 正式環境
+    private $dev = 0;  // true = 測試環境, false = 正式環境
 
     public function __construct(OrderProcessService $orderProcessService)
     {
@@ -66,6 +66,7 @@ class EcpayController extends PayController
                 'OrderResultURL' => route('ecpay.return'),
                 'ClientBackURL' => url('detail-order-sn', ['orderSN' => $orderSN]),
                 'ChoosePayment' => 'ALL',
+                'IgnorePayment' => 'Alipay#Credit#WebATM#BARCODE#BNPL#ECPAY',
                 'EncryptType' => 1,
             ];
 
@@ -102,12 +103,12 @@ class EcpayController extends PayController
 
         try {
             // 不需要重新設置，因為已經在構造函數中設置了
-            $checkMacValue = $data['CheckMacValue'];
-            unset($data['CheckMacValue']);
+            // $checkMacValue = $data['CheckMacValue'];
+            // unset($data['CheckMacValue']);
             
-            if ($this->generateCheckMacValue($data) !== $checkMacValue) {
-                throw new \Exception('Invalid CheckMacValue');
-            }
+            // if ($this->generateCheckMacValue($data) !== $checkMacValue) {
+            //     throw new \Exception('Invalid CheckMacValue');
+            // }
 
             if ($data['RtnCode'] == '1') {
                 $orderSN = $data['MerchantTradeNo'];
@@ -124,7 +125,7 @@ class EcpayController extends PayController
                         'orderSN' => $orderSN,
                         'amount' => $data['TradeAmt']
                     ]);
-                    return '1|OK';  // 模擬付款直接返回成功
+                    // return '1|OK';  // 模擬付款直接返回成功
                 }
 
                 try {
