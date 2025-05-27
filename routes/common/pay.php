@@ -9,6 +9,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Pay\EcpayController;
 use App\Http\Controllers\Pay\P99payController;
+use App\Http\Controllers\Pay\RmpayController;
 
 Route::get('pay-gateway/{handle}/{payway}/{orderSN}', 'PayController@redirectGateway');
 
@@ -70,5 +71,9 @@ Route::group(['prefix' => 'pay', 'namespace' => 'Pay', 'middleware' => ['dujiaok
     Route::get('p99pay/{payway}/{orderSN}', [P99payController::class, 'gateway'])->name('p99pay.gateway');
     Route::post('/p99pay/notify', [P99payController::class, 'notifyUrl'])->name('p99pay.notifyUrl');
     Route::match(['get', 'post'], '/p99pay/return/{orderSN?}', [P99payController::class, 'returnUrl'])->name('p99pay.returnUrl');
+
+    Route::get('/rmpay/{payway}/{orderSN}', [RmpayController::class, 'gateway']);
+    Route::match(['get', 'post'], '/rmpay/notify_url', [RmpayController::class, 'notifyUrl'])->name('rmpay.notify');
+    Route::match(['get', 'post'], '/rmpay/return_url', [RmpayController::class, 'returnUrl'])->name('rmpay.return');
 
 });
