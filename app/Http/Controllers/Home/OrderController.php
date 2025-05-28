@@ -75,6 +75,10 @@ class OrderController extends BaseController
             $this->orderProcessService->setPayID($request->input('payway'));
             // 下单邮箱
             $this->orderProcessService->setEmail($request->input('email'));
+            // 下单姓名
+            $this->orderProcessService->setName($request->input('name'));
+            // 購買電話
+            $this->orderProcessService->setPhone($request->input('phone'));
             // ip地址
             $this->orderProcessService->setBuyIP($request->getClientIp());
             // 查询密码
