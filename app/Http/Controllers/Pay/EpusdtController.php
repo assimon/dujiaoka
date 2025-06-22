@@ -85,12 +85,18 @@ class EpusdtController extends PayController
         $signature = $this->epusdtSign($data, $payGateway->merchant_id);
         if ($data['signature'] != $signature) { //不合法的数据
             return 'fail';  //返回失败 继续补单
-        } else {
-            //合法的数据
-            //业务处理
-            $this->orderProcessService->completedOrder($data['order_id'], $data['amount'], $data['trade_id']);
-            return 'ok';
         }
+
+        if ($data['status'] != 2) { //支付状态不是成功
+
+            return 'fail';
+        }
+
+        //合法的数据
+        //业务处理
+        $this->orderProcessService->completedOrder($data['order_id'], $data['amount'], $data['trade_id']);
+
+        return 'ok';
     }
 
     public function returnUrl(Request $request)
