@@ -25,6 +25,7 @@ class EpusdtController extends PayController
             $this->loadGateWay($orderSN, $payway);
             //构造要请求的参数数组，无需改动
             $parameter = [
+                'trade_type'=> $payway, //支付方式
                 "amount" => (float)$this->order->actual_price,//原价
                 "order_id" => $this->order->order_sn, //可以是用户ID,站内商户订单号,用户名
                 'redirect_url' => route('epusdt-return', ['order_id' => $this->order->order_sn]),
