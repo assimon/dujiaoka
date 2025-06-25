@@ -80,7 +80,8 @@ class P99payController extends PayController
                 'orderSN' => $orderSN,
                 'amount' => $trans->nodes["AMOUNT"],
                 'dev_mode' => $this->dev,
-                'data' => $trans->nodes
+                'data' => $trans->nodes,
+                'base64_data' => $data
             ]);
 
             // 產生表單
@@ -117,7 +118,8 @@ class P99payController extends PayController
         try {
             Log::info('P99Pay notify URL accessed', [
                 'method' => $request->method(),
-                'all_params' => $request->all()
+                'all_params' => $request->all(),
+                'raw_base64' => $request->input('data')
             ]);
 
             if (!$request->has('data')) {
@@ -127,7 +129,10 @@ class P99payController extends PayController
             $rawData = $request->input('data');
             $data = json_decode(base64_decode($rawData), true);
             
-            Log::info('P99Pay notify data decoded:', $data);
+            Log::info('P99Pay notify data decoded:', [
+                'raw_base64' => $rawData,
+                'decoded_data' => $data
+            ]);
 
             // 使用 P99Pay 返回的訂單號
             $orderSN = $data['COID'];
@@ -204,7 +209,8 @@ class P99payController extends PayController
             Log::info('P99Pay return URL accessed', [
                 'orderSN' => $orderSN,
                 'method' => $request->method(),
-                'all_params' => $request->all()
+                'all_params' => $request->all(),
+                'raw_base64' => $request->input('data')
             ]);
 
             if (!$request->has('data')) {
@@ -214,7 +220,10 @@ class P99payController extends PayController
             $rawData = $request->input('data');
             $data = json_decode(base64_decode($rawData), true);
             
-            Log::info('P99Pay return data decoded:', $data);
+            Log::info('P99Pay return data decoded:', [
+                'raw_base64' => $rawData,
+                'decoded_data' => $data
+            ]);
 
             // 使用 P99Pay 返回的訂單號
             $orderSN = $data['COID'];
@@ -318,7 +327,8 @@ class P99payController extends PayController
             'erpc' => $erpc,
             'received_erpc' => $data['ERPC'],
             'dev_mode' => $this->dev,
-            'merchant_id' => $this->merchantId
+            'merchant_id' => $this->merchantId,
+            'base64_data' => $jsonData
         ]);
         
         return $erpc === $data['ERPC'];

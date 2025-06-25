@@ -67,7 +67,7 @@
         return $data;
     }
     private function UnPaddingPKCS7($text) {
-        $pad = ord($text{strlen($text) - 1});
+        $pad = ord($text[strlen($text) - 1]);
         if ($pad > strlen($text)) {
             return false;
         }
