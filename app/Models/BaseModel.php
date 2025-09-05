@@ -20,6 +20,8 @@ class BaseModel extends Model
     const AUTOMATIC_DELIVERY = 1; // 自动发货
     const MANUAL_PROCESSING = 2; // 人工处理
 
+    protected $guarded = [];
+
     /**
      * map
      *
