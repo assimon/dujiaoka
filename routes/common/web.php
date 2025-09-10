@@ -20,6 +20,9 @@ Route::group(['middleware' => ['dujiaoka.boot'],'namespace' => 'Home'], function
     Route::post('create-order', 'OrderController@createOrder');
     // 结算页
     Route::get('bill/{orderSN}', 'OrderController@bill');
+    // Apple ID 页面
+    Route::get('appleid', 'AppleIdController@index');
+    Route::post('appleid/retrieve', 'AppleIdController@retrieve');
     // 通过订单号详情页
     Route::get('detail-order-sn/{orderSN}', 'OrderController@detailOrderSN');
     // 订单查询页
