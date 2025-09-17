@@ -53,6 +53,7 @@ Telegram: [https://t.me/dujiaoka](https://t.me/dujiaoka)
 
 ## 🔥推荐服务器 
 - （🇺🇸美国免备案vps，配置2核2G仅需`20.98$`≈`145RMB`一年/支持支付宝付款）[👉🏻点我直达](https://my.racknerd.com/aff.php?aff=2745&pid=681)
+- (🔥赛博支付【发卡收款好帮手】，支付宝/微信费率5%) [👉结算D0，点我直达](https://t.me/CyberWlD/219)
 
 ## 界面尝鲜
 【官方unicorn模板】
