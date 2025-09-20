@@ -31,62 +31,111 @@ class PaypalPayController extends PayController
         try {
             // 加载网关
             $this->loadGateWay($orderSN, $payway);
+            
+            // 检查并清理凭证
+            $clientId = trim($this->payGateway->merchant_key);
+            $clientSecret = trim($this->payGateway->merchant_pem);
+
+            // 验证凭证
+            if (empty($clientId) || empty($clientSecret)) {
+                throw new \Exception('PayPal credentials are not properly configured');
+            }
+
+            // 初始化 PayPal API Context
             $paypal = new ApiContext(
-                new OAuthTokenCredential(
-                    $this->payGateway->merchant_key,
-                    $this->payGateway->merchant_pem
-                )
+                new OAuthTokenCredential($clientId, $clientSecret)
             );
-            $paypal->setConfig(['mode' => 'live']);
-            $product = $this->order->title;
-            // 得到汇率
-            $total = Currency::convert()
-                ->from('CNY')
-                ->to('USD')
-                ->amount($this->order->actual_price)
-                ->round(2)
-                ->get();
-            $shipping = 0;
-            $description = $this->order->title;
+            
+            $paypal->setConfig([
+                'mode' => 'live',
+                'log.LogEnabled' => true,
+                'log.FileName' => storage_path('logs/paypal.log'),
+                'log.LogLevel' => 'DEBUG'
+            ]);
+
+            // 直接使用原始金额
+            $total = number_format($this->order->actual_price, 2, '.', '');
+
+            Log::info('PayPal payment amount', [
+                'amount' => $total,
+                'currency' => self::Currency
+            ]);
+
+            // 建立支付信息
             $payer = new Payer();
             $payer->setPaymentMethod('paypal');
-            $item = new Item();
-            $item->setName($product)->setCurrency(self::Currency)->setQuantity(1)->setPrice($total);
-            $itemList = new ItemList();
-            $itemList->setItems([$item]);
-            $details = new Details();
-            $details->setShipping($shipping)->setSubtotal($total);
+
+            // 设置金额
             $amount = new Amount();
-            $amount->setCurrency(self::Currency)->setTotal($total)->setDetails($details);
+            $amount->setCurrency(self::Currency)
+                  ->setTotal(strval($total));
+
+            // 设置交易
             $transaction = new Transaction();
-            $transaction->setAmount($amount)->setItemList($itemList)->setDescription($description)->setInvoiceNumber($this->order->order_sn);
+            $transaction->setAmount($amount)
+                       ->setDescription($this->order->title)
+                       ->setInvoiceNumber($this->order->order_sn);
+
+            // 设置重定向 URL
             $redirectUrls = new RedirectUrls();
-            $redirectUrls->setReturnUrl(route('paypal-return', ['success' => 'ok', 'orderSN' => $this->order->order_sn]))->setCancelUrl(route('paypal-return', ['success' => 'no', 'orderSN' => $this->order->order_sn]));
+            $redirectUrls->setReturnUrl(route('paypal-return', ['success' => 'ok', 'orderSN' => $this->order->order_sn]))
+                        ->setCancelUrl(route('paypal-return', ['success' => 'no', 'orderSN' => $this->order->order_sn]));
+
+            // 创建支付
             $payment = new Payment();
-            $payment->setIntent('sale')->setPayer($payer)->setRedirectUrls($redirectUrls)->setTransactions([$transaction]);
-            $payment->create($paypal);
-            $approvalUrl = $payment->getApprovalLink();
-            return redirect($approvalUrl);
-        } catch (PayPalConnectionException $payPalConnectionException) {
-            return $this->err($payPalConnectionException->getMessage());
-        } catch (RuleValidationException $exception) {
-            return $this->err($exception->getMessage());
+            $payment->setIntent('sale')
+                   ->setPayer($payer)
+                   ->setRedirectUrls($redirectUrls)
+                   ->setTransactions([$transaction]);
+
+            try {
+                $result = $payment->create($paypal);
+                Log::info('PayPal payment created', [
+                    'payment_id' => $result->getId(),
+                    'amount' => $total,
+                    'currency' => self::Currency
+                ]);
+                return redirect($result->getApprovalLink());
+            } catch (PayPalConnectionException $ex) {
+                Log::error('PayPal API Error', [
+                    'error_data' => json_decode($ex->getData(), true),
+                    'error_message' => $ex->getMessage()
+                ]);
+                throw $ex;
+            }
+
+        } catch (\Exception $e) {
+            Log::error('PayPal Payment Error', [
+                'error' => $e->getMessage(),
+                'trace' => $e->getTraceAsString()
+            ]);
+            return $this->err($e->getMessage());
         }
     }
 
     /**
-     *paypal 同步回调
+     * PayPal 回調處理
      */
     public function returnUrl(Request $request)
     {
         $success = $request->input('success');
-        $paymentId =  $request->input('paymentId');
-        $payerID =  $request->input('PayerID');
+        $paymentId = $request->input('paymentId');
+        $payerId = $request->input('PayerID');
         $orderSN = $request->input('orderSN');
-        if ($success == 'no' || empty($paymentId) || empty($payerID)) {
-            // 取消支付
-            redirect(url('detail-order-sn', ['orderSN' => $payerID]));
+
+        Log::info('PayPal return callback received', [
+            'success' => $success,
+            'paymentId' => $paymentId,
+            'payerId' => $payerId,
+            'orderSN' => $orderSN,
+            'all_params' => $request->all()
+        ]);
+
+        // 如果是取消支付或參數不完整，直接跳轉回訂單頁面
+        if ($success == 'no' || empty($paymentId) || empty($payerId)) {
+            return redirect(url('detail-order-sn', ['orderSN' => $orderSN]));
         }
+
         $order = $this->orderService->detailOrderSN($orderSN);
         if (!$order) {
             return 'error';
@@ -107,13 +156,13 @@ class PaypalPayController extends PayController
         $paypal->setConfig(['mode' => 'live']);
         $payment = Payment::get($paymentId, $paypal);
         $execute = new PaymentExecution();
-        $execute->setPayerId($payerID);
+        $execute->setPayerId($payerId);
         try {
             $payment->execute($execute, $paypal);
             $this->orderProcessService->completedOrder($orderSN, $order->actual_price, $paymentId);
-            Log::info("paypal支付成功",  ['支付成功，支付ID【' . $paymentId . '】,支付人ID【' . $payerID . '】']);
+            Log::info("paypal支付成功", ['支付成功，支付ID【' . $paymentId . '】,支付人ID【' . $payerId . '】']);
         } catch (\Exception $e) {
-            Log::error("paypal支付失败", ['支付失败，支付ID【' . $paymentId . '】,支付人ID【' . $payerID . '】']);
+            Log::error("paypal支付失败", ['支付失败，支付ID【' . $paymentId . '】,支付人ID【' . $payerId . '】']);
         }
         return redirect(url('detail-order-sn', ['orderSN' => $orderSN]));
     }
