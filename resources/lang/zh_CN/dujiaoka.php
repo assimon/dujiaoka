@@ -144,6 +144,7 @@ return [
         'home' => '首页',
         'bill' => '订单确认',
         'order-detail' => '订单详情',
-        'order-search' => '订单查询'
+        'order-search' => '订单查询',
+        'appleid' => '全球Apple ID账号'
     ]
 ];

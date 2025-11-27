@@ -143,6 +143,7 @@ return [
         'home' => '首頁',
         'bill' => '訂單確認',
         'order-detail' => '訂單詳情',
-        'order-search' => '訂單查詢'
+        'order-search' => '訂單查詢',
+        'appleid' => '全球Apple ID帳號'
     ]
 ];
