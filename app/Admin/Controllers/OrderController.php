@@ -4,6 +4,7 @@ namespace App\Admin\Controllers;
 
 use App\Admin\Actions\Post\BatchRestore;
 use App\Admin\Actions\Post\Restore;
+use App\Admin\Actions\Post\Refund;
 use App\Admin\Repositories\Order;
 use App\Models\Coupon;
 use App\Models\Goods;
@@ -76,6 +77,7 @@ class OrderController extends AdminController
                 if (request('_scope_') == admin_trans('dujiaoka.trashed')) {
                     $actions->append(new Restore(OrderModel::class));
                 }
+                $actions->append(new Refund(OrderModel::class));
             });
             $grid->batchActions(function (Grid\Tools\BatchActions $batch) {
                 if (request('_scope_') == admin_trans('dujiaoka.trashed')) {
