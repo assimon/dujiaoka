@@ -1,20 +1,51 @@
-version: "2.2"
 services:
   web:
     build: .
     container_name: dujiaoka
     ports:
-      - "80:80"
+      - "8080:80"
       - "9000:9000"
     volumes:
-      # 增加此行，则将环境信息进行复制到容器，请确保你存在该文件
+      # 环境配置文件
       - ${DATA_DIR}/dujiaoka/.env:/app/.env
-      # 增加此行，避免每次重新创建容器都需要初始化
+      # 安装锁定文件
       - ${DATA_DIR}/dujiaoka/install.lock:/app/install.lock
-      # 增加此行，确保将上传的资源映射出来，避免容器重新创建后图片不在了
+      # 上传文件目录
       - ${DATA_DIR}/dujiaoka/public/uploads:/app/public/uploads
     environment:
       WEB_DOCUMENT_ROOT: "/app/public"
       TZ: Asia/Shanghai
+    depends_on:
+      - mysql
+      - redis
     tty: true
+    restart: always
+
+  # MySQL 数据库服务 (使用 MariaDB，兼容 ARM 架构)
+  mysql:
+    image: mariadb:10.6
+    container_name: dujiaoka-mysql
+    ports:
+      - "3307:3306"
+    volumes:
+      - ${DATA_DIR}/dujiaoka/mysql:/var/lib/mysql
+      # 首次启动时自动导入数据库结构
+      - ./database/sql/install.sql:/docker-entrypoint-initdb.d/install.sql:ro
+    environment:
+      MYSQL_ROOT_PASSWORD: root123456
+      MYSQL_DATABASE: dujiaoka
+      MYSQL_USER: dujiaoka
+      MYSQL_PASSWORD: dujiaoka123456
+      TZ: Asia/Shanghai
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    restart: always
+
+  # Redis 缓存服务
+  redis:
+    image: redis:6-alpine
+    container_name: dujiaoka-redis
+    ports:
+      - "6380:6379"
+    volumes:
+      - ${DATA_DIR}/dujiaoka/redis:/data
     restart: always
