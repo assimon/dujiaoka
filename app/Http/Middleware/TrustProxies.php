@@ -12,7 +12,7 @@ class TrustProxies extends Middleware
      *
      * @var array|string
      */
-    protected $proxies;
+    protected $proxies = '*';  // 信任所有代理，用于 Caddy 反向代理
 
     /**
      * The headers that should be used to detect proxies.

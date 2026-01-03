@@ -11,6 +11,10 @@ services:
       # 安装锁定文件
       - ${DATA_DIR}/dujiaoka/install.lock:/app/install.lock
       # 上传文件目录
+      # 注意：首次部署前需要手动创建目录并设置权限：
+      # mkdir -p ${DATA_DIR}/dujiaoka/public/uploads/images
+      # mkdir -p ${DATA_DIR}/dujiaoka/public/uploads/files
+      # chmod -R 777 ${DATA_DIR}/dujiaoka/public/uploads
       - ${DATA_DIR}/dujiaoka/public/uploads:/app/public/uploads
     environment:
       WEB_DOCUMENT_ROOT: "/app/public"
