@@ -1,0 +1,11 @@
+# fk.codesome.cn - 反向代理到 8080
+fk.codesome.cn {
+    reverse_proxy localhost:8080 {
+        header_up X-Forwarded-Proto {scheme}
+        header_up X-Forwarded-Host {host}
+    }
+
+    log {
+        output file /var/log/caddy/fk.codesome.cn.log
+    }
+}
