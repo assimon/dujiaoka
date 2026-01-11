@@ -41,3 +41,9 @@ Route::group(['middleware' => ['install.check'],'namespace' => 'Home'], function
     Route::post('do-install', 'HomeController@doInstall');
 });
 
+// 推广码 API 路由（公开访问，无需认证）
+Route::group(['middleware' => ['dujiaoka.boot'], 'namespace' => 'Api'], function () {
+    // 根据推广码和商品ID获取最优优惠码
+    Route::get('api/affiliate/coupon', 'AffiliateController@getCouponCode');
+});
+

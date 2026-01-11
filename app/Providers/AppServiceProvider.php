@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Service\AffiliateCodeService;
 use App\Service\CarmisService;
 use App\Service\CouponService;
 use App\Service\EmailtplService;
@@ -41,6 +42,10 @@ class AppServiceProvider extends ServiceProvider
         });
         $this->app->singleton('Service\EmailtplService', function () {
             return $this->app->make(EmailtplService::class);
+        });
+        // 推广码服务 - 负责推广码生成、最优优惠码选择、使用统计
+        $this->app->singleton('Service\AffiliateCodeService', function () {
+            return $this->app->make(AffiliateCodeService::class);
         });
         $this->app->singleton('Jenssegers\Agent', function () {
             return $this->app->make(Agent::class);

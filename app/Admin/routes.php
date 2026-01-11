@@ -16,6 +16,8 @@ Route::group([
     $router->resource('goods-group', 'GoodsGroupController');
     $router->resource('carmis', 'CarmisController');
     $router->resource('coupon', 'CouponController');
+    // 推广码管理
+    $router->resource('affiliate-code', 'AffiliateCodeController');
     $router->resource('emailtpl', 'EmailtplController');
     $router->resource('pay', 'PayController');
     $router->resource('order', 'OrderController');

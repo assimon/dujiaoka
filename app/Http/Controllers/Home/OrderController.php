@@ -82,6 +82,23 @@ class OrderController extends BaseController
             // 创建订单
             $order = $this->orderProcessService->createOrder();
             DB::commit();
+
+            // 推广码使用统计（订单创建成功后）
+            if ($request->filled('affiliate_code')) {
+                try {
+                    /** @var \App\Service\AffiliateCodeService $affiliateService */
+                    $affiliateService = app('Service\AffiliateCodeService');
+                    $affiliateService->incrementUseCount($request->input('affiliate_code'));
+                } catch (\Exception $e) {
+                    // 静默失败，不影响订单流程
+                    \Log::warning('[Affiliate] 推广码统计失败', [
+                        'code' => $request->input('affiliate_code'),
+                        'order_sn' => $order->order_sn,
+                        'error' => $e->getMessage(),
+                    ]);
+                }
+            }
+
             // 设置订单cookie
             $this->queueCookie($order->order_sn);
             return redirect(url('/bill', ['orderSN' => $order->order_sn]));

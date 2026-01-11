@@ -132,9 +132,16 @@
                                         <span class="l-msg">{{ __('luna.buy_disc') }}：</span>
                                         <label class="input">
                                             <input type="text" name="coupon_code"
+                                                   id="coupon_code_input"
                                                    placeholder="{{ __('luna.buy_disc_tips') }}">
                                         </label>
+                                        {{-- 推广码自动应用提示 --}}
+                                        <small id="aff_tip" style="color: #28a745; display: none; margin-top: 5px;">
+                                            ✓ 已自动应用推广优惠码
+                                        </small>
                                     </div>
+                                    {{-- 隐藏字段：记录推广码用于订单统计 --}}
+                                    <input type="hidden" name="affiliate_code" id="affiliate_code_hidden" value="">
                                 @endif
 
 
@@ -405,6 +412,74 @@
                 navbar : false,
                 title  : false,
             });
+        });
+
+        /**
+         * 推广码自动应用功能
+         *
+         * 流程：
+         * 1. 从 localStorage 读取推广码（由全局脚本捕获）
+         * 2. 通过 AJAX 请求后端 API 获取最优优惠码
+         * 3. 自动填充优惠码输入框并显示提示
+         * 4. 记录推广码到隐藏字段用于订单统计
+         * 5. 监听用户手动修改，修改时隐藏提示
+         */
+        $(document).ready(function() {
+            // 读取 localStorage 中的推广码
+            var affCode = localStorage.getItem('affCode');
+
+            // 如果存在推广码
+            if (affCode && affCode.trim() !== '') {
+                console.log('[Affiliate] 检测到推广码:', affCode);
+
+                // 通过 AJAX 获取对应的优惠码
+                $.ajax({
+                    url: '/api/affiliate/coupon',
+                    type: 'GET',
+                    data: {
+                        aff: affCode,
+                        goods_id: {{ $id }}  // 当前商品ID
+                    },
+                    success: function(response) {
+                        if (response.success && response.coupon_code) {
+                            // 成功获取优惠码
+                            var $couponInput = $('#coupon_code_input');
+                            var $affTip = $('#aff_tip');
+                            var $affHidden = $('#affiliate_code_hidden');
+
+                            // 自动填充优惠码（保持可编辑）
+                            $couponInput.val(response.coupon_code);
+
+                            // 显示绿色提示
+                            $affTip.show();
+
+                            // 记录推广码到隐藏字段（用于订单统计）
+                            $affHidden.val(affCode);
+
+                            console.log('[Affiliate] 优惠码已自动填充:', response.coupon_code, '优惠金额:', response.discount);
+
+                            // 监听用户手动修改优惠码
+                            $couponInput.on('input', function() {
+                                // 用户修改了优惠码，隐藏提示
+                                if ($(this).val() !== response.coupon_code) {
+                                    $affTip.hide();
+                                    console.log('[Affiliate] 用户手动修改了优惠码');
+                                } else {
+                                    // 用户改回原值，重新显示提示
+                                    $affTip.show();
+                                }
+                            });
+                        } else {
+                            // 推广码无效或不适用于当前商品
+                            console.log('[Affiliate] ' + (response.message || '推广码无效或不适用于当前商品'));
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        // API 请求失败（不影响用户正常购买）
+                        console.error('[Affiliate] 获取优惠码失败:', error);
+                    }
+                });
+            }
         });
 
     </script>
