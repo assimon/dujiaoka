@@ -28,8 +28,8 @@ log_error() {
 }
 
 # 配置变量
-PROJECT_DIR="/root/dujiaoka"
-DATA_DIR="/root/dujiaoka/data"
+PROJECT_DIR="$(pwd)"
+DATA_DIR="$(pwd)/data"
 DOMAIN="pay.xxx.cn"
 DB_NAME="dujiaoka"
 DB_USER="dujiaoka"
@@ -107,15 +107,21 @@ if [ -f ".env" ]; then
     cp .env .env.backup.$(date +%Y%m%d_%H%M%S)
     log_info "原配置已备份"
 
+    # 检测操作系统，设置 sed 的 -i 选项（macOS 需要空字符串参数）
+    SED_INPLACE="-i"
+    if [[ "$OSTYPE" == "darwin"* ]]; then
+        SED_INPLACE="-i ''"
+    fi
+
     # 更新配置
-    sed -i "s|^APP_URL=.*|APP_URL=https://${DOMAIN}|g" .env
-    sed -i "s|^DB_HOST=.*|DB_HOST=mysql|g" .env
-    sed -i "s|^DB_PORT=.*|DB_PORT=3306|g" .env
-    sed -i "s|^DB_DATABASE=.*|DB_DATABASE=${DB_NAME}|g" .env
-    sed -i "s|^DB_USERNAME=.*|DB_USERNAME=${DB_USER}|g" .env
-    sed -i "s|^DB_PASSWORD=.*|DB_PASSWORD=${DB_PASSWORD}|g" .env
-    sed -i "s|^REDIS_HOST=.*|REDIS_HOST=redis|g" .env
-    sed -i "s|^REDIS_PORT=.*|REDIS_PORT=6379|g" .env
+    sed -i '' "s|^APP_URL=.*|APP_URL=https://${DOMAIN}|g" .env
+    sed -i '' "s|^DB_HOST=.*|DB_HOST=mysql|g" .env
+    sed -i '' "s|^DB_PORT=.*|DB_PORT=3306|g" .env
+    sed -i '' "s|^DB_DATABASE=.*|DB_DATABASE=${DB_NAME}|g" .env
+    sed -i '' "s|^DB_USERNAME=.*|DB_USERNAME=${DB_USER}|g" .env
+    sed -i '' "s|^DB_PASSWORD=.*|DB_PASSWORD=${DB_PASSWORD}|g" .env
+    sed -i '' "s|^REDIS_HOST=.*|REDIS_HOST=redis|g" .env
+    sed -i '' "s|^REDIS_PORT=.*|REDIS_PORT=6379|g" .env
 
     log_info ".env 文件已更新"
 else
