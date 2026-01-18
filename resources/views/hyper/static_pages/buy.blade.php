@@ -172,6 +172,52 @@
 @stop
 @section('js')
 <script>
+    /**
+     * 自动获取推广码对应的优惠码
+     * 优先级：URL 参数 > localStorage
+     */
+    (function() {
+        // 1. 获取 affCode：URL 参数优先
+        var urlParams = new URLSearchParams(window.location.search);
+        var affCode = urlParams.get('aff');
+
+        // 2. 如果 URL 没有，则从 localStorage 获取
+        if (!affCode) {
+            try {
+                affCode = localStorage.getItem('affCode');
+            } catch (e) {
+                console.warn('[Affiliate] 无法读取 localStorage:', e);
+            }
+        }
+
+        // 3. 如果有 affCode，调用 API 获取优惠码
+        if (affCode) {
+            var goodsId = $("input[name='gid']").val();
+            var couponInput = $("input[name='coupon_code']");
+
+            // 只有当优惠码输入框存在且为空时才自动填充
+            if (couponInput.length > 0 && !couponInput.val()) {
+                $.ajax({
+                    url: '/api/affiliate/coupon',
+                    type: 'GET',
+                    data: {
+                        aff: affCode,
+                        goods_id: goodsId
+                    },
+                    success: function(res) {
+                        if (res.success && res.coupon_code) {
+                            couponInput.val(res.coupon_code);
+                            console.log('[Affiliate] 已自动填充优惠码:', res.coupon_code);
+                        }
+                    },
+                    error: function(err) {
+                        console.warn('[Affiliate] 获取优惠码失败:', err);
+                    }
+                });
+            }
+        }
+    })();
+
     $('#submit').click(function(){
         if($("input[name='email']").val() == ''){
             {{-- 邮箱不能为空 --}}

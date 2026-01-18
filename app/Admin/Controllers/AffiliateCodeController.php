@@ -5,6 +5,7 @@ namespace App\Admin\Controllers;
 use App\Admin\Repositories\AffiliateCode;
 use App\Models\AffiliateCode as AffiliateCodeModel;
 use App\Models\Coupon;
+use App\Service\AffiliateCodeService;
 use Dcat\Admin\Form;
 use Dcat\Admin\Grid;
 use Dcat\Admin\Show;
@@ -44,13 +45,23 @@ class AffiliateCodeController extends AdminController
             // 推广码列（可复制）
             $grid->column('code', '推广码')->copyable();
 
+            // 推广链接列（完整URL，可复制）
+            $grid->column('aff_link', '推广链接')->display(function () {
+                $baseUrl = rtrim(config('app.url'), '/');
+                return $baseUrl . '?aff=' . $this->code;
+            })->copyable()->width(280);
+
             // 关联优惠码列（显示所有关联的优惠码，用逗号分隔）
             $grid->column('coupons', '关联优惠码')->display(function ($coupons) {
                 if (empty($coupons)) {
                     return '<span style="color: #999;">无</span>';
                 }
-                // 提取优惠码字符串并用逗号分隔
-                $couponCodes = array_column($coupons, 'coupon');
+                // 处理 Collection 或数组
+                if ($coupons instanceof \Illuminate\Support\Collection) {
+                    $couponCodes = $coupons->pluck('coupon')->toArray();
+                } else {
+                    $couponCodes = array_column($coupons, 'coupon');
+                }
                 return implode(', ', $couponCodes);
             });
 
@@ -113,7 +124,10 @@ class AffiliateCodeController extends AdminController
                 // 格式化显示：优惠码 (优惠金额)
                 $list = [];
                 foreach ($coupons as $coupon) {
-                    $list[] = $coupon['coupon'] . ' (' . $coupon['discount'] . '元)';
+                    // 处理对象或数组
+                    $code = is_array($coupon) ? $coupon['coupon'] : $coupon->coupon;
+                    $discount = is_array($coupon) ? $coupon['discount'] : $coupon->discount;
+                    $list[] = $code . ' (' . $discount . '元)';
                 }
                 return implode('<br>', $list);
             })->unescape();
@@ -166,8 +180,14 @@ class AffiliateCodeController extends AdminController
                      if (!$v) {
                          return [];
                      }
-                     // 从数据库中查出的二维数组转化成 ID 数组
-                     return array_column($v, 'id');
+                     // 处理 Collection 或数组
+                     if ($v instanceof \Illuminate\Support\Collection) {
+                         return $v->pluck('id')->toArray();
+                     }
+                     if (is_array($v)) {
+                         return array_column($v, 'id');
+                     }
+                     return [];
                  });
 
             // 备注字段
@@ -193,7 +213,7 @@ class AffiliateCodeController extends AdminController
                 if (!$form->isEditing()) {
                     // 创建模式：调用服务生成唯一推广码
                     try {
-                        $affiliateService = app('Service\AffiliateCodeService');
+                        $affiliateService = app(AffiliateCodeService::class);
                         $form->code = $affiliateService->generateUniqueCode();
                     } catch (\Exception $e) {
                         // 生成失败，返回错误

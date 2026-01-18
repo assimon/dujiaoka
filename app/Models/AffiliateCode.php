@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Str;
 
 /**
  * 推广码模型
@@ -55,6 +56,46 @@ class AffiliateCode extends BaseModel
         'is_open' => 'integer',
         'use_count' => 'integer',
     ];
+
+    /**
+     * 模型启动方法
+     * 注册模型事件监听器
+     *
+     * @return void
+     */
+    protected static function boot()
+    {
+        parent::boot();
+
+        // 创建前自动生成唯一推广码
+        static::creating(function ($model) {
+            if (empty($model->code)) {
+                $model->code = self::generateUniqueCode();
+            }
+        });
+    }
+
+    /**
+     * 生成唯一的推广码
+     *
+     * @return string 8位随机字符串
+     */
+    protected static function generateUniqueCode(): string
+    {
+        $maxRetries = 5;
+        $retryCount = 0;
+
+        while ($retryCount < $maxRetries) {
+            $code = Str::random(8);
+            if (!self::where('code', $code)->exists()) {
+                return $code;
+            }
+            $retryCount++;
+        }
+
+        // 如果重试失败，使用时间戳确保唯一性
+        return Str::random(4) . substr(time(), -4);
+    }
 
     /**
      * 关联优惠码（多对多关系）

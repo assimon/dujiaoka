@@ -45,6 +45,7 @@ INSERT INTO `admin_menu` VALUES (22, 0, 8, 'Order_Manage', 'fa-table', NULL, '',
 INSERT INTO `admin_menu` VALUES (23, 22, 20, 'Order', 'fa-heart', '/order', '', 1, '2021-05-23 20:46:13', '2021-05-23 20:47:16');
 INSERT INTO `admin_menu` VALUES (24, 19, 21, 'System_Setting', 'fa-cogs', '/system-setting', '', 1, '2021-05-26 10:26:34', '2021-05-26 10:26:34');
 INSERT INTO `admin_menu` VALUES (25, 19, 22, 'Email_Test', 'fa-envelope', '/email-test', '', 1, '2022-07-26 12:09:34', '2022-07-26 12:17:21');
+INSERT INTO `admin_menu` VALUES (26, 18, 17, 'Affiliate_Code', 'fa-share-alt', '/affiliate-code', '', 1, '2026-01-11 12:00:00', '2026-01-11 12:00:00');
 
 COMMIT;
 

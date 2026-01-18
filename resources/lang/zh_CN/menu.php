@@ -22,6 +22,7 @@ return [
         'import_carmis' => '导入卡密',
         'coupon_manage' => '优惠管理',
         'coupon'        => '优惠码列表',
+        'affiliate_code'=> '推广码管理',
         'configuration' => '配置',
         'email_template_configuration' => '邮件模板配置',
         'pay_configuration'  => '支付配置',

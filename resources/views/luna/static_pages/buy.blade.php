@@ -418,15 +418,25 @@
          * 推广码自动应用功能
          *
          * 流程：
-         * 1. 从 localStorage 读取推广码（由全局脚本捕获）
+         * 1. 优先从 URL 参数读取推广码，否则从 localStorage 读取
          * 2. 通过 AJAX 请求后端 API 获取最优优惠码
          * 3. 自动填充优惠码输入框并显示提示
          * 4. 记录推广码到隐藏字段用于订单统计
          * 5. 监听用户手动修改，修改时隐藏提示
          */
         $(document).ready(function() {
-            // 读取 localStorage 中的推广码
-            var affCode = localStorage.getItem('affCode');
+            // 1. 获取 affCode：URL 参数优先
+            var urlParams = new URLSearchParams(window.location.search);
+            var affCode = urlParams.get('aff');
+
+            // 2. 如果 URL 没有，则从 localStorage 获取
+            if (!affCode) {
+                try {
+                    affCode = localStorage.getItem('affCode');
+                } catch (e) {
+                    console.warn('[Affiliate] 无法读取 localStorage:', e);
+                }
+            }
 
             // 如果存在推广码
             if (affCode && affCode.trim() !== '') {
