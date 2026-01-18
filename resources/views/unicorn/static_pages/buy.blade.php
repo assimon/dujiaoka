@@ -81,11 +81,7 @@
                                                             <label for="coupon" class="col-form-label">{{ __('dujiaoka.coupon_code') }}:</label>
                                                             <input type="text"
                                                                    class=" control form-control form-control-sm"
-                                                                   id="coupon_code_input" name="coupon_code"   placeholder="" value="" >
-                                                            {{-- 推广码与优惠券互斥提示 --}}
-                                                            <small id="coupon_disabled_tip" class="text-danger" style="display: none;">
-                                                                已使用推广码折扣
-                                                            </small>
+                                                                   name="coupon_code" placeholder="" value="" >
                                                         </div>
                                                     @endif
                                                     @if(dujiaoka_config_get('is_open_search_pwd') == \App\Models\Goods::STATUS_OPEN)
@@ -235,8 +231,6 @@
                         var $affDiscountArea = $('#aff_discount_area');
                         var $affDiscountText = $('#aff_discount_text');
                         var $affHidden = $('#affiliate_code_hidden');
-                        var $couponInput = $('#coupon_code_input');
-                        var $couponDisabledTip = $('#coupon_disabled_tip');
 
                         // 构建折扣显示文本
                         var discountText = '';
@@ -253,12 +247,10 @@
                         // 记录推广码到隐藏字段
                         $affHidden.val(affCode);
 
-                        // 禁用优惠码输入框（推广码与优惠码互斥）
-                        if ($couponInput.length) {
-                            $couponInput.prop('disabled', true);
-                            $couponInput.attr('placeholder', '已使用推广码折扣');
-                            $couponInput.css('background-color', '#f5f5f5');
-                            $couponDisabledTip.show();
+                        // 隐藏优惠码区域（推广码与优惠码互斥）
+                        var $couponArea = $('#coupon_area');
+                        if ($couponArea.length) {
+                            $couponArea.hide();
                         }
 
                         console.log('[Affiliate] 折扣信息:', res.discount_type_text, res.discount_value);

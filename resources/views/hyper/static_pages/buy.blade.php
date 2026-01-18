@@ -90,11 +90,7 @@
                         {{-- 优惠码 --}}
                         <div class="buy-title">{{ __('hyper.buy_promo_code') }}</div>
                         {{-- 您有优惠码吗？ --}}
-                        <input type="text" name="coupon_code" id="coupon_code_input" class="form-control" placeholder="{{ __('hyper.buy_input_promo_code') }}">
-                        {{-- 推广码与优惠券互斥提示 --}}
-                        <small id="coupon_disabled_tip" class="text-danger" style="display: none;">
-                            已使用推广码折扣，不可同时使用优惠码
-                        </small>
+                        <input type="text" name="coupon_code" class="form-control" placeholder="{{ __('hyper.buy_input_promo_code') }}">
                     </div>
                 @endif
                 @if($type == \App\Models\Goods::MANUAL_PROCESSING && is_array($other_ipu))
@@ -222,8 +218,6 @@
                         var $affDiscountArea = $('#aff_discount_area');
                         var $affDiscountText = $('#aff_discount_text');
                         var $affHidden = $('#affiliate_code_hidden');
-                        var $couponInput = $('#coupon_code_input');
-                        var $couponDisabledTip = $('#coupon_disabled_tip');
 
                         // 构建折扣显示文本
                         var discountText = '';
@@ -240,12 +234,10 @@
                         // 记录推广码到隐藏字段
                         $affHidden.val(affCode);
 
-                        // 禁用优惠码输入框（推广码与优惠码互斥）
-                        if ($couponInput.length) {
-                            $couponInput.prop('disabled', true);
-                            $couponInput.attr('placeholder', '已使用推广码折扣');
-                            $couponInput.css('background-color', '#f5f5f5');
-                            $couponDisabledTip.show();
+                        // 隐藏优惠码区域（推广码与优惠码互斥）
+                        var $couponArea = $('#coupon_area');
+                        if ($couponArea.length) {
+                            $couponArea.hide();
                         }
 
                         console.log('[Affiliate] 折扣信息:', res.discount_type_text, res.discount_value);
