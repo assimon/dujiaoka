@@ -11,6 +11,7 @@ namespace App\Service;
 
 
 use App\Exceptions\RuleValidationException;
+use App\Models\AffiliateCode;
 use App\Models\BaseModel;
 use App\Models\Coupon;
 use App\Models\Goods;
@@ -141,9 +142,33 @@ class OrderService
     }
 
     /**
+     * 验证推广码
+     *
+     * @param Request $request
+     * @return AffiliateCode|null
+     * @throws RuleValidationException
+     */
+    public function validatorAffiliateCode(Request $request): ?AffiliateCode
+    {
+        if ($request->filled('affiliate_code')) {
+            /** @var AffiliateCodeService $affiliateService */
+            $affiliateService = app('Service\AffiliateCodeService');
+            $affiliateCode = $affiliateService->getAffiliateCodeInfo($request->input('affiliate_code'));
+
+            if (!$affiliateCode) {
+                throw new RuleValidationException(__('dujiaoka.prompt.affiliate_code_invalid'));
+            }
+
+            return $affiliateCode;
+        }
+        return null;
+    }
+
+    /**
      * 优惠码验证
      *
      * @param Request $request
+     * @param bool $hasAffiliateDiscount 是否已使用推广码折扣（互斥检查）
      * @return Coupon|null
      * @throws RuleValidationException
      *
@@ -151,8 +176,13 @@ class OrderService
      * @copyright assimon<ashang@utf8.hk>
      * @link      http://utf8.hk/
      */
-    public function validatorCoupon(Request $request):? Coupon
+    public function validatorCoupon(Request $request, bool $hasAffiliateDiscount = false):? Coupon
     {
+        // 如果已经使用了推广码折扣，则不能使用优惠券（互斥）
+        if ($hasAffiliateDiscount && $request->filled('coupon_code')) {
+            throw new RuleValidationException(__('dujiaoka.prompt.affiliate_coupon_exclusive'));
+        }
+
         // 如果提交了优惠码
         if ($request->filled('coupon_code')) {
             // 查询优惠码是否存在

@@ -130,6 +130,16 @@ class Order extends BaseModel
     }
 
     /**
+     * 关联推广码
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function affiliateCode()
+    {
+        return $this->belongsTo(AffiliateCode::class, 'affiliate_code_id');
+    }
+
+    /**
      * 关联支付
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

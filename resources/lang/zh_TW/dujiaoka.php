@@ -123,7 +123,10 @@ return [
         'search_order_browser_tips' => '最多只能查詢最近 5 筆訂單',
         'no_related_order_found_for_cache' => '未找到相關訂單快取！',
         'no_related_order_found' => '未找到相關訂單！',
-        'new_order_push' => '新訂單通知'
+        'new_order_push' => '新訂單通知',
+        'loop_carmis_limit' => '此商品最多購買一件！',
+        'affiliate_code_invalid' => '推廣碼無效或已禁用',
+        'affiliate_coupon_exclusive' => '推廣碼折扣與優惠碼不可同時使用'
     ],
 
     'equipment' => [

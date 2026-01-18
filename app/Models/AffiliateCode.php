@@ -8,25 +8,33 @@ use Illuminate\Support\Str;
 /**
  * 推广码模型
  *
- * 推广码系统的核心数据模型，管理推广码与优惠码的多对多关联关系。
- * 推广码用于通过 URL 参数（?aff=xxx）自动应用优惠码，提升用户体验和转化率。
+ * 推广码系统的核心数据模型，支持直接折扣功能。
+ * 推广码用于通过 URL 参数（?aff=xxx）自动应用折扣，提升用户体验和转化率。
  *
  * @property int $id 主键ID
  * @property string $code 推广码（8位字母+数字，自动生成，唯一）
  * @property int $is_open 是否启用（1启用 0禁用）
+ * @property int $discount_type 折扣类型（1固定金额 2百分比）
+ * @property float $discount_value 折扣值
  * @property string $remark 备注说明
  * @property int $use_count 使用次数统计
  * @property \Illuminate\Support\Carbon $created_at 创建时间
  * @property \Illuminate\Support\Carbon $updated_at 更新时间
  * @property \Illuminate\Support\Carbon $deleted_at 删除时间
- *
- * @author assimon<ashang@utf8.hk>
- * @copyright assimon<ashang@utf8.hk>
- * @link http://utf8.hk/
  */
 class AffiliateCode extends BaseModel
 {
     use SoftDeletes;
+
+    /**
+     * 折扣类型：固定金额减免
+     */
+    const DISCOUNT_TYPE_FIXED = 1;
+
+    /**
+     * 折扣类型：百分比折扣
+     */
+    const DISCOUNT_TYPE_PERCENTAGE = 2;
 
     /**
      * 数据表名称
@@ -41,10 +49,12 @@ class AffiliateCode extends BaseModel
      * @var array
      */
     protected $fillable = [
-        'code',       // 推广码
-        'is_open',    // 是否启用
-        'remark',     // 备注说明
-        'use_count',  // 使用次数统计
+        'code',
+        'is_open',
+        'discount_type',
+        'discount_value',
+        'remark',
+        'use_count',
     ];
 
     /**
@@ -54,6 +64,8 @@ class AffiliateCode extends BaseModel
      */
     protected $casts = [
         'is_open' => 'integer',
+        'discount_type' => 'integer',
+        'discount_value' => 'float',
         'use_count' => 'integer',
     ];
 
@@ -98,38 +110,40 @@ class AffiliateCode extends BaseModel
     }
 
     /**
-     * 关联优惠码（多对多关系）
+     * 计算折扣金额
      *
-     * 一个推广码可以关联多个优惠码。
-     * 当用户通过推广链接访问时，系统会从关联的优惠码中选择优惠金额最大的自动应用。
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
-     *
-     * @author assimon<ashang@utf8.hk>
-     * @copyright assimon<ashang@utf8.hk>
-     * @link http://utf8.hk/
+     * @param float $totalPrice 商品总价
+     * @return float 折扣金额
      */
-    public function coupons()
+    public function calculateDiscount(float $totalPrice): float
     {
-        return $this->belongsToMany(
-            Coupon::class,                  // 关联的模型
-            'affiliate_codes_coupons',      // 中间表名称
-            'affiliate_code_id',            // 本模型在中间表的外键
-            'coupon_id'                     // 关联模型在中间表的外键
-        );
+        if ($this->discount_type === self::DISCOUNT_TYPE_FIXED) {
+            // 固定金额减免，不能超过总价
+            return min($this->discount_value, $totalPrice);
+        } else {
+            // 百分比折扣
+            return bcmul($totalPrice, $this->discount_value / 100, 2);
+        }
+    }
+
+    /**
+     * 获取折扣类型映射
+     *
+     * @return array
+     */
+    public static function getDiscountTypeMap(): array
+    {
+        return [
+            self::DISCOUNT_TYPE_FIXED => '固定金额减免',
+            self::DISCOUNT_TYPE_PERCENTAGE => '百分比折扣',
+        ];
     }
 
     /**
      * 获取启用状态的推广码查询构造器
      *
-     * 用于过滤出所有启用状态（is_open = 1）的推广码
-     *
      * @param \Illuminate\Database\Eloquent\Builder $query
      * @return \Illuminate\Database\Eloquent\Builder
-     *
-     * @author assimon<ashang@utf8.hk>
-     * @copyright assimon<ashang@utf8.hk>
-     * @link http://utf8.hk/
      */
     public function scopeOpen($query)
     {
@@ -142,10 +156,6 @@ class AffiliateCode extends BaseModel
      * @param \Illuminate\Database\Eloquent\Builder $query
      * @param string $code 推广码
      * @return \Illuminate\Database\Eloquent\Builder
-     *
-     * @author assimon<ashang@utf8.hk>
-     * @copyright assimon<ashang@utf8.hk>
-     * @link http://utf8.hk/
      */
     public function scopeByCode($query, $code)
     {

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\AffiliateCode;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
@@ -10,57 +11,50 @@ use Illuminate\Http\Request;
  * 推广码 API 控制器
  *
  * 提供推广码相关的公开 API 接口，供前端页面调用。
- * 主要功能：根据推广码和商品ID查询最优优惠码。
- *
- * @author assimon<ashang@utf8.hk>
- * @copyright assimon<ashang@utf8.hk>
- * @link http://utf8.hk/
+ * 主要功能：根据推广码查询折扣信息。
  */
 class AffiliateController extends Controller
 {
     /**
-     * 根据推广码获取优惠码
+     * 根据推广码获取折扣信息
      *
-     * API 端点：GET /api/affiliate/coupon
+     * API 端点：GET /api/affiliate/discount
      *
      * 请求参数：
      * - aff: string (required) 推广码
-     * - goods_id: integer (required) 商品ID
+     * - total_price: float (optional) 订单总价，用于预计算折扣金额
      *
      * 成功响应示例：
      * {
      *   "success": true,
-     *   "coupon_code": "SUMMER20",
-     *   "discount": 10.00,
-     *   "message": "已自动应用优惠金额最大的优惠码"
+     *   "discount_type": 1,
+     *   "discount_type_text": "固定金额减免",
+     *   "discount_value": 10.00,
+     *   "estimated_discount": 10.00,
+     *   "message": "推广码有效"
      * }
      *
      * 失败响应示例：
      * {
      *   "success": false,
-     *   "message": "推广码无效或不适用于当前商品"
+     *   "message": "推广码无效或已禁用"
      * }
      *
      * @param Request $request HTTP 请求对象
      * @return JsonResponse JSON 响应
-     *
-     * @author assimon<ashang@utf8.hk>
-     * @copyright assimon<ashang@utf8.hk>
-     * @link http://utf8.hk/
      */
-    public function getCouponCode(Request $request): JsonResponse
+    public function getDiscountInfo(Request $request): JsonResponse
     {
         // 1. 验证必填参数
         $validator = \Validator::make($request->all(), [
             'aff' => 'required|string|max:100',
-            'goods_id' => 'required|integer|min:1',
+            'total_price' => 'nullable|numeric|min:0',
         ], [
             'aff.required' => '推广码参数 aff 不能为空',
             'aff.string' => '推广码参数 aff 必须是字符串',
             'aff.max' => '推广码参数 aff 长度不能超过100个字符',
-            'goods_id.required' => '商品ID参数 goods_id 不能为空',
-            'goods_id.integer' => '商品ID参数 goods_id 必须是整数',
-            'goods_id.min' => '商品ID参数 goods_id 必须大于0',
+            'total_price.numeric' => '总价参数 total_price 必须是数字',
+            'total_price.min' => '总价参数 total_price 不能小于0',
         ]);
 
         // 参数验证失败，返回 400 错误
@@ -73,38 +67,42 @@ class AffiliateController extends Controller
 
         // 2. 获取验证后的参数
         $affCode = $request->input('aff');
-        $goodsId = $request->input('goods_id');
+        $totalPrice = $request->input('total_price', 0);
 
         try {
-            // 3. 调用 AffiliateCodeService 获取最优优惠码
+            // 3. 调用 AffiliateCodeService 获取折扣信息
             /** @var \App\Service\AffiliateCodeService $affiliateService */
             $affiliateService = app('Service\AffiliateCodeService');
-            $bestCoupon = $affiliateService->getBestCouponByAffiliateCode($affCode, $goodsId);
+            $affiliateCode = $affiliateService->getAffiliateCodeInfo($affCode);
 
             // 4. 根据结果返回响应
-            if ($bestCoupon) {
-                // 找到了适用的优惠码
-                return response()->json([
+            if ($affiliateCode) {
+                $response = [
                     'success' => true,
-                    'coupon_code' => $bestCoupon->coupon,
-                    'discount' => (float) $bestCoupon->discount,
-                    'message' => '已自动应用优惠金额最大的优惠码',
-                ]);
+                    'discount_type' => $affiliateCode->discount_type,
+                    'discount_type_text' => AffiliateCode::getDiscountTypeMap()[$affiliateCode->discount_type],
+                    'discount_value' => (float) $affiliateCode->discount_value,
+                    'message' => '推广码有效',
+                ];
+
+                // 如果提供了总价，计算预估折扣金额
+                if ($totalPrice > 0) {
+                    $response['estimated_discount'] = $affiliateCode->calculateDiscount($totalPrice);
+                }
+
+                return response()->json($response);
             } else {
-                // 推广码无效或不适用于当前商品
+                // 推广码无效或已禁用
                 return response()->json([
                     'success' => false,
-                    'message' => '推广码无效或不适用于当前商品',
+                    'message' => '推广码无效或已禁用',
                 ]);
             }
         } catch (\Exception $e) {
             // 5. 异常处理
-            // 记录错误日志（实际生产环境中应该使用 Log 门面）
-            \Log::error('[AffiliateController] 获取优惠码失败', [
+            \Log::error('[AffiliateController] 获取折扣信息失败', [
                 'aff' => $affCode,
-                'goods_id' => $goodsId,
                 'error' => $e->getMessage(),
-                'trace' => $e->getTraceAsString(),
             ]);
 
             // 返回通用错误信息（不暴露内部错误细节）

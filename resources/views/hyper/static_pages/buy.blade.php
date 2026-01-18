@@ -77,12 +77,24 @@
                     <input type="text" name="search_pwd" value="" class="form-control" placeholder="{{ __('hyper.buy_input_search_password') }}">
                 </div>
                 @endif
+                {{-- 推广码折扣显示区域 --}}
+                <div class="form-group" id="aff_discount_area" style="display: none;">
+                    <div class="buy-title">折扣优惠</div>
+                    <div class="alert alert-success mb-0" id="aff_discount_text" style="padding: 8px 12px;"></div>
+                </div>
+                {{-- 隐藏字段：记录推广码用于订单提交 --}}
+                <input type="hidden" name="affiliate_code" id="affiliate_code_hidden" value="">
+
                 @if(isset($open_coupon))
-                    <div class="form-group">
+                    <div class="form-group" id="coupon_area">
                         {{-- 优惠码 --}}
                         <div class="buy-title">{{ __('hyper.buy_promo_code') }}</div>
                         {{-- 您有优惠码吗？ --}}
-                        <input type="text" name="coupon_code" class="form-control" placeholder="{{ __('hyper.buy_input_promo_code') }}">
+                        <input type="text" name="coupon_code" id="coupon_code_input" class="form-control" placeholder="{{ __('hyper.buy_input_promo_code') }}">
+                        {{-- 推广码与优惠券互斥提示 --}}
+                        <small id="coupon_disabled_tip" class="text-danger" style="display: none;">
+                            已使用推广码折扣，不可同时使用优惠码
+                        </small>
                     </div>
                 @endif
                 @if($type == \App\Models\Goods::MANUAL_PROCESSING && is_array($other_ipu))
@@ -173,7 +185,7 @@
 @section('js')
 <script>
     /**
-     * 自动获取推广码对应的优惠码
+     * 推广码折扣功能（直接折扣模式）
      * 优先级：URL 参数 > localStorage
      */
     (function() {
@@ -190,31 +202,61 @@
             }
         }
 
-        // 3. 如果有 affCode，调用 API 获取优惠码
-        if (affCode) {
-            var goodsId = $("input[name='gid']").val();
-            var couponInput = $("input[name='coupon_code']");
-
-            // 只有当优惠码输入框存在且为空时才自动填充
-            if (couponInput.length > 0 && !couponInput.val()) {
-                $.ajax({
-                    url: '/api/affiliate/coupon',
-                    type: 'GET',
-                    data: {
-                        aff: affCode,
-                        goods_id: goodsId
-                    },
-                    success: function(res) {
-                        if (res.success && res.coupon_code) {
-                            couponInput.val(res.coupon_code);
-                            console.log('[Affiliate] 已自动填充优惠码:', res.coupon_code);
-                        }
-                    },
-                    error: function(err) {
-                        console.warn('[Affiliate] 获取优惠码失败:', err);
-                    }
-                });
+        // 3. 如果 URL 有推广码，保存到 localStorage
+        if (urlParams.get('aff')) {
+            try {
+                localStorage.setItem('affCode', affCode);
+            } catch (e) {
+                console.warn('[Affiliate] 无法写入 localStorage:', e);
             }
+        }
+
+        // 4. 如果有 affCode，调用 API 获取折扣信息
+        if (affCode) {
+            $.ajax({
+                url: '/api/affiliate/discount',
+                type: 'GET',
+                data: { aff: affCode },
+                success: function(res) {
+                    if (res.success) {
+                        var $affDiscountArea = $('#aff_discount_area');
+                        var $affDiscountText = $('#aff_discount_text');
+                        var $affHidden = $('#affiliate_code_hidden');
+                        var $couponInput = $('#coupon_code_input');
+                        var $couponDisabledTip = $('#coupon_disabled_tip');
+
+                        // 构建折扣显示文本
+                        var discountText = '';
+                        if (res.discount_type === 1) {
+                            discountText = '减 ' + res.discount_value + ' 元';
+                        } else {
+                            discountText = res.discount_value + '% 折扣';
+                        }
+
+                        // 显示折扣信息
+                        $affDiscountText.text(discountText);
+                        $affDiscountArea.show();
+
+                        // 记录推广码到隐藏字段
+                        $affHidden.val(affCode);
+
+                        // 禁用优惠码输入框（推广码与优惠码互斥）
+                        if ($couponInput.length) {
+                            $couponInput.prop('disabled', true);
+                            $couponInput.attr('placeholder', '已使用推广码折扣');
+                            $couponInput.css('background-color', '#f5f5f5');
+                            $couponDisabledTip.show();
+                        }
+
+                        console.log('[Affiliate] 折扣信息:', res.discount_type_text, res.discount_value);
+                    } else {
+                        console.log('[Affiliate] ' + (res.message || '推广码无效或已禁用'));
+                    }
+                },
+                error: function(err) {
+                    console.error('[Affiliate] 获取折扣信息失败:', err);
+                }
+            });
         }
     })();
 

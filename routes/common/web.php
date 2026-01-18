@@ -43,7 +43,7 @@ Route::group(['middleware' => ['install.check'],'namespace' => 'Home'], function
 
 // 推广码 API 路由（公开访问，无需认证）
 Route::group(['middleware' => ['dujiaoka.boot'], 'namespace' => 'Api'], function () {
-    // 根据推广码和商品ID获取最优优惠码
-    Route::get('api/affiliate/coupon', 'AffiliateController@getCouponCode');
+    // 获取推广码折扣信息（直接折扣模式）
+    Route::get('api/affiliate/discount', 'AffiliateController@getDiscountInfo');
 });
 

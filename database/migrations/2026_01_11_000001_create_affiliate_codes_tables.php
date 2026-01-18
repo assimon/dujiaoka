@@ -7,15 +7,13 @@ use Illuminate\Support\Facades\Schema;
 /**
  * 推广码系统数据库迁移
  *
- * 创建两张表：
- * 1. affiliate_codes - 推广码主表
- * 2. affiliate_codes_coupons - 推广码与优惠码的多对多关联表
+ * 创建推广码表，支持直接折扣功能
  */
 class CreateAffiliateCodesTables extends Migration
 {
     /**
      * 执行迁移
-     * 创建推广码相关表
+     * 创建推广码表
      *
      * @return void
      */
@@ -34,6 +32,16 @@ class CreateAffiliateCodesTables extends Migration
             $table->tinyInteger('is_open')
                   ->default(1)
                   ->comment('是否启用 1启用 0禁用');
+
+            // 折扣类型：1=固定金额减免, 2=百分比折扣
+            $table->tinyInteger('discount_type')
+                  ->default(1)
+                  ->comment('折扣类型 1固定金额 2百分比');
+
+            // 折扣值：固定金额(元) 或 百分比(如 10 表示 10%)
+            $table->decimal('discount_value', 10, 2)
+                  ->default(0.00)
+                  ->comment('折扣值');
 
             // 备注字段
             $table->string('remark', 255)
@@ -54,49 +62,16 @@ class CreateAffiliateCodesTables extends Migration
             // 表注释
             $table->comment = '推广码表';
         });
-
-        // 创建推广码与优惠码关联表（多对多）
-        Schema::create('affiliate_codes_coupons', function (Blueprint $table) {
-            $table->increments('id')->comment('主键ID');
-
-            // 推广码ID
-            $table->integer('affiliate_code_id')
-                  ->unsigned()
-                  ->comment('推广码ID');
-
-            // 优惠码ID
-            $table->integer('coupon_id')
-                  ->unsigned()
-                  ->comment('优惠码ID');
-
-            // 时间戳字段
-            $table->timestamps();
-
-            // 索引
-            $table->index('affiliate_code_id', 'idx_affiliate_code_id');
-            $table->index('coupon_id', 'idx_coupon_id');
-
-            // 唯一索引：防止重复关联
-            $table->unique(
-                ['affiliate_code_id', 'coupon_id'],
-                'uk_affiliate_coupon'
-            );
-
-            // 表注释
-            $table->comment = '推广码与优惠码关联表';
-        });
     }
 
     /**
      * 回滚迁移
-     * 删除推广码相关表
+     * 删除推广码表
      *
      * @return void
      */
     public function down()
     {
-        // 按创建顺序的反序删除表（先删除关联表，再删除主表）
-        Schema::dropIfExists('affiliate_codes_coupons');
         Schema::dropIfExists('affiliate_codes');
     }
 }

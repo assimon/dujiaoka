@@ -63,8 +63,13 @@ class OrderController extends BaseController
             $this->orderService->validatorLoopCarmis($request);
             // 设置商品
             $this->orderProcessService->setGoods($goods);
-            // 优惠码
-            $coupon = $this->orderService->validatorCoupon($request);
+            // 验证推广码
+            $affiliateCode = $this->orderService->validatorAffiliateCode($request);
+            $hasAffiliateDiscount = ($affiliateCode !== null);
+            // 设置推广码
+            $this->orderProcessService->setAffiliateCode($affiliateCode);
+            // 优惠码（互斥检查）
+            $coupon = $this->orderService->validatorCoupon($request, $hasAffiliateDiscount);
             // 设置优惠码
             $this->orderProcessService->setCoupon($coupon);
             $otherIpt = $this->orderService->validatorChargeInput($goods, $request);
@@ -84,15 +89,15 @@ class OrderController extends BaseController
             DB::commit();
 
             // 推广码使用统计（订单创建成功后）
-            if ($request->filled('affiliate_code')) {
+            if ($affiliateCode) {
                 try {
                     /** @var \App\Service\AffiliateCodeService $affiliateService */
                     $affiliateService = app('Service\AffiliateCodeService');
-                    $affiliateService->incrementUseCount($request->input('affiliate_code'));
+                    $affiliateService->incrementUseCount($affiliateCode->code);
                 } catch (\Exception $e) {
                     // 静默失败，不影响订单流程
                     \Log::warning('[Affiliate] 推广码统计失败', [
-                        'code' => $request->input('affiliate_code'),
+                        'code' => $affiliateCode->code,
                         'order_sn' => $order->order_sn,
                         'error' => $e->getMessage(),
                     ]);

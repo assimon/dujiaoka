@@ -17,6 +17,7 @@ use App\Jobs\ServerJiang;
 use App\Jobs\TelegramPush;
 use App\Jobs\BarkPush;
 use App\Jobs\WorkWeiXinPush;
+use App\Models\AffiliateCode;
 use App\Models\BaseModel;
 use App\Models\Coupon;
 use App\Models\Goods;
@@ -81,6 +82,12 @@ class OrderProcessService
      * @var Coupon;
      */
     private $coupon;
+
+    /**
+     * 推广码
+     * @var AffiliateCode|null
+     */
+    private $affiliateCode;
 
     /**
      * 其他输入框
@@ -204,6 +211,16 @@ class OrderProcessService
     }
 
     /**
+     * 设置推广码
+     *
+     * @param AffiliateCode|null $affiliateCode
+     */
+    public function setAffiliateCode(?AffiliateCode $affiliateCode): void
+    {
+        $this->affiliateCode = $affiliateCode;
+    }
+
+    /**
      * 其他输入框设置.
      *
      * @param ?string $otherIpt
@@ -234,6 +251,23 @@ class OrderProcessService
             $couponPrice =  $this->coupon->discount;
         }
         return $couponPrice;
+    }
+
+    /**
+     * 计算推广码折扣价格
+     *
+     * @return float
+     */
+    private function calculateTheAffiliatePrice(): float
+    {
+        if (!$this->affiliateCode) {
+            return 0;
+        }
+
+        // 计算订单总价
+        $totalPrice = $this->calculateTheTotalPrice();
+        // 使用推广码计算折扣
+        return $this->affiliateCode->calculateDiscount($totalPrice);
     }
 
     /**
@@ -284,16 +318,18 @@ class OrderProcessService
      * @param float $totalPrice 总价
      * @param float $couponPrice 优惠码优惠价
      * @param float $wholesalePrice 批发优惠
+     * @param float $affiliatePrice 推广码折扣
      * @return float
      *
      * @author    assimon<ashang@utf8.hk>
      * @copyright assimon<ashang@utf8.hk>
      * @link      http://utf8.hk/
      */
-    private function calculateTheActualPrice(float $totalPrice, float $couponPrice, float $wholesalePrice): float
+    private function calculateTheActualPrice(float $totalPrice, float $couponPrice, float $wholesalePrice, float $affiliatePrice = 0): float
     {
         $actualPrice = bcsub($totalPrice, $couponPrice, 2);
         $actualPrice = bcsub($actualPrice, $wholesalePrice, 2);
+        $actualPrice = bcsub($actualPrice, $affiliatePrice, 2);
         if ($actualPrice <= 0) {
             $actualPrice = 0;
         }
@@ -340,6 +376,11 @@ class OrderProcessService
             if ($this->coupon) {
                 $order->coupon_id = $this->coupon->id;
             }
+            // 推广码折扣价格
+            $order->affiliate_discount_price = $this->calculateTheAffiliatePrice();
+            if ($this->affiliateCode) {
+                $order->affiliate_code_id = $this->affiliateCode->id;
+            }
             // 批发价
             $order->wholesale_discount_price = $this->calculateTheWholesalePrice();
             // 订单总价
@@ -348,7 +389,8 @@ class OrderProcessService
             $order->actual_price = $this->calculateTheActualPrice(
                 $this->calculateTheTotalPrice(),
                 $this->calculateTheCouponPrice(),
-                $this->calculateTheWholesalePrice()
+                $this->calculateTheWholesalePrice(),
+                $this->calculateTheAffiliatePrice()
             );
             // 保存订单
             $order->save();

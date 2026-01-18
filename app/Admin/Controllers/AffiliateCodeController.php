@@ -4,38 +4,36 @@ namespace App\Admin\Controllers;
 
 use App\Admin\Repositories\AffiliateCode;
 use App\Models\AffiliateCode as AffiliateCodeModel;
-use App\Models\Coupon;
+use App\Models\Order;
 use App\Service\AffiliateCodeService;
 use Dcat\Admin\Form;
 use Dcat\Admin\Grid;
 use Dcat\Admin\Show;
 use Dcat\Admin\Http\Controllers\AdminController;
+use Dcat\Admin\Layout\Content;
 
 /**
  * 推广码管理控制器
  *
  * 提供推广码的 CRUD 管理界面：
- * - 列表页：显示推广码、关联优惠码、使用次数、状态
- * - 创建页：自动生成推广码，多选关联优惠码
- * - 编辑页：推广码只读，可修改关联优惠码和状态
+ * - 列表页：显示推广码、折扣类型、折扣值、使用次数、状态
+ * - 创建页：自动生成推广码，设置折扣类型和折扣值
+ * - 编辑页：推广码只读，可修改折扣设置和状态
  * - 详情页：查看推广码完整信息
- *
- * @author assimon<ashang@utf8.hk>
- * @copyright assimon<ashang@utf8.hk>
- * @link http://utf8.hk/
+ * - 统计页：查看推广码的使用统计
  */
 class AffiliateCodeController extends AdminController
 {
     /**
      * 列表页
      *
-     * 显示所有推广码及其关联信息
+     * 显示所有推广码及其折扣信息
      *
      * @return Grid
      */
     protected function grid()
     {
-        return Grid::make(new AffiliateCode(['coupons']), function (Grid $grid) {
+        return Grid::make(new AffiliateCode(), function (Grid $grid) {
             // 按 ID 降序排序
             $grid->model()->orderBy('id', 'DESC');
 
@@ -51,18 +49,19 @@ class AffiliateCodeController extends AdminController
                 return $baseUrl . '?aff=' . $this->code;
             })->copyable()->width(280);
 
-            // 关联优惠码列（显示所有关联的优惠码，用逗号分隔）
-            $grid->column('coupons', '关联优惠码')->display(function ($coupons) {
-                if (empty($coupons)) {
-                    return '<span style="color: #999;">无</span>';
-                }
-                // 处理 Collection 或数组
-                if ($coupons instanceof \Illuminate\Support\Collection) {
-                    $couponCodes = $coupons->pluck('coupon')->toArray();
+            // 折扣类型列
+            $grid->column('discount_type', '折扣类型')->display(function ($type) {
+                $map = AffiliateCodeModel::getDiscountTypeMap();
+                return $map[$type] ?? '未知';
+            });
+
+            // 折扣值列
+            $grid->column('discount_value', '折扣值')->display(function () {
+                if ($this->discount_type == AffiliateCodeModel::DISCOUNT_TYPE_FIXED) {
+                    return $this->discount_value . ' 元';
                 } else {
-                    $couponCodes = array_column($coupons, 'coupon');
+                    return $this->discount_value . ' %';
                 }
-                return implode(', ', $couponCodes);
             });
 
             // 使用次数列
@@ -77,6 +76,12 @@ class AffiliateCodeController extends AdminController
             // 创建时间列
             $grid->column('created_at', '创建时间');
 
+            // 操作列
+            $grid->actions(function ($actions) {
+                // 添加查看统计按钮
+                $actions->append('<a href="' . admin_url('affiliate-code/' . $actions->getKey() . '/stats') . '" class="btn btn-sm btn-outline-info" style="margin-right: 5px;"><i class="feather icon-bar-chart-2"></i> 统计</a>');
+            });
+
             // 过滤器
             $grid->filter(function (Grid\Filter $filter) {
                 // 根据 ID 精确搜索
@@ -85,15 +90,9 @@ class AffiliateCodeController extends AdminController
                 // 根据推广码模糊搜索
                 $filter->like('code', '推广码');
 
-                // 根据关联的优惠码 ID 搜索
-                $filter->where('coupon_id', function ($query) {
-                    $couponId = $this->input;
-                    $query->whereHas('coupons', function ($q) use ($couponId) {
-                        $q->where('coupon_id', $couponId);
-                    });
-                }, '关联优惠码')->select(
-                    Coupon::query()->where('is_open', Coupon::STATUS_OPEN)->pluck('coupon', 'id')
-                );
+                // 根据折扣类型搜索
+                $filter->equal('discount_type', '折扣类型')
+                       ->select(AffiliateCodeModel::getDiscountTypeMap());
             });
 
             // 禁用批量删除
@@ -111,26 +110,25 @@ class AffiliateCodeController extends AdminController
      */
     protected function detail($id)
     {
-        return Show::make($id, new AffiliateCode(['coupons']), function (Show $show) {
+        return Show::make($id, new AffiliateCode(), function (Show $show) {
             $show->field('id', 'ID');
 
             $show->field('code', '推广码');
 
-            // 关联的优惠码列表
-            $show->field('coupons', '关联优惠码')->as(function ($coupons) {
-                if (empty($coupons)) {
-                    return '无';
+            // 折扣类型
+            $show->field('discount_type', '折扣类型')->as(function ($type) {
+                $map = AffiliateCodeModel::getDiscountTypeMap();
+                return $map[$type] ?? '未知';
+            });
+
+            // 折扣值
+            $show->field('discount_value', '折扣值')->as(function () {
+                if ($this->discount_type == AffiliateCodeModel::DISCOUNT_TYPE_FIXED) {
+                    return $this->discount_value . ' 元';
+                } else {
+                    return $this->discount_value . ' %';
                 }
-                // 格式化显示：优惠码 (优惠金额)
-                $list = [];
-                foreach ($coupons as $coupon) {
-                    // 处理对象或数组
-                    $code = is_array($coupon) ? $coupon['coupon'] : $coupon->coupon;
-                    $discount = is_array($coupon) ? $coupon['discount'] : $coupon->discount;
-                    $list[] = $code . ' (' . $discount . '元)';
-                }
-                return implode('<br>', $list);
-            })->unescape();
+            });
 
             $show->field('use_count', '使用次数');
 
@@ -151,8 +149,8 @@ class AffiliateCodeController extends AdminController
     /**
      * 表单页（创建和编辑）
      *
-     * 创建：自动生成推广码，选择关联优惠码
-     * 编辑：推广码只读，可修改关联优惠码和状态
+     * 创建：自动生成推广码，设置折扣类型和折扣值
+     * 编辑：推广码只读，可修改折扣设置和状态
      *
      * @return Form
      */
@@ -169,26 +167,18 @@ class AffiliateCodeController extends AdminController
             }
             // 创建时：不显示 code 字段（将在 saving hook 中自动生成）
 
-            // 关联优惠码（多选）
-            $form->multipleSelect('coupons', '关联优惠码')
-                 ->options(Coupon::query()
-                     ->where('is_open', Coupon::STATUS_OPEN)
-                     ->pluck('coupon', 'id'))
+            // 折扣类型（单选）
+            $form->radio('discount_type', '折扣类型')
+                 ->options(AffiliateCodeModel::getDiscountTypeMap())
+                 ->default(AffiliateCodeModel::DISCOUNT_TYPE_FIXED)
                  ->required()
-                 ->help('可选择多个优惠码，购买时系统会自动应用优惠金额最大的那个')
-                 ->customFormat(function ($v) {
-                     if (!$v) {
-                         return [];
-                     }
-                     // 处理 Collection 或数组
-                     if ($v instanceof \Illuminate\Support\Collection) {
-                         return $v->pluck('id')->toArray();
-                     }
-                     if (is_array($v)) {
-                         return array_column($v, 'id');
-                     }
-                     return [];
-                 });
+                 ->help('固定金额：直接减免指定金额；百分比：按总价的百分比减免');
+
+            // 折扣值
+            $form->decimal('discount_value', '折扣值')
+                 ->default(0)
+                 ->required()
+                 ->help('固定金额填写元数（如 10 表示减 10 元），百分比填写数值（如 10 表示打 9 折）');
 
             // 备注字段
             $form->textarea('remark', '备注')
@@ -208,19 +198,106 @@ class AffiliateCodeController extends AdminController
             $form->display('created_at', '创建时间');
             $form->display('updated_at', '更新时间');
 
-            // 保存前钩子：创建时自动生成推广码
+            // 保存前钩子
             $form->saving(function (Form $form) {
+                // 创建模式：自动生成推广码
                 if (!$form->isEditing()) {
-                    // 创建模式：调用服务生成唯一推广码
                     try {
                         $affiliateService = app(AffiliateCodeService::class);
                         $form->code = $affiliateService->generateUniqueCode();
                     } catch (\Exception $e) {
-                        // 生成失败，返回错误
                         return $form->response()->error('生成推广码失败：' . $e->getMessage());
                     }
                 }
+
+                // 验证折扣值
+                if ($form->discount_value <= 0) {
+                    return $form->response()->error('折扣值必须大于 0');
+                }
+
+                if ($form->discount_type == AffiliateCodeModel::DISCOUNT_TYPE_PERCENTAGE
+                    && $form->discount_value > 100) {
+                    return $form->response()->error('百分比折扣不能超过 100%');
+                }
             });
         });
+    }
+
+    /**
+     * 统计页面
+     *
+     * 显示推广码的使用统计信息，支持筛选查询
+     *
+     * @param Content $content
+     * @param int $id 推广码ID
+     * @return Content
+     */
+    public function stats(Content $content, $id)
+    {
+        $affiliateCode = AffiliateCodeModel::findOrFail($id);
+
+        // 获取筛选参数
+        $request = request();
+        $startDate = $request->input('start_date');
+        $endDate = $request->input('end_date');
+        $orderSn = $request->input('order_sn');
+        $goodsId = $request->input('goods_id');
+
+        // 构建查询（只统计已支付的订单，过滤掉待支付和已过期的）
+        $query = Order::query()
+            ->where('affiliate_code_id', $id)
+            ->where('status', '>', Order::STATUS_WAIT_PAY)
+            ->with('goods');
+
+        // 日期范围筛选
+        if ($startDate) {
+            $query->whereDate('created_at', '>=', $startDate);
+        }
+        if ($endDate) {
+            $query->whereDate('created_at', '<=', $endDate);
+        }
+
+        // 订单号搜索
+        if ($orderSn) {
+            $query->where('order_sn', 'like', '%' . $orderSn . '%');
+        }
+
+        // 商品筛选
+        if ($goodsId) {
+            $query->where('goods_id', $goodsId);
+        }
+
+        // 执行查询
+        $orders = $query->orderBy('created_at', 'DESC')->get();
+
+        // 统计数据（基于筛选结果）
+        $stats = [
+            'order_count' => $orders->count(),
+            'total_amount' => $orders->sum('actual_price'),
+            'discount_amount' => $orders->sum('affiliate_discount_price'),
+            'goods_list' => $orders->pluck('goods.gd_name')->filter()->unique()->values()->toArray(),
+        ];
+
+        // 获取该推广码关联的所有商品（用于下拉筛选，只统计已支付订单）
+        $allGoodsIds = Order::where('affiliate_code_id', $id)
+            ->where('status', '>', Order::STATUS_WAIT_PAY)
+            ->distinct()
+            ->pluck('goods_id');
+        $goodsList = \App\Models\Goods::whereIn('id', $allGoodsIds)
+            ->pluck('gd_name', 'id')
+            ->toArray();
+
+        // 筛选条件（用于视图回显）
+        $filters = [
+            'start_date' => $startDate,
+            'end_date' => $endDate,
+            'order_sn' => $orderSn,
+            'goods_id' => $goodsId,
+        ];
+
+        return $content
+            ->header('推广码统计')
+            ->description('推广码：' . $affiliateCode->code)
+            ->body(view('admin.affiliate_stats', compact('affiliateCode', 'orders', 'stats', 'filters', 'goodsList')));
     }
 }

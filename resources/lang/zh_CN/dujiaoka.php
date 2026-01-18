@@ -124,7 +124,9 @@ return [
         'no_related_order_found_for_cache' => '未找到相关订单缓存！',
         'no_related_order_found' => '未找到相关订单！',
         'new_order_push' => '新订单通知',
-        'loop_carmis_limit' => '此商品最多购买一件！'
+        'loop_carmis_limit' => '此商品最多购买一件！',
+        'affiliate_code_invalid' => '推广码无效或已禁用',
+        'affiliate_coupon_exclusive' => '推广码折扣与优惠码不可同时使用'
     ],
 
     'equipment' => [
