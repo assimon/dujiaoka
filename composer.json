@@ -15,7 +15,7 @@
         "fideloper/proxy": "^4.4",
         "germey/geetest": "^3.1",
         "jenssegers/agent": "^2.6",
-        "laravel/framework": "^6.20.26",
+        "laravel/framework": "^7.0",
         "laravel/tinker": "^2.5",
         "mews/captcha": "^3.2",
         "paypal/rest-api-sdk-php": "^1.14",
@@ -25,10 +25,10 @@
         "yansongda/pay": "^2.10"
     },
     "require-dev": {
-        "facade/ignition": "^1.16.15",
+        "facade/ignition": "^2.0",
         "fakerphp/faker": "^1.9.1",
         "mockery/mockery": "^1.0",
-        "nunomaduro/collision": "^3.0",
+        "nunomaduro/collision": "^4.1",
         "phpunit/phpunit": "^8.5.8|^9.3.3"
     },
     "config": {

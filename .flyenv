@@ -1,0 +1,2 @@
+[Console]::OutputEncoding = [System.Text.Encoding]::UTF8
+$env:PATH = "D:\PhpWebStudy-Data\app\php-7.4.33;" + $env:PATH #FlyEnv-ID-TabjPPQT1NDKxsBUiBy8N9x4Pw9RR73R
