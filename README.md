@@ -51,6 +51,9 @@
 Telegram: [https://t.me/dujiaoka](https://t.me/dujiaoka)    
 关注Telegram官方频道：[https://t.me/dujiaoshuka](https://t.me/dujiaoshuka) (系统更新通知，bug更新，重大事件推送)
 
+## 🪧《官方自营旗舰店》
+D&J Studio：[https://dujiaoka.com/](https://dujiaoka.com/)
+
 ## 🔥推荐服务器 
 - （🇺🇸美国免备案vps，配置2核2G仅需`20.98$`≈`145RMB`一年/支持支付宝付款）[👉🏻点我直达](https://my.racknerd.com/aff.php?aff=2745&pid=681)
 - （🇺🇸美国至中国最快的云服务器，三网精品CN2，最低仅需`3.5$/月`支持Paypal/USDT/支付宝付款）[👉🏻点我直达](https://www.vmrack.net/?ref_code=5cxGLUcTZhH)
