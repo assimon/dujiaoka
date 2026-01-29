@@ -101,6 +101,19 @@ class OrderProcessService
     private $email;
 
     /**
+     * 购买姓名
+     * @var string
+     */
+    private $name;
+
+
+    /**
+     * 購買電話
+     * @var string
+     */
+    private $phone;
+
+    /**
      * 查询密码
      * @var string
      */
@@ -173,6 +186,24 @@ class OrderProcessService
     public function setEmail($email): void
     {
         $this->email = $email;
+    }
+
+    /**
+     * 设置下单姓名
+     * @param mixed $name
+     */
+    public function setName($name): void
+    {
+        $this->name = $name;
+    }
+
+    /**
+     * 设置下单電話
+     * @param mixed $email
+     */
+    public function setPhone($phone): void
+    {
+        $this->phone = $phone;
     }
 
     /**
@@ -325,6 +356,10 @@ class OrderProcessService
             $order->search_pwd = $this->searchPwd;
             // 邮箱
             $order->email = $this->email;
+            // 姓名
+            $order->name = $this->name;
+            // 電話
+            $order->phone = $this->phone;
             // 支付方式.
             $order->pay_id = $this->payID;
             // 商品单价
@@ -360,7 +395,7 @@ class OrderProcessService
                 $this->couponService->retDecr($this->coupon->coupon);
             }
             // 将订单加入队列 x分钟后过期
-            $expiredOrderDate = dujiaoka_config_get('order_expire_time', 5);
+            $expiredOrderDate = dujiaoka_config_get('order_expire_time', 30);
             OrderExpired::dispatch($order->order_sn)->delay(Carbon::now()->addMinutes($expiredOrderDate));
             return $order;
         } catch (\Exception $exception) {
