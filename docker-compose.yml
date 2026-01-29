@@ -5,6 +5,7 @@ services:
     container_name: dujiaoka
     ports:
       - "80:80"
+      - "443:443"
       - "9000:9000"
     volumes:
       # 增加此行，则将环境信息进行复制到容器，请确保你存在该文件
