@@ -1,0 +1,76 @@
+{
+    "name": "laravel/laravel",
+    "type": "project",
+    "description": "The Laravel Framework.",
+    "keywords": [
+        "framework",
+        "laravel"
+    ],
+    "license": "MIT",
+    "require": {
+        "php": "^7.2.5|^8.0",
+        "amrshawky/laravel-currency": "^4.0",
+        "dcat/easy-excel": "^1.0",
+        "dcat/laravel-admin": "2.*",
+        "fideloper/proxy": "^4.4",
+        "germey/geetest": "^3.1",
+        "jenssegers/agent": "^2.6",
+        "laravel/framework": "^6.20.26",
+        "laravel/tinker": "^2.5",
+        "mews/captcha": "^3.2",
+        "paypal/rest-api-sdk-php": "^1.14",
+        "simplesoftwareio/simple-qrcode": "2.0.0",
+        "stripe/stripe-php": "^7.84",
+        "xhat/payjs-laravel": "^1.6",
+        "yansongda/pay": "^2.10"
+    },
+    "require-dev": {
+        "facade/ignition": "^1.16.15",
+        "fakerphp/faker": "^1.9.1",
+        "mockery/mockery": "^1.0",
+        "nunomaduro/collision": "^3.0",
+        "phpunit/phpunit": "^8.5.8|^9.3.3"
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "platform-check": false
+    },
+    "extra": {
+        "laravel": {
+            "dont-discover": []
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        },
+        "classmap": [
+            "database/seeds",
+            "database/factories"
+        ],
+        "files":[
+            "app/Helpers/functions.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "scripts": {
+        "post-autoload-dump": [
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "@php artisan package:discover --ansi"
+        ],
+        "post-root-package-install": [
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ],
+        "post-create-project-cmd": [
+            "@php artisan key:generate --ansi"
+        ]
+    }
+}

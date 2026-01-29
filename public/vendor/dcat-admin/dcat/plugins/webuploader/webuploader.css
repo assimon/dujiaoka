@@ -1,0 +1,460 @@
+.webuploader-container {
+	position: relative
+}
+
+.webuploader-element-invisible {
+	position: absolute !important;
+	clip: rect(1px 1px 1px 1px);
+	clip: rect(1px, 1px, 1px, 1px)
+}
+
+.webuploader-pick {
+	border-radius: 1px;
+	will-change: box-shadow !important;
+	box-shadow: 0 3px 1px -2px rgba(0, 0, 0, .15), 0 2px 2px 0 rgba(0, 0, 0, .15), 0 1px 5px 0 rgba(0, 0, 0, .15);
+	border: 1px solid transparent;
+	display: inline-block;
+	padding: 6px 12px;
+	margin-bottom: 0;
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 1.42857143;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: middle;
+	-ms-touch-action: manipulation;
+	touch-action: manipulation;
+	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	background-image: none;
+	color: #fff;
+	background-color: #4099df
+}
+
+.webuploader-pick-hover {
+	opacity: .9
+}
+
+.webuploader-pick-disable {
+	opacity: .6;
+	pointer-events: none
+}
+
+.web-uploader {
+	border: 0;
+	color: #838383;
+	font-size: 12px;
+	margin-top: 10px;
+	background-color: transparent
+}
+
+.web-uploader.disabled {
+	background-color: #eee;
+	min-height: 34px;
+	cursor: not-allowed
+}
+
+.web-uploader._files {
+	border: 0
+}
+
+.web-uploader .queueList {
+}
+
+.web-uploader._files .queueList {
+}
+
+.element-invisible {
+	position: absolute !important;
+	clip: rect(1px 1px 1px 1px);
+	clip: rect(1px, 1px, 1px, 1px)
+}
+
+.web-uploader .placeholder {
+	/*padding-top: 85px;*/
+	/*background: url(./image.png) center 15px no-repeat;*/
+	border: 3px dashed #e6e6e6;
+	padding-top: 5px;
+	text-align: center;
+	color: #ccc;
+	font-size: 16px;
+	position: relative;
+}
+
+.web-uploader .placeholder .webuploader-pick {
+	background: #4099df;
+	border-radius: 3px;
+	line-height: 34px;
+	padding: 0 25px;
+	color: #fff;
+	display: inline-block;
+	margin: 0 auto 20px;
+	cursor: pointer
+}
+
+.web-uploader .placeholder .webuploader-pick-hover {
+	opacity: .9
+}
+.web-uploader .placeholder p {
+	margin: 0 0 20px;
+}
+.web-uploader .placeholder .flashTip {
+	color: #666;
+	font-size: 12px;
+	position: absolute;
+	width: 100%;
+	text-align: center;
+	bottom: 20px
+}
+
+.web-uploader .placeholder .flashTip a {
+	color: #4099df;
+	text-decoration: none
+}
+
+.web-uploader .placeholder .flashTip a:hover {
+	text-decoration: underline
+}
+
+.web-uploader .placeholder.webuploader-dnd-over {
+	border-color: #999
+}
+
+.web-uploader .placeholder.webuploader-dnd-over.webuploader-dnd-denied {
+	border-color: #ff5b5b
+}
+
+.web-uploader .filelist {
+	list-style: none;
+	margin: 0;
+	padding: 0
+}
+
+.web-uploader .filelist:after {
+	content: '';
+	display: block;
+	width: 0;
+	height: 0;
+	overflow: hidden;
+	clear: both
+}
+
+.web-uploader .filelist li {
+	width: 120px;
+	text-align: center;
+	position: relative;
+	float: left;
+	overflow: hidden;
+	border-radius: 2px;
+	font-size: 12px;
+	box-shadow: 1px 1px 5px 0 #a2958a;
+	-webkit-box-shadow: 1px 1px 5px 0 #a2958a;
+	color: #333;
+	background: #fff;
+	display: table;
+	margin: 8px;
+	height: 160px;
+	padding: 6px;
+	vertical-align: middle
+}
+
+.web-uploader._files .filelist li {
+	width: 100%;
+	height: 40px;
+	background: var(--primary-light);
+	margin: 0 8px 10px 0;
+	box-shadow: none;
+	-webkit-box-shadow: none;
+	border-radius: 5px;
+	border: 0;
+	padding: 0
+}
+
+.web-uploader._files .filelist li ._act {
+	float: right;
+	margin: 16px 10px 0;
+	cursor: pointer;
+	font-size: 15px;
+	position: absolute;
+	right: 0
+}
+
+.web-uploader .filelist li p.log {
+	position: relative;
+	top: -45px
+}
+
+.web-uploader .filelist li p.title {
+	left: 0;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	top: 35px;
+	text-indent: 5px;
+	width: 160px;
+	text-align: center;
+	padding-top: 4px;
+	font-size: 11px;
+	color: #777;
+	margin: 3px auto
+}
+
+.web-uploader._files .filelist li p.title {
+	font-weight: 600;
+	font-size: 15px;
+	vertical-align: middle;
+	height: 42px;
+	line-height: 35px;
+	padding-left: 8px;
+	float: left;
+	text-align: left;
+	color: #333;
+	width: 450px
+}
+
+.web-uploader .filelist .file-type {
+	display: none;
+	font-size: 18px;
+	font-weight: bold;
+	text-shadow: 0 1px 2px rgba(0, 0, 0, .2);
+	margin: 20px 0 5px;
+	height: 105px
+}
+
+.web-uploader .filelist li p.upload-progress {
+	position: absolute;
+	width: 100%;
+	bottom: 0;
+	left: 0;
+	height: 8px;
+	overflow: hidden;
+	z-index: 50
+}
+
+.web-uploader .filelist li p.upload-progress span {
+	display: none;
+	overflow: hidden;
+	width: 0;
+	height: 100%;
+	background: #4099df url(./progress.png) repeat-x;
+	-webit-transition: width 200ms linear;
+	-moz-transition: width 200ms linear;
+	-o-transition: width 200ms linear;
+	-ms-transition: width 200ms linear;
+	transition: width 200ms linear;
+	-webkit-animation: progressmove 2s linear infinite;
+	-moz-animation: progressmove 2s linear infinite;
+	-o-animation: progressmove 2s linear infinite;
+	-ms-animation: progressmove 2s linear infinite;
+	animation: progressmove 2s linear infinite;
+	-webkit-transform: translateZ(0)
+}
+
+@-webkit-keyframes progressmove {
+	0% {
+		background-position: 0 0
+	}
+	100% {
+		background-position: 17px 0
+	}
+}
+
+@-moz-keyframes progressmove {
+	0% {
+		background-position: 0 0
+	}
+	100% {
+		background-position: 17px 0
+	}
+}
+
+@keyframes progressmove {
+	0% {
+		background-position: 0 0
+	}
+	100% {
+		background-position: 17px 0
+	}
+}
+
+.web-uploader .filelist li .imgWrap {
+	position: relative;
+	z-index: 2;
+	line-height: 100%;
+	vertical-align: middle;
+	overflow: hidden;
+	width: 100%;
+	height: 120px;
+	-webkit-transform-origin: 50% 50%;
+	-moz-transform-origin: 50% 50%;
+	-o-transform-origin: 50% 50%;
+	-ms-transform-origin: 50% 50%;
+	transform-origin: 50% 50%;
+	-webit-transition: 200ms ease-out;
+	-moz-transition: 200ms ease-out;
+	-o-transition: 200ms ease-out;
+	-ms-transition: 200ms ease-out;
+	transition: 200ms ease-out;
+	margin-bottom: 0;
+}
+
+.web-uploader .filelist li img {
+	width: auto;
+	height: 120px
+}
+
+.web-uploader .filelist li p.error {
+	background: var(--danger);
+	color: #fff;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	height: 28px;
+	line-height: 28px;
+	width: 100%;
+	z-index: 100
+}
+
+.web-uploader._files .filelist li p.error {
+	background: var(--danger);
+	color: #fff;
+	font-weight: 500;
+	padding: 0 20px;
+	width: auto;
+	margin-left: 40%;
+	top: 0
+}
+
+.web-uploader .filelist li .success {
+	display: block;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	height: 40px;
+	width: 100%;
+	z-index: 200
+}
+
+.web-uploader .filelist li .success em {
+	position: absolute;
+	right: 0;
+	border-color: transparent;
+	border-style: solid;
+	border-width: 0 0 33px 40px;
+	border-bottom-color: var(--success);
+	bottom: -1px
+}
+
+.web-uploader li .success i {
+	position: absolute;
+	bottom: 5px;
+	right: 0;
+	color: #fff;
+	background: none;
+	border: none;
+	font-weight: bold;
+	outline: none;
+	text-align: center;
+	width: 20px
+}
+
+.web-uploader .filelist div.file-panel {
+	position: absolute;
+	height: 32px;
+	width: 100%;
+	bottom: 0;
+	left: 0;
+	overflow: hidden;
+	z-index: 10
+}
+
+.web-uploader .filelist div.file-panel span {
+	display: inline;
+	float: left;
+	width: 24px;
+	height: 24px;
+	line-height: 26px;
+	overflow: hidden;
+	margin: 5px 3px 5px;
+	font-weight: bold;
+	cursor: pointer;
+	color: #fff;
+	border-radius: 1px;
+	font-size: 14px
+}
+
+.web-uploader .filelist div.file-panel a {
+	float: left;
+	margin-left: 3px
+}
+
+.web-uploader .statusBar {
+	height: 53px;
+	line-height: 53px;
+	vertical-align: middle;
+	position: relative
+}
+
+.web-uploader._files .statusBar {
+	border-top: 0;
+	padding: 0
+}
+
+.web-uploader .statusBar .upload-progress {
+	border: 0;
+	width: 198px;
+	height: 18px;
+	display: inline-block;
+	text-align: center;
+	line-height: 45px;
+	color: #fff;
+	margin-top: 20px;
+	position: relative;
+	margin-right: 10px;
+	border-radius: 2px
+}
+
+.web-uploader .statusBar .upload-progress span.percentage {
+	width: 0;
+	height: 100%;
+	left: 0;
+	top: 0;
+	background: #4099df;
+	position: absolute
+}
+
+.web-uploader .statusBar .upload-progress span.text {
+	position: relative;
+	z-index: 10
+}
+
+.web-uploader .statusBar .info {
+	display: inline-block;
+	font-size: 14px;
+	color: #666!important;
+}
+
+.web-uploader .statusBar .btns {
+	margin-top: 4px;
+	right: 20px;
+	line-height: 40px;
+	float: right
+}
+
+.web-uploader._files .statusBar .btns {
+	right: 0
+}
+
+.add-file-button {
+	display: inline-block;
+	float: left
+}
+
+.web-uploader .placeholder:before {
+	font-size: 80px;
+	font-family: feather;
+	content: "\e8e3";
+}
