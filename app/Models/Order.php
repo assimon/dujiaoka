@@ -57,6 +57,11 @@ class Order extends BaseModel
      */
     const COUPON_BACK_OK = 1;
 
+    /**
+     * 已退款
+     */
+    const STATUS_REFUNDED = 7;
+
     protected $dispatchesEvents = [
         'updated' => OrderUpdated::class
     ];
@@ -80,7 +85,8 @@ class Order extends BaseModel
             self::STATUS_COMPLETED => admin_trans('order.fields.status_completed'),
             self::STATUS_FAILURE => admin_trans('order.fields.status_failure'),
             self::STATUS_ABNORMAL => admin_trans('order.fields.status_abnormal'),
-            self::STATUS_EXPIRED => admin_trans('order.fields.status_expired')
+            self::STATUS_EXPIRED => admin_trans('order.fields.status_expired'),
+            self::STATUS_REFUNDED => admin_trans('order.fields.status_refunded'),
         ];
     }
 

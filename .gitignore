@@ -14,3 +14,6 @@ yarn-error.log
 .idea
 install.lock
 .env.buck
+
+# 证书
+/storage/*.pem

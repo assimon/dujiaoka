@@ -81,6 +81,10 @@
                                 {{-- 状态异常 --}}
                                 {{ __('hyper.orderinfo_status_abnormal') }}
                             @break
+                            @case(\App\Models\Order::STATUS_REFUNDED)
+                                {{-- 已退款 --}}
+                                {{ __('order.fields.status_refunded') }}
+                            @break
                         @endswitch
                     </span>
                 </div>
