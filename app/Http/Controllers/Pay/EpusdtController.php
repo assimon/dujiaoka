@@ -25,6 +25,7 @@ class EpusdtController extends PayController
             $this->loadGateWay($orderSN, $payway);
             //构造要请求的参数数组，无需改动
             $parameter = [
+                'trade_type'=> $payway, //支付方式
                 "amount" => (float)$this->order->actual_price,//原价
                 "order_id" => $this->order->order_sn, //可以是用户ID,站内商户订单号,用户名
                 'redirect_url' => route('epusdt-return', ['order_id' => $this->order->order_sn]),
@@ -85,12 +86,18 @@ class EpusdtController extends PayController
         $signature = $this->epusdtSign($data, $payGateway->merchant_id);
         if ($data['signature'] != $signature) { //不合法的数据
             return 'fail';  //返回失败 继续补单
-        } else {
-            //合法的数据
-            //业务处理
-            $this->orderProcessService->completedOrder($data['order_id'], $data['amount'], $data['trade_id']);
-            return 'ok';
         }
+
+        if ($data['status'] != 2) { //支付状态不是成功
+
+            return 'fail';
+        }
+
+        //合法的数据
+        //业务处理
+        $this->orderProcessService->completedOrder($data['order_id'], $data['amount'], $data['trade_id']);
+
+        return 'ok';
     }
 
     public function returnUrl(Request $request)
