@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Exceptions\RuleValidationException;
 use App\Models\Order;
 use App\Service\OrderProcessService;
+use Illuminate\Http\Request;
+use App\Models\PayGateway;
 
 class PayController extends BaseController
 {
@@ -125,6 +127,34 @@ class PayController extends BaseController
             return $this->err($exception->getMessage());
         }
 
+    }
+
+    public function checkPayway(Request $request)
+    {
+        try {
+            $id = $request->input('payway');
+            
+            // 根据 id 查询并获取 pay_check
+            $payGateway = PayGateway::find($id);
+            
+            if (!$payGateway) {
+                return response()->json([
+                    'success' => false,
+                    'message' => '支付方式不存在'
+                ]);
+            }
+            
+            return response()->json([
+                'success' => true,
+                'pay_check' => $payGateway->pay_check
+            ]);
+            
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => $e->getMessage()
+            ]);
+        }
     }
 
 }

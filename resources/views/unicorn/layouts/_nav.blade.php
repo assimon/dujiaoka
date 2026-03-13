@@ -31,6 +31,18 @@
                                     <li class="nav-item">
                                         <a class="nav-link @if(\Illuminate\Support\Facades\Request::url() == url('order-search')) active @endif" href="{{ url('order-search') }}">{{ __('dujiaoka.order_search') }}</a>
                                     </li>
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <i class="ali-icon">&#xe790;</i> {{ __('dujiaoka.language') }}
+                                        </a>
+                                        <ul class="dropdown-menu" aria-labelledby="languageDropdown">
+                                            <li><a class="dropdown-item" href="{{ url('cn') }}">简体中文</a></li>
+                                            <li><a class="dropdown-item" href="{{ url('tw') }}">繁體中文</a></li>
+                                            <li><a class="dropdown-item" href="{{ url('en') }}">English</a></li>
+                                            <li><a class="dropdown-item" href="{{ url('th') }}">แบบไทย</a></li>
+                                            <li><a class="dropdown-item" href="{{ url('vn') }}">Tiếng Việt</a></li>         
+                                        </ul>
+                                    </li>
                                 </ul>
                                 @if(\Illuminate\Support\Facades\Request::path() == '/')
                                     <form class="d-flex">

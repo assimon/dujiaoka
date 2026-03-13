@@ -88,8 +88,9 @@ return [
 
     'scan_qrcode_to_pay' => 'QRcode掃碼支付',
     'pay_order_expiration_date_prompt' => '請打開 APP 掃描 QRcode 支付！有效期:min分鐘',
-    'money_symbol' => '￥',
+    'money_symbol' => '$',
     'purchase_limit' => '每單限',
+    'language' => '語言',
 
 
     'prompt' => [
@@ -144,5 +145,14 @@ return [
         'bill' => '訂單確認',
         'order-detail' => '訂單詳情',
         'order-search' => '訂單查詢'
+    ],
+
+    'gomypay' => [
+        'name' => '姓名',
+        'phone' => '手機號碼',
+        'please_input_name' => '請輸入姓名',
+        'please_input_phone' => '請輸入手機號碼',
+        'phone_format_error' => '手機號碼格式錯誤，請輸入09開頭的10位數字',
+        'order_number_notice' => '請牢記訂單編號，付款完成後查詢用',
     ]
 ];
