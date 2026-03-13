@@ -56,5 +56,8 @@ Route::group(['prefix' => 'pay', 'namespace' => 'Pay', 'middleware' => ['dujiaok
     Route::get('tokenpay/{payway}/{orderSN}', 'TokenPayController@gateway');
     Route::post('tokenpay/notify_url', 'TokenPayController@notifyUrl');
     Route::get('tokenpay/return_url', 'TokenPayController@returnUrl')->name('tokenpay-return');
-
+    // meowpay
+    Route::get('meowpay/{payway}/{orderSN}', 'MeowpayController@gateway');
+    Route::post('meowpay/notify_url', 'MeowpayController@notifyUrl');
+    Route::get('meowpay/return_url', 'MeowpayController@returnUrl')->name('meowpay-return');
 });
